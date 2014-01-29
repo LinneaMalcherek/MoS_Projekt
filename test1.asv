@@ -17,13 +17,10 @@ v0 = 3.5; %integral(F) / m;
 % Beräknar tid mellan hack och hogg
 s = 6.40; % Avstånd hack och hogg
 t0 = s/v0;
-
-% om siktar åt vänster, rotera åt höger och vice versa
 if vinkel>0
-    omega = -pi / (2*t0);
-elseif vinkel<=0
-    omega = pi / (2*t0);
-end
+omega = -pi / (2*t0);
+
+% Beräknar vinkelhastighet
 
 %%
 % Beräknar momentanhastigheten framåt
@@ -35,7 +32,7 @@ v_back = v_front*0.3;
 
 %%
 % Resultant
-forw = zeros(2,size(t,2));
+forw = zeros(2,100);
 forw(2,:) = v_forw;
 sidew = zeros(2,100);
 sidew(1,:) = (v_back-v_front);
@@ -43,7 +40,7 @@ v = forw + sidew;
 
 %% Beräkna position
 p0 = [0;0];
-pos = zeros(2,size(t,2));
+pos = zeros(2,100);
 for i = 1:1:100
     pos(:,i) = p0+v(:,i);
     p0 = pos(:,i); 
