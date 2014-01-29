@@ -8,7 +8,12 @@ Rotationmatrix = [cos(vinkel) -sin(vinkel);
 utgangsriktningsvektor = [1; 0] * Rotationsmatrix;
 
 m = 18;
+<<<<<<< HEAD
 t = 1:0.1:40;
+=======
+Tmax = 100;
+t = 1:Tmax;
+>>>>>>> 61578ee0b5f24fe02349f945b5b641767fb67256
 f = 0.0168;
 F_friktion = f*m*9.82;
 r = 0.1454676;
@@ -35,16 +40,26 @@ v_back = v_front*0.3;
 
 %%
 % Resultant
+<<<<<<< HEAD
 forw = zeros(2,size(t,2));
+=======
+forw = zeros(2,Tmax);
+>>>>>>> 61578ee0b5f24fe02349f945b5b641767fb67256
 forw(2,:) = v_forw;
-sidew = zeros(2,100);
+sidew = zeros(2,Tmax);
 sidew(1,:) = (v_back-v_front);
 v = forw + sidew;
 
 %% Beräkna position
+% Skapar en positionsvektor och placerar koordinater för x och y
 p0 = [0;0];
+<<<<<<< HEAD
 pos = zeros(2,size(t,2));
 for i = 1:1:100
+=======
+pos = zeros(2,Tmax);
+for i = 1:1:Tmax
+>>>>>>> 61578ee0b5f24fe02349f945b5b641767fb67256
     pos(:,i) = p0+v(:,i);
     p0 = pos(:,i); 
     if v(2,i)<0.001
@@ -56,7 +71,20 @@ for i = 1:1:100
 end
 
 %%
-plot(pos(1,:),pos(2,:),'*')
-axis equal
+i=1;
+while i<80
+    plot(pos(1,i),pos(2,i),'o')
+    axis([-10 10 0 50])
+    drawnow;
+    pause(0.05);
+    hold on;
+    i = i+1;
+end
+
+% %
+% while 
+% plot(pos(1,:),pos(2,:),'*')
+% drawnow;
+% axis equal
 
 
