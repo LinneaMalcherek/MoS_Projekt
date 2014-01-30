@@ -83,6 +83,7 @@ for t = 1:dt:40
     v = v_forw*direction + v_side*direction_ort;
     position = position + v*dt;
     
+    
     % Om stenen går utanför på längden
     if position(2,1) > length 
         break;
