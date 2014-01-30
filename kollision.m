@@ -1,54 +1,31 @@
-%Velocity vector
-vA=[2 5];
+%Velocity vector for the rock that is incomming 
+velocityIN_A=[2;5];
 
-%Mass of both rocks
-m=18;
+%Positionvector for incoming rock A
+positionA=[0;0];
 
-%Position for incoming rock
-pA=[0 0];
-
-%Position for stable rock
-pB=[2,8];
+%Positionvector for stable rock B
+positionB=[2;8];   
 
 %Radius
-r=0.1454676;
+radius=0.1454676;
 
 %% Collision
 
-%Position to check colision
-pZ=sqrt((power(pB(1,1)-pA(1,1),2)) + (power(pB(1,2)-pA(1,2),2)));
+%Distance to check if colision of rock A and B
+distance=sqrt((power(positionB(1,1)-positionA(1,1),2)) + (power(positionB(2,1)-positionA(2,1),2)));
 
-%Check for collision
-if (pZ==(r+r))
-    disp('En kollision har skett!');
-else
-    disp('Ingen kollision!');
+%Check if collision
+if (distance==(radius+radius))
+    % Direction after collision
+    %Directionvector of B
+    directionB=positionB-positionA;
+    %Directionvector of A
+    directionA=[-positionB(2,1) ; positionB(1,1)];
+    
+    % Projection 
+    %Velocityvector for rock B after collision
+    velocityB=((velocityIN_A(1,1)*directionB(1,1)+velocityIN_A(2,1)*directionB(2,1))/(directionB(1,1)*directionB(1,1)+directionB(2,1)*directionB(2,1)))*directionB;
+    %Velocityvector for rock A after collision
+    velocityA=velocityIN_A-velocityB;
 end
-%% Direction after collision
-
-%Direction of B
-dB=(pB(1,2)-pA(1,2))/(pB(1,1)-pA(1,1));
-
-%Direction of A
-dA=-1/dB;
-
-%Angle of B
-aB=atan(dB)
-
-%Angle of A
-aA=atan(dA)
-
-%% Velocity vector for A and B
-
-%A
-AAfter=(cos(aA)*vA(1,2)-vA(1,1)*sin(aB))/(cos(aA)*(sin(aA)-sin(aB)));
-
-%B
-BAfter=vA(1,1)/cos(aB)-(cos(aA)*vA(1,2)-vA(1,1)*sin(aB))/(cos(aB)*(sin(aA)-sin(aB)));
-
-%Divide into velocity vectors
-vAAfter = [AAfter*cos(aA) AAfter*sin(aA)]
-
-vBAfter = [BAfter*cos(aB) BAfter*sin(aB)]
-
-%här är vi nu
