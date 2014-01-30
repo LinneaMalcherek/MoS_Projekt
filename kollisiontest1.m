@@ -4,7 +4,7 @@
 %% Input
 v0 = 1.223;
 %angle = -pi/28;
-angle = 0;
+angle = 0; %HÄR HAR VI ANDRAT
 
 % Utslagsriktning beräknas
 rotationmatrix = [cos(angle) -sin(angle);
@@ -54,7 +54,7 @@ elseif 0<angle<=(pi/2) % Curlar åt höger (sikte vänster)
     c2 = 0.001;
 end
 
-%% fast utritad sten
+%% FAST STEN SOM RITAS UT
 positionZ=[-2;25];
 plot(positionZ(1,1),positionZ(2,1),'ro')
 hold on;
@@ -79,46 +79,52 @@ for t = 1:0.1:40
     v = v_forw*direction + v_side*direction_ort;
     position = position + v;%rotationmatrix*v;
     
-    [vA,vB]=collision(v, positionZ, position, r);
+    
+    %HÄR HAR VI ÄNDRAT MYCKET
+    [vA,vB]=collision(v, positionZ, position, r); %SKICKAR TILL COLLISION
     if(vA==0)
+        clf;
         % Rita
         plot(position(1,1),position(2,1),'o')
+        hold on 
+        plot(positionZ(1,1),positionZ(2,1),'ro')
         positionA=position;
         positionB=positionZ;
-        
+        hold off;
         axis([-20 20 0 40])
         drawnow;
         pause(0.05);
-        hold on;
+       
         if position(2,1) > length % Om stenen går utanför på längden
             break;
         end
     else
         break;
-    end
-    
+    end 
 end
 
-if (vA~=0)
-    disp('heeeeeej');
+if (vA~=0)%OM KOLLISION SÅ RITAS DE NYA VÄGARNA FÖR STENARNA UT
     for t=1:0.1:40
-            positionA = positionA + vA;%rotationmatrix*v;
+       clf;
+            positionA = positionA + vA;
             positionB = positionB + vB;
-             % Rita
-            plot(positionA(1,1),positionA(2,1),'o')
-            drawnow;
-            pause(0.05);
-            hold on;
             
+            % Rita
+            plot(positionA(1,1),positionA(2,1),'o')
+            hold on;
             plot(positionB(1,1),positionB(2,1),'ro')
+            hold off;
 
             axis([-20 20 0 40])
             drawnow;
             pause(0.05);
-            hold on;
-            if positionA(2,1) > length || positionB(2,1)  % Om stenen går utanför på längden
+     
+            if positionA(2,1) > length  % Om stenen går utanför på längden
                 break;
             end      
+            if positionB(2,1) > length  % Om stenen går utanför på längden
+                break;
+            end    
     end
 end
 
