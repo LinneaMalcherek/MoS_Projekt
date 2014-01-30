@@ -2,8 +2,8 @@
 %  Grupp 3
 %  
 %% Input
-v0 = 1.223;
-angle = -pi/28;
+v0 = 1;
+angle = 0;
 
 % Utslagsriktning beräknas
 rotationmatrix = [cos(angle) -sin(angle);
@@ -30,7 +30,8 @@ width = 20;                     % Banans bredd
 hackhog = 6.40;                 % Från hack till hog
 tee = [0;34.76];                % Koordinater för mitten av bot
 % Tid och startposition och startvinkelhastighet(abs)
-t = 1:0.1:40;
+dt = 0.01;
+t = 1:dt:40;
 position = [0;0];
 
 % Beräknar tid mellan hack och hogg
@@ -53,13 +54,16 @@ elseif 0<angle<=(pi/2) % Curlar åt höger (sikte vänster)
     c2 = 0.001;
 end
 
+v_forw = v0;
+v_p = v0_p;
 %% Beräkna och rita position för varje tid t
-for t = 1:0.1:40
+for t = 1:dt:40
+    clf;
     % Beräknar momentanhastigheten framåt i vektor
-    v_forw = v0 - (F_friktion * t / m);
+    v_forw = v_forw - (F_friktion * dt / m);
     % Beräknar momentanvinkelhastigheten i vektor
     %omega = omega0 - (F_friktion_rotation*t / m) %Friktionen är för hög nu. 
-    v_p = v0_p - F_friktion_rotation*t/m;
+    v_p = v_p - F_friktion_rotation*dt/m;
     omega = v_p/r_inner;
     % Kontrollera att hastigheten inte är negativ
     if v_forw < 0% || omega < 0 %(Går inte nu med omega, är neg pga friktionen är för stor) 
@@ -78,7 +82,7 @@ for t = 1:0.1:40
     plot(position(1,1),position(2,1),'o')
     axis([-20 20 0 40])
     drawnow;
-    pause(0.05);
+    pause(dt);
     hold on;
     if position(2,1) > length % Om stenen går utanför på längden
         break;
@@ -89,74 +93,3 @@ end
 %Skriv ut position och hur långt ifrån tee stenen hamnat
 position
 distance = sqrt((tee(1,1)-position(1,1))^2+(tee(2,1)-position(2,1))^2)
-
-% %%
-% % Beräknar momentanhastigheten framåt i vektor
-% v_forw = v0 - (F_friktion * t / m);
-% % Beräknar momentanvinkelhastigheten i vektor
-% omega = omega0 - (F_friktion_rotation*t / m); 
-% % Kraft och hastighet i sidled
-% F_side = (m*g*(c1+c2))/sqrt(abs(omega)*r);
-% v_side =  F_side*t/m;
-
-%%
-% % Resultant
-% forw = zeros(2,size(t,2));
-% forw(2,:) = v_forw;
-% sidew = zeros(2,size(t,2));
-% sidew(1,:) = v_side;
-% v = forw + sidew;
-
-% %% Beräkna position
-% % Skapar en positionsvektor och placerar koordinater för x och y
-% % p0 = [0;0];
-% position = [0 0];
-% % pos = zeros(2,size(t,2));
-% for i = 1:1:size(t,2)
-%     %pos(:,i) = (p0+v(:,i));
-%     position=position + v(:,i)'*rotationmatrix;
-%    % pos(:,i) = pos(:,i)'*rotationmatrix
-%     %position = position*rotationmatrix;
-%     %p0 = pos(:,i); 
-%     
-%     %%---------
-%     plot(position(1,1),position(1,2),'o')
-%     axis([-10 10 0 50])
-%     drawnow;
-%     pause(0.05);
-%     hold on;
-%     %%--------
-%     if v(2,i)<0.001 % Om stenen stannar
-%         v(2,i)
-%         break;
-%     end
-%     if position(1,2) > length % Om stenen går utanför på längden
-%         position(1,2) 
-%         break;
-%     end
-% %     if abs(position(1,1)) < (width/2) % Om stenen går utanför åt sidorna
-% %         break;
-% %     end
-% end
-
-%%
-% i=1;
-% while i<80
-%     plot(pos(1,i),pos(2,i),'o')
-%     axis([-10 10 0 50])
-%     drawnow;
-%     pause(0.05);
-%     hold on;
-%     i = i+1;
-%     if pos(1,i) == 0 && pos(2,i) == 0
-%         break;
-%     end
-% end
-
-% %
-% while 
-% plot(pos(1,:),pos(2,:),'*')
-% drawnow;
-% axis equal
-
-
