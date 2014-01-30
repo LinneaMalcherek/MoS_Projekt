@@ -2,8 +2,8 @@
 %  Grupp 3
 %  
 %% Input
-v0 = 1;
-angle = 0;
+v0 = 3;
+angle = -pi/28;
 
 % Utslagsriktning beräknas
 rotationmatrix = [cos(angle) -sin(angle);
@@ -19,6 +19,7 @@ g = 9.82;
 m = 18;
 r = 0.1454676;
 r_inner = 0.1;
+J = m*r*r/2;
 % Isen
 my = 0.0168;
 my_rot = 0.0068; % Kolla denna... 
@@ -33,7 +34,7 @@ tee = [0;34.76];                % Koordinater för mitten av bot
 dt = 0.01;
 t = 1:dt:40;
 position = [0;0];
-
+alpha = 0.02;                   % Tokhöftat!
 % Beräknar tid mellan hack och hogg
 t0 = hackhog/v0;
 
@@ -45,38 +46,36 @@ v0_p = omega0*r_inner;
 
 % Ange friktionsriktningar beroende på sikte
 if  (-pi/2)<=angle<=0 % Curlar åt vänster (sikte höger)
-    %omega0 = -pi / (2*t0); %(flyttat upp) 
     c1 = 0.00001;
     c2 = -0.001;
 elseif 0<angle<=(pi/2) % Curlar åt höger (sikte vänster)
-    %omega0 = pi / (2*t0);
     c1 = -0.00001;
     c2 = 0.001;
 end
 
 v_forw = v0;
 v_p = v0_p;
-%% Beräkna och rita position för varje tid t
+omega = omega0
+
+%% Beräkna och rita position för varje tid t, Euler
 for t = 1:dt:40
     clf;
     % Beräknar momentanhastigheten framåt i vektor
-    v_forw = v_forw - (F_friktion * dt / m);
+    v_forw = v_forw - ((F_friktion/m) * dt);
     % Beräknar momentanvinkelhastigheten i vektor
-    %omega = omega0 - (F_friktion_rotation*t / m) %Friktionen är för hög nu. 
-    v_p = v_p - F_friktion_rotation*dt/m;
-    omega = v_p/r_inner;
+    omega = omega - J*alpha*dt; 
     % Kontrollera att hastigheten inte är negativ
-    if v_forw < 0% || omega < 0 %(Går inte nu med omega, är neg pga friktionen är för stor) 
+    if v_forw < 0 || omega < 0
         break;
     end
     
     % Kraft och hastighet i sidled
     F_side = (m*g*(c1+c2))/sqrt(abs(omega)*r);
-    v_side =  F_side*t/m;
+    v_side =  (F_side/m)*t;
     
     % Resultant
     v = v_forw*direction + v_side*direction_ort;
-    position = position + v;%rotationmatrix*v;
+    position = position + v*dt;
     
     % Rita
     plot(position(1,1),position(2,1),'o')
@@ -91,5 +90,5 @@ for t = 1:dt:40
 end
 
 %Skriv ut position och hur långt ifrån tee stenen hamnat
-position
+position;
 distance = sqrt((tee(1,1)-position(1,1))^2+(tee(2,1)-position(2,1))^2)
