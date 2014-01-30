@@ -2,8 +2,8 @@
 %  Grupp 3
 %  
 %% Input
-v0 = 3.2;
-angle = -pi/28;
+v0 = 7;
+angle = -pi/150;
 
 % Utslagsriktning beräknas
 rotationmatrix = [cos(angle) -sin(angle);
@@ -17,7 +17,7 @@ direction_ort = [cos(pi/2) -sin(pi/2);sin(pi/2) cos(pi/2)]*direction;
 g = 9.82;
 % Sten
 m = 18;
-r = 0.1454676;
+r = 1;%0.1454676;
 r_inner = 0.1;
 J = m*r*r/2;
 % Isen
@@ -54,7 +54,7 @@ elseif 0<angle<=(pi/2) % Curlar åt höger (sikte vänster)
 end
 
 %% Fast sten i bot som ritas ut 
-positionZ=[-2;25];          % Position för sten i bot
+positionZ=[-1;25];          % Position för sten i bot
 plot(positionZ(1,1),positionZ(2,1),'ro')
 hold on;
 
@@ -88,13 +88,52 @@ for t = 1:dt:40
         break;
     end    
     
-    % Rita
-    plot(position(1,1),position(2,1),'o')
-    axis([-20 20 0 40])
-    drawnow;
-    pause(dt);
-    hold on;
+    %Undersök om kollision
+    [vA,vB]=collision(v, positionZ, position, r); 
+    if(vA==0) % Om ingen collision
+        clf;
+        % Rita
+        drawCircle(position(1,1),position(2,1),r);
+        %plot(position(1,1),position(2,1),'bo','Markersize',r*20,'Markerfacecolor','blue');
+        hold on 
+        plot(positionZ(1,1),positionZ(2,1),'ro','Markersize',r*20,'Markerfacecolor','red');
+        positionA=position;
+        positionB=positionZ;
+        hold off;
+        axis([-20 20 0 40])
+        drawnow;
+        pause(dt);
+    else
+        break;
+    end 
     
+end
+
+if (vA~=0)% Om kollision 
+    for t=1:dt:40
+       clf;
+       positionA = positionA + vA*dt;
+       positionB = positionB + vB*dt;
+            
+       if positionA(2,1) > length  % Om stenen går utanför på längden
+            break;
+       end      
+       if positionB(2,1) > length  % Om stenen går utanför på längden
+            break;
+       end
+       
+       % Rita
+            plot(positionA(1,1),positionA(2,1),'bo','Markersize',r*20,'Markerfacecolor','blue');
+            hold on;
+            plot(positionB(1,1),positionB(2,1),'ro','Markersize',r*20,'Markerfacecolor','red');
+            hold off;
+
+            axis([-20 20 0 40])
+            drawnow;
+            pause(dt);
+     
+  
+    end
 end
 
 %Skriv ut position och hur långt ifrån tee stenen hamnat

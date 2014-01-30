@@ -5,7 +5,7 @@ function [ velocityA, velocityB ] = collision( velocityIN_A, positionA, position
 
     %Check if collision
     if (distance<=(radius+radius))
-        disp('kollision!');
+        %disp('kollision!');
         %Directionvector of B
         directionB=positionB-positionA;
         %Directionvector of A
@@ -17,7 +17,7 @@ function [ velocityA, velocityB ] = collision( velocityIN_A, positionA, position
         %Velocityvector for rock A after collision
         velocityA=velocityIN_A-velocityB;
     else
-        disp('ingen kollision!');
+        %disp('ingen kollision!');
         velocityA=0;
         velocityB=0;    
     end

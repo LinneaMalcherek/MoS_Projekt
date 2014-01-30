@@ -3,8 +3,7 @@
 %  
 %% Input
 v0 = 1.223;
-%angle = -pi/28;
-angle = 0; %HÄR HAR VI ANDRAT
+angle = 0; 
 
 % Utslagsriktning beräknas
 rotationmatrix = [cos(angle) -sin(angle);
@@ -18,7 +17,7 @@ direction_ort = [cos(pi/2) -sin(pi/2);sin(pi/2) cos(pi/2)]*direction;
 g = 9.82;
 % Sten
 m = 18;
-r = 0.1;
+r = 0.1454676;
 r_inner = 0.1;
 % Isen
 my = 0.0168;
