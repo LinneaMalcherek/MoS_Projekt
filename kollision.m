@@ -51,4 +51,4 @@ vAAfter = [AAfter*cos(aA) AAfter*sin(aA)]
 
 vBAfter = [BAfter*cos(aB) BAfter*sin(aB)]
 
-
+%här är vi nu
