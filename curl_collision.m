@@ -17,7 +17,7 @@ direction_ort = [cos(pi/2) -sin(pi/2);sin(pi/2) cos(pi/2)]*direction;
 g = 9.82;
 % Sten
 m = 18;
-r = 1;%0.1454676;
+r = 0.1454676;
 r_inner = 0.1;
 J = m*r*r/2;
 % Isen
