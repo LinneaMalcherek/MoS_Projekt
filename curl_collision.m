@@ -112,6 +112,12 @@ end
 if (vA~=0)% Om kollision 
     for t=1:dt:40
        clf;
+       
+       %ngt med hastigheten, liknande för att de stenar som skjuts ut ska
+       %stanna, funkar ej riktigt. 
+       %vA = vA - ((F_friktion/m) * dt);
+       %vB = vB - ((F_friktion/m) * dt);
+       
        positionA = positionA + vA*dt;
        positionB = positionB + vB*dt;
             
