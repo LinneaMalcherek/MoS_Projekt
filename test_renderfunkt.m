@@ -13,7 +13,7 @@ direction = direction/(sqrt(direction(1,1)*direction(1,1)+direction(2,1)*directi
 % Ortogonal riktning beräknas
 direction_ort = [cos(pi/2) -sin(pi/2);sin(pi/2) cos(pi/2)]*direction;
 
-%% Fasta data
+%% *** Fasta data ***
 g = 9.82;
 % Sten
 m = 18;
@@ -35,6 +35,8 @@ dt = 0.01;
 t = 1:dt:40;
 position = [0;0];
 alpha = 0.02;                   % Tokhöftat!
+%  *** Fasta data  slut ***
+
 % Beräknar tid mellan hack och hogg
 t0 = hackhog/v0;
 
@@ -59,50 +61,12 @@ plot(positionZ(1,1),positionZ(2,1),'ro')
 hold on;
 
 %Tagit bort alla ursprungshastigheter eftersom dom inte anv längre.
-
+v_forw = v0; 
 %% Beräkna och rita position för varje tid t, Euler
-for t = 1:dt:40
-    clf;
-    % Beräknar momentanhastigheten framåt i vektor
-    v_forw = v_forw - ((F_friktion/m) * dt);
-    % Beräknar momentanvinkelhastigheten i vektor
-    omega = omega - J*alpha*dt; 
-    % Kontrollera att hastigheten inte är negativ
-    if v_forw < 0 || omega < 0
-        break;
-    end
-    
-    % Kraft och hastighet i sidled
-    F_side = (m*g*(c1+c2))/sqrt(abs(omega)*r);
-    v_side =  (F_side/m)*t;
-    
-    % Resultant
-    v = v_forw*direction + v_side*direction_ort;
-    position = position + v*dt;
-    
-    % Om stenen går utanför på längden
-    if position(2,1) > length 
-        break;
-    end    
-    
-    %Undersök om kollision
-    [vA,vB]=collision(v, positionZ, position, r); 
-    if(vA==0) % Om ingen collision
-        clf;
-        % Rita
-        %drawCircle(position(1,1),position(2,1),r);
-        plot(position(1,1),position(2,1),'bo','Markersize',r*20,'Markerfacecolor','blue');
-        hold on 
-        plot(positionZ(1,1),positionZ(2,1),'ro','Markersize',r*20,'Markerfacecolor','red');
-        positionA=position; %Behövs?    
-        positionB=positionZ; %Behövs?
-        hold off;
-        axis([-20 20 0 40])
-        drawnow;
-        pause(dt);
-    else
-        break;
-    end 
+for t = 1:dt:20
+
+    v_forw = v_forw.*direction; 
+    render(v_forw,position,1);
     
 end
 
