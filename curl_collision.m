@@ -17,7 +17,7 @@ direction_ort = [cos(pi/2) -sin(pi/2);sin(pi/2) cos(pi/2)]*direction;
 g = 9.82;
 % Sten
 m = 18;
-r =1;% 0.1454676;
+r = 0.1454676;
 r_inner = 0.1;
 J = m*r*r/2;
 % Isen
@@ -58,7 +58,10 @@ positionZ=[-1;25];          % Position för sten i bot
 plot(positionZ(1,1),positionZ(2,1),'ro')
 hold on;
 
-%Tagit bort alla ursprungshastigheter eftersom dom inte anv längre.
+
+v_forw = v0;
+v_p = v0_p;
+omega = omega0;
 
 %% Beräkna och rita position för varje tid t, Euler
 for t = 1:dt:40
@@ -90,12 +93,12 @@ for t = 1:dt:40
     if(vA==0) % Om ingen collision
         clf;
         % Rita
-        %drawCircle(position(1,1),position(2,1),r);
-        plot(position(1,1),position(2,1),'bo','Markersize',r*20,'Markerfacecolor','blue');
+        drawCircle(position(1,1),position(2,1),r);
+        %plot(position(1,1),position(2,1),'bo','Markersize',r*20,'Markerfacecolor','blue');
         hold on 
         plot(positionZ(1,1),positionZ(2,1),'ro','Markersize',r*20,'Markerfacecolor','red');
-        positionA=position; %Behövs?    
-        positionB=positionZ; %Behövs?
+        positionA=position;
+        positionB=positionZ;
         hold off;
         axis([-20 20 0 40])
         drawnow;
