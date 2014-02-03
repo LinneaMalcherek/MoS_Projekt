@@ -3,7 +3,7 @@
 %  
 %% Input
 v0 = 7;
-angle = -pi/150;
+angle = -pi/170;
 
 % Utslagsriktning beräknas
 rotationmatrix = [cos(angle) -sin(angle);
@@ -18,6 +18,7 @@ g = 9.82;
 % Sten
 m = 18;
 r = 1;%0.1454676;
+scale = 15;
 r_inner = 0.1;
 J = m*r*r/2;
 % Isen
@@ -25,6 +26,8 @@ my = 0.0168;
 my_rot = 0.0068; % Kolla denna... 
 F_friktion = my*m*g;
 F_friktion_rotation=my_rot*m*g;
+c1 = 0.00001;
+c2 = 0.001;
 % Banan
 length = 36.59;                 % Från hack till banans slut
 width = 20;                     % Banans bredd
@@ -46,11 +49,9 @@ v0_p = omega0*r_inner;
 
 % Ange friktionsriktningar beroende på sikte
 if  (-pi/2)<=angle<=0 % Curlar åt vänster (sikte höger)
-    c1 = 0.00001;
-    c2 = -0.001;
+    c2 = (-1)*c2;
 elseif 0<angle<=(pi/2) % Curlar åt höger (sikte vänster)
-    c1 = -0.00001;
-    c2 = 0.001;
+    c1 = (-1)*c1;
 end
 
 %% Fast sten i bot som ritas ut 
@@ -69,7 +70,7 @@ for t = 1:dt:40
     % Beräknar momentanhastigheten framåt i vektor
     v_forw = v_forw - ((F_friktion/m) * dt);
     % Beräknar momentanvinkelhastigheten i vektor
-    omega = omega - J*alpha*dt; 
+    omega = omega - J*alpha*dt; % J = tao/vinkelaccs
     % Kontrollera att hastigheten inte är negativ
     if v_forw < 0 || omega < 0
         break;
@@ -94,9 +95,9 @@ for t = 1:dt:40
         clf;
         % Rita
         %drawCircle(position(1,1),position(2,1),r);
-        plot(position(1,1),position(2,1),'bo','Markersize',r*20,'Markerfacecolor','blue');
+        plot(position(1,1),position(2,1),'bo','Markersize',r*scale,'Markerfacecolor','blue');
         hold on 
-        plot(positionZ(1,1),positionZ(2,1),'ro','Markersize',r*20,'Markerfacecolor','red');
+        plot(positionZ(1,1),positionZ(2,1),'ro','Markersize',r*scale,'Markerfacecolor','red');
         positionA=position;
         positionB=positionZ;
         hold off;
@@ -123,9 +124,9 @@ if (vA~=0)% Om kollision
        end
        
        % Rita
-            plot(positionA(1,1),positionA(2,1),'bo','Markersize',r*20,'Markerfacecolor','blue');
+            plot(positionA(1,1),positionA(2,1),'bo','Markersize',r*scale,'Markerfacecolor','blue');
             hold on;
-            plot(positionB(1,1),positionB(2,1),'ro','Markersize',r*20,'Markerfacecolor','red');
+            plot(positionB(1,1),positionB(2,1),'ro','Markersize',r*scale,'Markerfacecolor','red');
             hold off;
 
             axis([-20 20 0 40])
