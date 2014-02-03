@@ -14,12 +14,30 @@
 function Curlingsten()
 {
 	this.pos = new Array(0,0);
-	this.v = new Array(0,0);
-	this.v_side = new Array(0,0);
+	this.speed = 0;
+	this.direction = new Array(0,1); <!-- direction -->
+	this.angular_speed = 0;
 
+	this.in_game = false; <!-- med i spelet eller ej -->
 }
 
-<!-- Curlingsten.prototype. --> 
+<!-- funktion som räknar ut hastigheten framåt 
+	v=v+a*dt
+	skicka in v, accelerationen? och dt.
+-->
+
+
+<!-- funktion som räknar ut hastigheten i sidled, + rot, curlen -->
+<!-- kollar om sten har kolliderat eller ej -->
+<!-- en renderingsfunktion (ritar ut stenarna) -->
+<!-- har stenen åkt utanför planen -->
+<!-- räkna ut riktningmsatrisen utifrån startvinkeln och sätter då direction -->
+
+Curlingsten.prototype.initStuff = function(angle, speed) 
+{
+	<!-- gör massor av beräkningar från vinkeln, 
+	hastighet osv. sätter direction och ang_speed -->
+}
 
 Curlingsten.prototype.move = function(y) 
 {
