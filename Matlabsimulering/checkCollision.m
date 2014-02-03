@@ -5,9 +5,9 @@ function [ collision ] = checkCollision( positionA, positionB, radius )
 
     %Check if collision 
     if (distance<=(2*radius))
-        collision=1; %True
+        collision=true; %True
     else
-        collision=0; %False
+        collision=false; %False
     end
 
 end

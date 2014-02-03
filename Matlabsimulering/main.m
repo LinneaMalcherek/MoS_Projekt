@@ -11,8 +11,10 @@
 % skjuter man iväg och sten 2 ligger i bot. 
 % Alla variabler med en 1a innebär att de tillhör sten 1, och vice versa.
 
+clear all; 
+
 % Input / initial states
-speed1 = 5;
+speed1 = 3;
 speed2 = 0;
 
 speed_side1=0;
@@ -32,7 +34,7 @@ initiateDataConstants;
 
 % Draw function, will end when speed for both stones are 0 or when either
 % stone goes out of bounds.
-while checkSpeed(speed1, speed2) || checkBoundaries(stone_pos1,stone_pos2, field_length, field_width)
+while checkSpeed(speed1, speed2) && checkBoundaries(stone_pos1,stone_pos2, field_length, field_width)
     
     %updates the speed according to friction
     speed1 = calculateSpeed(speed1,a_friction,dt);
@@ -59,5 +61,5 @@ while checkSpeed(speed1, speed2) || checkBoundaries(stone_pos1,stone_pos2, field
     render;
 end
 
-close all;
+%close all;
 

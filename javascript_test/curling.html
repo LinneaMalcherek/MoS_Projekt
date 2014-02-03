@@ -1,0 +1,56 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Curling</title>
+
+
+<script type="text/javascript">
+
+<!-- här ska det initieras massor för att webgl ska funka   -->
+<!-- exempel finns på http://learningwebgl.com/blog/?page_id=1217 -->
+
+
+
+function Curlingsten()
+{
+
+	this.x = 0;
+	this.y = 0;
+
+}
+
+
+Curlingsten.prototype.move = function(y) 
+{
+	this.y+=y;
+
+}
+
+Curlingsten.prototype.show = function()
+{
+	console.log(this.y); 
+}
+
+function main()
+{
+	sten1 = new Curlingsten;
+	sten1.show();
+	sten1.move(3);
+	sten1.show();
+}
+
+
+</script>
+
+</head>
+
+<body onload="main()">
+
+	<h1>Curlingspel</h1>
+
+    <canvas id="curlingbanan" style="border: 1px solid black;" width="500" height="500"></canvas>
+
+</body>
+
+</html>
