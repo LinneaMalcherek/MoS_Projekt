@@ -14,7 +14,7 @@
 clear all; 
 
 % Input / initial states
-speed1 = 5;
+speed1 = 3;
 speed2 = 0;
 
 speed_side1=0;
@@ -34,7 +34,7 @@ initiateDataConstants;
 
 % Draw function, will and when speed for both stones are 0 or when either
 % ston goes out of bounds.
-while checkSpeed(speed1, speed2) || checkBoundaries(stone_pos1,stone_pos2, field_length, field_width)
+while checkSpeed(speed1, speed2) && checkBoundaries(stone_pos1,stone_pos2, field_length, field_width)
     
     %updates the speed according to friction
     speed1 = calculateSpeed(speed1,a_friction,dt);
@@ -61,5 +61,5 @@ while checkSpeed(speed1, speed2) || checkBoundaries(stone_pos1,stone_pos2, field
     render;
 end
 
-close all;
+%close all;
 
