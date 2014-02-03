@@ -11,35 +11,62 @@
 <!-- exempel finns på http://learningwebgl.com/blog/?page_id=1217 -->
 
 
-
 function Curlingsten()
 {
+	this.pos = new Array(0,0);
+	this.speed = 0;
+	this.direction = new Array(0,1); <!-- direction -->
+	this.angular_speed = 0;
 
-	this.x = 0;
-	this.y = 0;
-
+	this.in_game = false; <!-- med i spelet eller ej -->
 }
 
+<!-- funktion som räknar ut hastigheten framåt 
+	v=v+a*dt
+	skicka in v, accelerationen? och dt.
+-->
+
+
+<!-- funktion som räknar ut hastigheten i sidled, + rot, curlen -->
+<!-- kollar om sten har kolliderat eller ej -->
+<!-- en renderingsfunktion (ritar ut stenarna) -->
+<!-- har stenen åkt utanför planen -->
+<!-- räkna ut riktningmsatrisen utifrån startvinkeln och sätter då direction -->
+
+Curlingsten.prototype.initStuff = function(angle, speed) 
+{
+	<!-- gör massor av beräkningar från vinkeln, 
+	hastighet osv. sätter direction och ang_speed -->
+}
 
 Curlingsten.prototype.move = function(y) 
 {
-	this.y+=y;
+	this.pos[1]+=y;
 
 }
 
 Curlingsten.prototype.show = function()
 {
-	console.log(this.y); 
+	console.log(this.pos[1]); 
 }
 
 function main()
 {
-	sten1 = new Curlingsten;
-	sten1.show();
-	sten1.move(3);
-	sten1.show();
-}
+	sten = new Array();
 
+	for (var i=0; i<3; i++)
+	{
+		sten.push(new Curlingsten);
+	} 
+
+	for (var i=0; i<3; i++)
+	{
+		sten[i].show();
+		sten[i].move(i+1);
+		sten[i].show();
+	}
+
+}
 
 </script>
 
