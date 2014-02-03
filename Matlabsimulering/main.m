@@ -30,8 +30,8 @@ initiateDataConstants;
 [direction_forw1, direction_side1 ] = calculateDirectionVectors(angle1);
 [direction_forw2, direction_side2 ] = calculateDirectionVectors(angle2);
 
-% Draw function, will and when speed for both stones are 0 or when either
-% ston goes out of bounds.
+% Draw function, will end when speed for both stones are 0 or when either
+% stone goes out of bounds.
 while checkSpeed(speed1, speed2) || checkBoundaries(stone_pos1,stone_pos2, field_length, field_width)
     
     %updates the speed according to friction
