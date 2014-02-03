@@ -34,10 +34,10 @@ angular_speed1 = pi / (2*t0);
 angular_speed2=0;
 
 % Ange friktionsriktningar beroende på sikte
-if  (-pi/2)<=angle<=0 % Curlar åt vänster (sikte höger)
+if  (-pi/2)<=angle1<=0 % Curlar åt vänster (sikte höger)
     c1 = 0.00001;
     c2 = -0.001;
-elseif 0<angle<=(pi/2) % Curlar åt höger (sikte vänster)
+elseif 0<angle1<=(pi/2) % Curlar åt höger (sikte vänster)
     c1 = -0.00001;
     c2 = 0.001;
 end

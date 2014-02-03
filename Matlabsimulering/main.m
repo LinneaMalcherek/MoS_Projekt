@@ -11,6 +11,8 @@
 % skjuter man iväg och sten 2 ligger i bot. 
 % Alla variabler med en 1a innebär att de tillhör sten 1, och vice versa.
 
+clear all; 
+
 % Input / initial states
 speed1 = 5;
 speed2 = 0;
