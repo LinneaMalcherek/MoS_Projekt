@@ -11,35 +11,44 @@
 <!-- exempel finns på http://learningwebgl.com/blog/?page_id=1217 -->
 
 
-
 function Curlingsten()
 {
-
-	this.x = 0;
-	this.y = 0;
+	this.pos = new Array(0,0);
+	this.v = new Array(0,0);
+	this.v_side = new Array(0,0);
 
 }
 
+<!-- Curlingsten.prototype. --> 
 
 Curlingsten.prototype.move = function(y) 
 {
-	this.y+=y;
+	this.pos[1]+=y;
 
 }
 
 Curlingsten.prototype.show = function()
 {
-	console.log(this.y); 
+	console.log(this.pos[1]); 
 }
 
 function main()
 {
-	sten1 = new Curlingsten;
-	sten1.show();
-	sten1.move(3);
-	sten1.show();
-}
+	sten = new Array();
 
+	for (var i=0; i<3; i++)
+	{
+		sten.push(new Curlingsten);
+	} 
+
+	for (var i=0; i<3; i++)
+	{
+		sten[i].show();
+		sten[i].move(i+1);
+		sten[i].show();
+	}
+
+}
 
 </script>
 
