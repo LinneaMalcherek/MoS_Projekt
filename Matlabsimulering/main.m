@@ -1,8 +1,14 @@
 %% Curlingvisualisering MoS-projekt 2014
 %  Grupp 3
+<<<<<<< HEAD
 %  Linnéa Nåbo, linna887
 %  Linnéa Mellblom, linme882
 %  Linnea Malcherek, linma
+=======
+%  Linnéa Nåbo, linna
+%  Linnéa Mellblom, linme
+%  Linnea Malcherek, linma793
+>>>>>>> ad39bd2ae423210c8c5e50a89f948a5b69b14cc0
 %  Michael Nilsson, micni487
 %  Julia Nilsson, julni454
 %  Copyright 2014
