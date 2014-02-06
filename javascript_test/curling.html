@@ -21,22 +21,11 @@ function Curlingsten()
 	this.in_game = false; <!-- med i spelet eller ej -->
 }
 
-<!-- funktion som räknar ut hastigheten framåt 
-	v=v+a*dt
-	skicka in v, accelerationen? och dt.
--->
-
-
-<!-- funktion som räknar ut hastigheten i sidled, + rot, curlen -->
-<!-- kollar om sten har kolliderat eller ej -->
-<!-- en renderingsfunktion (ritar ut stenarna) -->
-<!-- har stenen åkt utanför planen -->
-<!-- räkna ut riktningmsatrisen utifrån startvinkeln och sätter då direction -->
 
 Curlingsten.prototype.initStuff = function(angle, speed) 
 {
-	<!-- gör massor av beräkningar från vinkeln, 
-	hastighet osv. sätter direction och ang_speed -->
+	<!-- gör massor av beräkningar från vinkeln, hastighet osv. sätter direction och ang_speed -->
+	this.angular_speed=0;
 }
 
 Curlingsten.prototype.move = function(y) 
@@ -45,19 +34,64 @@ Curlingsten.prototype.move = function(y)
 
 }
 
+Curlingsten.prototype.test = function(r)
+{
+	console.log('går det att accessa en funktion i en funktion?');
+	return 2+r;
+}
+
 Curlingsten.prototype.show = function()
 {
 	console.log(this.pos[1]); 
+	var m =this.test(4);
+	console.log(m);
 }
+
+
+function dataConstants()
+{
+	my = 0.0168;
+	my_rot = 0.0068; <!-- Kolla denna-->
+	m = 18;
+	r = 1;
+	g = 9.82;	
+
+	fieldLength = 36.59;
+	fieldWidth = 20;
+	hack_hog = 6.40;
+	tee = new Array (0, 34.76); <!-- the position of the middle-->
+}
+
+
+
 
 function main()
 {
+
+	dataConstants();
+
 	sten = new Array();
 
+	console.log('test');
+	console.log(my);
+
+
+	<!-- hur många curlingstenar vi vill ha-->
 	for (var i=0; i<3; i++)
 	{
 		sten.push(new Curlingsten);
 	} 
+
+
+
+	<!-- anroppa initierng! tex vilken hastighet osv-->
+
+	<!-- är sten i spel? har den ngn hasighet. räkna ut nya på de som uppfyller -->
+
+	<!-- har den kolliderat med ngn sten? kolla alla stenar om kolliderat-->
+
+	<!-- rita ut nya positioner osv! rendera nytt -->
+
 
 	for (var i=0; i<3; i++)
 	{
