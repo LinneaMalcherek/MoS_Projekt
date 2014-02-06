@@ -2,7 +2,7 @@
 %  Grupp 3
 %  Linnéa Nåbo, linna
 %  Linnéa Mellblom, linme
-%  Linnea Malcherek, linma
+%  Linnea Malcherek, linma793
 %  Michael Nilsson, micni487
 %  Julia Nilsson, julni454
 %  Copyright 2014
