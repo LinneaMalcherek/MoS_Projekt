@@ -1,7 +1,7 @@
 %% Curlingvisualisering MoS-projekt 2014
 %  Grupp 3
-%  Linnéa Nåbo, linna
-%  Linnéa Mellblom, linme
+%  Linnéa Nåbo, linna887
+%  Linnéa Mellblom, linme882
 %  Linnea Malcherek, linma
 %  Michael Nilsson, micni487
 %  Julia Nilsson, julni454
@@ -14,7 +14,7 @@
 clear all; 
 
 % Input / initial states
-speed1 = 3;
+speed1 = 4;
 speed2 = 0;
 
 speed_side1=0;
