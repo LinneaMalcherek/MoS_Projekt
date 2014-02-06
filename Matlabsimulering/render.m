@@ -6,4 +6,4 @@ plot(stone_pos2(1,1),stone_pos2(2,1),'ro','Markersize',r*20,'Markerfacecolor','r
 hold off;
 axis([-20 20 0 40])
 drawnow;
-pause(dt);
+%pause(dt);
