@@ -21,7 +21,7 @@ speed2 = 0;
 speed_side1=0;
 speed_side2=0;
 
-angle1 = -pi/150;
+angle1 = -pi/40;
 angle2 = 0;
 
 stone_pos1 = [0; 0];
@@ -42,8 +42,8 @@ while checkSpeed(speed1, speed2) && checkBoundaries(stone_pos1,stone_pos2, field
     speed2 = calculateSpeed(speed2,a_friction,dt);
     
     % uddates the "curl" speed and angular velocity
-    [angular_speed1, speed_side1] = calculateSpeedSide(speed1, angular_speed1,speed_side1, J, m,g,c1,c2,r, dt);
-    [angular_speed2, speed_side2] = calculateSpeedSide(speed2, angular_speed2,speed_side2 , J, m,g,c1,c2,r,dt);
+    [angular_speed1, speed_side1] = calculateSpeedSide(speed1, angular_speed1,speed_side1, J, m,g,c1,c2,r, dt, r_inner);
+    [angular_speed2, speed_side2] = calculateSpeedSide(speed2, angular_speed2,speed_side2 , J, m,g,c1,c2,r,dt, r_inner);
     
     % Resultant velocity in both directions
     velocity1 = speed1*direction_forw1 + speed_side1*direction_side1;
