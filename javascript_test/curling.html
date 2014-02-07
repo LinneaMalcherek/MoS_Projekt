@@ -4,103 +4,24 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>Curling</title>
 
-
+<script type="text/javascript" src="sylvester.js"></script>
+<script type="text/javascript" src="dataConstants.js"></script>
+<script type="text/javascript" src="CurlingStone.js"></script>
+<script type="text/javascript" src="main.js"></script>
 <script type="text/javascript">
 
 <!-- här ska det initieras massor för att webgl ska funka   -->
 <!-- exempel finns på http://learningwebgl.com/blog/?page_id=1217 -->
 
+<!-- Testar sylvester-biblioteket -->
+var a = $V([1,1]);
+var b = $V([1,4]);
 
-function Curlingsten()
-{
-	this.pos = new Array(0,0);
-	this.speed = 0;
-	this.direction = new Array(0,1); <!-- direction -->
-	this.angular_speed = 0;
+var c = a.add(b);
 
-	this.in_game = false; <!-- med i spelet eller ej -->
-}
+var t = a.multiply(5); 
 
-
-Curlingsten.prototype.initStuff = function(angle, speed) 
-{
-	<!-- gör massor av beräkningar från vinkeln, hastighet osv. sätter direction och ang_speed -->
-	this.angular_speed=0;
-}
-
-Curlingsten.prototype.move = function(y) 
-{
-	this.pos[1]+=y;
-
-}
-
-Curlingsten.prototype.test = function(r)
-{
-	console.log('går det att accessa en funktion i en funktion?');
-	return 2+r;
-}
-
-Curlingsten.prototype.show = function()
-{
-	console.log(this.pos[1]); 
-	var m =this.test(4);
-	console.log(m);
-}
-
-
-function dataConstants()
-{
-	my = 0.0168;
-	my_rot = 0.0068; <!-- Kolla denna-->
-	m = 18;
-	r = 1;
-	g = 9.82;	
-
-	fieldLength = 36.59;
-	fieldWidth = 20;
-	hack_hog = 6.40;
-	tee = new Array (0, 34.76); <!-- the position of the middle-->
-}
-
-
-
-
-function main()
-{
-
-	dataConstants();
-
-	sten = new Array();
-
-	console.log('test');
-	console.log(my);
-
-
-	<!-- hur många curlingstenar vi vill ha-->
-	for (var i=0; i<3; i++)
-	{
-		sten.push(new Curlingsten);
-	} 
-
-
-
-	<!-- anroppa initierng! tex vilken hastighet osv-->
-
-	<!-- är sten i spel? har den ngn hasighet. räkna ut nya på de som uppfyller -->
-
-	<!-- har den kolliderat med ngn sten? kolla alla stenar om kolliderat-->
-
-	<!-- rita ut nya positioner osv! rendera nytt -->
-
-
-	for (var i=0; i<3; i++)
-	{
-		sten[i].show();
-		sten[i].move(i+1);
-		sten[i].show();
-	}
-
-}
+console.log(t.inspect());
 
 </script>
 
