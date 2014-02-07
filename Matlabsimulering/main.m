@@ -15,13 +15,13 @@
 clear all; 
 
 % Input / initial states
-speed1 = 2.5;
+speed1 = 2; % 1.44-1.58 rimligt enligt vissa artiklar
 speed2 = 0;
 
 speed_side1=0;
 speed_side2=0;
 
-angle1 = -pi/40;
+angle1 = pi/80;
 angle2 = 0;
 
 stone_pos1 = [0; 0];
@@ -32,8 +32,8 @@ time=0;
 initiateDataConstants;
 
 % Calculates the initial direction vector based on input angle. 
-[direction_forw1, direction_side1 ] = calculateDirectionVectors(angle1);
-[direction_forw2, direction_side2 ] = calculateDirectionVectors(angle2);
+[direction_forw1, direction_side1 ] = calculateDirectionVectors(angle1,ortDir);
+[direction_forw2, direction_side2 ] = calculateDirectionVectors(angle2,ortDir);
 
 lastTime = 0;
 
@@ -54,8 +54,8 @@ while checkSpeed(speed1, speed2) && checkBoundaries(stone_pos1,stone_pos2, field
         speed2 = calculateSpeed(speed2,a_friction,dt);
         
         % uddates the "curl" speed and angular velocity
-        [angular_speed1, speed_side1] = calculateSpeedSide(speed1, angular_speed1,speed_side1, J, m,g,c1,c2,r, dt, r_inner);
-        [angular_speed2, speed_side2] = calculateSpeedSide(speed2, angular_speed2,speed_side2 , J, m,g,c1,c2,r,dt, r_inner);
+        [angular_speed1, speed_side1] = calculateSpeedSide(speed1,angular_speed1,speed_side1,g,c1,c2,dt,r_inner);
+        [angular_speed2, speed_side2] = calculateSpeedSide(speed2,angular_speed2,speed_side2,g,c1,c2,dt,r_inner);
         
         % Resultant velocity in both directions
         velocity1 = speed1*direction_forw1 + speed_side1*direction_side1;
@@ -70,7 +70,7 @@ while checkSpeed(speed1, speed2) && checkBoundaries(stone_pos1,stone_pos2, field
         
         if(checkCollision(stone_pos1,stone_pos2,r))
             [speed1, direction_forw1, speed2, direction_forw2] = collision(stone_pos1,stone_pos2, velocity1);
-            time
+            time;
         end
         
         %Render function, plots both curling stones.
@@ -78,7 +78,4 @@ while checkSpeed(speed1, speed2) && checkBoundaries(stone_pos1,stone_pos2, field
     end
     lastTime = timeNow; 
 end
-
-
-%close all;
 
