@@ -2,21 +2,6 @@ function theGame() {
 	allStones = new Array(); <!-- global variable that will be created when theGame starts. does not lie under the 'class' theGame. GLOBAL -->
 }
 
-		/**
-	 * Provides requestAnimationFrame in a cross browser way.
-	 */
-	window.requestAnimFrame = (function() {
-	  return window.requestAnimationFrame ||
-	         window.webkitRequestAnimationFrame ||
-	         window.mozRequestAnimationFrame ||
-	         window.oRequestAnimationFrame ||
-	         window.msRequestAnimationFrame ||
-	         function(/* function FrameRequestCallback */ callback, /* DOMElement Element */ element) {
-	           window.setTimeout(callback, 1000/60);
-	         };
-	})();
-
-
 <!-- theGames all functions -->
 theGame.prototype = {
 
@@ -50,7 +35,9 @@ theGame.prototype = {
 	collision: function(){
 		<!-- kolla kollision hela tiden för alla stenar. isf  -->
 		for( var i=0; i < allStones.length; i++ ){
-			for ( var j=i+1; j < allStones.length; j++ ) {
+			for ( var j=i; j < allStones.length; j++ ) {
+				if(i==j)
+					continue;
 				<!-- only check if one of the stones is moving.  -->
 				if(allStones[i].speed > 0.01 || allStones[j].speed > 0.01) {
 					if( this.checkCollision( allStones[i], allStones[j] ) ){
@@ -78,12 +65,11 @@ theGame.prototype = {
 	},
 
 	tick: function(){
-		window.requestAnimFrame(this.tick.bind(this));
+		window.requestAnimationFrame(this.tick.bind(this));
         drawScene(); 
         this.animate();
         this.collision();
 	},
-
 
 <!-- Bara en funktion nu för att testa! använder fälten för att skicka nya stenar-->
 	kastaStenTest: function(){
