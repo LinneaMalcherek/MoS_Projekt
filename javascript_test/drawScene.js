@@ -14,6 +14,7 @@
 
                 mat4.translate(mMatrix, [allStones[i].getXPos()/10, allStones[i].getYPos()/10, zPos]);
                 mat4.scale(mMatrix, [0.4, 0.4, 0.4]);
+ 
                 gl.bindBuffer(gl.ARRAY_BUFFER, cubeVertexPositionBuffer);
                 gl.vertexAttribPointer(shaderProgram.vertexPositionAttribute, cubeVertexPositionBuffer.itemSize, gl.FLOAT, false, 0, 0);
 
