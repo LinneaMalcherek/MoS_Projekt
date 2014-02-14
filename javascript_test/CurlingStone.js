@@ -81,7 +81,7 @@ CurlingStone.prototype = {
 <!-- NEED TO IMPLEMENT -->
 	newSpeedSide: function(gravity, c, dt){
 		<!-- sjukt svåra modellen... -->
-		<!-- this.speedSide = this.speedSide + this.calcAngularAcceleration(gravity, my, c) * dt;  -->
+		<!-- this.speedSide = this.speedSide + this.calcAngularAcceleration(gravity, c) * dt;  -->
 
 	},
 

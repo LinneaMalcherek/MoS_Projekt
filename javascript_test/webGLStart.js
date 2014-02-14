@@ -1,3 +1,5 @@
+<!-- HELA webGLStart ANVÄNDS EJ FÖR TILLFÄLLET. FLYTTAD TILL theGame FÖR ATT LÄTTARE KUNNA ANVÄNDA KOLLISION!!!  -->
+
 function sakerSomEjFunkarRiktigt() { <!-- ANVÄNDS EJ!!! bara kvar ifall att -->
     var timeNow = new Date().getTime();
     
