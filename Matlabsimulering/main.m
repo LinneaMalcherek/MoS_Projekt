@@ -15,13 +15,13 @@
 clear all; 
 
 % Input / initial states
-speed1 = 2; % 1.44-1.58 rimligt enligt vissa artiklar
+speed1 = 4; % 1.44-1.58 rimligt enligt vissa artiklar
 speed2 = 0;
 
 speed_side1=0;
 speed_side2=0;
 
-angle1 = pi/80;
+angle1 = pi/40;
 angle2 = 0;
 
 stone_pos1 = [0; 0];
