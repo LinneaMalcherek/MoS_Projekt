@@ -4,6 +4,7 @@
         gl.enable(gl.DEPTH_TEST);
 
         mat4.perspective(45, gl.viewportWidth / gl.viewportHeight, 0.1, 100.0, pMatrix);
+
         mat4.identity(vMatrix);
 
         <!-- for every curling stone. allStones is a global variabel thas is used. is initiated when theGame is called.  -->
@@ -40,15 +41,15 @@ function harKvarIfallAtt(){ <!-- kan lägga tbx sen om koden ovan ej funkar typ 
                 mat4.identity(mvMatrix);
 
         mat4.translate(mvMatrix, [xPos, yPos, zPos]);
-        gl.bindBuffer(gl.ARRAY_BUFFER, squareVertexPositionBuffer);
-        gl.vertexAttribPointer(shaderProgram.vertexPositionAttribute, squareVertexPositionBuffer.itemSize, gl.FLOAT, false, 0, 0);
+        gl.bindBuffer(gl.ARRAY_BUFFER, vertexPositionBuffer);
+        gl.vertexAttribPointer(shaderProgram.vertexPositionAttribute, vertexPositionBuffer.itemSize, gl.FLOAT, false, 0, 0);
         setMatrixUniforms();
-        gl.drawArrays(gl.TRIANGLE_STRIP, 0, squareVertexPositionBuffer.numItems);
+        gl.drawArrays(gl.TRIANGLE_STRIP, 0, vertexPositionBuffer.numItems);
 
 <!-- clear the translation/movement matrix-->
         mat4.identity(mvMatrix);
 
         mat4.translate(mvMatrix, [-2, -2, -15]);
         setMatrixUniforms();
-        gl.drawArrays(gl.TRIANGLE_STRIP, 0, squareVertexPositionBuffer.numItems);
+        gl.drawArrays(gl.TRIANGLE_STRIP, 0, vertexPositionBuffer.numItems);
 }

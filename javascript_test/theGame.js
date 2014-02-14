@@ -35,9 +35,7 @@ theGame.prototype = {
 	collision: function(){
 		<!-- kolla kollision hela tiden för alla stenar. isf  -->
 		for( var i=0; i < allStones.length; i++ ){
-			for ( var j=i; j < allStones.length; j++ ) {
-				if(i==j)
-					continue;
+			for ( var j=i+1; j < allStones.length; j++ ) {
 				<!-- only check if one of the stones is moving.  -->
 				if(allStones[i].speed > 0.01 || allStones[j].speed > 0.01) {
 					if( this.checkCollision( allStones[i], allStones[j] ) ){
