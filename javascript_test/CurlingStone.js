@@ -37,9 +37,9 @@ CurlingStone.prototype = {
 <!-- set the directionSide 90degrees from the incoming vector-direction -->
 	setDirectionSide: function(directionVector, angle){ <!-- directionVector is a vector of 2 elements -->
 		<!-- positive or negative based on the angle -->
-		var direction = 1;
-		if (angle < 0 )
-			direction = -1;
+		var direction = -1;
+		if (angle <= 0 )
+			direction = 1;
 		this.directionSide = Matrix.Rotation(direction*Math.PI/2).multiply(directionVector);
 	}, 
 
@@ -49,7 +49,7 @@ CurlingStone.prototype = {
 
 		this.render = true;
 		
-		t = hack_hog / speed; <!-- hack_hog is a global constans that is in dataConstants -->
+		t = hack_hog / speed; <!-- Time from hack to hog. hack_hog is a global constans that is in dataConstants -->
 		this.angularSpeed = Math.PI / (2*t); 
 
 		this.speedSide = this.angularSpeed * rInner; <!-- rInner is in dataConstants -->
@@ -67,36 +67,39 @@ CurlingStone.prototype = {
 		this.speed = this.speed + acceleration * dt;
 	},
 
-<!-- returns a scalar, -my*g -->
+<!-- returns a scalar, -my*g  KAN ÄNDRAS OM vi vill ha beroende av hastighet-->
 	calcAcceleration: function(gravity, my_constant){
 		return -1 * my_constant * gravity; 
 	}, 
 
-<!-- MAYBE THIS EQ. SHOULD BE CHANGED !!! LOOK AT-->
-	calcAngularAcceleration: function(gravity, c, r){
-		theSpeed = this.angularSpeed*r;
-		return ( gravity * c ) / Math.sqrt(this.speed);
+<!-- Returns total acceleration sideways (difference between front and back)-->
+	calcAngularAcceleration: function(gravity, my_f, my_b, r){ 		<!-- my_f and my_b frictioncoeff for front and back of the stone --> 
+		theSpeed = this.angularSpeed*r;						<!-- Calculates speed in point of circle with radius r -->
+		return gravity*(my_b-my_f) / Math.sqrt(this.speed); <!-- Total acceleration from difference between acc front and back, dependant on speed -->
 	}, 
 
-<!-- NEED TO IMPLEMENT -->
-	newSpeedSide: function(gravity, c, dt){
-		<!-- sjukt svåra modellen... -->
-		<!-- this.speedSide = this.speedSide + this.calcAngularAcceleration(gravity, c) * dt;  -->
-
+<!-- Calculates new speedSide from calcAngularAcceleration -->
+	newSpeedSide: function(gravity, my_f, my_b, dt){
+		if (this.speedSide <= 0) <!-- If stone is not moving -->
+			this.speedSide = 0; 
+		else
+			this.speedSide = this.speedSide + this.calcAngularAcceleration(gravity, my_f, my_b, rInner) * dt;
 	},
 
-<!-- NEED TO IMPLEMENT -->
-	newAngularSpeed: function(){
-		<!-- sjukt svåra modellen... -->
+<!-- Calculates angular speed from speed side -->
+	newAngularSpeed: function(new_speed_side){
+		if (this.angularSpeed <= 0)
+			this.angularSpeed =  0;
+		else
+			this.angularSpeed = new_speed_side/rInner; 
 	},
 
-<!--returnerar this.speed * this.directionForward + this.speedSide * this.directionSide; det nedan betyder så -->
+<!--Calculates resultant of the speeds forward and sideways -->
 	calcVelocityResultant: function(){
 		var vec1 = this.directionForward.multiply(this.speed); <!-- velocity forward -->
 		var vec2 = this.directionSide.multiply(this.speedSide); <!-- velocity side -->
 
-		<!-- return vec1.add(vec2); this should be the actuall return when the newSpeedSide and newAngularSpeed is implemented -->
-		return vec1
+		return vec1.add(vec2); 
 	},
 
 <!-- Calculates the new position. pos = pos + v*dt; -->
@@ -108,10 +111,13 @@ CurlingStone.prototype = {
 
 <!-- moves the stone. updates the speed, angularSpeed, speedSide, resultantVelocity and then set the new position. -->
 	move: function(dt){ 
-		a = this.calcAcceleration(g,my); <!-- calculate the acceleration here, constansts g and my from dataConstants -->
-		this.newSpeed(a,dt);
-		<!--this.newAngularSpeed();  NEED TO BE IMPLEMENTED FIRST -->
-		<!--this.newSpeedSide(); NEED TO BE IMPLEMENTED FIRST -->
+		<!-- calculate the acceleration here, constansts g and my from dataConstants -->
+		a = this.calcAcceleration(g,my); 
+
+		this.newSpeed(a,dt);							<!-- Updates speed forward-->
+		this.newSpeedSide(g,this.frictionCoeffC[1],this.frictionCoeffC[0],rInner); 	<!-- Updates speedSide -->
+		this.newAngularSpeed(this.speedSide);			<!-- Updates angularSpeed -->
+		
 		var velocity = this.calcVelocityResultant();
 		this.setNewPos(velocity,dt);
 	},
