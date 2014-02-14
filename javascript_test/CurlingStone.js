@@ -15,16 +15,6 @@ function CurlingStone()
 <!-- CurlingStones functions -->
 CurlingStone.prototype = {
 
-<!-- Deside the direction of the friction based on the angle -->
-	setFrictionDirection: function(angle){
-		if (-1 * Math.PI / 2 <= angle && angle <= 0){
-			this.frictionCoeffC[1] = -1*this.frictionCoeffC[1];
-		}
-		else if( 0 < angle && angle <= Math.PI / 2 ){
-			this.frictionCoeffC[0] = -1*this.frictionCoeffC[0];
-		}
-	},
-
 
 <!--  Calculates the initial direction vector based on input angle.  -->
 	setDirectionForward: function(angle) { 
@@ -53,8 +43,6 @@ CurlingStone.prototype = {
 		this.angularSpeed = Math.PI / (2*t); 
 
 		this.speedSide = this.angularSpeed * rInner; <!-- rInner is in dataConstants -->
-
-		this.setFrictionDirection(angle);
 
 		<!-- Set the initial direction vector based on input angle, side is the orthogonal -->
 		dirFor = this.setDirectionForward(angle);
