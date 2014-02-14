@@ -74,8 +74,8 @@ CurlingStone.prototype = {
 
 <!-- Returns total acceleration sideways (difference between front and back)-->
 	calcAngularAcceleration: function(gravity, my_f, my_b, r){ 		<!-- my_f and my_b frictioncoeff for front and back of the stone --> 
-		theSpeed = this.angularSpeed*r;						<!-- Calculates speed in point of circle with radius r -->
-		return gravity*(my_b-my_f) / Math.sqrt(this.speed); <!-- Total acceleration from difference between acc front and back, dependant on speed -->
+		theSpeed = this.angularSpeed*r;								<!-- Calculates speed in point of circle with radius r -->
+		return gravity*(my_b-my_f) / Math.sqrt(this.speed); 		<!-- Total acceleration from difference between acc front and back, dependant on speed -->
 	}, 
 
 <!-- Calculates new speedSide from calcAngularAcceleration -->
@@ -96,8 +96,8 @@ CurlingStone.prototype = {
 
 <!--Calculates resultant of the speeds forward and sideways -->
 	calcVelocityResultant: function(){
-		var vec1 = this.directionForward.multiply(this.speed); <!-- velocity forward -->
-		var vec2 = this.directionSide.multiply(this.speedSide); <!-- velocity side -->
+		var vec1 = this.directionForward.multiply(this.speed); 		<!-- velocity forward -->
+		var vec2 = this.directionSide.multiply(this.speedSide); 	<!-- velocity side -->
 
 		return vec1.add(vec2); 
 	},
@@ -114,9 +114,9 @@ CurlingStone.prototype = {
 		<!-- calculate the acceleration here, constansts g and my from dataConstants -->
 		a = this.calcAcceleration(g,my); 
 
-		this.newSpeed(a,dt);							<!-- Updates speed forward-->
-		this.newSpeedSide(g,this.frictionCoeffC[1],this.frictionCoeffC[0],rInner); 	<!-- Updates speedSide -->
-		this.newAngularSpeed(this.speedSide);			<!-- Updates angularSpeed -->
+		this.newSpeed(a,dt);														<!-- Updates speed forward-->
+		this.newSpeedSide(g,this.frictionCoeffC[0],this.frictionCoeffC[1],rInner); 	<!-- Updates speedSide -->
+		this.newAngularSpeed(this.speedSide);										<!-- Updates angularSpeed -->
 		
 		var velocity = this.calcVelocityResultant();
 		this.setNewPos(velocity,dt);
