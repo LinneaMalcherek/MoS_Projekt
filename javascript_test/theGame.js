@@ -81,9 +81,10 @@ theGame.prototype = {
 
 	starting: function(){
 		var canvas = document.getElementById("curlingbana");
-    	initGL(canvas);
-    	initShaders();
-   		initBuffers();
+	    initGL(canvas);
+	    initShaders();
+	    initBuffers();
+	    initTextures();
 
     	gl.clearColor(0.0, 0.0, 0.0, 1.0);
     	gl.enable(gl.DEPTH_TEST);
