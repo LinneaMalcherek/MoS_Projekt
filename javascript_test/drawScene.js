@@ -5,13 +5,13 @@
 
         mat4.perspective(45, gl.viewportWidth / gl.viewportHeight, 0.1, 100.0, pMatrix);
         mat4.identity(vMatrix);
-
+        
         <!-- for every curling stone. allStones is a global variabel thas is used. is initiated when theGame is called.  -->
         for (var i=0; i<allStones.length; i++) {
 
             if (allStones[i].render){
                 mat4.identity(mMatrix);
-
+                
                 mat4.translate(mMatrix, [allStones[i].getXPos()/10, allStones[i].getYPos()/10, zPos]);
                 mat4.scale(mMatrix, [0.4, 0.4, 0.4]);
                 gl.bindBuffer(gl.ARRAY_BUFFER, cubeVertexPositionBuffer);
