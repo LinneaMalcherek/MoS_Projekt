@@ -101,6 +101,12 @@ CurlingStone.prototype = {
 		var vec1 = velocity.multiply(dt);  
 		this.pos = this.pos.add(vec1);
 	},
+<!-- Calculates the new angle. ang = ang + angSpeed*dt; -->
+	setNewAngle: function(dt){ 
+		this.angle = this.angle + this.newAngularSpeed*dt;
+		if (this.angle >= 2*Math.PI) <!-- If the stone has rotated a complete spin, subtract 2pi -->  
+			this.angle = this.angle-2*Math.PI;
+	},
 
 <!-- moves the stone. updates the speed, angularSpeed, speedSide, resultantVelocity and then set the new position. -->
 	move: function(dt){ 
@@ -113,6 +119,7 @@ CurlingStone.prototype = {
 		
 		var velocity = this.calcVelocityResultant();
 		this.setNewPos(velocity,dt);
+		this.setNewAngle(dt);
 	},
 
 <!-- getXPos and getYPos is to easier understand in the code that we get the positions. -->
