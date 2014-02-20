@@ -103,7 +103,7 @@ CurlingStone.prototype = {
 	},
 <!-- Calculates the new angle. ang = ang + angSpeed*dt; -->
 	setNewAngle: function(dt){ 
-		this.angle = this.angle + this.newAngularSpeed*dt;
+		this.angle = this.angle + this.angularSpeed*dt;
 		if (this.angle >= 2*Math.PI) <!-- If the stone has rotated a complete spin, subtract 2pi -->  
 			this.angle = this.angle-2*Math.PI;
 	},
@@ -124,15 +124,15 @@ CurlingStone.prototype = {
 
 <!-- getXPos and getYPos is to easier understand in the code that we get the positions. -->
 	getXPos: function(){
-		return this.pos.e(1) / 10; <!-- för att den går för snabbt annars, kolla upp! -->
+		return this.pos.e(1) /5; <!-- för att den går för snabbt annars, kolla upp! -->
 
 	},
 	getYPos: function(){
-		return this.pos.e(2) / 10;
+		return this.pos.e(2) /5;
 	},
 
 	getAngle: function(){
-		return this.angle; 
+		return this.angle ; 
 	},
 
 <!-- JUST FUNCTION FOR TESTING, NOT NEEDED LATER -->
