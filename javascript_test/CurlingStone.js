@@ -8,6 +8,7 @@ function CurlingStone()
 	this.directionSide = $V([0,0]); 
 	this.angularSpeed = 0;
 	this.frictionCoeffC = new Array(0.00001,0.001); <!-- change HERE the constans for the forward and backward friction -->
+	this.angle = 0; 
 
 	this.render = false; <!-- if render or not -->
 }
@@ -39,10 +40,10 @@ CurlingStone.prototype = {
 
 		this.render = true;
 		
-		t = hack_hog / speed; <!-- Time from hack to hog. hack_hog is a global constans that is in dataConstants -->
+		t = HACK_HOG / speed; <!-- Time from hack to hog. HACK_HOG is a global constans that is in dataConstants -->
 		this.angularSpeed = Math.PI / (2*t); 
 
-		this.speedSide = this.angularSpeed * rInner; <!-- rInner is in dataConstants -->
+		this.speedSide = this.angularSpeed * R_INNER; <!-- R_INNER is in dataConstants -->
 
 		<!-- Set the initial direction vector based on input angle, side is the orthogonal -->
 		dirFor = this.setDirectionForward(angle);
@@ -76,7 +77,7 @@ CurlingStone.prototype = {
 		if (this.speedSide <= 0) <!-- If stone is not moving -->
 			this.speedSide = 0; 
 		else
-			this.speedSide = this.speedSide + this.calcAngularAcceleration(gravity, my_f, my_b, rInner) * dt;
+			this.speedSide = this.speedSide + this.calcAngularAcceleration(gravity, my_f, my_b, R_INNER) * dt;
 	},
 
 <!-- Calculates angular speed from speed side -->
@@ -84,7 +85,7 @@ CurlingStone.prototype = {
 		if (this.angularSpeed <= 0)
 			this.angularSpeed =  0;
 		else
-			this.angularSpeed = new_speed_side/rInner; 
+			this.angularSpeed = new_speed_side / R_INNER; 
 	},
 
 <!--Calculates resultant of the speeds forward and sideways -->
@@ -104,10 +105,10 @@ CurlingStone.prototype = {
 <!-- moves the stone. updates the speed, angularSpeed, speedSide, resultantVelocity and then set the new position. -->
 	move: function(dt){ 
 		<!-- calculate the acceleration here, constansts g and my from dataConstants -->
-		a = this.calcAcceleration(g,my); 
+		a = this.calcAcceleration(G, MY); 
 
 		this.newSpeed(a,dt);														<!-- Updates speed forward-->
-		this.newSpeedSide(g,this.frictionCoeffC[0],this.frictionCoeffC[1],rInner); 	<!-- Updates speedSide -->
+		this.newSpeedSide(G,this.frictionCoeffC[0],this.frictionCoeffC[1],R_INNER); 	<!-- Updates speedSide -->
 		this.newAngularSpeed(this.speedSide);										<!-- Updates angularSpeed -->
 		
 		var velocity = this.calcVelocityResultant();
@@ -116,11 +117,15 @@ CurlingStone.prototype = {
 
 <!-- getXPos and getYPos is to easier understand in the code that we get the positions. -->
 	getXPos: function(){
-		return this.pos.e(1);
+		return this.pos.e(1) / 10; <!-- för att den går för snabbt annars, kolla upp! -->
 
 	},
 	getYPos: function(){
-		return this.pos.e(2);
+		return this.pos.e(2) / 10;
+	},
+
+	getAngle: function(){
+		return this.angle; 
 	},
 
 <!-- JUST FUNCTION FOR TESTING, NOT NEEDED LATER -->

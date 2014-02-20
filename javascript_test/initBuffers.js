@@ -28,7 +28,7 @@ function handleLoadedObject(objectData) {
 
 function loadObject() {
     var request = new XMLHttpRequest();
-    request.open("GET", "box.json");
+    request.open("GET", "box.json"); <!-- vilket objekt man vill läsa in -->
     request.onreadystatechange = function () {
         if (request.readyState == 4) {
             handleLoadedObject(JSON.parse(request.responseText));

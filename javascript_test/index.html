@@ -42,8 +42,16 @@
             <script type="text/javascript" src="sylvester.js"></script>
             <script type="text/javascript" src="dataConstants.js"></script>
             <script type="text/javascript" src="CurlingStone.js"></script>
+            <script type="text/javascript" src="collision.js"></script>
             <script type="text/javascript" src="theGame.js"></script>
 
+            <script type="text/javascript">
+              function start(){
+                game = new theGame();
+                game.starting();
+                game.tick();
+              }
+            </script>
         
         </head>
       <body style='margin:0px' onload='start()'>
