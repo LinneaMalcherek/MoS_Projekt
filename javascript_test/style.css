@@ -1,0 +1,29 @@
+body {
+	background-color: white;
+	margin:10px
+}
+
+h1 {
+	font-family: 'Bad Script', cursive;
+	font-size: 28px;
+	color: black;
+	text-align:center;
+}
+
+p {
+	font-family:"Times New Roman";
+	font-size:11px;
+}
+
+#curlingbana {
+	border: none;
+	width: 500px;
+	height: 500px; 
+	margin: 10px;
+}
+
+#wrapper {
+	margin: auto;
+	width: 800px;
+	text-align: center;
+}

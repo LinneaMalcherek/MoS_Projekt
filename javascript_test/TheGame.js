@@ -22,6 +22,8 @@ theGame.prototype = {
 				if(allStones[i].speed > 0.01 || allStones[j].speed > 0.01) {
 					if( checkCollision( allStones[i], allStones[j] ) ){
 						console.log('sten %s och %s kolliderade!!', i, j);
+						setNewDirection(allStones[i], allStones[j]);
+						setNewSpeed(allStones[i], allStones[j]);
 						<!-- behöver kolla med radie oliteså för är lite knas -->
 
 					}	

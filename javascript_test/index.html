@@ -3,6 +3,12 @@
         <head>
             <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
             <title>Curling</title>
+
+            <!-- fonts som ska användas på sidan :) -->
+            <link href='http://fonts.googleapis.com/css?family=Bad+Script' rel='stylesheet' type='text/css'>
+            
+            <link rel="stylesheet" type="text/css" href="style.css">
+
             <script type="text/javascript" src="glMatrix-0.9.5.min.js"></script>
             
             <script id="shader-fs" type="x-shader/x-fragment">
@@ -54,11 +60,12 @@
             </script>
         
         </head>
-      <body style='margin:0px' onload='start()'>
-        <h1>Curlingspel</h1>
-        Vinkel : <input type="text" id="vinkel"> Hastighet: <input type="text" id="hastighet"> <button onclick="game.kastaStenTest()">Skicka sten</button> <br />
-         <canvas id="curlingbana" style="border: none;" width="500" height="500"></canvas>
-
+      <body onload='start()'>
+        <div id="wrapper">
+          <h1>Curlingspel</h1>
+          Vinkel : <input type="text" id="vinkel"> Hastighet: <input type="text" id="hastighet"> <button onclick="game.kastaStenTest()">Skicka sten</button> <br />
+          <canvas id="curlingbana"></canvas>
+       </div>
       </body>
     </html>
 
