@@ -47,7 +47,7 @@ theGame.prototype = {
 		window.requestAnimationFrame(this.tick.bind(this));
         drawScene(); 
         this.animate();
-        <!-- anropa en funktion som kollar om stenen åkt utanför banan tex. eller kanske ligga i animate den kollen -->
+        <!-- anropa en funktion som kollar om stenen åkt utanför banan tex. eller kanske ligga i animate den-->
         this.collision();
 	},
 
