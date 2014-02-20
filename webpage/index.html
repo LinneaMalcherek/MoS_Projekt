@@ -6,6 +6,7 @@
 
             <!-- fonts som ska användas på sidan :) -->
             <link href='http://fonts.googleapis.com/css?family=Bad+Script' rel='stylesheet' type='text/css'>
+            <link href='http://fonts.googleapis.com/css?family=Alegreya+Sans+SC' rel='stylesheet' type='text/css'>
             
             <link rel="stylesheet" type="text/css" href="style.css">
 
@@ -62,9 +63,11 @@
         </head>
       <body onload='start()'>
         <div id="wrapper">
-          <h1>Curlingspel</h1>
-          Vinkel : <input type="text" id="vinkel"> Hastighet: <input type="text" id="hastighet"> <button onclick="game.kastaStenTest()">Skicka sten</button> <br />
-          <canvas id="curlingbana"></canvas>
+          <h1> <img src="curling.jpg" alt="" height="35" /> Curlingspel</h1>
+          <p>
+            Vinkel : <input type="text" id="vinkel"> Hastighet: <input type="text" id="hastighet"> <button onclick="game.kastaStenTest()">Skicka sten</button> <br />
+          </p>
+          <canvas id="curlingbana" style="border: none;" width="500" height="500"></canvas>
        </div>
       </body>
     </html>

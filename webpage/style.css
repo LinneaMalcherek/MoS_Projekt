@@ -11,14 +11,14 @@ h1 {
 }
 
 p {
-	font-family:"Times New Roman";
-	font-size:11px;
+	font-family: 'Alegreya Sans SC', sans-serif;	
+	font-size:13px;
+	margin: 1px;
+	padding: 1px;
 }
 
 #curlingbana {
 	border: none;
-	width: 500px;
-	height: 500px; 
 	margin: 10px;
 }
 
