@@ -12,7 +12,7 @@
             if (allStones[i].render){
                 mat4.identity(mMatrix);
 
-                mat4.translate(mMatrix, [allStones[i].getXPos()/10, allStones[i].getYPos()/10, zPos]);
+                mat4.translate(mMatrix, [allStones[i].getXPos(), allStones[i].getYPos(), ZPOS]);
                 mat4.scale(mMatrix, [0.4, 0.4, 0.4]);
                 gl.bindBuffer(gl.ARRAY_BUFFER, VertexPositionBuffer);
                 gl.vertexAttribPointer(shaderProgram.vertexPositionAttribute, VertexPositionBuffer.itemSize, gl.FLOAT, false, 0, 0);
@@ -34,20 +34,3 @@
 
 
     }
-
-function harKvarIfallAtt(){ <!-- kan lägga tbx sen om koden ovan ej funkar typ ANVÄNDS EJ!!! -->
-                mat4.identity(mvMatrix);
-
-        mat4.translate(mvMatrix, [xPos, yPos, zPos]);
-        gl.bindBuffer(gl.ARRAY_BUFFER, squareVertexPositionBuffer);
-        gl.vertexAttribPointer(shaderProgram.vertexPositionAttribute, squareVertexPositionBuffer.itemSize, gl.FLOAT, false, 0, 0);
-        setMatrixUniforms();
-        gl.drawArrays(gl.TRIANGLE_STRIP, 0, squareVertexPositionBuffer.numItems);
-
-<!-- clear the translation/movement matrix-->
-        mat4.identity(mvMatrix);
-
-        mat4.translate(mvMatrix, [-2, -2, -15]);
-        setMatrixUniforms();
-        gl.drawArrays(gl.TRIANGLE_STRIP, 0, squareVertexPositionBuffer.numItems);
-}

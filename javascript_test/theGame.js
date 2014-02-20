@@ -5,31 +5,11 @@ function theGame() {
 <!-- theGames all functions -->
 theGame.prototype = {
 
-<!-- creates a new stone -->
+<!-- creates a new stone and throws it -->
 	throwStone: function(angle, speed){
 		var stone = new CurlingStone;
 		stone.init(angle, speed);
 		allStones.push(stone);
-	},
-
-<!-- här ha en funktion som kollar kollision! jämför med arrayen allaStenar -->
-<!-- setNewAngle and setNewSpeed will be called if collision is between 2 stones-->
-	setNewAngle: function(stone1,stone2){
-
-	},
-
-	setNewSpeed: function(stone1, stone2){
-
-	}, 
-
-
-	checkCollision: function(stone1,stone2){
-		var distance = Math.sqrt ( Math.pow(stone2.getXPos() - stone1.getXPos(),2) + Math.pow(stone2.getYPos() - stone1.getYPos(),2) ); 
-
-		if( distance <= 2*r )
-			return true;
-
-		return false;
 	},
 
 	collision: function(){
@@ -40,7 +20,7 @@ theGame.prototype = {
 					continue;
 				<!-- only check if one of the stones is moving.  -->
 				if(allStones[i].speed > 0.01 || allStones[j].speed > 0.01) {
-					if( this.checkCollision( allStones[i], allStones[j] ) ){
+					if( checkCollision( allStones[i], allStones[j] ) ){
 						console.log('sten %s och %s kolliderade!!', i, j);
 						<!-- behöver kolla med radie oliteså för är lite knas -->
 
@@ -52,7 +32,6 @@ theGame.prototype = {
 		}
 
 	},
-
 
 	animate: function() { 
     	dt = 0.1;
@@ -68,6 +47,7 @@ theGame.prototype = {
 		window.requestAnimationFrame(this.tick.bind(this));
         drawScene(); 
         this.animate();
+        <!-- anropa en funktion som kollar om stenen åkt utanför banan tex. eller kanske ligga i animate den kollen -->
         this.collision();
 	},
 
@@ -93,15 +73,5 @@ theGame.prototype = {
     	dataConstants(); <!-- import global variables and some global constants. -->
 
 	},
-
-}
-
-<!-- ingår ej i klassen theGame. för att starta när sidan laddas om -->
-function start(){
-	game = new theGame();
-	game.starting();
-	game.tick();
-
-	console.log('jippe, startade!');
 
 }
