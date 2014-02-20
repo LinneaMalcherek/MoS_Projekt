@@ -99,7 +99,6 @@ CurlingStone.prototype = {
 	setNewPos: function(velocity,dt){ 
 		var vec1 = velocity.multiply(dt);  
 		this.pos = this.pos.add(vec1);
-
 	},
 
 <!-- moves the stone. updates the speed, angularSpeed, speedSide, resultantVelocity and then set the new position. -->
@@ -122,7 +121,6 @@ CurlingStone.prototype = {
 	},
 	getYPos: function(){
 		return this.pos.e(2);
-
 	},
 
 <!-- JUST FUNCTION FOR TESTING, NOT NEEDED LATER -->
@@ -130,9 +128,4 @@ CurlingStone.prototype = {
 		return this.pos.inspect();
 	},
 
-
-
-
 }
-
-

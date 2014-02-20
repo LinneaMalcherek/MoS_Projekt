@@ -26,6 +26,8 @@ angle2 = 0;
 
 stone_pos1 = [0; 0];
 stone_pos2 = [-1; 25];
+stone_angle1 = -pi/2;   %Måste ändras beroende på inhand/outhand
+stone_angle2 = 0;
 
 time=0;
 
@@ -62,8 +64,10 @@ while checkSpeed(speed1, speed2) && checkBoundaries(stone_pos1,stone_pos2, field
         velocity2 = speed2*direction_forw2 + speed_side2*direction_side2;
         
         % Calculates the new position for both stones
-        stone_pos1 = stone_pos1 + velocity1*dt;
-        stone_pos2 = stone_pos2 + velocity2*dt;
+        [stone_pos1, stone_angle1] = calculateNewPosition(stone_pos1,stone_angle1,velocity1,angular_speed1,dt);
+        [stone_pos2, stone_angle2] = calculateNewPosition(stone_pos2,stone_angle2,velocity2,angular_speed1,dt);
+        
+        stone_angle1
         
         %Check if there is a collision. If true, update velocity accordingly.
         time = time + dt;
