@@ -4,8 +4,6 @@
 <!-- här ha en funktion som kollar kollision! jämför med arrayen allaStenar -->
 <!-- setNewDirection and setNewSpeed will be called if collision is between 2 stones-->
 function setAfterCollision(stone1,stone2){ <!-- vilken vinkel som stenen ska åka i efter krock-->
-	/* Calculates the new velocities after a collision is detected. */
-
 	e=0.3;
 
 /*
@@ -48,7 +46,6 @@ function setAfterCollision(stone1,stone2){ <!-- vilken vinkel som stenen ska åk
 	stone2.speed = speed2;
 	stone1.directionForward = direction_forw1;
 	stone2.directionForward = direction_forw2; 
-
 }
 
 function checkCollision(stone1,stone2){ 
