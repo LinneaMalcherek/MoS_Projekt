@@ -65,10 +65,10 @@ CurlingStone.prototype = {
 	calcAngularAcceleration: function(gravity, my_f, my_b, r){ 		<!-- my_f and my_b frictioncoeff for front and back of the stone --> 
 		theSpeed = this.angularSpeed*r;								<!-- Calculates speed in point of circle with radius r -->
 
-		if(this.speed <0.5){										<!-- Look out for division with zero -->
-			return gravity*(my_b-my_f);							
+		if(this.speed <0.01){										<!-- Look out for division with zero -->
+			return -1*gravity*(my_b-my_f);							
 		} else{
-			return gravity*(my_b-my_f) / Math.sqrt(this.speed); 		<!-- Total acceleration from difference between acc front and back, dependant on speed -->
+			return -1*gravity*(my_b-my_f) / Math.sqrt(this.speed); 		<!-- Total acceleration from difference between acc front and back, dependant on speed -->
 		}
 	}, 
 
@@ -132,7 +132,15 @@ CurlingStone.prototype = {
 	},
 
 	getAngle: function(){
-		return this.angle ; 
+
+<!-- kolla vilket håll den snurrar ut. om skalärprodukten negativ, andra hållet. kollar mot direction <- typ -->
+		var side = $V([-1,0]);
+		var dots = side.dot(this.directionSide);
+
+		if( dots<=0 )
+			return -1* this.angle;
+
+		return this.angle; 
 	},
 
 <!-- JUST FUNCTION FOR TESTING, NOT NEEDED LATER -->
