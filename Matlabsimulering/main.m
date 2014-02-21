@@ -15,14 +15,14 @@
 clear all; 
 
 % Input / initial states
-speed1 = 4; % 1.44-1.58 rimligt enligt vissa artiklar
-speed2 = 0;
+speed1 = 5; % 1.44-1.58 rimligt enligt vissa artiklar
+speed2 = 1.5;
 
 speed_side1=0;
 speed_side2=0;
 
-angle1 = 0;
-angle2 = 0;
+angle1 = 0.1;
+angle2 = 2.6;
 
 stone_pos1 = [0; 0];
 stone_pos2 = [-1; 25];
@@ -37,7 +37,7 @@ initiateDataConstants;
 [direction_forw1, direction_side1 ] = calculateDirectionVectors(angle1,ortDir);
 [direction_forw2, direction_side2 ] = calculateDirectionVectors(angle2,ortDir);
 
-lastTime = 0;
+dt = 0;
 
 % Draw function, will end when speed for both stones are 0 or when either
 % stone goes out of bounds.
@@ -45,41 +45,36 @@ while checkSpeed(speed1, speed2) && checkBoundaries(stone_pos1,stone_pos2, field
     
 
     %verkar göra så animeringen är mer "korrekt"
-    timeNow = cputime;
-    
-    if (lastTime~=0) 
-        
-        dt = timeNow - lastTime;
-        
-        %updates the speed according to friction
-        speed1 = calculateSpeed(speed1,a_friction,dt);
-        speed2 = calculateSpeed(speed2,a_friction,dt);
-        
-        % uddates the "curl" speed and angular velocity
-        [angular_speed1, speed_side1] = calculateSpeedSide(speed1,angular_speed1,speed_side1,g,c1,c2,dt,r_inner);
-        [angular_speed2, speed_side2] = calculateSpeedSide(speed2,angular_speed2,speed_side2,g,c1,c2,dt,r_inner);
-        
-        % Resultant velocity in both directions
-        velocity1 = speed1*direction_forw1 + speed_side1*direction_side1;
-        velocity2 = speed2*direction_forw2 + speed_side2*direction_side2;
-        
-        % Calculates the new position for both stones
-        [stone_pos1, stone_angle1] = calculateNewPosition(stone_pos1,stone_angle1,velocity1,angular_speed1,dt);
-        [stone_pos2, stone_angle2] = calculateNewPosition(stone_pos2,stone_angle2,velocity2,angular_speed1,dt);
-        
-        stone_angle1
-        
-        %Check if there is a collision. If true, update velocity accordingly.
-        time = time + dt;
-        
-        if(checkCollision(stone_pos1,stone_pos2,r))
-            [speed1, direction_forw1, speed2, direction_forw2] = inelastic_collision(stone_pos1,stone_pos2, velocity1, velocity2);
-            time;
-        end
-        
-        %Render function, plots both curling stones.
-        render;
+    %start_time = cputime;
+    tic;
+
+    %updates the speed according to friction
+    speed1 = calculateSpeed(speed1,a_friction,dt);
+    speed2 = calculateSpeed(speed2,a_friction,dt);
+
+    % uddates the "curl" speed and angular velocity
+    [angular_speed1, speed_side1] = calculateSpeedSide(speed1,angular_speed1,speed_side1,g,c1,c2,dt,r_inner);
+    [angular_speed2, speed_side2] = calculateSpeedSide(speed2,angular_speed2,speed_side2,g,c1,c2,dt,r_inner);
+
+    % Resultant velocity in both directions
+    velocity1 = speed1*direction_forw1 + speed_side1*direction_side1;
+    velocity2 = speed2*direction_forw2 + speed_side2*direction_side2;
+
+    %Check if there is a collision. If true, update velocity accordingly.
+    %time = time + dt;
+    if(checkCollision(stone_pos1,stone_pos2,r,velocity1,velocity2, dt))
+        [speed1, direction_forw1, speed2, direction_forw2] = inelastic_collision(stone_pos1,stone_pos2, velocity1, velocity2);
+        time;
     end
-    lastTime = timeNow; 
+    
+    % Calculates the new position for both stones
+    [stone_pos1, stone_angle1] = calculateNewPosition(stone_pos1,stone_angle1,velocity1,angular_speed1,dt);
+    [stone_pos2, stone_angle2] = calculateNewPosition(stone_pos2,stone_angle2,velocity2,angular_speed1,dt);
+
+
+    %Render function, plots both curling stones.
+    render;
+    dt = toc;
+   % dt = cputime - start_time;
 end
 
