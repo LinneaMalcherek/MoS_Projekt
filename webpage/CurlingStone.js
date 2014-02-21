@@ -109,9 +109,16 @@ CurlingStone.prototype = {
 	},
 
 <!-- moves the stone. updates the speed, angularSpeed, speedSide, resultantVelocity and then set the new position. -->
-	move: function(dt){ 
+	move: function(sweep,dt){ 
 		<!-- calculate the acceleration here, constansts g and my from dataConstants -->
-		a = this.calcAcceleration(G, MY); <!-- här ändra MY ifall vi sopat -->
+		
+		<!-- om vi har sopat, skickar med-->
+		var friction = MY; 
+		if (sweep){
+			friction = MY * 0.5; 
+		}
+
+		a = this.calcAcceleration(G, friction); <!-- här ändrat till friction, (MY) ifall vi sopat -->
 
 		this.newSpeed(a,dt);														<!-- Updates speed forward-->
 		this.newSpeedSide(G,this.frictionCoeffC[0],this.frictionCoeffC[1],R_INNER); 	<!-- Updates speedSide -->
