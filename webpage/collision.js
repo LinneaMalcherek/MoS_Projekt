@@ -21,6 +21,8 @@ function setAfterCollision(stone1,stone2){ <!-- vilken vinkel som stenen ska åk
 	stone2.speed = s2;
 	stone1.directionForward = dirFor1;
 	stone2.directionForward = dirFor2; 
+
+	console.log("v1: %s, v2: %s",v1.inspect(),v2.inspect());
 }
 
 function checkCollision(stone1,stone2){
