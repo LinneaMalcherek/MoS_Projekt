@@ -21,7 +21,7 @@ speed2 = 0;
 speed_side1=0;
 speed_side2=0;
 
-angle1 = pi/40;
+angle1 = 0;
 angle2 = 0;
 
 stone_pos1 = [0; 0];
@@ -73,7 +73,7 @@ while checkSpeed(speed1, speed2) && checkBoundaries(stone_pos1,stone_pos2, field
         time = time + dt;
         
         if(checkCollision(stone_pos1,stone_pos2,r))
-            [speed1, direction_forw1, speed2, direction_forw2] = collision(stone_pos1,stone_pos2, velocity1);
+            [speed1, direction_forw1, speed2, direction_forw2] = inelastic_collision(stone_pos1,stone_pos2, velocity1, velocity2);
             time;
         end
         
