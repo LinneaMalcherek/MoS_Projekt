@@ -111,7 +111,7 @@ CurlingStone.prototype = {
 <!-- moves the stone. updates the speed, angularSpeed, speedSide, resultantVelocity and then set the new position. -->
 	move: function(dt){ 
 		<!-- calculate the acceleration here, constansts g and my from dataConstants -->
-		a = this.calcAcceleration(G, MY); 
+		a = this.calcAcceleration(G, MY); <!-- här ändra MY ifall vi sopat -->
 
 		this.newSpeed(a,dt);														<!-- Updates speed forward-->
 		this.newSpeedSide(G,this.frictionCoeffC[0],this.frictionCoeffC[1],R_INNER); 	<!-- Updates speedSide -->
