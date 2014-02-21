@@ -15,29 +15,29 @@
             <script id="shader-fs" type="x-shader/x-fragment">
               precision mediump float;
 
-              varying vec2 vTextureCoord;
+              //varying vec2 vTextureCoord;
 
-              uniform sampler2D uSampler;
+              //uniform sampler2D uSampler;
 
               void main(void) {
-                  gl_FragColor = texture2D(uSampler, vec2(vTextureCoord.s, vTextureCoord.t));
+                  //gl_FragColor = texture2D(uSampler, vec2(vTextureCoord.s, vTextureCoord.t));
               }
             </script>
 
             <script id="shader-vs" type="x-shader/x-vertex">
               attribute vec3 aVertexPosition;
-              attribute vec2 aTextureCoord;
+              //attribute vec2 aTextureCoord;
 
               uniform mat4 uMMatrix;
               uniform mat4 uVMatrix;
               uniform mat4 uPMatrix;
 
-              varying vec2 vTextureCoord;
+             // varying vec2 vTextureCoord;
 
 
               void main(void) {
                   gl_Position = uPMatrix * uVMatrix * uMMatrix * vec4(aVertexPosition, 1.0);
-                  vTextureCoord = aTextureCoord;
+                  //vTextureCoord = aTextureCoord;
               }
             </script>
             <script type="text/javascript" src="initGL.js"></script>

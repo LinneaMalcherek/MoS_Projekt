@@ -64,7 +64,7 @@ theGame.prototype = {
 		var canvas = document.getElementById("curlingbana");
 	    initGL(canvas);
 	    initShaders();
-	    initTextures();
+	    //initTextures();
 	    loadObject();
 	    
 
