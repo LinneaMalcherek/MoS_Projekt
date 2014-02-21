@@ -56,6 +56,10 @@
               function start(){
                 game = new theGame();
                 game.starting();
+
+                document.onkeydown = game.handleKeyDown;
+                document.onkeyup = game.handleKeyUp;
+
                 game.tick();
               }
             </script>
