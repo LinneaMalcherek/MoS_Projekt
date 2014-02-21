@@ -4,7 +4,7 @@
 <!-- här ha en funktion som kollar kollision! jämför med arrayen allaStenar -->
 <!-- setNewDirection and setNewSpeed will be called if collision is between 2 stones-->
 function setAfterCollision(stone1,stone2){ <!-- vilken vinkel som stenen ska åka i efter krock-->
-	var collisionDirection = stone2.pos.subtract(stone1.pos); 
+	var collisionDirection = stone1.pos.subtract(stone2.pos); 
 
 	<!-- projektionsformeln -->
 	var v2 = collisionDirection.multiply( stone1.calcVelocityResultant().dot(collisionDirection) / collisionDirection.dot(collisionDirection) );
@@ -21,8 +21,6 @@ function setAfterCollision(stone1,stone2){ <!-- vilken vinkel som stenen ska åk
 	stone2.speed = s2;
 	stone1.directionForward = dirFor1;
 	stone2.directionForward = dirFor2; 
-
-	console.log("v1: %s, v2: %s",v1.inspect(),v2.inspect());
 }
 
 function checkCollision(stone1,stone2){
