@@ -3,7 +3,7 @@ function dataConstants()
 	MY = 0.0168;
 	MY_ROT = 0.0068; <!-- CHECK -->
 	M = 18;
-	R = 0.8; <!-- just testin in openGL -->
+	R = 1.0; <!-- just testin in openGL -->
 	R_INNER = 0.15;
 	G = 9.82;	
 
