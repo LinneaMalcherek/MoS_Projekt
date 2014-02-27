@@ -3,8 +3,8 @@ function dataConstants()
 	MY = 0.0168;
 	MY_ROT = 0.0068; <!-- CHECK -->
 	M = 18;
-	R = 1.0; <!-- just testin in openGL -->
-	R_INNER = 0.15;
+	R = 0.5; <!-- just testin in openGL -->
+	R_INNER = 0.10;
 	G = 9.82;	
 
 	ZPOS = -10; <!-- zPos is the same for all the stones, thats why it is here -->
