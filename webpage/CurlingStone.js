@@ -131,11 +131,11 @@ CurlingStone.prototype = {
 
 <!-- getXPos and getYPos is to easier understand in the code that we get the positions. -->
 	getXPos: function(){
-		return this.pos.e(1) /5; <!-- för att den går för snabbt annars, kolla upp! -->
+		return this.pos.e(1); <!-- för att den går för snabbt annars, kolla upp! -->
 
 	},
 	getYPos: function(){
-		return this.pos.e(2) /5;
+		return this.pos.e(2);
 	},
 
 	getAngle: function(){
