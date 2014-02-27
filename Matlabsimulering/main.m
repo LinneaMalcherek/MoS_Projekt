@@ -14,9 +14,16 @@
 
 clear all; 
 
+% For outputs
+VecTime = zeros(1,1);
+VecSpeed = zeros(1,1);
+VecAngSpeed = zeros(1,1); 
+VecSpeedSide = zeros(1,1); 
+
 % Input / initial states
 speed1 = 5; % 1.44-1.58 rimligt enligt vissa artiklar
 speed2 = 1.5;
+
 
 speed_side1=0;
 speed_side2=0;
@@ -76,5 +83,6 @@ while checkSpeed(speed1, speed2) && checkBoundaries(stone_pos1,stone_pos2, field
     render;
     dt = toc;
    % dt = cputime - start_time;
+
 end
 

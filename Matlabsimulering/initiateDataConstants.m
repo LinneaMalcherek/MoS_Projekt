@@ -3,7 +3,7 @@ g = 9.82;
 
 % Sten
 m = 18;
-r = 1; %0.1454676 är korrekt, men inte så bra att testa med. 
+r = 0.6; %0.1454676 är korrekt, men inte så bra att testa med. 
 r_inner = 0.1; %inte taget från verkliga data
 
 % Isen
@@ -14,7 +14,7 @@ a_friction= F_friktion/m;
 % Friktionscoefficienter för curlen, tecken beror på startvinkel 
 % och beräknas längre ner. (för nu är det enklare att testa olika värden)
 c1 = 0.00001;
-c2 = 0.0001;
+c2 = 0.001;
 
 % Banan
 field_length = 36.59;                 % Från hack till banans slut
