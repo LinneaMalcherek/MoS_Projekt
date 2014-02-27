@@ -5,7 +5,7 @@
 
         mat4.perspective(45, gl.viewportWidth / gl.viewportHeight, 0.1, 100.0, pMatrix);
         mat4.identity(vMatrix);
-        mat4.translate(vMatrix, [0 ,-3 ,0]);
+        mat4.translate(vMatrix, [0 ,-3 ,-10]);
         
         <!-- for every curling stone. allStones is a global variabel thas is used. is initiated when theGame is called.  -->
         for (var i=0; i<allStones.length; i++) {
@@ -17,9 +17,12 @@
 
                 mat4.translate(mMatrix, [allStones[i].getXPos(), allStones[i].getYPos(), ZPOS]);
                 mat4.rotateZ(mMatrix, allStones[i].getAngle());
-                mat4.rotateX(mMatrix, Math.PI/2);
+                mat4.rotateX(mMatrix, Math.PI/2); 
+
+
+
                 
-                mat4.scale(mMatrix, [0.2, 0.2, 0.2]);
+                mat4.scale(mMatrix, [0.5, 0.5, 0.5]);
                 gl.bindBuffer(gl.ARRAY_BUFFER, VertexPositionBuffer);
                 gl.vertexAttribPointer(shaderProgram.vertexPositionAttribute, VertexPositionBuffer.itemSize, gl.FLOAT, false, 0, 0);
 
