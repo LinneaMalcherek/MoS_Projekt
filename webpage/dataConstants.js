@@ -9,6 +9,15 @@ function dataConstants()
 
 	G = 9.82;	
 
+	pitch = 0;
+	yaw=0;
+	xCam=0;
+	yCam=0.4;
+	zCam=0;
+	speed=0;
+	yawRate =0;
+	pitchRate=0;
+
 	ZPOS = 0; <!-- zPos is the same for all the stones, thats why it is here -->
 
 	LASTTIME=0; <!-- needed or not? for the animation maybe -->
