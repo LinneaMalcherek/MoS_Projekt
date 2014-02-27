@@ -4,7 +4,7 @@ function dataConstants()
 	MY_ROT = 0.0068; <!-- CHECK -->
 	M = 18;
 
-	R = 0.5; <!-- just testin in openGL -->
+	R = 0.1; <!-- just testin in openGL -->
 	R_INNER = 0.10;
 
 	G = 9.82;	

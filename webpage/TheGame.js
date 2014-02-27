@@ -92,7 +92,10 @@ theGame.prototype = {
 		<!-- hämtar värdet ur två stycken fält, skrivit in vinkel och hastighet där -->
 		var angle = parseFloat(document.getElementById('vinkel').value);
 		var speed = parseFloat(document.getElementById('hastighet').value);
-		this.throwStone(angle,speed);
+
+		var radians = angle * (Math.PI/180);
+
+		this.throwStone(radians,speed);
 	},
 
 	starting: function(){

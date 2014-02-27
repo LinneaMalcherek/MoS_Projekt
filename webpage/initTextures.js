@@ -29,5 +29,5 @@ function initTextures2() {
         handleLoadedTexture(banaTexture)
     }
 
-    banaTexture.image.src = "bana.png";
+    banaTexture.image.src = "bana_texture.png";
 }

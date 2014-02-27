@@ -12,13 +12,13 @@
 
             if (allStones[i].render){
                 mat4.identity(mMatrix);
-
+                mat4.translate(mMatrix, [0,-5,0]);
                 mat4.translate(mMatrix, [allStones[i].getXPos(), allStones[i].getYPos(), ZPOS]);
                 mat4.rotateZ(mMatrix, allStones[i].getAngle());
 
                 mat4.rotateX(mMatrix, Math.PI/2);
                 
-                mat4.scale(mMatrix, [0.5, 0.5, 0.5]);
+                mat4.scale(mMatrix, [0.1, 0.1, 0.1]);
                 gl.bindBuffer(gl.ARRAY_BUFFER, VertexPositionBuffer);
                 gl.vertexAttribPointer(shaderProgram.vertexPositionAttribute, VertexPositionBuffer.itemSize, gl.FLOAT, false, 0, 0);
 
@@ -35,7 +35,7 @@
 
 
                 mat4.identity(mMatrix);
-                mat4.translate(mMatrix, [0,5,-1]);
+                mat4.translate(mMatrix, [0,3,-1]);
                 mat4.rotateZ(mMatrix, Math.PI/2);
                 mat4.rotateX(mMatrix, Math.PI/2);
 
