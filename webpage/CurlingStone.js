@@ -65,10 +65,10 @@ CurlingStone.prototype = {
 	calcAngularAcceleration: function(gravity, my_f, my_b, r){ 		<!-- my_f and my_b frictioncoeff for front and back of the stone --> 
 		theSpeed = this.angularSpeed*r;								<!-- Calculates speed in point of circle with radius r -->
 
-		if(this.speed <0.5){										<!-- Look out for division with zero -->
-			return gravity*(my_b-my_f);							
+		if(this.speed <0.01){										<!-- Look out for division with zero -->
+			return -1*gravity*(my_b-my_f);							
 		} else{
-			return gravity*(my_b-my_f) / Math.sqrt(this.speed); 		<!-- Total acceleration from difference between acc front and back, dependant on speed -->
+			return -1*gravity*(my_b-my_f) / Math.sqrt(this.speed); 		<!-- Total acceleration from difference between acc front and back, dependant on speed -->
 		}
 	}, 
 
@@ -103,15 +103,22 @@ CurlingStone.prototype = {
 	},
 <!-- Calculates the new angle. ang = ang + angSpeed*dt; -->
 	setNewAngle: function(dt){ 
-		this.angle = this.angle + this.newAngularSpeed*dt;
+		this.angle = this.angle + this.angularSpeed*dt;
 		if (this.angle >= 2*Math.PI) <!-- If the stone has rotated a complete spin, subtract 2pi -->  
 			this.angle = this.angle-2*Math.PI;
 	},
 
 <!-- moves the stone. updates the speed, angularSpeed, speedSide, resultantVelocity and then set the new position. -->
-	move: function(dt){ 
+	move: function(sweep,dt){ 
 		<!-- calculate the acceleration here, constansts g and my from dataConstants -->
-		a = this.calcAcceleration(G, MY); 
+		
+		<!-- om vi har sopat, skickar med-->
+		var friction = MY; 
+		if (sweep){
+			friction = MY * 0.5; 
+		}
+
+		a = this.calcAcceleration(G, friction); <!-- här ändrat till friction, (MY) ifall vi sopat -->
 
 		this.newSpeed(a,dt);														<!-- Updates speed forward-->
 		this.newSpeedSide(G,this.frictionCoeffC[0],this.frictionCoeffC[1],R_INNER); 	<!-- Updates speedSide -->
@@ -124,14 +131,22 @@ CurlingStone.prototype = {
 
 <!-- getXPos and getYPos is to easier understand in the code that we get the positions. -->
 	getXPos: function(){
-		return this.pos.e(1) / 10; <!-- för att den går för snabbt annars, kolla upp! -->
+		return this.pos.e(1); <!-- för att den går för snabbt annars, kolla upp! -->
 
 	},
 	getYPos: function(){
-		return this.pos.e(2) / 10;
+		return this.pos.e(2);
 	},
 
 	getAngle: function(){
+
+<!-- kolla vilket håll den snurrar ut. om skalärprodukten negativ, andra hållet. kollar mot direction <- typ -->
+		var side = $V([-1,0]);
+		var dots = side.dot(this.directionSide);
+
+		if( dots<=0 )
+			return -1* this.angle;
+
 		return this.angle; 
 	},
 

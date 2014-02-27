@@ -17,5 +17,5 @@ function initTextures() {
         handleLoadedTexture(neheTexture)
     }
 
-    neheTexture.image.src = "texture.png";
+    neheTexture.image.src = "stone_texture.png";
 }

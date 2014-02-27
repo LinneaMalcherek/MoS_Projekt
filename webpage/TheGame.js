@@ -1,5 +1,6 @@
 function theGame() {
 	allStones = new Array(); <!-- global variable that will be created when theGame starts. does not lie under the 'class' theGame. GLOBAL -->
+
 }
 
 <!-- theGames all functions -->
@@ -21,7 +22,7 @@ theGame.prototype = {
 				<!-- only check if one of the stones is moving.  -->
 				if(allStones[i].speed > 0.01 || allStones[j].speed > 0.01) {
 					if( checkCollision( allStones[i], allStones[j] ) ){
-						console.log('sten %s och %s kolliderade!!', i, j);
+						setAfterCollision(allStones[i], allStones[j]);
 						<!-- behöver kolla med radie oliteså för är lite knas -->
 
 					}	
@@ -33,13 +34,42 @@ theGame.prototype = {
 
 	},
 
+	handleKeyDown: function(event) {
+	    currentlyPressedKeys[event.keyCode] = true;
+	},
+
+
+	handleKeyUp: function(event) {
+	    currentlyPressedKeys[event.keyCode] = false;
+	},
+
+	handleKeys: function(event) {
+		if (currentlyPressedKeys[83]) { <!-- s -->
+        	return true;
+    	}
+    	else {
+    		return false;
+
+    	}
+
+
+	},
+
 	animate: function() { 
     	dt = 0.1;
 
    		for (var i=0; i<allStones.length; i++){ <!-- allStones en global variabel-->
         	if (allStones[i].speed > 0.01) {
-            	allStones[i].move(dt);
+        		if (i == allStones.length-1 ){ <!-- ful lösning!!! om den sten vi skickade ut senast får sopa! -->
+        			allStones[i].move(this.handleKeys(), dt);
+        		}
+        		else {
+        			allStones[i].move(false, dt);
+        		}
+
+            	
         	}
+        	
    		}
 	},
 
@@ -47,8 +77,9 @@ theGame.prototype = {
 		window.requestAnimationFrame(this.tick.bind(this));
         drawScene(); 
         this.animate();
-        <!-- anropa en funktion som kollar om stenen åkt utanför banan tex. eller kanske ligga i animate den-->
         this.collision();
+        <!-- anropa en funktion som kollar om stenen åkt utanför banan tex. eller kanske ligga i animate den-->
+        
 	},
 
 <!-- Bara en funktion nu för att testa! använder fälten för att skicka nya stenar-->
@@ -65,6 +96,8 @@ theGame.prototype = {
 	    initShaders();
 	    initTextures();
 	    loadObject();
+
+	    currentlyPressedKeys = {};
 	    
 
     	gl.clearColor(0.0, 0.0, 0.0, 1.0);
