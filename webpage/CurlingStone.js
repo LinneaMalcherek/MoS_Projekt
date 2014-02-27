@@ -7,7 +7,7 @@ function CurlingStone()
 	this.directionForward = $V([0,1]); <!-- direction forward-->
 	this.directionSide = $V([0,0]); 
 	this.angularSpeed = 0;
-	this.frictionCoeffC = new Array(0.00001,0.001); <!-- change HERE the constans for the forward and backward friction -->
+	this.frictionCoeffC = new Array(0.000001,0.0001); <!-- change HERE the constans for the forward and backward friction -->
 	this.angle = 0; 
 
 	this.render = false; <!-- if render or not -->
@@ -66,9 +66,9 @@ CurlingStone.prototype = {
 		theSpeed = this.angularSpeed*r;								<!-- Calculates speed in point of circle with radius r -->
 
 		if(this.speed <0.01){										<!-- Look out for division with zero -->
-			return -1*gravity*(my_b-my_f);							
+			return gravity*(my_b-my_f);							
 		} else{
-			return -1*gravity*(my_b-my_f) / Math.sqrt(this.speed); 		<!-- Total acceleration from difference between acc front and back, dependant on speed -->
+			return gravity*(my_b-my_f) / Math.sqrt(this.speed); 		<!-- Total acceleration from difference between acc front and back, dependant on speed -->
 		}
 	}, 
 

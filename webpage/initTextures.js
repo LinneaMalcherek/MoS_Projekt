@@ -19,3 +19,15 @@ function initTextures() {
 
     neheTexture.image.src = "stone_texture.png";
 }
+
+var banaTexture;
+
+function initTextures2() {
+    banaTexture = gl.createTexture();
+    banaTexture.image = new Image();
+    banaTexture.image.onload = function () {
+        handleLoadedTexture(banaTexture)
+    }
+
+    banaTexture.image.src = "bana_texture.png";
+}
