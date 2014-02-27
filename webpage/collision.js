@@ -52,8 +52,8 @@ function checkCollision(stone1,stone2){
 
 	var distance = Math.sqrt ( Math.pow(stone2.pos.e(1) - stone1.pos.e(1),2) + Math.pow(stone2.pos.e(2) - stone1.pos.e(2),2) );	
 
-	if( distance < 2*R )
-		popOut(stone1,stone2);
+/*	if( distance < 2*R )
+		popOut(stone1,stone2);*/
 
 /*We have to check collision BEFORE we move the stones to the  new position.*/
 	var predictedStonePos1 = stone1.pos.add(stone1.calcVelocityResultant().multiply(dt));
@@ -69,10 +69,10 @@ function checkCollision(stone1,stone2){
 
 function popOut(stone1,stone2){ 
 
-	var collision_normal = stone1.pos.subtract(stone2.pos);
+	var collision_normal = stone2.pos.subtract(stone1.pos);
 
 	collision_normal.toUnitVector();
 
-	stone1.e(1)=stone2.e(1)+collision_normal.e(1)*2*R;
-	stone1.e(2)=stone2.e(2)+collision_normal.e(2)*2*R;
+	stone2.e(1)=stone1.e(1)+collision_normal.e(1)*2*R;
+	stone2.e(2)=stone1.e(2)+collision_normal.e(2)*2*R;
 }

@@ -95,7 +95,9 @@ theGame.prototype = {
 	    initGL(canvas);
 	    initShaders();
 	    initTextures();
+	    initTextures2();
 	    loadObject();
+	    loadObject2();
 
 	    currentlyPressedKeys = {};
 	    
