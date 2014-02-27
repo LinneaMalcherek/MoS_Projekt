@@ -14,14 +14,20 @@
 
 clear all; 
 
+% For outputs
+VecTime = zeros(1,1);
+VecSpeed = zeros(1,1);
+VecAngSpeed = zeros(1,1); 
+VecSpeedSide = zeros(1,1); 
+
 % Input / initial states
-speed1 = 4; % 1.44-1.58 rimligt enligt vissa artiklar
+speed1 = 3; % 1.44-1.58 rimligt enligt vissa artiklar
 speed2 = 0;
 
 speed_side1=0;
 speed_side2=0;
 
-angle1 = pi/40;
+angle1 = -pi/90;
 angle2 = 0;
 
 stone_pos1 = [0; 0];
@@ -67,8 +73,6 @@ while checkSpeed(speed1, speed2) && checkBoundaries(stone_pos1,stone_pos2, field
         [stone_pos1, stone_angle1] = calculateNewPosition(stone_pos1,stone_angle1,velocity1,angular_speed1,dt);
         [stone_pos2, stone_angle2] = calculateNewPosition(stone_pos2,stone_angle2,velocity2,angular_speed1,dt);
         
-        stone_angle1
-        
         %Check if there is a collision. If true, update velocity accordingly.
         time = time + dt;
         
@@ -77,9 +81,19 @@ while checkSpeed(speed1, speed2) && checkBoundaries(stone_pos1,stone_pos2, field
             time;
         end
         
+        % Inläsning till vektorer för att kunna plotta resultat
+        
+        %VecSpeed(end+1) = speed1;
+        %VecAngSpeed(end+1) = angular_speed1;
+        VecTime(end+1) = time;
+        VecSpeedSide(end+1) = speed_side1;
         %Render function, plots both curling stones.
         render;
     end
     lastTime = timeNow; 
+    
+    %plot(VecTime,VecSpeed);
+    %plot(VecTime,VecAngSpeed);
+    plot(VecTime,VecSpeedSide);
 end
 

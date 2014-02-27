@@ -1,6 +1,7 @@
 function [ new_angular_speed, new_speed_side ] = calculateSpeedSide(speed,angular_speed, speed_side,g,c1,c2,dt,r_inner)
 % Calculatates the speed to the side based on rotational speed.
-    
+% Returns new angular speed
+
     if( angular_speed > 0 && speed > 0)
         
     % Translate the angular speed to translation speed in the 
