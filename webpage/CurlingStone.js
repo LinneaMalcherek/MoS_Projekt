@@ -68,7 +68,7 @@ CurlingStone.prototype = {
 		if(this.speed <0.01){										<!-- Look out for division with zero -->
 			return gravity*(my_b-my_f);							
 		} else{
-			return gravity*(my_b-my_f) / Math.sqrt(this.speed); 		<!-- Total acceleration from difference between acc front and back, dependant on speed -->
+			return gravity*(my_b-my_f) / Math.sqrt(theSpeed); 		<!-- Total acceleration from difference between acc front and back, dependant on speed -->
 		}
 	}, 
 
