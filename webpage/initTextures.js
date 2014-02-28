@@ -20,6 +20,18 @@ function initTextures() {
     neheTexture.image.src = "stone_texture.png";
 }
 
+var gulTexture;
+
+function initTextures() {
+    gulTexture = gl.createTexture();
+    gulTexture.image = new Image();
+    gulTexture.image.onload = function () {
+        handleLoadedTexture(gulTexture)
+    }
+
+    gulTexture.image.src = "stone_texture_gul.png";
+}
+
 var banaTexture;
 
 function initTextures2() {

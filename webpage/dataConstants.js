@@ -5,7 +5,7 @@ function dataConstants()
 	M = 18;
 
 	R = 0.1; <!-- just testin in openGL -->
-	R_INNER = 0.10;
+	R_INNER = 0.06;
 
 	G = 9.82;	
 
