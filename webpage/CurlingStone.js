@@ -127,6 +127,13 @@ CurlingStone.prototype = {
 		var velocity = this.calcVelocityResultant();
 		this.setNewPos(velocity,dt);
 		this.setNewAngle(dt);
+
+
+		// check if out of the side...
+		if (Math.abs(this.getXPos()) > FIELDWIDTH/2 ){
+			console.log("utanför banan!, %s", this.getXPos());
+		}
+
 	},
 
 <!-- getXPos and getYPos is to easier understand in the code that we get the positions. -->
