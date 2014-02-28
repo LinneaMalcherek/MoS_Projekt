@@ -60,7 +60,6 @@ theGame.prototype = {
 		if (LASTTIME != 0) {
     	//dt = 0.1;
     	dt = (timeNow - LASTTIME)/1000; <!-- to get in seconds --> 
-    	console.log("dt: %s", dt);
    		for (var i=0; i<allStones.length; i++){ <!-- allStones en global variabel-->
         	if (allStones[i].speed > 0.01) {
         		if (i == allStones.length-1 ){ <!-- ful lösning!!! om den sten vi skickade ut senast får sopa! -->
