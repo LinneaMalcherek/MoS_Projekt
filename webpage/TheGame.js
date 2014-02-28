@@ -26,7 +26,20 @@ theGame.prototype = {
 
 	collision: function(){
 		<!-- kolla kollision hela tiden för alla stenar. isf  -->
+
 		for( var i=0; i < this.allStones.length; i++ ){
+			if(allStones[i].speed=0 || !this.allStones[i].render)
+				continue;
+			for ( var j=i; j < this.allStones.length; j++ ) {
+				if(i==j || !this.allStones[j].render)
+					continue;
+				if( checkCollision( this.allStones[i], this.allStones[j] ) ){
+						setAfterCollision(this.allStones[i], this.allStones[j]);
+				}
+			}
+		}
+
+		/*for( var i=0; i < this.allStones.length; i++ ){
 			for ( var j=i; j < this.allStones.length; j++ ) {
 				if(i==j)
 					continue;
@@ -41,7 +54,7 @@ theGame.prototype = {
 
 			}
 
-		}
+		}*/
 	
 
 	},
@@ -121,7 +134,6 @@ theGame.prototype = {
 
                 xCam -= Math.sin(yaw*Math.PI/180) * speed * dt;
                 zCam -= Math.cos(yaw*Math.PI/180) * speed * dt;
-               // joggingAngle += dt * 0.6; // 0.6 "fiddle factor" - makes it feel more realistic :-)
                 yCam = Math.sin(Math.PI/180) / 20 + 0.4;
             }
 
@@ -162,8 +174,9 @@ theGame.prototype = {
 		this.handleMove();
 		this.outOfBounds(); 
         drawScene(this.players); 
-        this.animate();
         this.collision();
+        this.animate();
+        
         <!-- anropa en funktion som kollar om stenen åkt utanför banan tex. eller kanske ligga i animate den-->
         
 	},

@@ -50,7 +50,7 @@ function setAfterCollision(stone1,stone2){ <!-- vilken vinkel som stenen ska åk
 
 function checkCollision(stone1,stone2){ 
 
-	var distance = Math.sqrt ( Math.pow(stone2.pos.e(1) - stone1.pos.e(1),2) + Math.pow(stone2.pos.e(2) - stone1.pos.e(2),2) );	
+	//var distance = Math.sqrt ( Math.pow(stone2.pos.e(1) - stone1.pos.e(1),2) + Math.pow(stone2.pos.e(2) - stone1.pos.e(2),2) );	
 
 /*	if( distance < 2*R )
 		popOut(stone1,stone2);*/
