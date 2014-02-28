@@ -4,12 +4,23 @@
         gl.enable(gl.DEPTH_TEST);
 
         mat4.perspective(45, gl.viewportWidth / gl.viewportHeight, 0.1, 100.0, pMatrix);
+
         mat4.identity(vMatrix);
-        mat4.translate(vMatrix, [0 ,-3 ,-20]);
+        mat4.rotate(vMatrix, -pitch*Math.PI / 180, [1, 0, 0]);
+        mat4.rotate(vMatrix, -yaw*Math.PI / 180, [0, 1, 0]);
+        mat4.translate(vMatrix, [-xCam, -yCam, -zCam]);
+
+        mat4.rotate(vMatrix,-Math.PI / 2, [1, 0, 0]);
+        mat4.translate(vMatrix, [0 , 10 ,0]);
+        
+
+
+        
         
         <!-- for every curling stone. allStones is a global variabel thas is used. is initiated when theGame is called.  -->
         for (var i=0; i<allStones.length; i++) {
 
+            
             if (allStones[i].render){
                 mat4.identity(mMatrix);
                 mat4.translate(mMatrix, [0,-5,0]);
@@ -35,7 +46,7 @@
 
 
                 mat4.identity(mMatrix);
-                mat4.translate(mMatrix, [0,3,-1]);
+                mat4.translate(mMatrix, [0,3,-0.1]);
                 mat4.rotateZ(mMatrix, Math.PI/2);
                 mat4.rotateX(mMatrix, Math.PI/2);
 
