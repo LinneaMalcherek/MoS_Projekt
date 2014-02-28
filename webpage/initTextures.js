@@ -43,3 +43,15 @@ function initTextures2() {
 
     banaTexture.image.src = "bana_texture.png";
 }
+
+var sphereTexture;
+
+function initTextures3() {
+    sphereTexture = gl.createTexture();
+    sphereTexture.image = new Image();
+    sphereTexture.image.onload = function () {
+        handleLoadedTexture(sphereTexture)
+    }
+
+    sphereTexture.image.src = "skydome_nebulosa.jpg";
+}
