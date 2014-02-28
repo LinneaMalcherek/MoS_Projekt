@@ -12,10 +12,7 @@
 
         mat4.rotate(vMatrix,-Math.PI / 2, [1, 0, 0]);
         mat4.translate(vMatrix, [0 , 10 ,0]);
-        
-
-
-        
+    
         
         <!-- for every curling stone. allStones is a global variabel thas is used. is initiated when theGame is called.  -->
         for (var i=0; i<allStones.length; i++) {
@@ -67,8 +64,27 @@
                 gl.drawElements(gl.TRIANGLES, VertexIndexBuffer2.numItems, gl.UNSIGNED_SHORT, 0);
             }
 
+        }       
+                mat4.identity(mMatrix);
+                mat4.scale(mMatrix, [2, 2, 2]);
 
-        }
+                mat4.rotate(vMatrix,Math.PI / 2, [1, 0, 0]);
+                mat4.translate(vMatrix, [xCam, yCam, zCam]);
 
+                
+
+                gl.bindBuffer(gl.ARRAY_BUFFER, VertexPositionBuffer3);
+                gl.vertexAttribPointer(shaderProgram.vertexPositionAttribute, VertexPositionBuffer3.itemSize, gl.FLOAT, false, 0, 0);
+
+                gl.bindBuffer(gl.ARRAY_BUFFER, VertexTextureCoordBuffer3);
+                gl.vertexAttribPointer(shaderProgram.textureCoordAttribute, VertexTextureCoordBuffer3.itemSize, gl.FLOAT, false, 0, 0);
+
+                gl.activeTexture(gl.TEXTURE0);
+                gl.bindTexture(gl.TEXTURE_2D, sphereTexture);
+                gl.uniform1i(shaderProgram.samplerUniform, 0);
+
+                gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, VertexIndexBuffer3);
+                setMatrixUniforms();
+                gl.drawElements(gl.TRIANGLES, VertexIndexBuffer3.numItems, gl.UNSIGNED_SHORT, 0);
 
     }

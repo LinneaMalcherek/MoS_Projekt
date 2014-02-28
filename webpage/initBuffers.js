@@ -6,6 +6,10 @@ var VertexPositionBuffer2;
 var VertexTextureCoordBuffer2;
 var VertexIndexBuffer2;
 
+var VertexPositionBuffer3;
+var VertexTextureCoordBuffer3;
+var VertexIndexBuffer3;
+
 function handleLoadedObject(objectData) {
 
     VertexTextureCoordBuffer = gl.createBuffer();
@@ -50,6 +54,28 @@ function handleLoadedObject2(objectData) {
 
 }
 
+function handleLoadedObject3(objectData) {
+
+    VertexTextureCoordBuffer3 = gl.createBuffer();
+    gl.bindBuffer(gl.ARRAY_BUFFER, VertexTextureCoordBuffer3);
+    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(objectData.texcoords), gl.STATIC_DRAW);
+    VertexTextureCoordBuffer3.itemSize = 2;
+    VertexTextureCoordBuffer3.numItems = objectData.texcoords.length / 2;
+
+    VertexPositionBuffer3 = gl.createBuffer();
+    gl.bindBuffer(gl.ARRAY_BUFFER, VertexPositionBuffer3);
+    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(objectData.verts), gl.STATIC_DRAW);
+    VertexPositionBuffer3.itemSize = 3;
+    VertexPositionBuffer3.numItems = objectData.verts.length / 3;
+
+    VertexIndexBuffer3 = gl.createBuffer();
+    gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, VertexIndexBuffer3);
+    gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, new Uint16Array(objectData.indices), gl.STATIC_DRAW);
+    VertexIndexBuffer3.itemSize = 1;
+    VertexIndexBuffer3.numItems = objectData.indices.length;
+
+}
+
 
 function loadObject() {
     var request = new XMLHttpRequest();
@@ -76,6 +102,17 @@ function loadObject2() {
     request.onreadystatechange = function () {
         if (request.readyState == 4) {
             handleLoadedObject2(JSON.parse(request.responseText));
+        }
+    }
+    request.send();
+}
+
+function loadObject3() {
+    var request = new XMLHttpRequest();
+    request.open("GET", "skybox.json"); <!-- vilket objekt man vill läsa in -->
+    request.onreadystatechange = function () {
+        if (request.readyState == 4) {
+            handleLoadedObject3(JSON.parse(request.responseText));
         }
     }
     request.send();
