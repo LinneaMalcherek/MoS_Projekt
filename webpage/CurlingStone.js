@@ -10,6 +10,9 @@ function CurlingStone()
 	this.frictionCoeffC = new Array(0.000001,0.0001); <!-- change HERE the constans for the forward and backward friction -->
 	this.angle = 0; 
 
+	this.stoneId; // vilken sten, 1-8
+	this.player; // vilken spelare
+
 	this.render = false; <!-- if render or not -->
 }
 
@@ -35,7 +38,7 @@ CurlingStone.prototype = {
 	}, 
 
 <!-- initiate everything. set inital speed, render, angularSpeed, speedSide, frictionCoeffC, directionForward, directionSide -->
-	init: function(angle,speed){
+	init: function(angle,speed,id, player){
 		this.speed = speed;
 
 		this.render = true;
@@ -49,6 +52,8 @@ CurlingStone.prototype = {
 		dirFor = this.setDirectionForward(angle);
 		this.setDirectionSide(dirFor, angle); 
 
+		this.stoneId=id-1; // så id på sten blir mellan 0 - 7 istället för att lättare accessa. 
+		this.player=player; // börjar på 0 -> antalet spelare -1
 	},
 
 <!-- returns a scalar. v = v + a*dt-->
@@ -68,7 +73,7 @@ CurlingStone.prototype = {
 		if(this.speed <0.01){										<!-- Look out for division with zero -->
 			return gravity*(my_b-my_f);							
 		} else{
-			return gravity*(my_b-my_f) / Math.sqrt(this.speed); 		<!-- Total acceleration from difference between acc front and back, dependant on speed -->
+			return gravity*(my_b-my_f) / Math.sqrt(theSpeed); 		<!-- Total acceleration from difference between acc front and back, dependant on speed -->
 		}
 	}, 
 

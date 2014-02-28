@@ -5,7 +5,7 @@ function dataConstants()
 	M = 18;
 
 	R = 0.1; <!-- just testin in openGL -->
-	R_INNER = 0.10;
+	R_INNER = 0.06;
 
 	G = 9.82;	
 
@@ -23,9 +23,11 @@ function dataConstants()
 	LASTTIME=0; <!-- needed or not? for the animation maybe -->
 
 	FIELDLENGTH = 36.59;
-	FIELDWIDTH = 20;
+	FIELDWIDTH = 5;
 	HACK_HOG = 6.40;
 	TEE = $V([0,34.76]); <!-- the position of the middle-->
+
+	NUMBEROFSTONES = 4;
 
 
 }

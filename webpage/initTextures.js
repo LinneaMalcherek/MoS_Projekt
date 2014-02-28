@@ -20,6 +20,18 @@ function initTextures() {
     neheTexture.image.src = "stone_texture.png";
 }
 
+var gulTexture;
+
+function initTextures4() {
+    gulTexture = gl.createTexture();
+    gulTexture.image = new Image();
+    gulTexture.image.onload = function () {
+        handleLoadedTexture(gulTexture)
+    }
+
+    gulTexture.image.src = "stone_texture_gul.png";
+}
+
 var banaTexture;
 
 function initTextures2() {
@@ -30,4 +42,16 @@ function initTextures2() {
     }
 
     banaTexture.image.src = "bana_texture.png";
+}
+
+var sphereTexture;
+
+function initTextures3() {
+    sphereTexture = gl.createTexture();
+    sphereTexture.image = new Image();
+    sphereTexture.image.onload = function () {
+        handleLoadedTexture(sphereTexture)
+    }
+
+    sphereTexture.image.src = "skydome_nebulosa.jpg";
 }

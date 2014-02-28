@@ -21,14 +21,14 @@ VecAngSpeed = zeros(1,1);
 VecSpeedSide = zeros(1,1); 
 
 % Input / initial states
-speed1 = 5; % 1.44-1.58 rimligt enligt vissa artiklar
-speed2 = 1.5;
+speed1 = 2.25; % 1.44-1.58 rimligt enligt vissa artiklar
+speed2 = 0;
 
 
 speed_side1=0;
 speed_side2=0;
 
-angle1 = 0.1;
+angle1 = 2*pi/180;
 angle2 = 2.6;
 
 stone_pos1 = [0; 0];
@@ -77,7 +77,7 @@ while checkSpeed(speed1, speed2) && checkBoundaries(stone_pos1,stone_pos2, field
     % Calculates the new position for both stones
     [stone_pos1, stone_angle1] = calculateNewPosition(stone_pos1,stone_angle1,velocity1,angular_speed1,dt);
     [stone_pos2, stone_angle2] = calculateNewPosition(stone_pos2,stone_angle2,velocity2,angular_speed1,dt);
-
+    stone_pos1
 
     %Render function, plots both curling stones.
     render;

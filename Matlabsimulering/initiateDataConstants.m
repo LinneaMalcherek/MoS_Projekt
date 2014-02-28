@@ -7,7 +7,7 @@ r = 0.6; %0.1454676 är korrekt, men inte så bra att testa med.
 r_inner = 0.1; %inte taget från verkliga data
 
 % Isen
-my = 0.01; %0.0168;
+my = 0.0168; %0.0168;
 F_friktion = my*m*g;
 a_friction= F_friktion/m;
 
