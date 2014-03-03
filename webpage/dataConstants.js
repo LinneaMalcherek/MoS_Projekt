@@ -27,5 +27,7 @@ function dataConstants()
 	HACK_HOG = 6.40;
 	TEE = $V([0,34.76]); <!-- the position of the middle-->
 
+	NUMBEROFSTONES = 4;
+
 
 }

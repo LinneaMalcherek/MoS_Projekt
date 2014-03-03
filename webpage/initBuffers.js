@@ -98,7 +98,7 @@ function loadObject() {
 
 function loadObject2() {
     var request = new XMLHttpRequest();
-    request.open("GET", "banan.json"); <!-- vilket objekt man vill läsa in -->
+    request.open("GET", "bana.json"); <!-- vilket objekt man vill läsa in -->
     request.onreadystatechange = function () {
         if (request.readyState == 4) {
             handleLoadedObject2(JSON.parse(request.responseText));

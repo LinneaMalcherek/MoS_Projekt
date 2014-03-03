@@ -22,7 +22,7 @@ function initTextures() {
 
 var gulTexture;
 
-function initTextures() {
+function initTextures4() {
     gulTexture = gl.createTexture();
     gulTexture.image = new Image();
     gulTexture.image.onload = function () {
@@ -41,7 +41,7 @@ function initTextures2() {
         handleLoadedTexture(banaTexture)
     }
 
-    banaTexture.image.src = "bana_texture.png";
+    banaTexture.image.src = "bana_texture_template.png";
 }
 
 var sphereTexture;
