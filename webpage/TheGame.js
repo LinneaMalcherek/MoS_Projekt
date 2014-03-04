@@ -163,7 +163,7 @@ theGame.prototype = {
 	tick: function(){
 		window.requestAnimationFrame(this.tick.bind(this));
 		this.handleMove();
-		this.outOfBounds(); 
+		//this.outOfBounds(); 
         drawScene(this.players); 
         this.animate();
         this.collision();

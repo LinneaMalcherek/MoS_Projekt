@@ -7,7 +7,7 @@ function CurlingStone()
 	this.directionForward = $V([0,1]); <!-- direction forward-->
 	this.directionSide = $V([0,0]); 
 	this.angularSpeed = 0;
-	this.frictionCoeffC = new Array(0.000001,0.0001); <!-- change HERE the constans for the forward and backward friction -->
+	this.frictionCoeffC = new Array(0.00001,0.0001);//(0.000001,0.0001); <!-- change HERE the constans for the forward and backward friction -->
 	this.angle = 0; 
 
 	this.stoneId; // vilken sten, 1-8
@@ -68,12 +68,12 @@ CurlingStone.prototype = {
 
 <!-- Returns total acceleration sideways (difference between front and back)-->
 	calcAngularAcceleration: function(gravity, my_f, my_b, r){ 		<!-- my_f and my_b frictioncoeff for front and back of the stone --> 
-		theSpeed = this.angularSpeed*r;								<!-- Calculates speed in point of circle with radius r -->
+		<!-- theSpeed = this.angularSpeed*r;								Calculates speed in point of circle with radius r -->
 
 		if(this.speed <0.01){										<!-- Look out for division with zero -->
 			return gravity*(my_b-my_f);							
 		} else{
-			return gravity*(my_b-my_f) / Math.sqrt(theSpeed); 		<!-- Total acceleration from difference between acc front and back, dependant on speed -->
+			return gravity*(my_b-my_f) / Math.sqrt(this.speed); 		<!-- Total acceleration from difference between acc front and back, dependant on speed -->
 		}
 	}, 
 
@@ -87,10 +87,12 @@ CurlingStone.prototype = {
 
 <!-- Calculates angular speed from speed side -->
 	newAngularSpeed: function(new_speed_side){
-		if (this.angularSpeed <= 0)
+		if (this.angularSpeed <= 0 || this.speed <= 0)
 			this.angularSpeed =  0;
 		else
-			this.angularSpeed = new_speed_side / R_INNER; 
+			//this.angularSpeed = new_speed_side / R_INNER;
+			this.angularSpeed = this.angularSpeed - (this.frictionCoeffC[1] / (R_INNER*Math.sqrt(this.speed)))*G*dt;
+			console.log("speed: %s , ang speed: %s", this.speed, this.angularSpeed);
 	},
 
 <!--Calculates resultant of the speeds forward and sideways -->

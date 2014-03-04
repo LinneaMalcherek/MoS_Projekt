@@ -22,6 +22,7 @@
 \usepackage{graphicx} % support the \includegraphics command and options
 \usepackage{datetime}
 \usepackage{amssymb,amsmath} % For mathematical expressions  (Tillagd av Nai) 
+\usepackage{textcomp} % For degree sign (Tillagd av Nai) 
 
 %%% NEW COMMANDS
 \renewcommand{\dateseparator}{-}
@@ -84,15 +85,13 @@ TNM??? Modelleringsprojekt}
 
 \subsection{Translation}
 
-I beräkningarna av stenens rörelse har hänsyn tagits till tre påverkande friktionskrafter: Kraft i riktning motsatt stenens rörelseriktning, samt två krafter i ortogonal riktning mot denna \eqref{Ftot}. Dessa två krafter utgörs av friktionskrafterna i främre delen av stenen samt i den bakre delen. Differensen mellan dessa två krafter är vad som påverkar stenens curl. 
-Stenens curl beror på att friktionen i den bakre delen av stenen är högre än den främre, på grund av de spår som den främre delen av stenen skapar i isen. REFERENS! 
+I beräkningarna av stenens rörelse har hänsyn tagits till tre påverkande friktionskrafter (Figur~\ref{fig:Translation}): Kraft i riktning motsatt stenens rörelseriktning, samt två krafter i ortogonal riktning mot denna \eqref{Ftot}. Dessa två krafter utgörs av friktionskrafterna i främre delen av stenen samt i den bakre delen. Differensen mellan dessa två krafter är vad som påverkar stenens curl (svängning). 
 
  \begin{align}\label{Ftot}
  \bar{F_t}&=\bar{F_f}+\bar{F_b}+\bar{F}\\
  \bar{F_f}&<\bar{F_b}
  \end{align}
 
-Translationen av stenen är en resulterande hastighetsvektor v, som består av hastigheten i rörelseriktningen samt av hastigheten i punkterna längs det ringformade band stenen roterar på. I beräkningarna har dessa förenklats till två hastighetsvektorer: en för den främsta punkten (p1)  på stenens band och en för den bakersta (p2),(Figur~\ref{fig:Translation}). 
 
 \begin{figure}[ht!]
 \centering
@@ -102,41 +101,78 @@ Translationen av stenen är en resulterande hastighetsvektor v, som består av h
 \label{overflow}
 \end{figure}
 
-Beräkningen av hastigheterna i punkterna p1 och p2 beräknas i två steg. I första steget omvandlas stenens rotationshastighet till translationshastighet i riktningen i punkternas rotationsriktning \eqref{vsida_init}. 
- 
-\begin{align}\label{vsida_init}
- v_1 = v_1 = \omega r
- \end{align}
-
-I det andra steget beräknas den påverkan som friktionen har på hastigheten i de två punkterna \eqref{Fsida1} \eqref{Fsida2}, där friktionen påverkas av hastigheten i punkten samt av en konstant c \eqref{mu} . 
+\subsubsection{Friktionens påverkan}
+I kontaktytan mellan isen och curlingstenen uppstår friktion. Friktionens påverkan avgörs av stenens kontaktyta samt isens egenskaper. Isen i sin tur påverkas av temperatur och luftfuktighet. Före spel prepareras isen genom såkallad "pebbling" då vattendroppar sprids ut över isen och skapar en mindre glatt struktur. (KANSKE KRÄVS REF?). 
+Vid sopning värms isen upp och en tunn vattenhinna skapas framför stenen. Detta gör så att friktionen mellan sten och is minskar och därmed går stenen längre vid sopning.  
+\\\\Stenens curl beror på att friktionen i den bakre delen \eqref{Fsida2} av stenen är högre än i den främre \eqref{Fsida1}.  
+En curlingsten har en kontaktyta mot isen bestående av ett tunt band (ca 5mm brett REFERENS) som har en något ojämn yta, så kallad "scratchad" yta. Då den främre halvan av stenen rör sig över den pebblade isen orsakas ett spår i isen i stenens rörelseriktning med en liten vinkel i rotationsriktningen. Då den bakre delen av bandet passerar samma yta ska bandets scratchade yta passera dessa spår, vilka då ligger i nästan rätvinklig riktning från bandets färdriktning, (Figur~\ref{fig:Friktion}). Det innebär att den bakre delen av stenen får ett högre motstånd, en högre friktionskraft, än den främre \eqref{biggerthan}. 
+REFERENS: http://www.sciencedirect.com/science/article/pii/S0043164813000732
 
  \begin{align}\label{Fsida1}
  F_1& = \mu_1 mg\\\label{Fsida2}
-F_2& = \mu_2 mg\\\label{mu}
-\mu&=\frac{c}{\sqrt{v}}
+F_2& = \mu_2 mg\\\label{biggerthan}
+\mu_2& > \mu_1
  \end{align}
 
-Hastigheterna i de två punkterna blir därmed två hastighetsvektorer i motsatta riktningar där den ena är större än den andra och resultanten blir således den riktning åt vilken stenen curlar (Figur~\ref{fig:Translation}). 
-Translationen av stenen i riktning framåt beräknas enligt Eulers stegmetod och med konstant friktionskoefficient. 
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=110mm]{Friktion_bakfram.png}
+\caption{Friktion i punkt bak respektive fram på stenen. Den bakre delen måste passera de spår framsidan av stenen skapat, vilket leder till högre friktion.}
+\label{fig:Friktion}
+\label{overflow}
+\end{figure}
 
-Den resulterande hastigheten består i beräkningarna således av tre komponenter  %\eqref{vtot}. 
+Den vattenhinna som skapas vid sopning för med sig att de spår som den främre delen av stenen åstadkommer minskar och därmed  även dess effekt på den bakre delen av stenen. Därmed gör sopning att stenen curlar mindre. Friktionen i punkterna längs bandet påverkas av av stenens rörelse framåt \eqref{mu}. HÄR BEHÖVS VERKLIGEN REFERENS!     
+
+\begin{equation}\label{mu} 
+\mu=\frac{c}{\sqrt{v}}
+\end{equation}
+
+\subsubsection{Resulterande translation}
+
+Translationen av stenen är en resulterande hastighetsvektor v, som består av hastigheten i rörelseriktningen samt av hastigheten i punkterna längs det ringformade band stenen roterar på. I beräkningarna har dessa förenklats till två hastighetsvektorer: en för den främsta punkten (p1)  på stenens band och en för den bakersta (p2),(Figur~\ref{fig:Translation}). 
+\\\\Beräkningen av hastigheterna i punkterna p1 och p2 beräknas i två steg. I första steget omvandlas stenens rotationshastighet till translationshastighet i riktningen i punkternas rotationsriktning \eqref{vsida_init}. REFERENS PHYSICS HANDBOOKS 168.
+ 
+\begin{equation}\label{vsida_init}
+ v_1 = v_2 = \omega r
+ \end{equation}
+
+%OBS HÄR ANVÄNDER VI VÄL INTE V1 OCH V2 UTAN SPEED_SIDE, ALLTSÅ VEKTORSUMMAN!?
+I det andra steget beräknas den påverkan som friktionen har på hastigheten i de två punkterna, där friktionen påverkas av hastigheten i stenens färdriktning samt av en konstant c,  \eqref{Fsida1} \eqref{Fsida2} \eqref{mu} . 
+REF FRICTIONAL FORCE IN MOTION, PHYSICS HANDBOOK S 158
+\\\\Hastigheterna i de två punkterna blir därmed två hastighetsvektorer i motsatta riktningar där den ena är större än den andra och resultanten blir således den riktning åt vilken stenen curlar (Figur~\ref{fig:Translation}). 
+Translationen av stenen i riktning framåt beräknas enligt Eulers stegmetod och med konstant friktionskoefficient. 
+\\\\Den resulterande hastigheten består i beräkningarna således av tre komponenter, \eqref{vtot}, där vektorn i riktning framåt uppdateras för varje position. 
 
  \begin{align}\label{vtot}
- &\bar{v}=\bar{v_f}+(\bar{v_1}+\bar{v_2})
+ \bar{v_s}& = \bar{v_1}+\bar{v_2}\\
+ \bar{v}&=\bar{v_f}+\bar{v_s}
  \end{align}
 
 \subsection{Rotation}
 
 
-%Stenen har även en roterande rörelse med en vinkelhastighet vars ursprungsvärde beräknas utifrån utslagshastigheten av %stenen.
-%Vid utslaget antas att spelaren håller stenen så att handtaget pekar i en riktning 90 GRADER från riktning framåt antingen med %"inhand" eller "outhand" och släpper stenen med handtaget pekande rakt fram vid hoglinjen LITE BILDER PÅ BANAN. Detta %innebär att stenen roterar 90 GRADER under den tid det tar för spelaren att ta sig mellan hack och hog, vilket är direkt kopplat till %den angivna utslagshastigheten. 
+Stenen har även en roterande rörelse med en vinkelhastighet vars ursprungsvärde beräknas utifrån utslagshastigheten av stenen.
+Vid utslaget antas att spelaren håller stenen så att handtaget pekar i en riktning 90\textdegree  från riktning framåt antingen med "inhand" eller "outhand" och släpper stenen med handtaget pekande rakt fram vid hoglinjen LITE BILDER PÅ BANAN. Detta innebär att stenen roterar 90\textdegree under den tid det tar för spelaren att ta sig mellan hack och hog, vilket är direkt kopplat till den angivna utslagshastigheten. 
 
 \begin{align}%\label{vtot}
- angular_speed1 = pi / (2*t0); 
+ \omega_0 = \frac{\pi}{2 t_0} 
  \end{align}
 
+1. Ny sidohastighet
+ \begin{align}\label{vtot}
+vSida& = vSida_0 + (a_2-a_1) \Delta t\\
+vSida& = vSida_0 + g \frac{c_2-c_1}{\sqrt{v_f}} \Delta t
+ \end{align}
 
- Den roterande rörelsen påverkas av friktionen mot isen. 
+2. Ny vinkelhastighet
+ \begin{align}\label{vtot}
+w& = w_0 - \frac{c_1}{r \sqrt{v_f}} \Delta t
+ \end{align}
+
+ Detta beräknas genom att efter beräkning av friktionspåverkan i punkterna p1 och p2 beräkna den nya vinkelhastigheten enligt \eqref{newOmega}
+Den nya vinkelhastigheten beräknas utifrån den mindre friktionen (fram på stenen) då kraften utöver detta som är friktionskraft i bakänden på stenen är kraften som går till rörelsen i sidled. 
+ 
 
 \subsection{Kollision}
 
@@ -144,9 +180,6 @@ Den resulterande hastigheten består i beräkningarna således av tre komponente
  \begin{align} % &-tecknen gör att de alignar
 % Position
  pos&=pos_n+\bar{v_n}\Delta t \\  %Oklar på hur man gör längre nedsänkningar än ett tecken (ex. n+1) 
-% Speeds and velocities
- v&=v_n+a \Delta t \\ 
- \omega&=\omega_n+\alpha \Delta t  
  \end{align}
 
 \subsection{Kollision}
@@ -204,13 +237,6 @@ Här är en onumrerad lista
 
 Systemarkitekturen utgörs av ett Use-Case Diagram, och här kommer den automatiska referensen till den:   (Figure ~\ref{fig:Translation}).
 
-\begin{figure}[ht!]
-\centering
-\includegraphics[width=80mm]{Translation.png}
-\caption{Translation}
-\label{fig:Translation}
-\label{overflow}
-\end{figure}
 
 
 \pagebreak
