@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2014.2.17)  27 FEB 2014 11:40
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2014.2.17)  27 FEB 2014 16:33
 entering extended mode
 **rapportLatex.tex
 
@@ -575,14 +575,7 @@ Package tocloft Info: The document has section divisions on input line 44.
 \cftsubtabnumwidth=\skip102
 )
 (C:\Users\Linnéa\Documents\Skola\MoS-projekt\MoS_Projekt\Rapport\rapportLatex.
-aux
-
-LaTeX Warning: Label `fig:Translation' multiply defined.
-
-
-LaTeX Warning: Label `overflow' multiply defined.
-
-)
+aux)
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 78.
 LaTeX Font Info:    ... okay on input line 78.
 LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 78.
@@ -658,6 +651,14 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1
 
 {C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map}]
+
+LaTeX Warning: Reference `Ftot' on page 1 undefined on input line 87.
+
+
+LaTeX Warning: Reference `fig:Translation' on page 1 undefined on input line 95
+.
+
+
 Overfull \hbox (13.32603pt too wide) in paragraph at lines 95--96
 []\OT1/cmr/m/n/10.95 Translationen av ste-nen ar en re-sul-terande hastighetsv
 ek-tor v, som bestar av hastigheten
@@ -668,53 +669,15 @@ File: Translation.png Graphic file (type png)
  <use Translation.png>
 Package pdftex.def Info: Translation.png used on input line 99.
 (pdftex.def)             Requested size: 227.62204pt x 197.58368pt.
- [1 <C:/Users/Linnéa/Documents/Skola/MoS-projekt/MoS_Projekt/Rapport/Translati
-on.png>]
-[2]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 173.
 
- ("C:\Program Files\MiKTeX 2.9\tex\latex\base\omscmr.fd"
-File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
-)
-LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 173.
-File: Translation.png Graphic file (type png)
 
-<use Translation.png>
-Package pdftex.def Info: Translation.png used on input line 185.
-(pdftex.def)             Requested size: 227.62204pt x 197.58368pt.
- [3]
-Underfull \hbox (badness 10000) in paragraph at lines 197--201
+LaTeX Warning: Reference `vsida_init' on page 1 undefined on input line 105.
 
- []
 
-[4]
-(C:\Users\Linnéa\Documents\Skola\MoS-projekt\MoS_Projekt\Rapport\rapportLatex.
-aux)
+LaTeX Warning: Reference `Fsida1' on page 1 undefined on input line 111.
 
-LaTeX Warning: There were multiply-defined labels.
 
- ) 
-Here is how much of TeX's memory you used:
- 5720 strings out of 493921
- 79628 string characters out of 3147330
- 158058 words of memory out of 3000000
- 8916 multiletter control sequences out of 15000+200000
- 13153 words of font info for 49 fonts, out of 3000000 for 9000
- 841 hyphenation exceptions out of 8191
- 44i,10n,43p,974b,278s stack positions out of 5000i,500n,10000p,200000b,50000s
-<C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Pr
-ogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Program Fil
-es/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTeX
- 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX 2.9/font
-s/type1/public/amsfonts/cm/cmr17.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/p
-ublic/amsfonts/cm/cmr8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsf
-onts/cm/cmss10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/
-cmss12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.p
-fb>
-Output written on rapportLatex.pdf (5 pages, 132896 bytes).
-PDF statistics:
- 57 PDF objects out of 1000 (max. 8388607)
- 0 named destinations out of 1000 (max. 500000)
- 6 words of extra memory for PDF output out of 10000 (max. 10000000)
+LaTeX Warning: Reference `Fsida2' on page 1 undefined on input line 111.
 
+
+L

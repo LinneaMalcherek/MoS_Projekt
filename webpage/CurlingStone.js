@@ -56,9 +56,9 @@ CurlingStone.prototype = {
 		this.player=player; // börjar på 0 -> antalet spelare -1
 	},
 
-<!-- returns a scalar. v = v + a*dt-->
-	newSpeed: function(acceleration,dt){
-		this.speed = this.speed + acceleration * dt;
+ <!-- returns a scalar. v = v + a*dt-->
+	newSpeed: function(speed,acceleration,dt){
+		return speed + acceleration * dt;
 	},
 
 <!-- returns a scalar, -my*g  KAN ÄNDRAS OM vi vill ha beroende av hastighet-->
@@ -99,6 +99,32 @@ CurlingStone.prototype = {
 		var vec2 = this.directionSide.multiply(this.speedSide); 	<!-- velocity side -->
 
 		return vec1.add(vec2); 
+
+	},
+
+	updateSpeeds: function(acceleration){
+
+		<!-- Lägg ihop vektorn framåt(utslagsvinkel) och sidovektorn -->
+		v = this.calcVelocityResultant();
+
+		<!-- Dela upp hastighetsvektorn i speed(riktig) och direction(riktig) -->
+		vSpeed = Math.sqrt(Math.pow(v.e(1),2) + Math.pow(v.e(2),2));
+		vDir = v.toUnitVector();
+
+
+		<!-- Lägg friktion på speed(riktig) -->
+		vSpeed = this.newSpeed(vSpeed,acceleration,dt);						 <!-- Accelerationen i färdriktningen (friktionen) -->
+
+
+		<!-- Återskapa den nya hastighetsvektorn (riktiga) -->
+		v = vDir.multiply(vSpeed);
+
+		<!-- Projicera den nya hastighetsvektorn(riktig) på utslagsriktningen (uppdatera endast speed krävs)-->
+		this.speed = (v.dot(this.directionForward))/(this.directionForward.dot(this.directionForward));
+
+		<!-- Projicera den nya sidhastighetsvektorn på sidoriktningen (uppdatera endast speed krävs)-->
+		this.speedSide = (v.dot(this.directionSide))/(this.directionSide.dot(this.directionSide));
+
 	},
 
 <!-- Calculates the new position. pos = pos + v*dt; -->
@@ -123,12 +149,12 @@ CurlingStone.prototype = {
 			friction = MY * 0.5; 
 		}
 
-		a = this.calcAcceleration(G, friction); <!-- här ändrat till friction, (MY) ifall vi sopat -->
+		a = this.calcAcceleration(G, friction); 										<!-- här ändrat till friction, (MY) ifall vi sopat -->
 
-		this.newSpeed(a,dt);														<!-- Updates speed forward-->
 		this.newSpeedSide(G,this.frictionCoeffC[0],this.frictionCoeffC[1],R_INNER); 	<!-- Updates speedSide -->
-		this.newAngularSpeed(this.speedSide);										<!-- Updates angularSpeed -->
-		
+		this.newAngularSpeed(this.speedSide);											<!-- Updates angularSpeed -->
+		this.updateSpeeds(a);															<!-- Updates both speeds due to friction in movement direction -->
+
 		var velocity = this.calcVelocityResultant();
 		this.setNewPos(velocity,dt);
 		this.setNewAngle(dt);
