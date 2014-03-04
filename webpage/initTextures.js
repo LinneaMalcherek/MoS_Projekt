@@ -22,7 +22,7 @@ function initTextures() {
 
 var gulTexture;
 
-function initTextures() {
+function initTextures4() {
     gulTexture = gl.createTexture();
     gulTexture.image = new Image();
     gulTexture.image.onload = function () {

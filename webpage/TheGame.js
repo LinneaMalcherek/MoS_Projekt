@@ -14,6 +14,8 @@ theGame.prototype = {
 		return this;
 	},
 
+
+
 <!-- creates a new stone and throws it -->
 	throwStone: function(angle, speed, playerid){
 		this.players[playerid].thrown = this.players[playerid].thrown + 1 ;
@@ -22,6 +24,7 @@ theGame.prototype = {
 		stone.init(angle, speed, stoneid,playerid);
 		this.players[playerid].stones.push(stone);
 		this.concatArrays(); // lägger till alla stenar tillsammans för beräkningar med collision och allt. 
+		this.updateInfo();
 	},
 
 	collision: function(){
@@ -164,8 +167,13 @@ theGame.prototype = {
         drawScene(this.players); 
         this.animate();
         this.collision();
-        <!-- anropa en funktion som kollar om stenen åkt utanför banan tex. eller kanske ligga i animate den-->
-        
+
+        // kolla om vi har kört klart alla stenar måste stå still!!!
+        if(document.getElementById("spelare1").disabled && document.getElementById("spelare2").disabled){
+
+        	if (this.players[1].stones[NUMBEROFSTONES-1].speed < 0.01) // räkna ut poängen när den sista stenen har stannat! kanske innte bästa men ändå..
+	        	this.countScore();
+        }        
 	},
 
 	disableButton: function(button){
@@ -180,6 +188,20 @@ theGame.prototype = {
 
 	},
 
+	endOfRound: function(){
+		if(this.players[0].thrown == NUMBEROFSTONES) {
+			document.getElementById("spelare1").disabled=true;
+		}
+		if(this.players[1].thrown == NUMBEROFSTONES) {
+			document.getElementById("spelare2").disabled=true;
+		}
+	},
+
+	countScore: function(){
+		console.log("RÄKNA UT POÄNGEN DÅ!");
+
+	},
+
 <!-- Bara en funktion nu för att testa! använder fälten för att skicka nya stenar-->
 	kastaStenTest: function(id){
 		<!-- hämtar värdet ur två stycken fält, skrivit in vinkel och hastighet där -->
@@ -189,8 +211,10 @@ theGame.prototype = {
 		var radians = angle * (Math.PI/180);
 
 		this.throwStone(radians,speed,id);
-
 		this.disableButton(id);
+
+		this.endOfRound(); // alltid kolla om vi har slagit 8 ggr
+
 	},
 
 	starting: function(){
@@ -200,6 +224,7 @@ theGame.prototype = {
 	    initTextures();
 	    initTextures2();
         initTextures3();
+        initTextures4();
 	    loadObject();
 	    loadObject2();
         loadObject3();
@@ -222,6 +247,16 @@ theGame.prototype = {
 	},
 
 
+
+
+	updateInfo: function(){
+		var stones1 = this.players[0].thrown;
+		var stones2 = this.players[1].thrown;
+		document.getElementById("score1").innerHTML="0" ;
+		document.getElementById("score2").innerHTML="0" ;
+		document.getElementById("stone1").innerHTML=" "+stones1 ;
+		document.getElementById("stone2").innerHTML=" "+stones2 ;
+	},
 
 }
 

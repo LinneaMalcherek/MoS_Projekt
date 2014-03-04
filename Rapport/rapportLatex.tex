@@ -109,7 +109,6 @@ Beräkningen av hastigheterna i punkterna p1 och p2 beräknas i två steg. I fö
  \end{align}
 
 I det andra steget beräknas den påverkan som friktionen har på hastigheten i de två punkterna \eqref{Fsida1} \eqref{Fsida2}, där friktionen påverkas av hastigheten i punkten samt av en konstant c \eqref{mu} . 
-Resultatet av detta blir två hastighetsvektorer i motsatta riktningar där den ena är större än den andra och resultanten blir således den riktning åt vilken stenen curlar. 
 
  \begin{align}\label{Fsida1}
  F_1& = \mu_1 mg\\\label{Fsida2}
@@ -117,6 +116,7 @@ F_2& = \mu_2 mg\\\label{mu}
 \mu&=\frac{c}{\sqrt{v}}
  \end{align}
 
+Hastigheterna i de två punkterna blir därmed två hastighetsvektorer i motsatta riktningar där den ena är större än den andra och resultanten blir således den riktning åt vilken stenen curlar (Figur~\ref{fig:Translation}). 
 Translationen av stenen i riktning framåt beräknas enligt Eulers stegmetod och med konstant friktionskoefficient. 
 
 Den resulterande hastigheten består i beräkningarna således av tre komponenter  \eqref{vtot}. 
@@ -125,7 +125,16 @@ Den resulterande hastigheten består i beräkningarna således av tre komponente
  &\bar{v}=\bar{v_f}+(\bar{v_1}+\bar{v_2})
  \end{align}
 
+\subsection{Rotation}
 
+Stenen har även en roterande rörelse med en vinkelhastighet vars ursprungsvärde beräknas utifrån utslagshastigheten av stenen.
+Vid utslaget antas att spelaren håller stenen så att handtaget pekar i en riktning 90 GRADER från riktning framåt antingen med "inhand" eller "outhand" och släpper stenen med handtaget pekande rakt fram vid hoglinjen LITE BILDER PÅ BANAN. Detta innebär att stenen roterar 90 GRADER under den tid det tar för spelaren att ta sig mellan hack och hog, vilket är direkt kopplat till den angivna utslagshastigheten. 
+
+ angular_speed1 = pi / (2*t0); 
+
+ Den roterande rörelsen påverkas av friktionen mot isen. 
+
+\subsection{Kollision}
 
 
  \begin{align} % &-tecknen gör att de alignar
