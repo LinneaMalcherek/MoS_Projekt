@@ -9,9 +9,9 @@ function CurlingStone()
 	this.angularSpeed = 0;
 	this.frictionCoeffC = new Array(0.000001,0.0001); <!-- change HERE the constans for the forward and backward friction -->
 	this.angle = 0; 
-
 	this.stoneId; // vilken sten, 1-8
 	this.player; // vilken spelare
+	this.distanceFromMiddle=1000; 
 
 	this.render = false; <!-- if render or not -->
 }
@@ -153,6 +153,13 @@ CurlingStone.prototype = {
 			return -1* this.angle;
 
 		return this.angle; 
+	},
+
+	calculateDistance: function(){
+		if(this.render)
+			this.distanceFromMiddle = this.pos.distanceFrom(TEE);
+		else
+			this.distanceFromMiddle = 9999;
 	},
 
 <!-- JUST FUNCTION FOR TESTING, NOT NEEDED LATER -->

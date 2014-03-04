@@ -163,13 +163,14 @@ theGame.prototype = {
 	tick: function(){
 		window.requestAnimationFrame(this.tick.bind(this));
 		this.handleMove();
-		this.outOfBounds(); 
+		//this.outOfBounds(); 
         drawScene(this.players); 
         this.animate();
         this.collision();
+		this.sendNewStone();
 
         // kolla om vi har kört klart alla stenar måste stå still!!!
-        if(document.getElementById("spelare1").disabled && document.getElementById("spelare2").disabled){
+        if( this.allStones.length == NUMBEROFSTONES*2 ){
 
         	if (this.players[1].stones[NUMBEROFSTONES-1].speed < 0.01) // räkna ut poängen när den sista stenen har stannat! kanske innte bästa men ändå..
 	        	this.countScore();
@@ -177,28 +178,82 @@ theGame.prototype = {
 	},
 
 	disableButton: function(button){
-		if (!button) {
-			document.getElementById("spelare1").disabled=true;
-			document.getElementById("spelare2").disabled=false;
-		}
-		else {
+		if (button) {
 			document.getElementById("spelare1").disabled=false;
 			document.getElementById("spelare2").disabled=true;
 		}
+		else {
+			document.getElementById("spelare1").disabled=true;
+			document.getElementById("spelare2").disabled=false;
+		}
 
 	},
 
-	endOfRound: function(){
-		if(this.players[0].thrown == NUMBEROFSTONES) {
-			document.getElementById("spelare1").disabled=true;
+	disableAll: function(){
+		document.getElementById("spelare1").disabled=true;
+		document.getElementById("spelare2").disabled=true;
+	},
+
+	resetRound: function(){
+		// anroppas när man tryck på knappen ny omgång! 
+		// gå igenom båda spelarna och ta bort curlingarrayen
+		// sätta thrown till 0 igen! 
+		// knapparna ska återställas
+		for(var i=0; i<this.players.length; i++){
+			delete this.players[i].stones;
+			this.players[i].stones = new Array();
+			this.players[i].thrown = 0;
 		}
-		if(this.players[1].thrown == NUMBEROFSTONES) {
-			document.getElementById("spelare2").disabled=true;
-		}
+
+		delete this.allStones; 
+		this.allStones = new Array();
+
+		this.disableButton(1); 
+		this.updateInfo();
+
+		document.getElementById("newRound").style.visibility = "hidden";
 	},
 
 	countScore: function(){
-		console.log("RÄKNA UT POÄNGEN DÅ!");
+		var score = new Array();
+		score[0]=this.players[0].score;
+		score[1]=this.players[1].score;
+		// skriv ut den nya poängen! 
+
+		// räkna ut poängen genom att gå igenom alla stener som är i spel(render=true) och ta dess position
+		// till mittpunkten (den vektorn). räkna ut vektorns längd och sen spara alla längder för varje spelare och sten.
+		// se vilken spelare som har sten närmast och även om de har fler stenar innan motståndarens första sten.s
+		for (var i=0; i < NUMBEROFSTONES*2; i++){ // för varje sten
+			this.allStones[i].calculateDistance(); // räknar ut avståndet för varje sten till mitten. 
+		}
+
+		this.allStones.sort(function(a,b){return a.distanceFromMiddle-b.distanceFromMiddle}); // sort!!
+
+//		if (this.allStones[0].distanceFromMiddle + R < NEST_RADIUS){
+			var sum=1;
+			var leader = this.allStones[0].player;
+			var i=1;
+
+			while (this.allStones[i].player == this.allStones[i++].player){
+				sum = sum + 1;
+				if (i >= NUMBEROFSTONES - 1)
+					break;
+			}
+
+			score[leader] = score[leader] + sum; 
+
+//		}
+
+		this.players[0].score = score[0];
+		this.players[1].score = score[1];
+		
+
+
+		document.getElementById("score1").innerHTML=""+score[0] ;
+		document.getElementById("score2").innerHTML=""+score[1] ;
+
+		// enable resetRound-knappen lr se till så att den dyker upp! 
+		document.getElementById("newRound").style.visibility = "visible";
 
 	},
 
@@ -211,9 +266,8 @@ theGame.prototype = {
 		var radians = angle * (Math.PI/180);
 
 		this.throwStone(radians,speed,id);
-		this.disableButton(id);
+		this.disableAll();
 
-		this.endOfRound(); // alltid kolla om vi har slagit 8 ggr
 
 	},
 
@@ -238,6 +292,21 @@ theGame.prototype = {
 
 	},
 
+	sendNewStone: function(){
+		if (this.allStones.length!=0) {
+			var id = 0;
+			if(this.allStones.length%2 == 0) {
+				id=1;
+			}
+
+			// man får ej skjuta ut en ny sten förrens den senaste har stannat! 
+			if(this.players[id].stones[this.players[id].thrown-1].render && this.players[id].stones[this.players[id].thrown-1].speed < 0.01 && this.allStones.length!=NUMBEROFSTONES*2  ){
+				this.disableButton(id);
+
+			}
+		}
+	},
+
 	concatArrays: function(){
 		var c = [];
 		for (var i =0; i<this.players.length; i++){
@@ -250,10 +319,12 @@ theGame.prototype = {
 
 
 	updateInfo: function(){
+		var score1 = this.players[0].score;
+		var score2 = this.players[1].score;
 		var stones1 = this.players[0].thrown;
 		var stones2 = this.players[1].thrown;
-		document.getElementById("score1").innerHTML="0" ;
-		document.getElementById("score2").innerHTML="0" ;
+		document.getElementById("score1").innerHTML=""+score1 ;
+		document.getElementById("score2").innerHTML=""+score2 ;
 		document.getElementById("stone1").innerHTML=" "+stones1 ;
 		document.getElementById("stone2").innerHTML=" "+stones2 ;
 	},
