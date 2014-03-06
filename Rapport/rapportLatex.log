@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2014.2.17)  27 FEB 2014 16:33
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2014.2.17)  5 MAR 2014 11:39
 entering extended mode
 **rapportLatex.tex
 
@@ -436,6 +436,161 @@ LaTeX Font Info:    Redeclaring font encoding OMS on input line 567.
 LaTeX Info: Redefining \[ on input line 2665.
 LaTeX Info: Redefining \] on input line 2666.
 )
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\textcomp.sty"
+Package: textcomp 2005/09/27 v1.99g Standard LaTeX package
+Package textcomp Info: Sub-encoding information:
+(textcomp)               5 = only ISO-Adobe without \textcurrency
+(textcomp)               4 = 5 + \texteuro
+(textcomp)               3 = 4 + \textohm
+(textcomp)               2 = 3 + \textestimated + \textcurrency
+(textcomp)               1 = TS1 - \textcircled - \t
+(textcomp)               0 = TS1 (full)
+(textcomp)             Font families with sub-encoding setting implement
+(textcomp)             only a restricted character set as indicated.
+(textcomp)             Family '?' is the default used for unknown fonts.
+(textcomp)             See the documentation for details.
+Package textcomp Info: Setting ? sub-encoding to TS1/1 on input line 71.
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\ts1enc.def"
+File: ts1enc.def 2001/06/05 v3.0e (jk/car/fm) Standard LaTeX file
+Now handling font encoding TS1 ...
+... processing UTF-8 mapping file for font encoding TS1
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\ts1enc.dfu"
+File: ts1enc.dfu 2008/04/05 v1.1m UTF-8 support for inputenc
+   defining Unicode char U+00A2 (decimal 162)
+   defining Unicode char U+00A3 (decimal 163)
+   defining Unicode char U+00A4 (decimal 164)
+   defining Unicode char U+00A5 (decimal 165)
+   defining Unicode char U+00A6 (decimal 166)
+   defining Unicode char U+00A7 (decimal 167)
+   defining Unicode char U+00A8 (decimal 168)
+   defining Unicode char U+00A9 (decimal 169)
+   defining Unicode char U+00AA (decimal 170)
+   defining Unicode char U+00AC (decimal 172)
+   defining Unicode char U+00AE (decimal 174)
+   defining Unicode char U+00AF (decimal 175)
+   defining Unicode char U+00B0 (decimal 176)
+   defining Unicode char U+00B1 (decimal 177)
+   defining Unicode char U+00B2 (decimal 178)
+   defining Unicode char U+00B3 (decimal 179)
+   defining Unicode char U+00B4 (decimal 180)
+   defining Unicode char U+00B5 (decimal 181)
+   defining Unicode char U+00B6 (decimal 182)
+   defining Unicode char U+00B7 (decimal 183)
+   defining Unicode char U+00B9 (decimal 185)
+   defining Unicode char U+00BA (decimal 186)
+   defining Unicode char U+00BC (decimal 188)
+   defining Unicode char U+00BD (decimal 189)
+   defining Unicode char U+00BE (decimal 190)
+   defining Unicode char U+00D7 (decimal 215)
+   defining Unicode char U+00F7 (decimal 247)
+   defining Unicode char U+0192 (decimal 402)
+   defining Unicode char U+02C7 (decimal 711)
+   defining Unicode char U+02D8 (decimal 728)
+   defining Unicode char U+02DD (decimal 733)
+   defining Unicode char U+0E3F (decimal 3647)
+   defining Unicode char U+2016 (decimal 8214)
+   defining Unicode char U+2020 (decimal 8224)
+   defining Unicode char U+2021 (decimal 8225)
+   defining Unicode char U+2022 (decimal 8226)
+   defining Unicode char U+2030 (decimal 8240)
+   defining Unicode char U+2031 (decimal 8241)
+   defining Unicode char U+203B (decimal 8251)
+   defining Unicode char U+203D (decimal 8253)
+   defining Unicode char U+2044 (decimal 8260)
+   defining Unicode char U+204E (decimal 8270)
+   defining Unicode char U+2052 (decimal 8274)
+   defining Unicode char U+20A1 (decimal 8353)
+   defining Unicode char U+20A4 (decimal 8356)
+   defining Unicode char U+20A6 (decimal 8358)
+   defining Unicode char U+20A9 (decimal 8361)
+   defining Unicode char U+20AB (decimal 8363)
+   defining Unicode char U+20AC (decimal 8364)
+   defining Unicode char U+20B1 (decimal 8369)
+   defining Unicode char U+2103 (decimal 8451)
+   defining Unicode char U+2116 (decimal 8470)
+   defining Unicode char U+2117 (decimal 8471)
+   defining Unicode char U+211E (decimal 8478)
+   defining Unicode char U+2120 (decimal 8480)
+   defining Unicode char U+2122 (decimal 8482)
+   defining Unicode char U+2126 (decimal 8486)
+   defining Unicode char U+2127 (decimal 8487)
+   defining Unicode char U+212E (decimal 8494)
+   defining Unicode char U+2190 (decimal 8592)
+   defining Unicode char U+2191 (decimal 8593)
+   defining Unicode char U+2192 (decimal 8594)
+   defining Unicode char U+2193 (decimal 8595)
+   defining Unicode char U+2329 (decimal 9001)
+   defining Unicode char U+232A (decimal 9002)
+   defining Unicode char U+2422 (decimal 9250)
+   defining Unicode char U+25E6 (decimal 9702)
+   defining Unicode char U+25EF (decimal 9711)
+   defining Unicode char U+266A (decimal 9834)
+))
+LaTeX Info: Redefining \oldstylenums on input line 266.
+Package textcomp Info: Setting cmr sub-encoding to TS1/0 on input line 281.
+Package textcomp Info: Setting cmss sub-encoding to TS1/0 on input line 282.
+Package textcomp Info: Setting cmtt sub-encoding to TS1/0 on input line 283.
+Package textcomp Info: Setting cmvtt sub-encoding to TS1/0 on input line 284.
+Package textcomp Info: Setting cmbr sub-encoding to TS1/0 on input line 285.
+Package textcomp Info: Setting cmtl sub-encoding to TS1/0 on input line 286.
+Package textcomp Info: Setting ccr sub-encoding to TS1/0 on input line 287.
+Package textcomp Info: Setting ptm sub-encoding to TS1/4 on input line 288.
+Package textcomp Info: Setting pcr sub-encoding to TS1/4 on input line 289.
+Package textcomp Info: Setting phv sub-encoding to TS1/4 on input line 290.
+Package textcomp Info: Setting ppl sub-encoding to TS1/3 on input line 291.
+Package textcomp Info: Setting pag sub-encoding to TS1/4 on input line 292.
+Package textcomp Info: Setting pbk sub-encoding to TS1/4 on input line 293.
+Package textcomp Info: Setting pnc sub-encoding to TS1/4 on input line 294.
+Package textcomp Info: Setting pzc sub-encoding to TS1/4 on input line 295.
+Package textcomp Info: Setting bch sub-encoding to TS1/4 on input line 296.
+Package textcomp Info: Setting put sub-encoding to TS1/5 on input line 297.
+Package textcomp Info: Setting uag sub-encoding to TS1/5 on input line 298.
+Package textcomp Info: Setting ugq sub-encoding to TS1/5 on input line 299.
+Package textcomp Info: Setting ul8 sub-encoding to TS1/4 on input line 300.
+Package textcomp Info: Setting ul9 sub-encoding to TS1/4 on input line 301.
+Package textcomp Info: Setting augie sub-encoding to TS1/5 on input line 302.
+Package textcomp Info: Setting dayrom sub-encoding to TS1/3 on input line 303.
+Package textcomp Info: Setting dayroms sub-encoding to TS1/3 on input line 304.
+
+Package textcomp Info: Setting pxr sub-encoding to TS1/0 on input line 305.
+Package textcomp Info: Setting pxss sub-encoding to TS1/0 on input line 306.
+Package textcomp Info: Setting pxtt sub-encoding to TS1/0 on input line 307.
+Package textcomp Info: Setting txr sub-encoding to TS1/0 on input line 308.
+Package textcomp Info: Setting txss sub-encoding to TS1/0 on input line 309.
+Package textcomp Info: Setting txtt sub-encoding to TS1/0 on input line 310.
+Package textcomp Info: Setting lmr sub-encoding to TS1/0 on input line 311.
+Package textcomp Info: Setting lmdh sub-encoding to TS1/0 on input line 312.
+Package textcomp Info: Setting lmss sub-encoding to TS1/0 on input line 313.
+Package textcomp Info: Setting lmssq sub-encoding to TS1/0 on input line 314.
+Package textcomp Info: Setting lmvtt sub-encoding to TS1/0 on input line 315.
+Package textcomp Info: Setting qhv sub-encoding to TS1/0 on input line 316.
+Package textcomp Info: Setting qag sub-encoding to TS1/0 on input line 317.
+Package textcomp Info: Setting qbk sub-encoding to TS1/0 on input line 318.
+Package textcomp Info: Setting qcr sub-encoding to TS1/0 on input line 319.
+Package textcomp Info: Setting qcs sub-encoding to TS1/0 on input line 320.
+Package textcomp Info: Setting qpl sub-encoding to TS1/0 on input line 321.
+Package textcomp Info: Setting qtm sub-encoding to TS1/0 on input line 322.
+Package textcomp Info: Setting qzc sub-encoding to TS1/0 on input line 323.
+Package textcomp Info: Setting qhvc sub-encoding to TS1/0 on input line 324.
+Package textcomp Info: Setting futs sub-encoding to TS1/4 on input line 325.
+Package textcomp Info: Setting futx sub-encoding to TS1/4 on input line 326.
+Package textcomp Info: Setting futj sub-encoding to TS1/4 on input line 327.
+Package textcomp Info: Setting hlh sub-encoding to TS1/3 on input line 328.
+Package textcomp Info: Setting hls sub-encoding to TS1/3 on input line 329.
+Package textcomp Info: Setting hlst sub-encoding to TS1/3 on input line 330.
+Package textcomp Info: Setting hlct sub-encoding to TS1/5 on input line 331.
+Package textcomp Info: Setting hlx sub-encoding to TS1/5 on input line 332.
+Package textcomp Info: Setting hlce sub-encoding to TS1/5 on input line 333.
+Package textcomp Info: Setting hlcn sub-encoding to TS1/5 on input line 334.
+Package textcomp Info: Setting hlcw sub-encoding to TS1/5 on input line 335.
+Package textcomp Info: Setting hlcf sub-encoding to TS1/5 on input line 336.
+Package textcomp Info: Setting pplx sub-encoding to TS1/3 on input line 337.
+Package textcomp Info: Setting pplj sub-encoding to TS1/3 on input line 338.
+Package textcomp Info: Setting ptmx sub-encoding to TS1/4 on input line 339.
+Package textcomp Info: Setting ptmj sub-encoding to TS1/4 on input line 340.
+)
 ("C:\Program Files\MiKTeX 2.9\tex\latex\booktabs\booktabs.sty"
 Package: booktabs 2005/04/14 v1.61803 publication quality tables
 \heavyrulewidth=\dimen122
@@ -575,19 +730,35 @@ Package tocloft Info: The document has section divisions on input line 44.
 \cftsubtabnumwidth=\skip102
 )
 (C:\Users\Linnéa\Documents\Skola\MoS-projekt\MoS_Projekt\Rapport\rapportLatex.
-aux)
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 78.
-LaTeX Font Info:    ... okay on input line 78.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 78.
-LaTeX Font Info:    ... okay on input line 78.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 78.
-LaTeX Font Info:    ... okay on input line 78.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 78.
-LaTeX Font Info:    ... okay on input line 78.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 78.
-LaTeX Font Info:    ... okay on input line 78.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 78.
-LaTeX Font Info:    ... okay on input line 78.
+aux
+
+LaTeX Warning: Label `overflow' multiply defined.
+
+
+LaTeX Warning: Label `vCollision' multiply defined.
+
+
+LaTeX Warning: Label `vCollision' multiply defined.
+
+)
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 79.
+LaTeX Font Info:    ... okay on input line 79.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 79.
+LaTeX Font Info:    ... okay on input line 79.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 79.
+LaTeX Font Info:    ... okay on input line 79.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 79.
+LaTeX Font Info:    ... okay on input line 79.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 79.
+LaTeX Font Info:    ... okay on input line 79.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 79.
+LaTeX Font Info:    ... okay on input line 79.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 79.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 79.
+ ("C:\Program Files\MiKTeX 2.9\tex\latex\base\ts1cmr.fd"
+File: ts1cmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    ... okay on input line 79.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -640,44 +811,101 @@ LaTeX Font Info:    ... okay on input line 78.
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: subfig package v1.3 is loaded.
 Package caption Info: End \AtBeginDocument code.
-LaTeX Font Info:    Try loading font information for U+msa on input line 79.
+LaTeX Font Info:    Try loading font information for U+msa on input line 80.
  ("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd"
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 79.
+LaTeX Font Info:    Try loading font information for U+msb on input line 80.
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd"
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1
 
 {C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map}]
-
-LaTeX Warning: Reference `Ftot' on page 1 undefined on input line 87.
-
-
-LaTeX Warning: Reference `fig:Translation' on page 1 undefined on input line 95
-.
-
-
-Overfull \hbox (13.32603pt too wide) in paragraph at lines 95--96
-[]\OT1/cmr/m/n/10.95 Translationen av ste-nen ar en re-sul-terande hastighetsv
-ek-tor v, som bestar av hastigheten
- []
-
-<Translation.png, id=7, 578.16pt x 501.875pt>
+<Translation.png, id=7, 563.10374pt x 578.16pt>
 File: Translation.png Graphic file (type png)
  <use Translation.png>
-Package pdftex.def Info: Translation.png used on input line 99.
-(pdftex.def)             Requested size: 227.62204pt x 197.58368pt.
+Package pdftex.def Info: Translation.png used on input line 98.
+(pdftex.def)             Requested size: 227.62204pt x 233.7036pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 105--110
+
+ []
+
+[1 <C:/Users/Linnéa/Documents/Skola/MoS-projekt/MoS_Projekt/Rapport/Translatio
+n.png>] <Friktion_bakfram.png, id=18, 787.94376pt x 416.55624pt>
+File: Friktion_bakfram.png Graphic file (type png)
+
+<use Friktion_bakfram.png>
+Package pdftex.def Info: Friktion_bakfram.png used on input line 119.
+(pdftex.def)             Requested size: 312.9803pt x 165.45636pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 133--135
+
+ []
+
+[2 <C:/Users/Linnéa/Documents/Skola/MoS-projekt/MoS_Projekt/Rapport/Friktion_b
+akfram.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 141--145
+
+ []
 
 
-LaTeX Warning: Reference `vsida_init' on page 1 undefined on input line 105.
+Underfull \hbox (badness 10000) in paragraph at lines 141--145
+
+ []
 
 
-LaTeX Warning: Reference `Fsida1' on page 1 undefined on input line 111.
+Overfull \hbox (4.90358pt too wide) in paragraph at lines 160--162
+\OT1/cmr/m/n/10.95 Stenen har aven en roterande rorelse med en vinkel-hastigh
+et vars ur-sprungsvarde beraknas
+ []
+
+[3]
+
+LaTeX Warning: Reference `newOmega' on page 4 undefined on input line 182.
+
+[4] [5] [6]
+Underfull \hbox (badness 10000) in paragraph at lines 290--294
+
+ []
+
+[7]
+(C:\Users\Linnéa\Documents\Skola\MoS-projekt\MoS_Projekt\Rapport\rapportLatex.
+aux)
+
+LaTeX Warning: There were undefined references.
 
 
-LaTeX Warning: Reference `Fsida2' on page 1 undefined on input line 111.
+LaTeX Warning: There were multiply-defined labels.
 
+ ) 
+Here is how much of TeX's memory you used:
+ 6243 strings out of 493921
+ 87095 string characters out of 3147330
+ 163958 words of memory out of 3000000
+ 9429 multiletter control sequences out of 15000+200000
+ 13494 words of font info for 50 fonts, out of 3000000 for 9000
+ 841 hyphenation exceptions out of 8191
+ 44i,11n,43p,974b,278s stack positions out of 5000i,500n,10000p,200000b,50000s
+{C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/cm-super/cm-super-ts1.enc}<C:/Pr
+ogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Program Fi
+les/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Program Files/MiKT
+eX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program Files/MiKTeX 2.9/f
+onts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Program Files/MiKTeX 2.9/fonts/type
+1/public/amsfonts/cm/cmmi8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/
+amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/
+cm/cmr12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr17.
+pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Pr
+ogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program File
+s/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmss10.pfb><C:/Program Files/MiKTeX
+ 2.9/fonts/type1/public/amsfonts/cm/cmss12.pfb><C:/Program Files/MiKTeX 2.9/fon
+ts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1
+/public/amsfonts/cm/cmsy8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/c
+m-super/sfrm1095.pfb>
+Output written on rapportLatex.pdf (8 pages, 214541 bytes).
+PDF statistics:
+ 95 PDF objects out of 1000 (max. 8388607)
+ 0 named destinations out of 1000 (max. 500000)
+ 11 words of extra memory for PDF output out of 10000 (max. 10000000)
 
-L
