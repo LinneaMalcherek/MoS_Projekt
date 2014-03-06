@@ -11,8 +11,8 @@ function dataConstants()
 
 	pitch = 0;
 	yaw=0;
-	xCam=0;
-	yCam=0.4;
+	xCam=-0.2;
+	yCam=0.3;
 	zCam=0;
 	speed=0;
 	yawRate =0;
