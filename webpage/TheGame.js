@@ -29,24 +29,24 @@ theGame.prototype = {
 
 	collision: function(){
 		<!-- kolla kollision hela tiden för alla stenar. isf  -->
-		for( var i=0; i < this.allStones.length; i++ ){
-			for ( var j=i; j < this.allStones.length; j++ ) {
-				if(i==j)
+
+			for( var i=0; i < this.allStones.length; i++ ){
+
+				if(!this.allStones[i].render)
 					continue;
-				<!-- only check if one of the stones is moving.  -->
-				if(this.allStones[i].render && this.allStones[j].render && ( this.allStones[i].speed > 0.01 || this.allStones[j].speed > 0.01) ) {
+
+				for ( var j=i+1; j < this.allStones.length; j++ ) {
+
+					if(!this.allStones[j].render)
+						continue;
+
 					if( checkCollision( this.allStones[i], this.allStones[j] ) ){
-						setAfterCollision(this.allStones[i], this.allStones[j]);
-						<!-- behöver kolla med radie oliteså för är lite knas -->
+							setAfterCollision(this.allStones[i], this.allStones[j]);
+					}
 
-					}	
 				}
-
 			}
-
-		}
-	
-
+//( this.allStones[i].speed > 0.01 || this.allStones[j].speed > 0.01)
 	},
 
 	handleKeyDown: function(event) {
@@ -124,7 +124,6 @@ theGame.prototype = {
 
                 xCam -= Math.sin(yaw*Math.PI/180) * speed * dt;
                 zCam -= Math.cos(yaw*Math.PI/180) * speed * dt;
-               // joggingAngle += dt * 0.6; // 0.6 "fiddle factor" - makes it feel more realistic :-)
                 yCam = Math.sin(Math.PI/180) / 20 + 0.4;
             }
 
@@ -163,11 +162,12 @@ theGame.prototype = {
 	tick: function(){
 		window.requestAnimationFrame(this.tick.bind(this));
 		this.handleMove();
-		//this.outOfBounds(); 
-        drawScene(this.players); 
+		this.collision();
         this.animate();
-        this.collision();
-		this.sendNewStone();
+        //this.outOfBounds(); 
+        drawScene(this.players);
+        this.sendNewStone();
+
 
         // kolla om vi har kört klart alla stenar måste stå still!!!
         if( this.allStones.length == NUMBEROFSTONES*2 ){

@@ -4,7 +4,7 @@ function CurlingStone()
 	this.pos = $V([0,0]); <!-- uses vector-notation for position -->
 	this.speed = 0;
 	this.speedSide = 0; 
-	this.directionForward = $V([0,1]); <!-- direction forward-->
+	this.directionForward = $V([0,1]);
 	this.directionSide = $V([0,0]); 
 	this.angularSpeed = 0;
 	this.frictionCoeffC = new Array(0.00001,0.0001);//(0.000001,0.0001); <!-- change HERE the constans for the forward and backward friction -->
@@ -79,7 +79,7 @@ CurlingStone.prototype = {
 
 <!-- Calculates new speedSide from calcAngularAcceleration -->
 	newSpeedSide: function(gravity, my_f, my_b, dt){
-		if (this.speedSide <= 0) <!-- If stone is not moving -->
+		if (this.speedSide < 0) <!-- If stone is not moving -->
 			this.speedSide = 0; 
 		else
 			this.speedSide = this.speedSide + this.calcAngularAcceleration(gravity, my_f, my_b, R_INNER) * dt;
@@ -148,7 +148,7 @@ CurlingStone.prototype = {
 		<!-- om vi har sopat, skickar med-->
 		var friction = MY; 
 		if (sweep){
-			friction = MY * 0.5; 
+			friction = MY * 0.8; 
 		}
 
 		a = this.calcAcceleration(G, friction); 										<!-- här ändrat till friction, (MY) ifall vi sopat -->
