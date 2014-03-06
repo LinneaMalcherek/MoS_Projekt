@@ -4,7 +4,7 @@ function CurlingStone()
 	this.pos = $V([0,0]); <!-- uses vector-notation for position -->
 	this.speed = 0;
 	this.speedSide = 0; 
-	this.directionForward = $V([0,1]); <!-- direction forward-->
+	this.directionForward = $V([0,1]);
 	this.directionSide = $V([0,0]); 
 	this.angularSpeed = 0;
 	this.frictionCoeffC = new Array(0.00001,0.0001);//(0.000001,0.0001); <!-- change HERE the constans for the forward and backward friction -->

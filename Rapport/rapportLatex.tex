@@ -68,8 +68,8 @@
 
 \pagenumbering{gobble}
 \title{Projektrapport Grupp 3 \\* 
-CUURRLLInNNNGGG!\\*
-TNM??? Modelleringsprojekt}
+Curling\\*
+TNM085 Modelleringsprojekt}
 \author{Linnéa Mellblom\\*Linnea Malcherek\\* Julia Nilsson\\*Michael Nilsson\\*Linnéa Nåbo}
 %\date{} % Activate to display a given date or no date (if empty),
          % otherwise the current date is printed 
@@ -125,8 +125,10 @@ REFERENS: http://www.sciencedirect.com/science/article/pii/S0043164813000732
 Den vattenhinna som skapas vid sopning för med sig att de spår som den främre delen av stenen åstadkommer minskar och därmed  även dess effekt på den bakre delen av stenen. Därmed gör sopning att stenen curlar mindre. Friktionen i punkterna längs bandet påverkas av av stenens rörelse framåt \eqref{mu}. HÄR BEHÖVS VERKLIGEN REFERENS!     
 
 \begin{equation}\label{mu} 
-\mu=\frac{c}{\sqrt{v}} \Rightarrow a = \frac{cg}{\sqrt{v}}
+\mu = \frac{c}{\sqrt{v}} \Rightarrow a = \frac{cg}{\sqrt{v}} 
 \end{equation}
+
+c = konstant, g = gravitation, v = hastigheten
 
 \subsubsection{Resulterande translation}
 
@@ -174,13 +176,15 @@ v_{s_{n+1}}& = v_{s_{n}} + g \frac{c_2-c_1}{\sqrt{v_f}} \Delta t
  \begin{align}\label{omegaNew}
 \omega_{n+1}& = \omega_n - \frac{c_1}{r \sqrt{v_f}} \Delta t
  \end{align}
-ELLER??? 
+ELLER? 
  \begin{align}\label{omegaN}
 \omega_{n+1}& = \frac{v_{s_n}} {r_{inner}}
  \end{align}
 
+(fortfarande lite osäkra på vilken ekvartion..)
+
  Detta beräknas genom att efter beräkning av friktionspåverkan i punkterna p1 och p2 beräkna den nya vinkelhastigheten enligt \eqref{newOmega}
-Den nya vinkelhastigheten beräknas utifrån den mindre friktionen (fram på stenen) då kraften utöver detta som är friktionskraft i bakänden på stenen är kraften som går till rörelsen i sidled. HÄR MÅSTE VI KOMMA ÖVERENS MED OSS SJÄLVA
+Den nya vinkelhastigheten beräknas utifrån den mindre friktionen (fram på stenen) då kraften utöver detta som är friktionskraft i bakänden på stenen är kraften som går till rörelsen i sidled. 
  
 
 \subsection{Kollision}
@@ -196,7 +200,7 @@ Om avståndet mellan stenarnas mittpunkter är mindre än två radier \eqref{les
 Hastigheten och riktningen av curlingstenarna efter en kollision beräknas med hjälp av de tva stenarnas position och hastighetsvektorer.
 (Kontroll av kollision Inelastiskt Delas upp i tva komponenter, normal och tangent)?
 
-Från början har beräkningar gjorts av en rak central stöt där det finns två givna funktioner för att ta fram stötkoefficienten e. Med hjälp av stötkoefficienten kan man reglera allt från e=1 som är en helt elastisk stöt och e=0 som är en helt inelastisk stöt. I curling där det är två stenar som krockar är det rimligt med en energiförlust och en inelastisk stöt bör därmed tas i beräkning. Efter tester passar en stötkoefficent på e=?. (vad vi nu har satt)
+Från början har beräkningar gjorts av en rak central stöt där det finns två givna funktioner för att ta fram hastigheten efter krock. Med hjälp av stötkoefficienten kan man reglera allt från e=1 som är en helt elastisk stöt och e=0 som är en helt inelastisk stöt. I curling där det är två stenar som krockar är det rimligt med en energiförlust och en inelastisk stöt bör därmed tas i beräkning. Efter tester passar en stötkoefficent på e=?. (vad vi nu har satt)
 
  \begin{align}\label{e1}
  e& = \frac{v_2''-v_1''}{v_2'-v_1'}\\
@@ -223,6 +227,8 @@ v_2'& = v_{2n}' + v_{2t}'
 
 BILD
 
+Vi räknar nu kollisionen som en rak central stöt med normalkomponenten. 
+
  \begin{align}\label{vCollision}
  v_{1n}' + v_{2n}'& = v_{1n}'' + v_{2n}''\\
  e& = \frac{v_{2n}''-v_{1n}''}{v_{2n}'-v_{1n}'}\\
@@ -235,58 +241,6 @@ Löser ut:
  v_{2n}''& = \frac{v_{1n}' + v_{2n}'  + e(v_{1n}' + v_{2n}')}{2} 
  \end{align}
 
-
-
-
-\section{Mål}
-
-
-
-\begin{enumerate}
-\item Här är en numrerad lista
-\item Filtrera 
-\item Kontrollera 
-\item Göra 
-\item Skapa 
-\item Möjlighet 
-\end{enumerate}
-
-
-\pagebreak 
-
-
-
-\subsection{Kravhantering}
-
-Här är en sektion
-
-\subsection{Principer och rutiner vid testning}
-
-\subsubsection{Allmänt}
-Här är en subsektion
-
-\subsubsection{Rutiner för test}
-Och en subsub!
-
-Här är en onumrerad lista
-\begin{itemize}
-\item Olika
-\item Att 
-\item Att
-\item Om 
-\end{itemize}
-
-
-
-Systemarkitekturen utgörs av ett Use-Case Diagram, och här kommer den automatiska referensen till den:   (Figure ~\ref{fig:Translation}).
-
-
-
 \pagebreak
-
-
-
-
-
 
 \end{document}
