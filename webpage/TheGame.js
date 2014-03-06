@@ -29,10 +29,7 @@ theGame.prototype = {
 
 	collision: function(){
 		<!-- kolla kollision hela tiden för alla stenar. isf  -->
-		//var checkforcollision =true;
 
-		//while(checkforcollision){
-			//checkforcollision=false;
 			for( var i=0; i < this.allStones.length; i++ ){
 
 				if(!this.allStones[i].render)
@@ -45,51 +42,11 @@ theGame.prototype = {
 
 					if( checkCollision( this.allStones[i], this.allStones[j] ) ){
 							setAfterCollision(this.allStones[i], this.allStones[j]);
-							//checkforcollision=true;
 					}
 
 				}
 			}
-		//}
-	/*	for( var i=0; i < this.allStones.length; i++ ){
-
-			if(this.allStones[i].speed==0 || !this.allStones[i].render)
-				continue;
-
-			for ( var j=0; j < this.allStones.length; j++ ) {
-
-				if(i==j || !this.allStones[j].render)
-					continue;
-
-				if(j<i && this.allStones[j].speed > 0.001)
-					continue;
-
-				if( checkCollision( this.allStones[i], this.allStones[j] ) ){
-						setAfterCollision(this.allStones[i], this.allStones[j]);
-						if(j<i)
-							i=j;
-				}
-			}
-		}*/
-
-		/*for( var i=0; i < this.allStones.length; i++ ){
-			for ( var j=i; j < this.allStones.length; j++ ) {
-				if(i==j)
-					continue;
-				<!-- only check if one of the stones is moving.  -->
-				if(this.allStones[i].render && this.allStones[j].render && ( this.allStones[i].speed > 0.01 || this.allStones[j].speed > 0.01) ) {
-					if( checkCollision( this.allStones[i], this.allStones[j] ) ){
-						setAfterCollision(this.allStones[i], this.allStones[j]);
-						<!-- behöver kolla med radie oliteså för är lite knas -->
-
-					}	
-				}
-
-			}
-
-		}*/
-	
-
+//( this.allStones[i].speed > 0.01 || this.allStones[j].speed > 0.01)
 	},
 
 	handleKeyDown: function(event) {
