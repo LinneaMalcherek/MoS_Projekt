@@ -79,7 +79,7 @@ CurlingStone.prototype = {
 
 <!-- Calculates new speedSide from calcAngularAcceleration -->
 	newSpeedSide: function(gravity, my_f, my_b, dt){
-		if (this.speedSide <= 0) <!-- If stone is not moving -->
+		if (this.speedSide < 0) <!-- If stone is not moving -->
 			this.speedSide = 0; 
 		else
 			this.speedSide = this.speedSide + this.calcAngularAcceleration(gravity, my_f, my_b, R_INNER) * dt;
@@ -148,7 +148,7 @@ CurlingStone.prototype = {
 		<!-- om vi har sopat, skickar med-->
 		var friction = MY; 
 		if (sweep){
-			friction = MY * 0.5; 
+			friction = MY * 0.8; 
 		}
 
 		a = this.calcAcceleration(G, friction); 										<!-- här ändrat till friction, (MY) ifall vi sopat -->

@@ -24,6 +24,9 @@
 
             
             if (allStones[i].render){
+
+                //console.log("Rotationalspeed: %s, Speed Side %s", allStones[i].angularSpeed , allStones[i].speedSide)
+
                 mat4.identity(mMatrix);
                 mat4.translate(mMatrix, [0,-5,0]);
                 mat4.translate(mMatrix, [allStones[i].getXPos(), allStones[i].getYPos(), ZPOS]);
@@ -61,10 +64,9 @@
 
 
         mat4.identity(mMatrix);
-        mat4.translate(mMatrix, [0,3,-0.1]);
-        mat4.rotateZ(mMatrix, Math.PI/2);
+        mat4.translate(mMatrix, [0,12,-0.5]);
+        //mat4.rotateZ(mMatrix, Math.PI/2);
         mat4.rotateX(mMatrix, Math.PI/2);
-
 
         gl.bindBuffer(gl.ARRAY_BUFFER, VertexPositionBuffer2);
         gl.vertexAttribPointer(shaderProgram.vertexPositionAttribute, VertexPositionBuffer2.itemSize, gl.FLOAT, false, 0, 0);

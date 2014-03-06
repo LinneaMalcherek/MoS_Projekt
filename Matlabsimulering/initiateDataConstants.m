@@ -3,7 +3,7 @@ g = 9.82;
 
 % Sten
 m = 18;
-r = 0.6; %0.1454676 är korrekt, men inte så bra att testa med. 
+r = 0.1454676; %0.1454676 är korrekt, men inte så bra att testa med. 
 r_inner = 0.1; %inte taget från verkliga data
 
 % Isen
