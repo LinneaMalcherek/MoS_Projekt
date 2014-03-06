@@ -90,8 +90,8 @@ CurlingStone.prototype = {
 		if (this.angularSpeed <= 0 || this.speed <= 0)
 			this.angularSpeed =  0;
 		else
-			//this.angularSpeed = new_speed_side / R_INNER;
-			this.angularSpeed = this.angularSpeed - (this.frictionCoeffC[1] / (R_INNER*Math.sqrt(this.speed)))*G*dt;
+			this.angularSpeed = new_speed_side / R_INNER;
+			//this.angularSpeed = this.angularSpeed - (this.frictionCoeffC[0] / (R_INNER*Math.sqrt(this.speed))*G   +    this.frictionCoeffC[1] / (R_INNER*Math.sqrt(this.speed))*G)*dt;
 			console.log("speed: %s , ang speed: %s", this.speed, this.angularSpeed);
 	},
 

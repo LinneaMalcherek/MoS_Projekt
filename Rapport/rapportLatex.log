@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2014.2.17)  4 MAR 2014 19:08
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2014.2.17)  5 MAR 2014 11:39
 entering extended mode
 **rapportLatex.tex
 
@@ -735,10 +735,10 @@ aux
 LaTeX Warning: Label `overflow' multiply defined.
 
 
-LaTeX Warning: Label `vtot' multiply defined.
+LaTeX Warning: Label `vCollision' multiply defined.
 
 
-LaTeX Warning: Label `vtot' multiply defined.
+LaTeX Warning: Label `vCollision' multiply defined.
 
 )
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 79.
@@ -846,31 +846,31 @@ Underfull \hbox (badness 10000) in paragraph at lines 133--135
 
 [2 <C:/Users/Linnéa/Documents/Skola/MoS-projekt/MoS_Projekt/Rapport/Friktion_b
 akfram.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 141--146
+Underfull \hbox (badness 10000) in paragraph at lines 141--145
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 141--146
+Underfull \hbox (badness 10000) in paragraph at lines 141--145
 
  []
 
 
-Overfull \hbox (4.90358pt too wide) in paragraph at lines 155--157
+Overfull \hbox (4.90358pt too wide) in paragraph at lines 160--162
 \OT1/cmr/m/n/10.95 Stenen har aven en roterande rorelse med en vinkel-hastigh
 et vars ur-sprungsvarde beraknas
  []
 
 [3]
 
-LaTeX Warning: Reference `newOmega' on page 4 undefined on input line 173.
+LaTeX Warning: Reference `newOmega' on page 4 undefined on input line 182.
 
-[4] [5]
-Underfull \hbox (badness 10000) in paragraph at lines 247--251
+[4] [5] [6]
+Underfull \hbox (badness 10000) in paragraph at lines 290--294
 
  []
 
-[6]
+[7]
 (C:\Users\Linnéa\Documents\Skola\MoS-projekt\MoS_Projekt\Rapport\rapportLatex.
 aux)
 
@@ -881,27 +881,31 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 6234 strings out of 493921
- 87027 string characters out of 3147330
- 162878 words of memory out of 3000000
- 9420 multiletter control sequences out of 15000+200000
+ 6243 strings out of 493921
+ 87095 string characters out of 3147330
+ 163958 words of memory out of 3000000
+ 9429 multiletter control sequences out of 15000+200000
  13494 words of font info for 50 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
  44i,11n,43p,974b,278s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/cm-super/cm-super-ts1.enc}<C:/Pr
 ogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Program Fi
-les/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program Files/MiKT
-eX 2.9/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Program Files/MiKTeX 2.9/fo
-nts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1
-/public/amsfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/a
-msfonts/cm/cmr17.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/c
-m/cmr8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmss10.p
-fb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmss12.pfb><C:/P
-rogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program F
-iles/MiKTeX 2.9/fonts/type1/public/cm-super/sfrm1095.pfb>
-Output written on rapportLatex.pdf (7 pages, 177734 bytes).
+les/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Program Files/MiKT
+eX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program Files/MiKTeX 2.9/f
+onts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Program Files/MiKTeX 2.9/fonts/type
+1/public/amsfonts/cm/cmmi8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/
+amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/
+cm/cmr12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr17.
+pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Pr
+ogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program File
+s/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmss10.pfb><C:/Program Files/MiKTeX
+ 2.9/fonts/type1/public/amsfonts/cm/cmss12.pfb><C:/Program Files/MiKTeX 2.9/fon
+ts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1
+/public/amsfonts/cm/cmsy8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/c
+m-super/sfrm1095.pfb>
+Output written on rapportLatex.pdf (8 pages, 214541 bytes).
 PDF statistics:
- 76 PDF objects out of 1000 (max. 8388607)
+ 95 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  11 words of extra memory for PDF output out of 10000 (max. 10000000)
 

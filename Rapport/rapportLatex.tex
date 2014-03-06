@@ -109,9 +109,9 @@ En curlingsten har en kontaktyta mot isen bestående av ett tunt band (ca 5mm br
 REFERENS: http://www.sciencedirect.com/science/article/pii/S0043164813000732
 
  \begin{align}\label{Fsida1}
- F_1& = \mu_1 mg\\\label{Fsida2}
-F_2& = \mu_2 mg\\\label{biggerthan}
-\mu_2& > \mu_1
+ F_1& = ma_1 = \mu_1 mg \Rightarrow a_1 = \mu_1 g \\\label{Fsida2}
+ F_2& = ma_2 = \mu_2 mg \Rightarrow a_2 = \mu_2g \\\label{biggerthan}
+ \mu_2& > \mu_1
  \end{align}
 
 \begin{figure}[ht!]
@@ -125,7 +125,7 @@ F_2& = \mu_2 mg\\\label{biggerthan}
 Den vattenhinna som skapas vid sopning för med sig att de spår som den främre delen av stenen åstadkommer minskar och därmed  även dess effekt på den bakre delen av stenen. Därmed gör sopning att stenen curlar mindre. Friktionen i punkterna längs bandet påverkas av av stenens rörelse framåt \eqref{mu}. HÄR BEHÖVS VERKLIGEN REFERENS!     
 
 \begin{equation}\label{mu} 
-\mu=\frac{c}{\sqrt{v}}
+\mu=\frac{c}{\sqrt{v}} \Rightarrow a = \frac{cg}{\sqrt{v}}
 \end{equation}
 
 \subsubsection{Resulterande translation}
@@ -141,12 +141,17 @@ Translationen av stenen är en resulterande hastighetsvektor v, som består av h
 I det andra steget beräknas den påverkan som friktionen har på hastigheten i de två punkterna, där friktionen påverkas av hastigheten i stenens färdriktning samt av en konstant c,  \eqref{Fsida1} \eqref{Fsida2} \eqref{mu} . 
 REF FRICTIONAL FORCE IN MOTION, PHYSICS HANDBOOK S 158
 \\\\Hastigheterna i de två punkterna blir därmed två hastighetsvektorer i motsatta riktningar där den ena är större än den andra och resultanten blir således den riktning åt vilken stenen curlar (Figur~\ref{fig:Translation}). 
-Translationen av stenen i riktning framåt beräknas enligt Eulers stegmetod och med konstant friktionskoefficient. 
 \\\\Den resulterande hastigheten består i beräkningarna således av tre komponenter, \eqref{vtot}, där vektorn i riktning framåt uppdateras för varje position. 
 
  \begin{align}\label{vtot}
  \bar{v_s}& = \bar{v_1}+\bar{v_2}\\
  \bar{v}&=\bar{v_f}+\bar{v_s}
+ \end{align}
+
+Translationen av stenen i riktning framåt beräknas enligt Eulers stegmetod \eqref{pos}. 
+
+ \begin{align}\label{pos}
+ pos_{n+1}& = pos_{n} + \bar{v} \Delta t
  \end{align}
 
 \subsection{Rotation}
@@ -160,37 +165,75 @@ Vid utslaget antas att spelaren håller stenen så att handtaget pekar i en rikt
  \end{align}
 
 1. Ny sidohastighet
- \begin{align}\label{vtot}
-vSida& = vSida_0 + (a_2-a_1) \Delta t\\
-vSida& = vSida_0 + g \frac{c_2-c_1}{\sqrt{v_f}} \Delta t
+ \begin{align}\label{vNew}
+v_{s_{n+1}}& = v_{s_{n}} + (a_2-a_1) \Delta t\\
+v_{s_{n+1}}& = v_{s_{n}} + g \frac{c_2-c_1}{\sqrt{v_f}} \Delta t
  \end{align}
 
 2. Ny vinkelhastighet
- \begin{align}\label{vtot}
-w& = w_0 - \frac{c_1}{r \sqrt{v_f}} \Delta t
+ \begin{align}\label{omegaNew}
+\omega_{n+1}& = \omega_n - \frac{c_1}{r \sqrt{v_f}} \Delta t
+ \end{align}
+ELLER??? 
+ \begin{align}\label{omegaN}
+\omega_{n+1}& = \frac{v_{s_n}} {r_{inner}}
  \end{align}
 
  Detta beräknas genom att efter beräkning av friktionspåverkan i punkterna p1 och p2 beräkna den nya vinkelhastigheten enligt \eqref{newOmega}
-Den nya vinkelhastigheten beräknas utifrån den mindre friktionen (fram på stenen) då kraften utöver detta som är friktionskraft i bakänden på stenen är kraften som går till rörelsen i sidled. 
+Den nya vinkelhastigheten beräknas utifrån den mindre friktionen (fram på stenen) då kraften utöver detta som är friktionskraft i bakänden på stenen är kraften som går till rörelsen i sidled. HÄR MÅSTE VI KOMMA ÖVERENS MED OSS SJÄLVA
  
 
 \subsection{Kollision}
 
+För att kontrollera att en kollision sker beräknas avståndet mellan stenarnas position \eqref{d}.
+Om avståndet mellan stenarnas mittpunkter är mindre än två radier \eqref{lessThan} har stenarna krockat.  (eftersom krocken bara sker i 2 dimensioner). 
 
- \begin{align} % &-tecknen gör att de alignar
-% Position
- pos&=pos_n+\bar{v_n}\Delta t \\  %Oklar på hur man gör längre nedsänkningar än ett tecken (ex. n+1) 
+ \begin{align}\label{d}
+ d& = \sqrt{(sten_{1_{xpos}} - sten_{2_{xpos}})^2   +   (sten_{1_{ypos}}-sten_{1_{ypos}})^2}\\\label{lessThan}
+ d& \le 2 r
  \end{align}
 
-\subsection{Kollision}
+Hastigheten och riktningen av curlingstenarna efter en kollision beräknas med hjälp av de tva stenarnas position och hastighetsvektorer.
+(Kontroll av kollision Inelastiskt Delas upp i tva komponenter, normal och tangent)?
 
-För att kontrollera att en kollision sker beräknar vi avståndet mellan stenarnas position.
+Från början har beräkningar gjorts av en rak central stöt där det finns två givna funktioner för att ta fram stötkoefficienten e. Med hjälp av stötkoefficienten kan man reglera allt från e=1 som är en helt elastisk stöt och e=0 som är en helt inelastisk stöt. I curling där det är två stenar som krockar är det rimligt med en energiförlust och en inelastisk stöt bör därmed tas i beräkning. Efter tester passar en stötkoefficent på e=?. (vad vi nu har satt)
 
-Hastigheten och riktningen av curlingstenarna efter en kollision beräknas med hjälp av de två stenarnas position och hastighetsvektorer. 
+ \begin{align}\label{e1}
+ e& = \frac{v_2''-v_1''}{v_2'-v_1'}\\
+ e& = \frac{relativ hastighet innan kollision}{relativ hastighet efter kollision}\\
+0& \le e \le 1
+ \end{align}
 
-Kontroll av kollision
-Inelastiskt
-Delas upp i två komponenter, normal och tangent.
+REFERENS: R Grahn,P-Å jansson: Dynamik (Studentlitteratur 1995), sid 334-345
+
+Först antas en helt elastisk stöt där rörelsemängden bevaras helt och ger
+
+ \begin{align}\label{elastisk}
+m_1 v_1' + m_2 v_2'& = m_1 v_1'' + m_2 v_2'' \Rightarrow\\
+m_1& = m_2 \Rightarrow\\
+v_1' + v_2'& = v_1'' + v_2''
+ \end{align}
+
+För att kunna hantera sneda stötar behöver man dela upp v1och v2i en normal- och en tangentkomponent. 
+
+ \begin{align}\label{vCollision}
+v_1'& = v_{1n}' + v_{1t}'\\
+v_2'& = v_{2n}' + v_{2t}'
+ \end{align}
+
+BILD
+
+ \begin{align}\label{vCollision}
+ v_{1n}' + v_{2n}'& = v_{1n}'' + v_{2n}''\\
+ e& = \frac{v_{2n}''-v_{1n}''}{v_{2n}'-v_{1n}'}\\
+ \end{align}
+
+Löser ut: 
+
+ \begin{align}\label{vCollision}
+ v_{1n}''& = \frac{v_{1n}' + v_{2n}'  - e(v_{1n}' + v_{2n}')}{2} \\
+ v_{2n}''& = \frac{v_{1n}' + v_{2n}'  + e(v_{1n}' + v_{2n}')}{2} 
+ \end{align}
 
 
 
