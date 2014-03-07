@@ -208,7 +208,7 @@ theGame.prototype = {
 				id=1;
 			}
 
-			if(this.players[id].stones[this.players[id].thrown-1].render && this.players[id].stones[this.players[id].thrown-1].speed < 0.01 && this.allStones.length!=NUMBEROFSTONES*2  ){
+			if(this.players[id].stones[this.players[id].thrown-1].speed < 0.01 && this.allStones.length!=NUMBEROFSTONES*2  ){
 				this.disableButton(id);
 			}
 		}
