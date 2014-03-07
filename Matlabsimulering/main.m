@@ -37,6 +37,7 @@ stone_angle1 = -pi/2;   %Måste ändras beroende på inhand/outhand
 stone_angle2 = 0;
 
 time=0;
+t = 0; 
 
 initiateDataConstants;
 
@@ -77,8 +78,13 @@ while checkSpeed(speed1, speed2) && checkBoundaries(stone_pos1,stone_pos2, field
     % Calculates the new position for both stones
     [stone_pos1, stone_angle1] = calculateNewPosition(stone_pos1,stone_angle1,velocity1,angular_speed1,dt);
     [stone_pos2, stone_angle2] = calculateNewPosition(stone_pos2,stone_angle2,velocity2,angular_speed1,dt);
-    stone_pos1
-
+    %stone_pos1
+    t = t + dt; 
+    VecSpeed(end+1)= speed1; 
+    VecTime(end+1) = t;
+    VecAngSpeed(end+1) = angular_speed1; 
+    VecSpeedSide(end+1)  = speed_side1; 
+    
     %Render function, plots both curling stones.
     render;
     dt = toc;
@@ -86,3 +92,9 @@ while checkSpeed(speed1, speed2) && checkBoundaries(stone_pos1,stone_pos2, field
 
 end
 
+figure; 
+plot(VecTime,VecAngSpeed,'b');
+hold on;
+plot(VecTime,VecSpeed,'m');
+hold on;
+plot(VecTime,VecSpeedSide,'r');

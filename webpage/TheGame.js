@@ -120,6 +120,7 @@ theGame.prototype = {
 
 	   		    yaw += yawRate * dt;
 	            pitch += pitchRate * dt;
+
    		}
 
    		LASTTIME = timeNow;
