@@ -28,7 +28,7 @@
                 //console.log("Rotationalspeed: %s, Speed Side %s", allStones[i].angularSpeed , allStones[i].speedSide)
 
                 mat4.identity(mMatrix);
-                mat4.translate(mMatrix, [0,-5,0]);
+                mat4.translate(mMatrix, [-0.15,-12,-0.2]);
                 mat4.translate(mMatrix, [allStones[i].getXPos(), allStones[i].getYPos(), ZPOS]);
                 mat4.rotateZ(mMatrix, allStones[i].getAngle());
 
