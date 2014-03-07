@@ -59,8 +59,8 @@
                 game = new theGame();
                 game.starting();
 
-                var player1 = new onePlayer("Nea");
-                var player2 = new onePlayer("Hugo");
+                var player1 = new onePlayer();
+                var player2 = new onePlayer();
 
                 game.addPlayer(player1);
                 game.addPlayer(player2);
@@ -77,7 +77,7 @@
         <div id="wrapper">
           <h1> <img src="curling.jpg" alt="" height="35" /> Curling</h1>
           <p>
-            Vinkel : <input type="text" id="vinkel"> Hastighet: <input type="text" id="hastighet"> <button id="spelare1" onclick="game.kastaStenTest(0)">Spelare 1</button> <button id="spelare2" disabled="disabled" onclick="game.kastaStenTest(1)">Spelare 2</button><br />
+            Vinkel : <input type="text" id="vinkel"> Hastighet: <input type="text" id="hastighet"> <button id="spelare1" onclick="game.throwStoneFromUser(0)">Spelare 1</button> <button id="spelare2" disabled="disabled" onclick="game.throwStoneFromUser(1)">Spelare 2</button><br />
           </p>
                     <p>Spelare 1. Antal stenar: <span id="stone1">0</span>. Antal poäng: <span id="score1">0</span> | Spelare 2. Antal stenar: <span id="stone2">0</span>. Antal poäng: <span id="score2">0</span></p>
           <button id="newRound" onclick="game.resetRound()">Ny omgång</button><br />
