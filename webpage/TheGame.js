@@ -136,12 +136,14 @@ theGame.prototype = {
 				var stoneId= this.allStones[i].stoneId;
 				var playerId=this.allStones[i].player;
 				this.players[playerId].stones[stoneId].render = false;
+				this.allStones[i].speed=0;
 			}
 			// delete stone if it has stoped before the hog-line
 			if (this.allStones[i].speed < 0.01 && this.allStones[i].getYPos() < FIELDLENGTH - HACK_HOG){
 				var stoneId= this.allStones[i].stoneId;
 				var playerId=this.allStones[i].player;
 				this.players[playerId].stones[stoneId].render = false;
+				this.allStones[i].speed=0;
 			}
 		}
 	},
