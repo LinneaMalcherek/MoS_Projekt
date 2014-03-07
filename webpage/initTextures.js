@@ -41,7 +41,7 @@ function initTextures2() {
         handleLoadedTexture(banaTexture)
     }
 
-    banaTexture.image.src = "bana_texture_template.png";
+    banaTexture.image.src = "curlingbanan12.png";
 }
 
 var sphereTexture;
