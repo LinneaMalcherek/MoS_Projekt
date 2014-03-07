@@ -81,7 +81,17 @@ TNM085 Modelleringsprojekt}
 \pagebreak
 \pagenumbering{arabic}  
 
-\section{Redogörelse för arbetet}
+\section{Introduktion}
+Curling jättekul. Beskriva något om att inte så jättevanligt att simulera curling "på riktigt" sätt. Säga att vi fokuserat på vissa saker, kanske ska ligga under nästa stycke istället då? 
+
+\section{Begränsningar och förenklingar} %kanske inte världens bästa rubrik men ändra sen
+I alla beräkningar har vi förutsatt att curlingstenarna har samma massa, och därmed förenklat beräkningarna med att förkortta bort massan. 
+
+I detta arbete har vi främst fokuserat på att hantera curlingstenens translation och friktionens påverkan, rotation och även kollision. 
+
+Att visa hur sopning framför curlingstenen har vi ej fokuserat på....
+
+\section{Fysik} % kanske ha en annan rubrik här!
 
 \subsection{Translation}
 
@@ -162,6 +172,15 @@ Translationen av stenen i riktning framåt beräknas enligt Eulers stegmetod \eq
 Stenen har även en roterande rörelse med en vinkelhastighet vars ursprungsvärde beräknas utifrån utslagshastigheten av stenen.
 Vid utslaget antas att spelaren håller stenen så att handtaget pekar i en riktning 90\textdegree  från riktning framåt antingen med "inhand" eller "outhand" och släpper stenen med handtaget pekande rakt fram vid hoglinjen LITE BILDER PÅ BANAN. Detta innebär att stenen roterar 90\textdegree under den tid det tar för spelaren att ta sig mellan hack och hog, vilket är direkt kopplat till den angivna utslagshastigheten. 
 
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=110mm]{bana.png}
+\caption{Curlingbanan}
+\label{fig:bana}
+\label{overflow}
+\end{figure}
+
+
 \begin{align}%\label{vtot}
  \omega_0 = \frac{\pi}{2 t_0} 
  \end{align}
@@ -196,6 +215,14 @@ Om avståndet mellan stenarnas mittpunkter är mindre än två radier \eqref{les
  d& = \sqrt{(sten_{1_{xpos}} - sten_{2_{xpos}})^2   +   (sten_{1_{ypos}}-sten_{1_{ypos}})^2}\\\label{lessThan}
  d& \le 2 r
  \end{align}
+
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=80mm]{krock.png}
+\caption{Kontrollera kollision}
+\label{fig:kollision}
+\label{overflow}
+\end{figure}
 
 Hastigheten och riktningen av curlingstenarna efter en kollision beräknas med hjälp av de tva stenarnas position och hastighetsvektorer.
 (Kontroll av kollision Inelastiskt Delas upp i tva komponenter, normal och tangent)?
@@ -242,5 +269,12 @@ Löser ut:
  \end{align}
 
 \pagebreak
+
+\section{Numerisk}
+Arrangera om lite från fysik-delen. I fysikdelen ska enbart FORMERL visas. Här i numeriska biten kanske vi ska ha med att vi använder euler. Skriva hur vi hittar nya hastigheter, sidohastigheter, vinkelhastigheter osv. 
+
+\section{Simulering}
+
+\section{Diskussion}
 
 \end{document}
