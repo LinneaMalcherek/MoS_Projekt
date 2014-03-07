@@ -7,7 +7,9 @@ function CurlingStone()
 	this.directionForward = $V([0,1]);
 	this.directionSide = $V([0,0]); 
 	this.angularSpeed = 0;
-	this.frictionCoeffC = new Array(0.00001,0.0001); // constans for the forward and backward friction
+	this.frictionCoeffC = new Array(0.000001,0.0001); // constans for the forward and backward friction
+	cb = 0.0001;
+	cf = 0.000001;
 	this.angle = 0; 
 	this.stoneId; // which stone is being throwed. 1 - NUMBEROFSTONES
 	this.player; // which player the stone belongs to
@@ -55,16 +57,46 @@ CurlingStone.prototype = {
 		this.player=player;
 	},
 
-	// returns a scalar. v = v + a*dt
-	newSpeed: function(speed,acceleration,dt){
-		return speed + acceleration * dt;
-		//return rungekutta(speed,speed,dt,a_speed);
+	// returns acceleration for speed forward at vel v
+	a_speed: function(v){
+		return -MY*G; 
+	},
+	// returns acceleration for speedSide at vel v
+	a_speedSide: function(v){
+		return (cb - cf)*G/Math.sqrt(v);
+		//return (this.frictionCoeffC[0] - this.frictionCoeffC[1])*G/Math.sqrt(v);
+	},
+	// returns acceleration for angularSpeed at vel v
+	a_angSpeed: function(v){
+		return -((cb + cf)*G)/(Math.sqrt(v)*R_INNER);//(this.frictionCoeffC[0] + this.frictionCoeffC[1])*G/(Math.sqrt(v)*R_INNER);
+		//return  G*(this.frictionCoeffC[0] + this.frictionCoeffC[1])/(Math.sqrt(v)*R_INNER);
+	},
+	// returns next step according to the runge-kutta method
+	rungekutta: function(v_n,v,h,a){
+		
+		var k_1 = a(v);
+		var k_2 = a(v+0.5*h*k_1);
+		var k_3 = a(v+0.5*h*k_2);
+		var k_4 = a(v+h*k_3);
+		var v2  = v_n + (1/6)*((k_1+2*k_2+2*k_3+k_4)*h);
+
+		if (0 < v2)
+    		return v2;  
+    	else
+    		return 0;
 	},
 
-	// returns a scalar, -my*g 
+
+	// returns a scalar by runge kutta
+	newSpeed: function(speed,acceleration,dt){
+		//return speed + acceleration * dt;
+		return this.rungekutta(speed,speed,dt,this.a_speed);
+	},
+
+	//returns a scalar, -my*g 
 	calcAcceleration: function(gravity, my_constant){
 		return -1 * my_constant * gravity; 
-	}, 
+	},
 
 	// Returns total acceleration sideways (difference between front and back)
 	calcAngularAcceleration: function(gravity, my_f, my_b, r){ //my_f and my_b frictioncoeff for front and back of the stone
@@ -73,24 +105,36 @@ CurlingStone.prototype = {
 		} else{
 			return gravity*(my_b-my_f) / Math.sqrt(this.speed);// Total acceleration from difference between acc front and back, dependant on speed 
 		}
-	}, 
+	},
 
 	// Calculates new speedSide from calcAngularAcceleration
 	newSpeedSide: function(gravity, my_f, my_b, dt){
+		/*
 		if (this.speedSide < 0) //If stone is not moving
 			this.speedSide = 0; 
 		else
-			this.speedSide = this.speedSide + this.calcAngularAcceleration(gravity, my_f, my_b, R_INNER) * dt;
+			this.speedSide = this.speedSide + this.calcAngularAcceleration(gravity, my_f, my_b, R_INNER) * dt;*/
+		if (this.speedSide < 0) //If stone is not moving
+			this.speedSide = 0; 
+		else
+			this.speedSide = this.rungekutta(this.speedSide,this.speed,dt,this.a_speedSide);
+		
 	},
 
 	// Calculates angular speed from speed side
 	newAngularSpeed: function(new_speed_side){
+		/*
 		if (this.angularSpeed <= 0 || this.speed <= 0)
 			this.angularSpeed =  0;
 		else
 			//this.angularSpeed = new_speed_side / R_INNER;
 			this.angularSpeed = this.angularSpeed - (this.frictionCoeffC[0] / (R_INNER*Math.sqrt(this.speed))*G   +    this.frictionCoeffC[1] / (R_INNER*Math.sqrt(this.speed))*G)*dt;
-			//console.log("speed: %s , ang speed: %s speedside: %s", this.speed, this.angularSpeed, this.speedSide);
+*/
+		if (this.angularSpeed <= 0 || this.speed <= 0)
+			this.angularSpeed =  0;
+		else
+			//this.angularSpeed = new_speed_side / R_INNER;
+			this.angularSpeed = this.rungekutta(this.angularSpeed,this.speed,dt,this.a_angSpeed);
 	},
 
 	// Calculates resultant of the speeds forward and sideways 

@@ -5,6 +5,6 @@ function [ a ] = a_angSpeed(vfront)
     cb = 0.0001;
     r_inner = 0.05;
     
-    a = g*(cb+cf)/(sqrt(vfront)*r_inner);
+    a = -g*(cb+cf)/(sqrt(vfront)*r_inner);
 
 end
