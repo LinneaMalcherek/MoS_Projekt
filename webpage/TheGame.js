@@ -151,7 +151,7 @@ theGame.prototype = {
 		this.handleMove();
 		this.collision();
         this.animate();
-        //this.outOfBounds(); 
+        this.outOfBounds(); 
         drawScene(this.players);
         this.sendNewStone(); // so that you can't send a new stone when one is already moving. 
 
