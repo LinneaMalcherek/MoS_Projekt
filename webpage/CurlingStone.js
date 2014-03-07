@@ -58,6 +58,7 @@ CurlingStone.prototype = {
 	// returns a scalar. v = v + a*dt
 	newSpeed: function(speed,acceleration,dt){
 		return speed + acceleration * dt;
+		//return rungekutta(speed,speed,dt,a_speed);
 	},
 
 	// returns a scalar, -my*g 
