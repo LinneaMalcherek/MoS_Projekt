@@ -16,7 +16,7 @@ function dataConstants() {
 	LASTTIME=0; // to be able to animate and take the right dt. 
 
 	// constanst for the field
-	FIELDLENGTH = 36.59;
+	FIELDLENGTH = 36.59 + 6.40;
 	FIELDWIDTH = 5;
 	HACK_HOG = 6.40;
 	TEE = $V([0,34.76]); <!-- the position of the middle-->

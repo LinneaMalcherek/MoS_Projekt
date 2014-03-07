@@ -151,7 +151,7 @@ theGame.prototype = {
 		this.handleMove();
 		this.collision();
         this.animate();
-        //this.outOfBounds(); 
+        this.outOfBounds(); 
         drawScene(this.players);
         this.sendNewStone(); // so that you can't send a new stone when one is already moving. 
 
@@ -209,7 +209,6 @@ theGame.prototype = {
 
 			if(this.players[id].stones[this.players[id].thrown-1].render && this.players[id].stones[this.players[id].thrown-1].speed < 0.01 && this.allStones.length!=NUMBEROFSTONES*2  ){
 				this.disableButton(id);
-
 			}
 		}
 	},
