@@ -16,11 +16,11 @@
         mat4.rotate(vMatrix,-Math.PI / 2, [1, 0, 0]);
         mat4.translate(vMatrix, [0 , 10 ,0]);
         
+        // ritar ut alla curlingstenar utifrån alla spelares stenar (så olika färg)
         for (var j=0; j<players.length; j++) {
 
             allStones = players[j].stones;
-        <!-- for every curling stone. allStones is a global variabel thas is used. is initiated when theGame is called.  -->
-        for (var i=0; i<allStones.length; i++) {
+            for (var i=0; i<allStones.length; i++) {
 
             
             if (allStones[i].render){
@@ -63,9 +63,9 @@
         }
 
 
+        // ritar ut curlingbanan
         mat4.identity(mMatrix);
         mat4.translate(mMatrix, [0,12,-0.5]);
-        //mat4.rotateZ(mMatrix, Math.PI/2);
         mat4.rotateX(mMatrix, Math.PI/2);
 
         gl.bindBuffer(gl.ARRAY_BUFFER, VertexPositionBuffer2);
@@ -82,14 +82,13 @@
         setMatrixUniforms();
         gl.drawElements(gl.TRIANGLES, VertexIndexBuffer2.numItems, gl.UNSIGNED_SHORT, 0);
 
-               
+        // ritar ut sfären (sky-spheare)
         mat4.identity(mMatrix);
         mat4.scale(mMatrix, [2, 2, 2]);
 
         mat4.rotate(vMatrix,Math.PI / 2, [1, 0, 0]);
         mat4.translate(vMatrix, [xCam, yCam, zCam]);
 
-        
 
         gl.bindBuffer(gl.ARRAY_BUFFER, VertexPositionBuffer3);
         gl.vertexAttribPointer(shaderProgram.vertexPositionAttribute, VertexPositionBuffer3.itemSize, gl.FLOAT, false, 0, 0);
