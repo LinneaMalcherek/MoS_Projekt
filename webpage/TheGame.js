@@ -1,7 +1,7 @@
 
 function theGame() {
 	this.players = [];
-	this.allStones = new Array(); <!-- global variable that will be created when theGame starts. does not lie under the 'class' theGame. GLOBAL -->
+	this.allStones = new Array(); 
 }
 
 <!-- theGames all functions -->
@@ -10,26 +10,24 @@ theGame.prototype = {
 	addPlayer: function(p){
 		this.players.push(p);
 		p.id=this.players.length; 
-		console.log("created player: %s, %s", p.id, p.name);
+		console.log("created player: %s", p.id);
 		return this;
 	},
 
-
-
-<!-- creates a new stone and throws it -->
+	// Function that creates a new stone and throws it. 
+	// add the stone to the players stone-array 
 	throwStone: function(angle, speed, playerid){
 		this.players[playerid].thrown = this.players[playerid].thrown + 1 ;
 		var stone = new CurlingStone;
-		var stoneid = this.players[playerid].thrown; // vilken sten man kastat. 
-		stone.init(angle, speed, stoneid,playerid);
+		var stoneid = this.players[playerid].thrown; // which stone that is being throwed
+		stone.init(angle, speed, stoneid, playerid);
 		this.players[playerid].stones.push(stone);
-		this.concatArrays(); // lägger till alla stenar tillsammans för beräkningar med collision och allt. 
+		this.concatArrays();
 		this.updateInfo();
 	},
 
+	// check for collision between all the stones that are in the game. 
 	collision: function(){
-		<!-- kolla kollision hela tiden för alla stenar. isf  -->
-
 			for( var i=0; i < this.allStones.length; i++ ){
 
 				if(!this.allStones[i].render)
@@ -46,20 +44,18 @@ theGame.prototype = {
 
 				}
 			}
-//( this.allStones[i].speed > 0.01 || this.allStones[j].speed > 0.01)
 	},
 
+
+	// all handle-functions handle the actions on the keyboard. to be able to navigate in space. 
 	handleKeyDown: function(event) {
 	    currentlyPressedKeys[event.keyCode] = true;
 	},
-
-
 	handleKeyUp: function(event) {
 	    currentlyPressedKeys[event.keyCode] = false;
 	},
-
 	handleKeys: function(event) {
-		if (currentlyPressedKeys[83]) { <!-- s -->
+		if (currentlyPressedKeys[83]) { // s
         	return true;
     	}
     	else {
@@ -67,98 +63,89 @@ theGame.prototype = {
 
     	}
 	},
-
 	handleMove: function(event) {
 
-    	if (currentlyPressedKeys[69]) {
-            // e
+    	if (currentlyPressedKeys[69]) { // e , look up in the world
             pitchRate = 60;
-        } else if (currentlyPressedKeys[68]) {
-            // d
+        } else if (currentlyPressedKeys[68]) { // d, look down in the world
             pitchRate = -60;
         } else {
             pitchRate = 0;
         }
 
-        if (currentlyPressedKeys[37]) {
-            // Left cursor key
+        // move left/right
+        if (currentlyPressedKeys[37]) { // Left cursor key
             yawRate = 60;
-        } else if (currentlyPressedKeys[39]) {
-            // Right cursor key
+        } else if (currentlyPressedKeys[39]) { // Right cursor key
             yawRate = -60;
         } else {
             yawRate = 0;
         }
 
-        if (currentlyPressedKeys[38]) {
-            // Up cursor key
+        // move forward / back
+        if (currentlyPressedKeys[38]) { // Up cursor key
             speed = 3;
-        } else if (currentlyPressedKeys[40] ) {
-            // Down cursor key
+        } else if (currentlyPressedKeys[40] ) { // Down cursor key
             speed = -3;
         } else {
             speed = 0;
         }
-
-
 	},
 
+	// moves the stone and also the "view"
 	animate: function() { 
 		var timeNow = new Date().getTime();
+		
 		if (LASTTIME != 0) {
-    	//dt = 0.1;
-    	dt = (timeNow - LASTTIME)/1000; <!-- to get in seconds --> 
-   		for (var i=0; i<this.allStones.length; i++){ <!-- allStones en global variabel-->
-        	if (this.allStones[i].speed > 0.01) {
-        		if (i == this.allStones.length-1 ){ <!-- ful lösning!!! om den sten vi skickade ut senast får sopa! -->
-        			this.allStones[i].move(this.handleKeys(), dt);
-        		}
-        		else {
-        			this.allStones[i].move(false, dt);
-        		}
-        	}
-        	
+	    	dt = (timeNow - LASTTIME)/1000; // dt in seconds.
+
+	   		for (var i=0; i<this.allStones.length; i++){
+	        	if (this.allStones[i].speed > 0.01) {
+	        		if (i == this.allStones.length-1 ){ // onle be able to sweep on the stone that is being throwed
+	        			this.allStones[i].move(this.handleKeys(), dt);
+	        		}
+	        		else {
+	        			this.allStones[i].move(false, dt);
+	        		}
+	        	}
+	        	
+	   		}
+
+	   		// update the "camera-view"
+	   		if (speed != 0) {
+	                xCam -= Math.sin(yaw*Math.PI/180) * speed * dt;
+	                zCam -= Math.cos(yaw*Math.PI/180) * speed * dt;
+	                yCam = Math.sin(Math.PI/180) / 20 + 0.4;
+	            }
+
+	   		    yaw += yawRate * dt;
+	            pitch += pitchRate * dt;
    		}
 
-   		if (speed != 0) {
-
-                xCam -= Math.sin(yaw*Math.PI/180) * speed * dt;
-                zCam -= Math.cos(yaw*Math.PI/180) * speed * dt;
-                yCam = Math.sin(Math.PI/180) / 20 + 0.4;
-            }
-
-   		    yaw += yawRate * dt;
-            pitch += pitchRate * dt;
-
-   	}
-   	LASTTIME = timeNow;
-
-
+   		LASTTIME = timeNow;
 	},
 
-// check if the stone is out of the bounds
+	// check if the stone is out of the bounds, out of the field or being throwed to short. 
 	outOfBounds: function() {
 		for (var i =0; i<this.allStones.length; i++) {
-			// check if out of the side, only check if the stone is moving
 			var theStone = this.allStones[i]; 
+
+			// check if out of the side, only check if the stone is moving
 			if (this.allStones[i].speed > 0.01 && ( Math.abs(this.allStones[i].getXPos()) > FIELDWIDTH/2 || this.allStones[i].getYPos() > FIELDLENGTH )){
 				var stoneId= this.allStones[i].stoneId;
 				var playerId=this.allStones[i].player;
 				this.players[playerId].stones[stoneId].render = false;
-				//this.players[playerId].stones.splice(stoneId,1); 
 			}
 			// delete stone if it has stoped before the hog-line
 			if (this.allStones[i].speed < 0.01 && this.allStones[i].getYPos() < FIELDLENGTH - HACK_HOG){
 				var stoneId= this.allStones[i].stoneId;
 				var playerId=this.allStones[i].player;
 				this.players[playerId].stones[stoneId].render = false;
-				//this.players[playerId].stones.splice(stoneId,1);
 			}
 		}
-
-
 	},
 
+	// the function that is the "render"-loop
 	tick: function(){
 		window.requestAnimationFrame(this.tick.bind(this));
 		this.handleMove();
@@ -166,17 +153,77 @@ theGame.prototype = {
         this.animate();
         //this.outOfBounds(); 
         drawScene(this.players);
-        this.sendNewStone();
+        this.sendNewStone(); // so that you can't send a new stone when one is already moving. 
 
-
-        // kolla om vi har kört klart alla stenar måste stå still!!!
+        // to check if the game has ended (aka all stone being throwed.) 
+        // only calulate the score when the last stone has stoped. 
         if( this.allStones.length == NUMBEROFSTONES*2 ){
-
-        	if (this.players[1].stones[NUMBEROFSTONES-1].speed < 0.01) // räkna ut poängen när den sista stenen har stannat! kanske innte bästa men ändå..
+        	if (this.players[1].stones[NUMBEROFSTONES-1].speed < 0.01)
 	        	this.countScore();
         }        
 	},
 
+	// to get the input from the user from the webpage, to send a stone. 
+	throwStoneFromUser: function(id){
+		<!-- hämtar värdet ur två stycken fält, skrivit in vinkel och hastighet där -->
+		var angle = parseFloat(document.getElementById('vinkel').value);
+		var speed = parseFloat(document.getElementById('hastighet').value);
+
+		var radians = angle * (Math.PI/180);
+
+		this.throwStone(radians,speed,id);
+		this.disableAll();
+
+
+	},
+
+	// to set-up a game and everything in webGL, shaders, textures. 
+	starting: function(){
+		var canvas = document.getElementById("curlingbana");
+	    initGL(canvas);
+	    initShaders();
+	    initTextures();
+	    initTextures2();
+        initTextures3();
+        initTextures4();
+	    loadObject();
+	    loadObject2();
+        loadObject3();
+
+	    currentlyPressedKeys = {};   
+
+    	gl.clearColor(0.0, 0.0, 0.0, 1.0);
+    	gl.enable(gl.DEPTH_TEST);
+
+    	dataConstants(); // to import all the data constats that we need. 
+
+	},
+
+	// so you can't send a new stone while the last has stoped. change the buttons in the webpage. 
+	sendNewStone: function(){
+		if (this.allStones.length!=0) {
+			var id = 0;
+			if(this.allStones.length%2 == 0) {
+				id=1;
+			}
+
+			if(this.players[id].stones[this.players[id].thrown-1].render && this.players[id].stones[this.players[id].thrown-1].speed < 0.01 && this.allStones.length!=NUMBEROFSTONES*2  ){
+				this.disableButton(id);
+
+			}
+		}
+	},
+
+	// add all the players arrays of stone in to one big so we can easily calculate collisions etc. 
+	concatArrays: function(){
+		var c = [];
+		for (var i =0; i<this.players.length; i++){
+			c = c.concat(this.players[i].stones);
+		}
+		this.allStones = c; 
+	},
+
+	// in the game-functionallity. to switch between which buttons that should be disabled.
 	disableButton: function(button){
 		if (button) {
 			document.getElementById("spelare1").disabled=false;
@@ -188,17 +235,15 @@ theGame.prototype = {
 		}
 
 	},
-
 	disableAll: function(){
 		document.getElementById("spelare1").disabled=true;
 		document.getElementById("spelare2").disabled=true;
 	},
 
+	// is being calle when you press the button "ny omgång"
+	// go trought the players and reset the array of all the curling stones. 
+	// reset everything for a new round. 
 	resetRound: function(){
-		// anroppas när man tryck på knappen ny omgång! 
-		// gå igenom båda spelarna och ta bort curlingarrayen
-		// sätta thrown till 0 igen! 
-		// knapparna ska återställas
 		for(var i=0; i<this.players.length; i++){
 			delete this.players[i].stones;
 			this.players[i].stones = new Array();
@@ -214,11 +259,11 @@ theGame.prototype = {
 		document.getElementById("newRound").style.visibility = "hidden";
 	},
 
+	// calculates the score of a round. 
 	countScore: function(){
 		var score = new Array();
 		score[0]=this.players[0].score;
 		score[1]=this.players[1].score;
-		// skriv ut den nya poängen! 
 
 		// räkna ut poängen genom att gå igenom alla stener som är i spel(render=true) och ta dess position
 		// till mittpunkten (den vektorn). räkna ut vektorns längd och sen spara alla längder för varje spelare och sten.
@@ -247,8 +292,7 @@ theGame.prototype = {
 		this.players[0].score = score[0];
 		this.players[1].score = score[1];
 		
-
-
+		// write the new score on the webpage
 		document.getElementById("score1").innerHTML=""+score[0] ;
 		document.getElementById("score2").innerHTML=""+score[1] ;
 
@@ -257,67 +301,7 @@ theGame.prototype = {
 
 	},
 
-<!-- Bara en funktion nu för att testa! använder fälten för att skicka nya stenar-->
-	kastaStenTest: function(id){
-		<!-- hämtar värdet ur två stycken fält, skrivit in vinkel och hastighet där -->
-		var angle = parseFloat(document.getElementById('vinkel').value);
-		var speed = parseFloat(document.getElementById('hastighet').value);
-
-		var radians = angle * (Math.PI/180);
-
-		this.throwStone(radians,speed,id);
-		this.disableAll();
-
-
-	},
-
-	starting: function(){
-		var canvas = document.getElementById("curlingbana");
-	    initGL(canvas);
-	    initShaders();
-	    initTextures();
-	    initTextures2();
-        initTextures3();
-        initTextures4();
-	    loadObject();
-	    loadObject2();
-        loadObject3();
-	    currentlyPressedKeys = {};
-	    
-
-    	gl.clearColor(0.0, 0.0, 0.0, 1.0);
-    	gl.enable(gl.DEPTH_TEST);
-
-    	dataConstants(); <!-- import global variables and some global constants. -->
-
-	},
-
-	sendNewStone: function(){
-		if (this.allStones.length!=0) {
-			var id = 0;
-			if(this.allStones.length%2 == 0) {
-				id=1;
-			}
-
-			// man får ej skjuta ut en ny sten förrens den senaste har stannat! 
-			if(this.players[id].stones[this.players[id].thrown-1].render && this.players[id].stones[this.players[id].thrown-1].speed < 0.01 && this.allStones.length!=NUMBEROFSTONES*2  ){
-				this.disableButton(id);
-
-			}
-		}
-	},
-
-	concatArrays: function(){
-		var c = [];
-		for (var i =0; i<this.players.length; i++){
-			c = c.concat(this.players[i].stones);
-		}
-		this.allStones = c; 
-	},
-
-
-
-
+	// update the info on webpage, the score and how many stones that has been thrown. 
 	updateInfo: function(){
 		var score1 = this.players[0].score;
 		var score2 = this.players[1].score;
@@ -331,10 +315,9 @@ theGame.prototype = {
 
 }
 
-// to create one player
-var onePlayer = function(name){
+// a function to create a player
+var onePlayer = function(){
 	this.score = 0;
-	this.name=name;
 	this.id=null;
 	this.stones = new Array();
 	this.thrown = 0;
