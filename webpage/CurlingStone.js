@@ -90,7 +90,7 @@ CurlingStone.prototype = {
 		else
 			//this.angularSpeed = new_speed_side / R_INNER;
 			this.angularSpeed = this.angularSpeed - (this.frictionCoeffC[0] / (R_INNER*Math.sqrt(this.speed))*G   +    this.frictionCoeffC[1] / (R_INNER*Math.sqrt(this.speed))*G)*dt;
-			console.log("speed: %s , ang speed: %s speedside: %s", this.speed, this.angularSpeed, this.speedSide);
+			//console.log("speed: %s , ang speed: %s speedside: %s", this.speed, this.angularSpeed, this.speedSide);
 	},
 
 	// Calculates resultant of the speeds forward and sideways 
@@ -158,6 +158,8 @@ CurlingStone.prototype = {
 		var velocity = this.calcVelocityResultant();
 		this.setNewPos(velocity,dt);
 		this.setNewAngle(dt);
+
+		console.log("position: %s", this.getPosAsString());
 	},
 
 	// calculate the distance from the stone to the tee. 

@@ -97,20 +97,6 @@ theGame.prototype = {
 		var timeNow = new Date().getTime();
 		
 		if (LASTTIME != 0) {
-<<<<<<< HEAD
-    	//dt = 0.1;
-    	dt = (timeNow - LASTTIME)/1000; <!-- to get in seconds --> 
-   		for (var i=0; i<this.allStones.length; i++){ <!-- allStones en global variabel-->
-        	if (this.allStones[i].speed > 0.00001) {
-        		if (i == this.allStones.length-1 ){ <!-- ful lösning!!! om den sten vi skickade ut senast får sopa! -->
-        			this.allStones[i].move(this.handleKeys(), dt);
-        		}
-        		else {
-        			this.allStones[i].move(false, dt);
-        		}
-        	}
-        	
-=======
 	    	dt = (timeNow - LASTTIME)/1000; // dt in seconds.
 
 	   		for (var i=0; i<this.allStones.length; i++){
@@ -134,7 +120,7 @@ theGame.prototype = {
 
 	   		    yaw += yawRate * dt;
 	            pitch += pitchRate * dt;
->>>>>>> ae6fe2570a057a6216240ffa8579ca883a0ce778
+
    		}
 
    		LASTTIME = timeNow;
@@ -224,7 +210,6 @@ theGame.prototype = {
 
 			if(this.players[id].stones[this.players[id].thrown-1].render && this.players[id].stones[this.players[id].thrown-1].speed < 0.01 && this.allStones.length!=NUMBEROFSTONES*2  ){
 				this.disableButton(id);
-
 			}
 		}
 	},
