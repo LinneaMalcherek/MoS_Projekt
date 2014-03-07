@@ -3,7 +3,7 @@ function [ new_speed ] = calculateSpeed( speed ,a_friction ,dt )
 % remain the same
 
     if(speed>0)
-        new_speed= speed - (a_friction * dt);
+        new_speed = rungekutta(speed,speed,dt,@a_speed);%speed - (a_friction * dt);
     else
         new_speed=0;
     end

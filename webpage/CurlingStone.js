@@ -70,11 +70,11 @@ CurlingStone.prototype = {
 	calcAngularAcceleration: function(gravity, my_f, my_b, r){ 		<!-- my_f and my_b frictioncoeff for front and back of the stone --> 
 		<!-- theSpeed = this.angularSpeed*r;								Calculates speed in point of circle with radius r -->
 
-		if(this.speed <0.01){										<!-- Look out for division with zero -->
-			return gravity*(my_b-my_f);							
-		} else{
+		//if(this.speed <0.0001){										<!-- Look out for division with zero -->
+		//	return gravity*(my_b-my_f);							
+		//} else{
 			return gravity*(my_b-my_f) / Math.sqrt(this.speed); 		<!-- Total acceleration from difference between acc front and back, dependant on speed -->
-		}
+		//}
 	}, 
 
 <!-- Calculates new speedSide from calcAngularAcceleration -->
@@ -90,9 +90,9 @@ CurlingStone.prototype = {
 		if (this.angularSpeed <= 0 || this.speed <= 0)
 			this.angularSpeed =  0;
 		else
-			this.angularSpeed = new_speed_side / R_INNER;
-			//this.angularSpeed = this.angularSpeed - (this.frictionCoeffC[0] / (R_INNER*Math.sqrt(this.speed))*G   +    this.frictionCoeffC[1] / (R_INNER*Math.sqrt(this.speed))*G)*dt;
-			console.log("speed: %s , ang speed: %s", this.speed, this.angularSpeed);
+			//this.angularSpeed = new_speed_side / R_INNER;
+			this.angularSpeed = this.angularSpeed - (this.frictionCoeffC[0] / (R_INNER*Math.sqrt(this.speed))*G   +    this.frictionCoeffC[1] / (R_INNER*Math.sqrt(this.speed))*G)*dt;
+			console.log("speed: %s , ang speed: %s speedside: %s", this.speed, this.angularSpeed, this.speedSide);
 	},
 
 <!--Calculates resultant of the speeds forward and sideways -->

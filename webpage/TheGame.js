@@ -109,7 +109,7 @@ theGame.prototype = {
     	//dt = 0.1;
     	dt = (timeNow - LASTTIME)/1000; <!-- to get in seconds --> 
    		for (var i=0; i<this.allStones.length; i++){ <!-- allStones en global variabel-->
-        	if (this.allStones[i].speed > 0.01) {
+        	if (this.allStones[i].speed > 0.00001) {
         		if (i == this.allStones.length-1 ){ <!-- ful lösning!!! om den sten vi skickade ut senast får sopa! -->
         			this.allStones[i].move(this.handleKeys(), dt);
         		}
