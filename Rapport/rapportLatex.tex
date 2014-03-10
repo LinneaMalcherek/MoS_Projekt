@@ -249,7 +249,7 @@ Löser ut:
 \pagebreak
 
 \section{Numerisk}
-Tre farter beräknas i varje steg av simuleringen: fart i rörelseriktningen, fart i ortogonal riktning som tillför curl samt vinkelhastighet. Dessa beräknas genom Runge-Kutta-metoden enligt REF. 
+Tre farter beräknas i varje steg av simuleringen: fart i rörelseriktningen, fart i ortogonal riktning som tillför curl samt vinkelhastighet. Dessa beräknas genom Runge-Kutta-metoden enligt \eqref{RungeKutta_transl}. 
 
  \begin{subequations}\label{RungeKutta_transl}
  \begin{align}
@@ -261,10 +261,11 @@ Tre farter beräknas i varje steg av simuleringen: fart i rörelseriktningen, fa
  \end{align}
 \end{subequations}
 
-Funktionen a för accelerationen för de olika farterna olika beroende på de olika friktionstillstånden enligt REF. 
- \begin{align}\label{RungeKutta_acc}
- a_{front}& = - \mu g\\
- a_{side}& = g \frac{c_2-c_1}{\sqrt{v_f}}\\
+Funktionen a för accelerationen för de olika farterna olika beroende på de olika friktionstillstånden enligt \eqref{a_front},  \eqref{a_side}, \eqref{a_rotation}.
+ 
+ \begin{align}\label{a_front}
+ a_{front}& = - \mu g\\\label{a_side}
+ a_{side}& = g \frac{c_2-c_1}{\sqrt{v_f}}\\\label{a_rotation}
  a_{rotation}& = - \frac{c_1}{r \sqrt{v_f}}
  \end{align}
 

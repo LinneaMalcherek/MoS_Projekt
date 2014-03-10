@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2014.2.17)  10 MAR 2014 21:51
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2014.2.17)  10 MAR 2014 21:56
 entering extended mode
 **rapportLatex.tex
 
@@ -894,10 +894,10 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 6254 strings out of 493921
- 87245 string characters out of 3147330
- 162965 words of memory out of 3000000
- 9438 multiletter control sequences out of 15000+200000
+ 6255 strings out of 493921
+ 87253 string characters out of 3147330
+ 162974 words of memory out of 3000000
+ 9439 multiletter control sequences out of 15000+200000
  13494 words of font info for 50 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
  44i,11n,43p,974b,278s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -915,7 +915,7 @@ les/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmss12.pfb><C:/Program Files/MiKT
 eX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/f
 onts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type
 1/public/cm-super/sfrm1095.pfb>
-Output written on rapportLatex.pdf (8 pages, 252090 bytes).
+Output written on rapportLatex.pdf (8 pages, 252111 bytes).
 PDF statistics:
  95 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
