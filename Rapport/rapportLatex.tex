@@ -160,12 +160,6 @@ REF FRICTIONAL FORCE IN MOTION, PHYSICS HANDBOOK S 158
  \bar{v}&=\bar{v_f}+\bar{v_s}
  \end{align}
 
-Translationen av stenen i riktning framåt beräknas enligt Eulers stegmetod \eqref{pos}. 
-
- \begin{align}\label{pos}
- pos_{n+1}& = pos_{n} + \bar{v} \Delta t
- \end{align}
-
 \subsection{Rotation}
 
 
@@ -185,22 +179,6 @@ Vid utslaget antas att spelaren håller stenen så att handtaget pekar i en rikt
  \omega_0 = \frac{\pi}{2 t_0} 
  \end{align}
 
-1. Ny sidohastighet
- \begin{align}\label{vNew}
-v_{s_{n+1}}& = v_{s_{n}} + (a_2-a_1) \Delta t\\
-v_{s_{n+1}}& = v_{s_{n}} + g \frac{c_2-c_1}{\sqrt{v_f}} \Delta t
- \end{align}
-
-2. Ny vinkelhastighet
- \begin{align}\label{omegaNew}
-\omega_{n+1}& = \omega_n - \frac{c_1}{r \sqrt{v_f}} \Delta t
- \end{align}
-ELLER? 
- \begin{align}\label{omegaN}
-\omega_{n+1}& = \frac{v_{s_n}} {r_{inner}}
- \end{align}
-
-(fortfarande lite osäkra på vilken ekvartion..)
 
  Detta beräknas genom att efter beräkning av friktionspåverkan i punkterna p1 och p2 beräkna den nya vinkelhastigheten enligt \eqref{newOmega}
 Den nya vinkelhastigheten beräknas utifrån den mindre friktionen (fram på stenen) då kraften utöver detta som är friktionskraft i bakänden på stenen är kraften som går till rörelsen i sidled. 
@@ -271,7 +249,32 @@ Löser ut:
 \pagebreak
 
 \section{Numerisk}
-Arrangera om lite från fysik-delen. I fysikdelen ska enbart FORMERL visas. Här i numeriska biten kanske vi ska ha med att vi använder euler. Skriva hur vi hittar nya hastigheter, sidohastigheter, vinkelhastigheter osv. 
+Tre farter beräknas i varje steg av simuleringen: fart i rörelseriktningen, fart i ortogonal riktning som tillför curl samt vinkelhastighet. Dessa beräknas genom Runge-Kutta-metoden enligt REF. 
+
+ \begin{subequations}\label{RungeKutta_transl}
+ \begin{align}
+ v_{n+1}& =v_n + \frac{h}{6} (k_1+2 k_2 + 2 k_3 + k_4)\\
+ k_1& = a(v_n)\\
+ k_2& = a(v_n + \frac{h}{2} k_1)\\
+ k_3& = a(v_n + \frac{h}{2} k_2)\\
+ k_4& = a(v_n + h k_3)
+ \end{align}
+\end{subequations}
+
+Funktionen a för accelerationen för de olika farterna olika beroende på de olika friktionstillstånden enligt REF. 
+ \begin{align}\label{RungeKutta_acc}
+ a_{front}& = - \mu g\\
+ a_{side}& = g \frac{c_2-c_1}{\sqrt{v_f}}\\
+ a_{rotation}& = - \frac{c_1}{r \sqrt{v_f}}
+ \end{align}
+
+Samtliga tre parametrar (fart framåt, fart i sidled och vinkelhastighet) är skalärer. Efter att nästa värde erhållits genom Runge-Kutta-metoden tas hastigheten i riktning framåt och i sidled fram och de två adderas genom vektoraddition. Ny position av stenen beräknas i sista steget genom Euler-metoden, där hastighetsvektorn anger riktning och steglängd \eqref{pos}. 
+
+ \begin{align}\label{pos}
+ pos_{n+1}& = pos_{n} + \bar{v} \Delta t
+ \end{align}
+
+
 
 \section{Simulering}
 
