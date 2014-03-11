@@ -112,8 +112,8 @@ I beräkningarna av stenens rörelse har hänsyn tagits till tre påverkande fri
 \end{figure}
 
 \subsubsection{Friktionens påverkan}
-I kontaktytan mellan isen och curlingstenen uppstår friktion. Friktionens påverkan avgörs av stenens kontaktyta samt isens egenskaper. Isen i sin tur påverkas av temperatur och luftfuktighet. Före spel prepareras isen genom såkallad "pebbling" då vattendroppar sprids ut över isen och skapar en mindre glatt struktur. (KANSKE KRÄVS REF?). 
-Vid sopning värms isen upp och en tunn vattenhinna skapas framför stenen. Detta gör så att friktionen mellan sten och is minskar och därmed går stenen längre vid sopning.  
+I kontaktytan mellan isen och curlingstenen uppstår friktion. Friktionens påverkan avgörs av stenens kontaktyta samt isens egenskaper. Isen i sin tur påverkas av temperatur och luftfuktighet. Före spel prepareras isen genom såkallad "pebbling" då vattendroppar sprids ut över isen och skapar en mindre glatt struktur. 
+Vid sopning värms isen upp och en tunn vattenhinna skapas framför stenen. Detta gör så att friktion mellan sten och is minskar och därmed går stenen längre vid sopning.  
 \\\\Stenens curl beror på att friktionen i den bakre delen \eqref{Fsida2} av stenen är högre än i den främre \eqref{Fsida1}.  
 En curlingsten har en kontaktyta mot isen bestående av ett tunt band (ca 5mm brett REFERENS) som har en något ojämn yta, så kallad "scratchad" yta. Då den främre halvan av stenen rör sig över den pebblade isen orsakas ett spår i isen i stenens rörelseriktning med en liten vinkel i rotationsriktningen. Då den bakre delen av bandet passerar samma yta ska bandets scratchade yta passera dessa spår, vilka då ligger i nästan rätvinklig riktning från bandets färdriktning, (Figur~\ref{fig:Friktion}). Det innebär att den bakre delen av stenen får ett högre motstånd, en högre friktionskraft, än den främre \eqref{biggerthan}. 
 REFERENS: http://www.sciencedirect.com/science/article/pii/S0043164813000732
@@ -138,22 +138,11 @@ Den vattenhinna som skapas vid sopning för med sig att de spår som den främre
 \mu = \frac{c}{\sqrt{v}} \Rightarrow a = \frac{cg}{\sqrt{v}} 
 \end{equation}
 
-c = konstant, g = gravitation, v = hastigheten
+c = konstant, g = gravitation, v = hastighet
 
 \subsubsection{Resulterande translation}
 
-Translationen av stenen är en resulterande hastighetsvektor v, som består av hastigheten i rörelseriktningen samt av hastigheten i punkterna längs det ringformade band stenen roterar på. I beräkningarna har dessa förenklats till två hastighetsvektorer: en för den främsta punkten (p1)  på stenens band och en för den bakersta (p2),(Figur~\ref{fig:Translation}). 
-\\\\Beräkningen av hastigheterna i punkterna p1 och p2 beräknas i två steg. I första steget omvandlas stenens rotationshastighet till translationshastighet i riktningen i punkternas rotationsriktning \eqref{vsida_init}. REFERENS PHYSICS HANDBOOKS 168.
- 
-\begin{equation}\label{vsida_init}
- v_1 = v_2 = \omega r
- \end{equation}
-
-%OBS HÄR ANVÄNDER VI VÄL INTE V1 OCH V2 UTAN SPEED_SIDE, ALLTSÅ VEKTORSUMMAN!?
-I det andra steget beräknas den påverkan som friktionen har på hastigheten i de två punkterna, där friktionen påverkas av hastigheten i stenens färdriktning samt av en konstant c,  \eqref{Fsida1} \eqref{Fsida2} \eqref{mu} . 
-REF FRICTIONAL FORCE IN MOTION, PHYSICS HANDBOOK S 158
-\\\\Hastigheterna i de två punkterna blir därmed två hastighetsvektorer i motsatta riktningar där den ena är större än den andra och resultanten blir således den riktning åt vilken stenen curlar (Figur~\ref{fig:Translation}). 
-\\\\Den resulterande hastigheten består i beräkningarna således av tre komponenter, \eqref{vtot}, där vektorn i riktning framåt uppdateras för varje position. 
+Translationen av stenen är en resulterande hastighetsvektor v, som består av hastigheten i rörelseriktningen samt av hastigheten i punkterna längs det ringformade band stenen roterar på. Dessa hastigheter kan sammanställas till resultanten i den främre delen av stenen i punkt p1 och den bakre i punkt p2, (Figur~\ref{fig:Translation}). Hastighetens komponenter kan då beskrivas enligt \eqref{vtot}
 
  \begin{align}\label{vtot}
  \bar{v_s}& = \bar{v_1}+\bar{v_2}\\
@@ -180,8 +169,11 @@ Vid utslaget antas att spelaren håller stenen så att handtaget pekar i en rikt
  \end{align}
 
 
- Detta beräknas genom att efter beräkning av friktionspåverkan i punkterna p1 och p2 beräkna den nya vinkelhastigheten enligt \eqref{newOmega}
-Den nya vinkelhastigheten beräknas utifrån den mindre friktionen (fram på stenen) då kraften utöver detta som är friktionskraft i bakänden på stenen är kraften som går till rörelsen i sidled. 
+Friktionen som påverkar rotationshastigheten är summan av all friktion som påverkar bandet som stenen roterar på. Detta kan sammanfattas till friktionen i de två punkterna, p1 och p2 på stenen. Accelerationen på stenens rotation kan därmed beräknas som accelerationen i de två punkterna. 
+
+ \begin{align}\label{a_rotation1}
+ a_{rotation} =- \frac{( a_1 + a_2)}{r} = -\frac{(\mu_1 g + \mu_2 g)}{r} = - g\frac{c_1+c_2}{r \sqrt{v_f}}
+ \end{align}
  
 
 \subsection{Kollision}
@@ -266,7 +258,7 @@ Funktionen a för accelerationen för de olika farterna olika beroende på de ol
  \begin{align}\label{a_front}
  a_{front}& = - \mu g\\\label{a_side}
  a_{side}& = g \frac{c_2-c_1}{\sqrt{v_f}}\\\label{a_rotation}
- a_{rotation}& = - \frac{c_1}{r \sqrt{v_f}}
+ a_{rotation}& = - g\frac{c_1+c_2}{r \sqrt{v_f}}
  \end{align}
 
 Samtliga tre parametrar (fart framåt, fart i sidled och vinkelhastighet) är skalärer. Efter att nästa värde erhållits genom Runge-Kutta-metoden tas hastigheten i riktning framåt och i sidled fram och de två adderas genom vektoraddition. Ny position av stenen beräknas i sista steget genom Euler-metoden, där hastighetsvektorn anger riktning och steglängd \eqref{pos}. 
@@ -277,7 +269,32 @@ Samtliga tre parametrar (fart framåt, fart i sidled och vinkelhastighet) är sk
 
 
 
-\section{Simulering}
+
+\section{Grafisk implementering}
+Blender, webGL, blablabla
+
+\section{Resultat}
+
+Lite grejer från matlab osv. 
+
+DETTA SKA NOG BORT (NEDAN)
+
+Beräkningen av hastigheterna i punkterna p1 och p2 beräknas i två steg. I första steget omvandlas stenens rotationshastighet till translationshastighet i riktningen i punkternas rotationsriktning \eqref{vsida_init}. REFERENS PHYSICS HANDBOOKS 168.
+ 
+\begin{equation}\label{vsida_init}
+ v_1 = v_2 = \omega r
+ \end{equation}
+
+%OBS HÄR ANVÄNDER VI VÄL INTE V1 OCH V2 UTAN SPEED_SIDE, ALLTSÅ VEKTORSUMMAN!?
+I det andra steget beräknas den påverkan som friktionen har på hastigheten i de två punkterna, där friktionen påverkas av hastigheten i stenens färdriktning samt av en konstant c,  \eqref{Fsida1} \eqref{Fsida2} \eqref{mu} . 
+REF FRICTIONAL FORCE IN MOTION, PHYSICS HANDBOOK S 158
+\\\\Hastigheterna i de två punkterna blir därmed två hastighetsvektorer i motsatta riktningar där den ena är större än den andra och resultanten blir således den riktning åt vilken stenen curlar (Figur~\ref{fig:Translation}). 
+\\\\Den resulterande hastigheten består i beräkningarna således av tre komponenter, \eqref{vtot}, där vektorn i riktning framåt uppdateras för varje position. 
+
+ \begin{align}\label{vtot}
+ \bar{v_s}& = \bar{v_1}+\bar{v_2}\\
+ \bar{v}&=\bar{v_f}+\bar{v_s}
+\end{align}
 
 \section{Diskussion}
 
