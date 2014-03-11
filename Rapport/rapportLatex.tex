@@ -7,7 +7,7 @@
 \documentclass[11pt]{article} % use larger type; default would be 10pt
 
 \usepackage[utf8]{inputenc} % set input encoding (not needed with XeLaTeX)
-
+\usepackage[english,swedish]{babel}
 %%% Examples of Article customizations
 % These packages are optional, depending whether you want the features they provide.
 % See the LaTeX Companion or other references for full information.
@@ -81,10 +81,17 @@ TNM085 Modelleringsprojekt}
 \pagebreak
 \pagenumbering{arabic}  
 
-\section{Introduktion}
-Curling jättekul. Beskriva något om att inte så jättevanligt att simulera curling "på riktigt" sätt. Säga att vi fokuserat på vissa saker, kanske ska ligga under nästa stycke istället då? 
+\pagebreak
+\tableofcontents
+\pagebreak
 
-\section{Begränsningar och förenklingar} %kanske inte världens bästa rubrik men ändra sen
+\section{Introduktion}
+Curling är ett intressant system att modellera eftersom det innefattar många vedertagna fysikaliska egenskaper men även delar som inte är särskilt triviala. 
+De senaste åren har ett flertal vetenskapliga artiklar publicerats som ger sin förklaring till svängningsfenomenet (själva "curlen") hos curlingstenen.
+Gemensamt för artiklarna är hypotesen om att svängningen på curlingstenen beror på en högre friktion bak på stenen än den fram. 
+Förklaringen till varför detta är så, har uppdagats det senaste året.. bla bla bla
+
+\subsection{Begränsningar och förenklingar} %kanske inte världens bästa rubrik men ändra sen
 I alla beräkningar har vi förutsatt att curlingstenarna har samma massa, och därmed förenklat beräkningarna med att förkortta bort massan. 
 
 I detta arbete har vi främst fokuserat på att hantera curlingstenens translation och friktionens påverkan, rotation och även kollision. 
@@ -97,11 +104,12 @@ Att visa hur sopning framför curlingstenen har vi ej fokuserat på....
 
 I beräkningarna av stenens rörelse har hänsyn tagits till tre påverkande friktionskrafter (Figur~\ref{fig:Translation}): Kraft i riktning motsatt stenens rörelseriktning, samt två krafter i ortogonal riktning mot denna \eqref{Ftot}. Dessa två krafter utgörs av friktionskrafterna i främre delen av stenen samt i den bakre delen. Differensen mellan dessa två krafter är vad som påverkar stenens curl (svängning). 
 
- \begin{align}\label{Ftot}
+\begin{subequations}\label{Ftot}
+ \begin{align}
  \bar{F_t}&=\bar{F_f}+\bar{F_b}+\bar{F}\\
  \bar{F_f}&<\bar{F_b}
  \end{align}
-
+ \end{subequations}
 
 \begin{figure}[ht!]
 \centering
@@ -112,10 +120,11 @@ I beräkningarna av stenens rörelse har hänsyn tagits till tre påverkande fri
 \end{figure}
 
 \subsubsection{Friktionens påverkan}
-I kontaktytan mellan isen och curlingstenen uppstår friktion. Friktionens påverkan avgörs av stenens kontaktyta samt isens egenskaper. Isen i sin tur påverkas av temperatur och luftfuktighet. Före spel prepareras isen genom såkallad "pebbling" då vattendroppar sprids ut över isen och skapar en mindre glatt struktur. 
+I kontaktytan mellan isen och curlingstenen uppstår friktion. Friktionens påverkan avgörs av stenens kontaktyta samt isens egenskaper. Isen påverkas i sin tur av temperatur och luftfuktighet. Före spel prepareras isen genom såkallad "pebbling" då vattendroppar sprids ut över isen och skapar en mindre glatt struktur. 
+% kanske något om att stenens egenskaper, dvs granit har med saken att göra också. 
 Vid sopning värms isen upp och en tunn vattenhinna skapas framför stenen. Detta gör så att friktion mellan sten och is minskar och därmed går stenen längre vid sopning.  
 \\\\Stenens curl beror på att friktionen i den bakre delen \eqref{Fsida2} av stenen är högre än i den främre \eqref{Fsida1}.  
-En curlingsten har en kontaktyta mot isen bestående av ett tunt band (ca 5mm brett REFERENS) som har en något ojämn yta, så kallad "scratchad" yta. Då den främre halvan av stenen rör sig över den pebblade isen orsakas ett spår i isen i stenens rörelseriktning med en liten vinkel i rotationsriktningen. Då den bakre delen av bandet passerar samma yta ska bandets scratchade yta passera dessa spår, vilka då ligger i nästan rätvinklig riktning från bandets färdriktning, (Figur~\ref{fig:Friktion}). Det innebär att den bakre delen av stenen får ett högre motstånd, en högre friktionskraft, än den främre \eqref{biggerthan}. 
+En curlingsten har en kontaktyta mot isen bestående av ett tunt band (ca 5mm brett REFERENS) som har en något ojämn yta, så kallad "scratchad" yta. När den främre halvan av stenen rör sig över den pebblade isen orsakas ett spår i isen i stenens rörelseriktning med en liten vinkel i rotationsriktningen. Då den bakre delen av bandet passerar samma yta ska bandets scratchade yta passera dessa spår, vilka då ligger i nästan rätvinklig riktning från bandets färdriktning, (Figur~\ref{fig:Friktion}). Det innebär att den bakre delen av stenen får ett högre motstånd, en högre friktionskraft, än den främre \eqref{biggerthan}. 
 REFERENS: http://www.sciencedirect.com/science/article/pii/S0043164813000732
 
  \begin{align}\label{Fsida1}
@@ -144,16 +153,18 @@ c = konstant, g = gravitation, v = hastighet
 
 Translationen av stenen är en resulterande hastighetsvektor v, som består av hastigheten i rörelseriktningen samt av hastigheten i punkterna längs det ringformade band stenen roterar på. Dessa hastigheter kan sammanställas till resultanten i den främre delen av stenen i punkt p1 och den bakre i punkt p2, (Figur~\ref{fig:Translation}). Hastighetens komponenter kan då beskrivas enligt \eqref{vtot}
 
- \begin{align}\label{vtot}
+ \begin{subequations}\label{vtot}
+ \begin{align}
  \bar{v_s}& = \bar{v_1}+\bar{v_2}\\
  \bar{v}&=\bar{v_f}+\bar{v_s}
  \end{align}
+ \end{subequations}
 
 \subsection{Rotation}
 
 
 Stenen har även en roterande rörelse med en vinkelhastighet vars ursprungsvärde beräknas utifrån utslagshastigheten av stenen.
-Vid utslaget antas att spelaren håller stenen så att handtaget pekar i en riktning 90\textdegree  från riktning framåt antingen med "inhand" eller "outhand" och släpper stenen med handtaget pekande rakt fram vid hoglinjen LITE BILDER PÅ BANAN. Detta innebär att stenen roterar 90\textdegree under den tid det tar för spelaren att ta sig mellan hack och hog, vilket är direkt kopplat till den angivna utslagshastigheten. 
+Vid utslaget antas att spelaren håller stenen så att handtaget pekar i en riktning 90\textdegree  från riktning framåt antingen med "inhand" eller "outhand" och släpper stenen med handtaget pekande rakt fram vid hoglinjen. Detta innebär att stenen roterar 90\textdegree under den tid det tar för spelaren att ta sig mellan hack och hog, vilket är direkt kopplat till den angivna utslagshastigheten. 
 
 \begin{figure}[ht!]
 \centering
@@ -179,12 +190,14 @@ Friktionen som påverkar rotationshastigheten är summan av all friktion som på
 \subsection{Kollision}
 
 För att kontrollera att en kollision sker beräknas avståndet mellan stenarnas position \eqref{d}.
-Om avståndet mellan stenarnas mittpunkter är mindre än två radier \eqref{lessThan} har stenarna krockat.  (eftersom krocken bara sker i 2 dimensioner). 
+Om avståndet mellan stenarnas mittpunkter är mindre än två radier \eqref{lessThan} har stenarna krockat  (eftersom krocken bara sker i 2 dimensioner). 
 
- \begin{align}\label{d}
- d& = \sqrt{(sten_{1_{xpos}} - sten_{2_{xpos}})^2   +   (sten_{1_{ypos}}-sten_{1_{ypos}})^2}\\\label{lessThan}
+ \begin{subequations}\label{d}
+ \begin{align}
+ d& = \sqrt{(sten_{1_{xpos}} - sten_{2_{xpos}})^2   +   (sten_{1_{ypos}}-sten_{2_{ypos}})^2}\\\label{lessThan}
  d& \le 2 r
  \end{align}
+ \end{subequations}
 
 \begin{figure}[ht!]
 \centering
@@ -194,51 +207,79 @@ Om avståndet mellan stenarnas mittpunkter är mindre än två radier \eqref{les
 \label{overflow}
 \end{figure}
 
-Hastigheten och riktningen av curlingstenarna efter en kollision beräknas med hjälp av de tva stenarnas position och hastighetsvektorer.
-(Kontroll av kollision Inelastiskt Delas upp i tva komponenter, normal och tangent)?
+Hastigheten av curlingstenarna efter en kollision beräknas med hjälp av de två stenarnas position och hastighetsvektorer.
 
-Från början har beräkningar gjorts av en rak central stöt där det finns två givna funktioner för att ta fram hastigheten efter krock. Med hjälp av stötkoefficienten kan man reglera allt från e=1 som är en helt elastisk stöt och e=0 som är en helt inelastisk stöt. I curling där det är två stenar som krockar är det rimligt med en energiförlust och en inelastisk stöt bör därmed tas i beräkning. Efter tester passar en stötkoefficent på e=?. (vad vi nu har satt)
+Beräkningarna utgår ifrån en rak central stöt i krockens normalriktning, där det finns två givna ekvationer \eqref{e1} och \eqref{elastisk} för att ta fram hastigheten efter krock. Med hjälp av stötkoefficienten e \eqref{e1} kan stöten regleras mellan en helt elastikt krock (e=1) och en helt inelastiskt krock (e=0). 
+I curling är det rimligt med en energiförlust och en inelastisk stöt bör därmed tas i beräkning. Stötkoefficienten är kvoten av den relativa hastigheten efter kollision och den relativa hastigheten före kollision enligt \eqref{e1}.
 
- \begin{align}\label{e1}
+Eftersom det ej finns en specificerad stötkoefficient för curlingstenarnas material (granit) har en stötkoefficient uppskattats till 0.3 genom simuleringar.  
+
+ \begin{subequations}\label{e1}
+ \begin{align}
  e& = \frac{v_2''-v_1''}{v_2'-v_1'}\\
- e& = \frac{relativ hastighet innan kollision}{relativ hastighet efter kollision}\\
 0& \le e \le 1
  \end{align}
+ \end{subequations}
 
 REFERENS: R Grahn,P-Å jansson: Dynamik (Studentlitteratur 1995), sid 334-345
 
-Först antas en helt elastisk stöt där rörelsemängden bevaras helt och ger
 
- \begin{align}\label{elastisk}
+Oavsett om krocken är inelastisk eller elastisk, gäller lagen om rörelsemängdens bevarande.
+
+ \begin{subequations}\label{elastisk}
+ \begin{align}
 m_1 v_1' + m_2 v_2'& = m_1 v_1'' + m_2 v_2'' \Rightarrow\\
 m_1& = m_2 \Rightarrow\\
-v_1' + v_2'& = v_1'' + v_2''
+v_1' + v_2'& = v_1'' + v_2'' \label{momentum}
+ \end{align}
+ \end{subequations}
+
+\pagebreak
+
+Hastigheterna delas upp i en normal- och tangentkomponent genom att projicera hastighetsvektorn på krocknormalen \eqref{e_normal} och tangentnormalen. Man delar upp hastighetsvektorn i dessa komponenter eftersom energiförlusten enbart sker i normalkomponentens riktning. Genom att addera tangentkomponenten med normalkomponenten efter energiförlust, kan sneda krockar hanteras.
+
+ \begin{align}\label{e_normal}
+e_n& = \overrightarrow{OP_2} -  \overrightarrow{OP_1}  
  \end{align}
 
-För att kunna hantera sneda stötar behöver man dela upp v1och v2i en normal- och en tangentkomponent. 
+Där $P_1$ och $P_2$ är stenarnas position. Tangentnormalen är ortogonal mot krocknormalen. $e_n$ ses i Figur~\ref{fig:kollision-vektorer}. 
 
  \begin{align}\label{vCollision}
 v_1'& = v_{1n}' + v_{1t}'\\
 v_2'& = v_{2n}' + v_{2t}'
  \end{align}
 
-BILD
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=69mm]{kollision-vektorer.png}
+\caption{Kollision med riktningar för hastigheter innan krock där $v_{1}$ har högre fart än $v_{2}$}.
+\label{fig:kollision-vektorer}
+\label{overflow}
+\end{figure}
 
-Vi räknar nu kollisionen som en rak central stöt med normalkomponenten. 
+Kollisionen räknas ut som en rak central stöt med normalkomponenterna, $v_{1n}'$ och  $v_{2n}'$ insatta i ekvation \eqref{e1} och \eqref{momentum}. Hastigheterna efter krocken löses sedan ut, \eqref{vCollision2} och \eqref{vCollision2n}.
 
- \begin{align}\label{vCollision}
- v_{1n}' + v_{2n}'& = v_{1n}'' + v_{2n}''\\
- e& = \frac{v_{2n}''-v_{1n}''}{v_{2n}'-v_{1n}'}\\
- \end{align}
-
-Löser ut: 
-
- \begin{align}\label{vCollision}
+ \begin{align}\label{vCollision2}
  v_{1n}''& = \frac{v_{1n}' + v_{2n}'  - e(v_{1n}' + v_{2n}')}{2} \\
- v_{2n}''& = \frac{v_{1n}' + v_{2n}'  + e(v_{1n}' + v_{2n}')}{2} 
+ v_{2n}''& = \frac{v_{1n}' + v_{2n}'  + e(v_{1n}' + v_{2n}')}{2} \label{vCollision2n}
  \end{align}
 
 \pagebreak
+
+För att få den resulterande hastigheten adderas normalkomponenten efter krock med tangentkomponenten. Illustration hittas i Figur~\ref{fig:efter-krock}. 
+ \begin{align}\label{vfinal}
+v_1''& = v_{1n}'' + v_{1t}'\\
+v_2''& = v_{2n}'' + v_{2t}'
+ \end{align}
+
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=90mm]{efter-krock.png}
+\caption{Efter en kollision med normalkomponenterna för hastigheten innan och efter och även den slutgiltiga hastigheten.  }.
+\label{fig:efter-krock}
+\label{overflow}
+\end{figure}
+
 
 \section{Numerisk}
 Tre farter beräknas i varje steg av simuleringen: fart i rörelseriktningen, fart i ortogonal riktning som tillför curl samt vinkelhastighet. Dessa beräknas genom Runge-Kutta-metoden enligt \eqref{RungeKutta_transl}. 
@@ -277,11 +318,12 @@ Blender, webGL, blablabla
 \section{Resultat}
 
 Lite grejer från matlab osv. 
-Lagt in lite diverse grafer
+Lagt in lite diverse grafer.
+Rada upp alla konstanter som används i simuleringen. 
 
 \begin{figure}[ht!]
 \centering
-\includegraphics[width=110mm]{hastigheter_tid_graf.png}
+\includegraphics[width=100mm]{hastigheter_tid_graf.png}
 \caption{Hastigheter i färdriktning och i sidled som funktion av tid.}
 \label{fig:hast_graf}
 \label{overflow}
@@ -289,34 +331,18 @@ Lagt in lite diverse grafer
 
 \begin{figure}[ht!]
 \centering
-\includegraphics[width=110mm]{vinkelhastighet_tid_graf.png}
+\includegraphics[width=100mm]{vinkelhastighet_tid_graf.png}
 \caption{Vinkelhastighet som funktion av tid.}
 \label{fig:vinkelhast_graf}
 \label{overflow}
 \end{figure}
 
 
-
-
-DETTA SKA NOG BORT (NEDAN)
-
-Beräkningen av hastigheterna i punkterna p1 och p2 beräknas i två steg. I första steget omvandlas stenens rotationshastighet till translationshastighet i riktningen i punkternas rotationsriktning \eqref{vsida_init}. REFERENS PHYSICS HANDBOOKS 168.
- 
-\begin{equation}\label{vsida_init}
- v_1 = v_2 = \omega r
- \end{equation}
-
-%OBS HÄR ANVÄNDER VI VÄL INTE V1 OCH V2 UTAN SPEED_SIDE, ALLTSÅ VEKTORSUMMAN!?
-I det andra steget beräknas den påverkan som friktionen har på hastigheten i de två punkterna, där friktionen påverkas av hastigheten i stenens färdriktning samt av en konstant c,  \eqref{Fsida1} \eqref{Fsida2} \eqref{mu} . 
-REF FRICTIONAL FORCE IN MOTION, PHYSICS HANDBOOK S 158
-\\\\Hastigheterna i de två punkterna blir därmed två hastighetsvektorer i motsatta riktningar där den ena är större än den andra och resultanten blir således den riktning åt vilken stenen curlar (Figur~\ref{fig:Translation}). 
-\\\\Den resulterande hastigheten består i beräkningarna således av tre komponenter, \eqref{vtot}, där vektorn i riktning framåt uppdateras för varje position. 
-
- \begin{align}\label{vtot}
- \bar{v_s}& = \bar{v_1}+\bar{v_2}\\
- \bar{v}&=\bar{v_f}+\bar{v_s}
-\end{align}
-
 \section{Diskussion}
+
+
+\appendix
+\section{\\Title of Appendix A} \label{App:AppendixA}
+Kanske lägga in alla benämningar av konstanter osv.
 
 \end{document}

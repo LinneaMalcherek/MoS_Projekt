@@ -1,0 +1,14 @@
+\select@language {swedish}
+\contentsline {section}{\numberline {1}Introduktion}{2}
+\contentsline {subsection}{\numberline {1.1}Begr\IeC {\"a}nsningar och f\IeC {\"o}renklingar}{2}
+\contentsline {section}{\numberline {2}Fysik}{2}
+\contentsline {subsection}{\numberline {2.1}Translation}{2}
+\contentsline {subsubsection}{\numberline {2.1.1}Friktionens p\IeC {\r a}verkan}{2}
+\contentsline {subsubsection}{\numberline {2.1.2}Resulterande translation}{3}
+\contentsline {subsection}{\numberline {2.2}Rotation}{4}
+\contentsline {subsection}{\numberline {2.3}Kollision}{5}
+\contentsline {section}{\numberline {3}Numerisk}{8}
+\contentsline {section}{\numberline {4}Grafisk implementering}{9}
+\contentsline {section}{\numberline {5}Resultat}{10}
+\contentsline {section}{\numberline {6}Diskussion}{11}
+\contentsline {section}{\numberline {A}\\Title of Appendix A}{11}
