@@ -172,7 +172,7 @@ Vid utslaget antas att spelaren håller stenen så att handtaget pekar i en rikt
 Friktionen som påverkar rotationshastigheten är summan av all friktion som påverkar bandet som stenen roterar på. Detta kan sammanfattas till friktionen i de två punkterna, p1 och p2 på stenen. Accelerationen på stenens rotation kan därmed beräknas som accelerationen i de två punkterna. 
 
  \begin{align}\label{a_rotation1}
- a_{rotation} =- \frac{( a_1 + a_2)}{r} = -\frac{(\mu_1 g + \mu_2 g)}{r} = - g\frac{c_1+c_2}{r \sqrt{v_f}}
+ \alpha_{rot} =- \frac{( a_1 + a_2)}{r} = -\frac{(\mu_1 g + \mu_2 g)}{r} = - g\frac{c_1+c_2}{r \sqrt{v_f}}
  \end{align}
  
 
@@ -256,9 +256,9 @@ Tre farter beräknas i varje steg av simuleringen: fart i rörelseriktningen, fa
 Funktionen a för accelerationen för de olika farterna olika beroende på de olika friktionstillstånden enligt \eqref{a_front},  \eqref{a_side}, \eqref{a_rotation}.
  
  \begin{align}\label{a_front}
- a_{front}& = - \mu g\\\label{a_side}
- a_{side}& = g \frac{c_2-c_1}{\sqrt{v_f}}\\\label{a_rotation}
- a_{rotation}& = - g\frac{c_1+c_2}{r \sqrt{v_f}}
+ a_{fram}& = - \mu g\\\label{a_side}
+ a_{sida}& = g \frac{c_2-c_1}{\sqrt{v_f}}\\\label{a_rotation}
+ a_{rot}& = \alpha_{rot} = - g\frac{c_1+c_2}{r \sqrt{v_f}}
  \end{align}
 
 Samtliga tre parametrar (fart framåt, fart i sidled och vinkelhastighet) är skalärer. Efter att nästa värde erhållits genom Runge-Kutta-metoden tas hastigheten i riktning framåt och i sidled fram och de två adderas genom vektoraddition. Ny position av stenen beräknas i sista steget genom Euler-metoden, där hastighetsvektorn anger riktning och steglängd \eqref{pos}. 
@@ -273,9 +273,30 @@ Samtliga tre parametrar (fart framåt, fart i sidled och vinkelhastighet) är sk
 \section{Grafisk implementering}
 Blender, webGL, blablabla
 
+\pagebreak
 \section{Resultat}
 
 Lite grejer från matlab osv. 
+Lagt in lite diverse grafer
+
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=110mm]{hastigheter_tid_graf.png}
+\caption{Hastigheter i färdriktning och i sidled som funktion av tid.}
+\label{fig:hast_graf}
+\label{overflow}
+\end{figure}
+
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=110mm]{vinkelhastighet_tid_graf.png}
+\caption{Vinkelhastighet som funktion av tid.}
+\label{fig:vinkelhast_graf}
+\label{overflow}
+\end{figure}
+
+
+
 
 DETTA SKA NOG BORT (NEDAN)
 

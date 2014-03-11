@@ -67,7 +67,7 @@ while checkSpeed(speed1, speed2) && checkBoundaries(stone_pos1,stone_pos2, field
     % Resultant velocity in both directions
     velocity1 = speed1*direction_forw1 + speed_side1*direction_side1;
     velocity2 = speed2*direction_forw2 + speed_side2*direction_side2;
-
+    
     %Check if there is a collision. If true, update velocity accordingly.
     %time = time + dt;
     if(checkCollision(stone_pos1,stone_pos2,r,velocity1,velocity2, dt))
@@ -93,8 +93,17 @@ while checkSpeed(speed1, speed2) && checkBoundaries(stone_pos1,stone_pos2, field
 end
 
 figure; 
-plot(VecTime,VecAngSpeed,'b');
+plot(VecTime,VecAngSpeed,'-');
+legend('Vinkelhastighet');
+title('Vinkelhastighet');
+xlabel('tid (s)');
+ylabel('hastighet (rad/s)');
+
+figure;
+plot(VecTime,VecSpeed,'-');
+title('Hastigheter');
+xlabel('tid (s)');
+ylabel('hastighet (m/s)');
 hold on;
-plot(VecTime,VecSpeed,'m');
-hold on;
-plot(VecTime,VecSpeedSide,'r');
+plot(VecTime,VecSpeedSide,'--');
+legend('Hastighet, rörelseriktning','Hastighet, sidled');
