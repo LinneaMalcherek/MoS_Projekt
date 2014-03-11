@@ -1,7 +1,7 @@
 \select@language {swedish}
 \contentsline {section}{\numberline {1}Introduktion}{2}
 \contentsline {subsection}{\numberline {1.1}Begr\IeC {\"a}nsningar och f\IeC {\"o}renklingar}{2}
-\contentsline {section}{\numberline {2}Fysik}{2}
+\contentsline {section}{\numberline {2}Fysikalisk beskrivning}{2}
 \contentsline {subsection}{\numberline {2.1}Translation}{2}
 \contentsline {subsubsection}{\numberline {2.1.1}Friktionens p\IeC {\r a}verkan}{2}
 \contentsline {subsubsection}{\numberline {2.1.2}Resulterande translation}{3}
