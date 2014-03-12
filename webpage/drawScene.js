@@ -13,7 +13,7 @@ function drawScene(players) {
         mat4.translate(vMatrix, [-xCam, -yCam, -zCam]);
 
         mat4.rotate(vMatrix,-Math.PI / 2, [1, 0, 0]);
-        mat4.translate(vMatrix, [0 , 10 ,-1.3]);
+        mat4.translate(vMatrix, [0 , 10 ,-0]);
         
         // draw all the curling stones. goes trough all players, so we get different colors och the different players.
         for (var j=0; j<players.length; j++) {
