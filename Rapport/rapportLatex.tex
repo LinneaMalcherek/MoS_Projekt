@@ -87,25 +87,27 @@ TNM085 Modelleringsprojekt}
 
 \section{Introduktion}
 Curling är ett intressant system att modellera eftersom det innefattar många vedertagna fysikaliska egenskaper men även delar som inte är särskilt triviala. 
-De senaste åren har ett flertal vetenskapliga artiklar publicerats som ger sin förklaring till svängningsfenomenet, den så kallade "curlen" hos curlingstenen.
-Gemensamt för artiklarna är hypotesen om att svängningen på curlingstenen beror på en högre friktion bak på stenen än den fram. 
-Förklaringen till varför detta är så, har uppdagats det senaste året.. bla bla bla
+De senaste åren har ett flertal vetenskapliga artiklar publicerats som ger sin förklaring till svängningsfenomenet, den så kallade "curlen", hos curlingstenen.
+Gemensamt för artiklarna är hypotesen om att svängningen på curlingstenen beror på en högre friktion på bakre delen av stenen än den främre. 
+Förklaringen till varför detta är så, har uppdagats det senaste året.. bla bla bla referens?
 
 \subsection{Begränsningar och förenklingar} 
  Denna rapport behandlar modellbygge och simulering av en curlingstens translation och rotation, friktionens påverkan samt kollision mellan curlingstenar. 
-Curlingstenarna i beräkningarna har samma massa och därmed kan beräkningar förenklas genom att förkortta bort massan. 
+Curlingstenarna i beräkningarna har samma massa och därmed kan beräkningar förenklas genom att förkorta bort massan. 
 I spelet använder man sig även av sopning för att påverka stenens bana över isen, detta behandlas endast ytligt i denna rapport. 
 
 \section{Fysikalisk beskrivning} 
 
+NÅNTING OM ATT DET FINNS EN TABELL I SLUTET?
+
 \subsection{Translation}
 
-I beräkningarna av stenens rörelse har hänsyn tagits till tre påverkande friktionskrafter (Figur~\ref{fig:Translation}): Kraft i riktning motsatt stenens rörelseriktning $\bar{F_t}$, samt två krafter i ortogonal riktning mot denna \eqref{Ftot}. Dessa två krafter utgörs av friktionskrafterna i främre delen av stenen samt i den bakre delen. Differensen mellan dessa två krafter är vad som påverkar stenens curl (svängning). 
+I beräkningarna av stenens rörelse har hänsyn tagits till tre påverkande friktionskrafter (Figur~\ref{fig:Translation}): Kraft i riktning motsatt stenens rörelseriktning $\bar{F_f}$, samt två krafter i ortogonal riktning mot denna $\bar{F_1}$ och $\bar{F_2}$ \eqref{Ftot}. Dessa två krafter utgörs av friktionskrafterna i främre delen av stenen samt i den bakre delen. Differensen mellan dessa två krafter är vad som påverkar stenens curl (svängning). Summan av krafterna är den totala kraftpåverkan på stenen $\bar{F_t}$.
 
 \begin{subequations}\label{Ftot}
  \begin{align}
- \bar{F_t}&=\bar{F_f}+\bar{F_b}+\bar{F}\\
- \bar{F_f}&<\bar{F_b}
+ \bar{F_t}&=\bar{F_1}+\bar{F_2}+\bar{F_f}\\
+ \bar{F_1}&<\bar{F_2}
  \end{align}
  \end{subequations}
 
@@ -129,12 +131,17 @@ När den främre halvan av stenen rör sig över den pebblade isen orsakas ett s
 Då den bakre delen av bandet passerar samma yta ska bandets scratchade yta passera dessa spår, vilka då ligger i nästan rätvinklig riktning från bandets färdriktning, (Figur~\ref{fig:Friktion}). 
 Det innebär att den bakre delen av stenen får ett högre motstånd, en högre friktionskraft, än den främre \eqref{biggerthan}
 \footnote{H. Nyberg, S. Alfredson, S. Hogmark, S. Jacobson, \emph{The asymmetrical friction mechanism that puts the curl in the curling stone} (2013), Tribomaterials Group, Department of Engineering Sciences, Uppsala University, SE-751 21 Uppsala, Sweden}.
+Därmed gör sopning att stenen curlar mindre. Friktionen i punkterna längs bandet påverkas av av stenens rörelse framåt\footnote{A. Raymond Penner, \emph{The physics of sliding cylinders and curling rocks} (2001), American Journal of Physics \textbf{69}, American Association of Physics Teachers},
+vilket innebär att friktionskoefficienten $\mu$ påverkas av hastigheten $v$ framåt. Variabeln $c$ är en konstant beroende av friktionspåverkan i punkten. Accelerationen $a$ i en punkt längs stenens band kan därmed beräknas \eqref{mu}.
 
  \begin{align}\label{Fsida1}
  F_1& = ma_1 = \mu_1 mg \Rightarrow a_1 = \mu_1 g \\\label{Fsida2}
  F_2& = ma_2 = \mu_2 mg \Rightarrow a_2 = \mu_2g \\\label{biggerthan}
  \mu_2& > \mu_1
  \end{align}
+\begin{equation}\label{mu} 
+\mu = \frac{c}{\sqrt{v}} \Rightarrow a = \frac{cg}{\sqrt{v}} 
+\end{equation}
 
 \begin{figure}[ht!]
 \centering
@@ -144,15 +151,7 @@ Det innebär att den bakre delen av stenen får ett högre motstånd, en högre 
 \label{overflow}
 \end{figure}
 
-Den vattenhinna som skapas vid sopning för med sig att de spår som den främre delen av stenen åstadkommer minskar och därmed  även dess effekt på den bakre delen av stenen. Därmed gör sopning att stenen curlar mindre. Friktionen i punkterna längs bandet påverkas av av stenens rörelse framåt \eqref{mu}
-\footnote{A. Raymond Penner, \emph{The physics of sliding cylinders and curling rocks} (2001), American Journal of Physics \textbf{69}, American Association of Physics Teachers}.
-
-
-\begin{equation}\label{mu} 
-\mu = \frac{c}{\sqrt{v}} \Rightarrow a = \frac{cg}{\sqrt{v}} 
-\end{equation}
-
-$c$ = konstant, $g$ = gravitation, $v$ = hastighet
+Den vattenhinna som skapas vid sopning för med sig att de spår som den främre delen av stenen åstadkommer minskar och därmed  även dess effekt på den bakre delen av stenen. 
 
 \subsubsection{Resulterande translation}
 

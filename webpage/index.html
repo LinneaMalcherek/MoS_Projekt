@@ -10,7 +10,7 @@
             
             <link rel="stylesheet" type="text/css" href="style.css">
 
-            <script type="text/javascript" src="glMatrix-0.9.5.min.js"></script>
+            <script type="text/javascript" src="external/glMatrix-0.9.5.min.js"></script>
             
             <script id="shader-fs" type="x-shader/x-fragment">
               precision mediump float;
@@ -40,13 +40,12 @@
                   vTextureCoord = aTextureCoord;
               }
             </script>
-            <script type="text/javascript" src="initGL.js"></script>
-            <script type="text/javascript" src="initShaders.js"></script>
-            <script type="text/javascript" src="initBuffers.js"></script>
-            <script type="text/javascript" src="initTextures.js"></script>
-            <script type="text/javascript" src="drawScene.js"></script>
-            <script type="text/javascript" src="handleEvents.js"></script>
-            <script type="text/javascript" src="sylvester.js"></script>
+            <script type="text/javascript" src="webgl/initGL.js"></script>
+            <script type="text/javascript" src="webgl/initShaders.js"></script>
+            <script type="text/javascript" src="webgl/initBuffers.js"></script>
+            <script type="text/javascript" src="webgl/initTextures.js"></script>
+            <script type="text/javascript" src="webgl/drawScene.js"></script>
+            <script type="text/javascript" src="external/sylvester.js"></script>
             <script type="text/javascript" src="dataConstants.js"></script>
             <script type="text/javascript" src="CurlingStone.js"></script>
             <script type="text/javascript" src="collision.js"></script>

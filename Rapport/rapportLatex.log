@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2014.2.17)  12 MAR 2014 16:48
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2014.2.17)  12 MAR 2014 17:11
 entering extended mode
 **rapportLatex.tex
 
@@ -874,22 +874,22 @@ toc)
 File: Translation.png Graphic file (type png)
 
 <use Translation.png>
-Package pdftex.def Info: Translation.png used on input line 114.
+Package pdftex.def Info: Translation.png used on input line 116.
 (pdftex.def)             Requested size: 227.62204pt x 233.7036pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 121--132
+Underfull \hbox (badness 10000) in paragraph at lines 123--136
 
  []
 
-[2] <Friktion_bakfram.png, id=20, 787.94376pt x 416.55624pt>
+[2] [3 <C:/Users/Linnéa/Documents/Skola/MoS-projekt/MoS_Projekt/Rapport/Transl
+ation.png>] <Friktion_bakfram.png, id=30, 787.94376pt x 416.55624pt>
 File: Friktion_bakfram.png Graphic file (type png)
 
 <use Friktion_bakfram.png>
-Package pdftex.def Info: Friktion_bakfram.png used on input line 141.
+Package pdftex.def Info: Friktion_bakfram.png used on input line 148.
 (pdftex.def)             Requested size: 312.9803pt x 165.45636pt.
- [3 <C:/Users/Linnéa/Documents/Skola/MoS-projekt/MoS_Projekt/Rapport/Translati
-on.png>]
-Overfull \hbox (4.90358pt too wide) in paragraph at lines 171--173
+
+Overfull \hbox (4.90358pt too wide) in paragraph at lines 170--172
 \OT1/cmr/m/n/10.95 Stenen har []aven en ro-te-ran-de r[]orelse med en vin-kel-h
 as-tig-het vars ur-sprungsv[]arde ber[]aknas
  []
@@ -897,33 +897,34 @@ as-tig-het vars ur-sprungsv[]arde ber[]aknas
 <bana.png, id=31, 963.6pt x 293.095pt>
 File: bana.png Graphic file (type png)
  <use bana.png>
-Package pdftex.def Info: bana.png used on input line 176.
+Package pdftex.def Info: bana.png used on input line 175.
 (pdftex.def)             Requested size: 312.9803pt x 95.1966pt.
  [4 <C:/Users/Linnéa/Documents/Skola/MoS-projekt/MoS_Projekt/Rapport/Friktion_
 bakfram.png>]
 <krock.png, id=37, 963.6pt x 722.7pt>
 File: krock.png Graphic file (type png)
  <use krock.png>
-Package pdftex.def Info: krock.png used on input line 209.
+Package pdftex.def Info: krock.png used on input line 208.
 (pdftex.def)             Requested size: 227.62204pt x 170.71672pt.
  [5 <C:/Users/Linnéa/Documents/Skola/MoS-projekt/MoS_Projekt/Rapport/bana.png>
- <C:/Users/Linnéa/Documents/Skola/MoS-projekt/MoS_Projekt/Rapport/krock.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 226--229
+]
+Underfull \hbox (badness 10000) in paragraph at lines 225--228
 
  []
 
-[6] <kollision-vektorer.png, id=50, 515.9275pt x 401.5pt>
+[6 <C:/Users/Linnéa/Documents/Skola/MoS-projekt/MoS_Projekt/Rapport/krock.png>
+] <kollision-vektorer.png, id=50, 515.9275pt x 401.5pt>
 File: kollision-vektorer.png Graphic file (type png)
 
 <use kollision-vektorer.png>
-Package pdftex.def Info: kollision-vektorer.png used on input line 255.
+Package pdftex.def Info: kollision-vektorer.png used on input line 254.
 (pdftex.def)             Requested size: 196.324pt x 152.77988pt.
  [7 <C:/Users/Linnéa/Documents/Skola/MoS-projekt/MoS_Projekt/Rapport/kollision
 -vektorer.png>]
 <efter-krock.png, id=55, 485.815pt x 372.39125pt>
 File: efter-krock.png Graphic file (type png)
  <use efter-krock.png>
-Package pdftex.def Info: efter-krock.png used on input line 278.
+Package pdftex.def Info: efter-krock.png used on input line 277.
 (pdftex.def)             Requested size: 256.0748pt x 196.28679pt.
 
 [8 <C:/Users/Linnéa/Documents/Skola/MoS-projekt/MoS_Projekt/Rapport/efter-kroc
@@ -931,27 +932,27 @@ k.png>] [9] <hastigheter_tid_graf.png, id=63, 422.32782pt x 316.18124pt>
 File: hastigheter_tid_graf.png Graphic file (type png)
 
 <use hastigheter_tid_graf.png>
-Package pdftex.def Info: hastigheter_tid_graf.png used on input line 325.
+Package pdftex.def Info: hastigheter_tid_graf.png used on input line 324.
 (pdftex.def)             Requested size: 284.52756pt x 213.02234pt.
 
 <vinkelhastighet_tid_graf.png, id=64, 422.32782pt x 316.18124pt>
 File: vinkelhastighet_tid_graf.png Graphic file (type png)
 
 <use vinkelhastighet_tid_graf.png>
-Package pdftex.def Info: vinkelhastighet_tid_graf.png used on input line 333.
+Package pdftex.def Info: vinkelhastighet_tid_graf.png used on input line 332.
 (pdftex.def)             Requested size: 284.52756pt x 213.02234pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 345--347
+Underfull \hbox (badness 10000) in paragraph at lines 344--346
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 345--347
+Underfull \hbox (badness 10000) in paragraph at lines 344--346
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 345--347
+Underfull \hbox (badness 10000) in paragraph at lines 344--346
 
  []
 
@@ -967,7 +968,7 @@ LaTeX Warning: There were multiply-defined labels.
 Here is how much of TeX's memory you used:
  6636 strings out of 493921
  92690 string characters out of 3147330
- 172733 words of memory out of 3000000
+ 174733 words of memory out of 3000000
  9786 multiletter control sequences out of 15000+200000
  16683 words of font info for 62 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
@@ -990,7 +991,7 @@ fonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm
 /cmsy8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti10.p
 fb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti9.pfb><C:/Pr
 ogram Files/MiKTeX 2.9/fonts/type1/public/cm-super/sfrm1095.pfb>
-Output written on rapportLatex.pdf (12 pages, 390647 bytes).
+Output written on rapportLatex.pdf (12 pages, 391790 bytes).
 PDF statistics:
  133 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)

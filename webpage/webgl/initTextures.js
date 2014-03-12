@@ -17,7 +17,11 @@ function initTextures() {
         handleLoadedTexture(neheTexture)
     }
 
+<<<<<<< HEAD:webpage/initTextures.js
     neheTexture.image.src = "curlingstone_texture.png";
+=======
+    neheTexture.image.src = "objects/textures/curlingstone_texture.png";
+>>>>>>> 24024ff9fb53c3e4a52dad897adfa86f66f4109d:webpage/webgl/initTextures.js
 }
 
 var gulTexture;
@@ -29,7 +33,11 @@ function initTextures4() {
         handleLoadedTexture(gulTexture)
     }
 
+<<<<<<< HEAD:webpage/initTextures.js
     gulTexture.image.src = "curlingstone_texture_2.png";
+=======
+    gulTexture.image.src = "objects/textures/curlingstone_texture_2.png";
+>>>>>>> 24024ff9fb53c3e4a52dad897adfa86f66f4109d:webpage/webgl/initTextures.js
 }
 
 var banaTexture;
@@ -41,7 +49,7 @@ function initTextures2() {
         handleLoadedTexture(banaTexture)
     }
 
-    banaTexture.image.src = "curlingbanan12.png";
+    banaTexture.image.src = "objects/textures/curlingbanan12.png";
 }
 
 var sphereTexture;
@@ -53,5 +61,5 @@ function initTextures3() {
         handleLoadedTexture(sphereTexture)
     }
 
-    sphereTexture.image.src = "skydome_nebulosa.jpg";
+    sphereTexture.image.src = "objects/textures/skydome_nebulosa.jpg";
 }
