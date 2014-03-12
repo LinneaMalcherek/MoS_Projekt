@@ -7,6 +7,14 @@ function drawScene(players) {
 
         mat4.perspective(45, gl.viewportWidth / gl.viewportHeight, 0.1, 100.0, pMatrix);
 
+
+        gl.uniform3f(shaderProgram.ambientColorUniform,0.4,0.4,0.4);
+
+        gl.uniform3f(shaderProgram.pointLightingLocationUniform,0.0,10.0,20.0);
+
+        gl.uniform3f(shaderProgram.pointLightingColorUniform,0.6,0.6,0.6);
+
+
         mat4.identity(vMatrix);
         mat4.rotate(vMatrix, -pitch*Math.PI / 180, [1, 0, 0]);
         mat4.rotate(vMatrix, -yaw*Math.PI / 180, [0, 1, 0]);
@@ -38,6 +46,9 @@ function drawScene(players) {
                     gl.bindBuffer(gl.ARRAY_BUFFER, VertexPositionBuffer);
                     gl.vertexAttribPointer(shaderProgram.vertexPositionAttribute, VertexPositionBuffer.itemSize, gl.FLOAT, false, 0, 0);
 
+                    gl.bindBuffer(gl.ARRAY_BUFFER, VertexNormalBuffer);
+                    gl.vertexAttribPointer(shaderProgram.vertexNormalAttribute, VertexNormalBuffer.itemSize, gl.FLOAT, false, 0, 0);
+
                     gl.bindBuffer(gl.ARRAY_BUFFER, VertexTextureCoordBuffer);
                     gl.vertexAttribPointer(shaderProgram.textureCoordAttribute, VertexTextureCoordBuffer.itemSize, gl.FLOAT, false, 0, 0);
 
@@ -68,6 +79,9 @@ function drawScene(players) {
         gl.bindBuffer(gl.ARRAY_BUFFER, VertexPositionBuffer2);
         gl.vertexAttribPointer(shaderProgram.vertexPositionAttribute, VertexPositionBuffer2.itemSize, gl.FLOAT, false, 0, 0);
 
+        gl.bindBuffer(gl.ARRAY_BUFFER, VertexNormalBuffer2);
+        gl.vertexAttribPointer(shaderProgram.vertexNormalAttribute, VertexNormalBuffer2.itemSize, gl.FLOAT, false, 0, 0);
+
         gl.bindBuffer(gl.ARRAY_BUFFER, VertexTextureCoordBuffer2);
         gl.vertexAttribPointer(shaderProgram.textureCoordAttribute, VertexTextureCoordBuffer2.itemSize, gl.FLOAT, false, 0, 0);
 
@@ -89,6 +103,9 @@ function drawScene(players) {
 
         gl.bindBuffer(gl.ARRAY_BUFFER, VertexPositionBuffer3);
         gl.vertexAttribPointer(shaderProgram.vertexPositionAttribute, VertexPositionBuffer3.itemSize, gl.FLOAT, false, 0, 0);
+
+        gl.bindBuffer(gl.ARRAY_BUFFER, VertexNormalBuffer3);
+        gl.vertexAttribPointer(shaderProgram.vertexNormalAttribute, VertexNormalBuffer3.itemSize, gl.FLOAT, false, 0, 0);
 
         gl.bindBuffer(gl.ARRAY_BUFFER, VertexTextureCoordBuffer3);
         gl.vertexAttribPointer(shaderProgram.textureCoordAttribute, VertexTextureCoordBuffer3.itemSize, gl.FLOAT, false, 0, 0);

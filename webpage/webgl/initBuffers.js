@@ -1,14 +1,17 @@
 var VertexPositionBuffer;
 var VertexTextureCoordBuffer;
 //var VertexIndexBuffer;
+var VertexNormalBuffer;
 
 var VertexPositionBuffer2;
 var VertexTextureCoordBuffer2;
 var VertexIndexBuffer2;
+var VertexNormalBuffer2;
 
 var VertexPositionBuffer3;
 var VertexTextureCoordBuffer3;
 var VertexIndexBuffer3;
+var VertexNormalBuffer3;
 
 function handleLoadedObject(objectData) {
 
@@ -17,6 +20,12 @@ function handleLoadedObject(objectData) {
     gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(objectData.mTextureCoords), gl.STATIC_DRAW);
     VertexTextureCoordBuffer.itemSize = 2;
     VertexTextureCoordBuffer.numItems = objectData.mTextureCoords.length / 2;
+
+    VertexNormalBuffer = gl.createBuffer();
+    gl.bindBuffer(gl.ARRAY_BUFFER, VertexNormalBuffer);
+    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(objectData.mVertexNormals), gl.STATIC_DRAW);
+    VertexNormalBuffer.itemSize = 3;
+    VertexNormalBuffer.numItems = objectData.mVertexNormals.length / 3;
 
     VertexPositionBuffer = gl.createBuffer();
     gl.bindBuffer(gl.ARRAY_BUFFER, VertexPositionBuffer);
@@ -40,6 +49,12 @@ function handleLoadedObject2(objectData) {
     VertexTextureCoordBuffer2.itemSize = 2;
     VertexTextureCoordBuffer2.numItems = objectData.texcoords.length / 2;
 
+    VertexNormalBuffer2 = gl.createBuffer();
+    gl.bindBuffer(gl.ARRAY_BUFFER, VertexNormalBuffer2);
+    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(objectData.normals), gl.STATIC_DRAW);
+    VertexNormalBuffer2.itemSize = 3;
+    VertexNormalBuffer2.numItems = objectData.normals.length / 3;
+
     VertexPositionBuffer2 = gl.createBuffer();
     gl.bindBuffer(gl.ARRAY_BUFFER, VertexPositionBuffer2);
     gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(objectData.verts), gl.STATIC_DRAW);
@@ -61,6 +76,12 @@ function handleLoadedObject3(objectData) {
     gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(objectData.texcoords), gl.STATIC_DRAW);
     VertexTextureCoordBuffer3.itemSize = 2;
     VertexTextureCoordBuffer3.numItems = objectData.texcoords.length / 2;
+
+    VertexNormalBuffer3 = gl.createBuffer();
+    gl.bindBuffer(gl.ARRAY_BUFFER, VertexNormalBuffer3);
+    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(objectData.normals), gl.STATIC_DRAW);
+    VertexNormalBuffer3.itemSize = 3;
+    VertexNormalBuffer3.numItems = objectData.normals.length / 3;
 
     VertexPositionBuffer3 = gl.createBuffer();
     gl.bindBuffer(gl.ARRAY_BUFFER, VertexPositionBuffer3);
