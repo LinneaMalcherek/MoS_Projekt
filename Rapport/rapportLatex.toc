@@ -9,6 +9,8 @@
 \contentsline {subsection}{\numberline {2.3}Kollision}{5}
 \contentsline {section}{\numberline {3}Numeriska metoder f\IeC {\"o}r simulering}{8}
 \contentsline {section}{\numberline {4}Grafisk implementering}{9}
+\contentsline {subsection}{\numberline {4.1}Modellering}{9}
+\contentsline {subsection}{\numberline {4.2}webGL}{9}
 \contentsline {section}{\numberline {5}Resultat}{10}
 \contentsline {section}{\numberline {6}Diskussion}{11}
 \contentsline {section}{\numberline {A}\\Title of Appendix A}{11}
