@@ -48,9 +48,11 @@ function drawScene(players) {
                     
                     gl.uniform1i(shaderProgram.samplerUniform, 0);
 
-                    gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, VertexIndexBuffer);
+                   // gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, VertexIndexBuffer);
+                    gl.bindBuffer(gl.ARRAY_BUFFER, VertexPositionBuffer);
                     setMatrixUniforms();
-                    gl.drawElements(gl.TRIANGLES, VertexIndexBuffer.numItems, gl.UNSIGNED_SHORT, 0);
+                    gl.drawArrays(gl.TRIANGLES,0, VertexPositionBuffer.numItems);
+                    //gl.drawElements(gl.TRIANGLES, VertexIndexBuffer.numItems, gl.UNSIGNED_SHORT, 0);
                 }
 
             }
