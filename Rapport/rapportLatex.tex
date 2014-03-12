@@ -127,8 +127,8 @@ Vid sopning värms isen upp och en tunn vattenhinna skapas framför stenen. Dett
 En curlingsten har en kontaktyta mot isen bestående av ett tunt band (ca 5mm brett) som har en något ojämn yta, så kallad scratchad yta. 
 När den främre halvan av stenen rör sig över den pebblade isen orsakas ett spår i isen i stenens rörelseriktning med en liten vinkel i rotationsriktningen. 
 Då den bakre delen av bandet passerar samma yta ska bandets scratchade yta passera dessa spår, vilka då ligger i nästan rätvinklig riktning från bandets färdriktning, (Figur~\ref{fig:Friktion}). 
-Det innebär att den bakre delen av stenen får ett högre motstånd, en högre friktionskraft, än den främre \eqref{biggerthan}. 
-REFERENS: http://www.sciencedirect.com/science/article/pii/S0043164813000732
+Det innebär att den bakre delen av stenen får ett högre motstånd, en högre friktionskraft, än den främre \eqref{biggerthan}
+\footnote{H. Nyberg, S. Alfredson, S. Hogmark, S. Jacobson, \emph{The asymmetrical friction mechanism that puts the curl in the curling stone} (2013), Tribomaterials Group, Department of Engineering Sciences, Uppsala University, SE-751 21 Uppsala, Sweden}.
 
  \begin{align}\label{Fsida1}
  F_1& = ma_1 = \mu_1 mg \Rightarrow a_1 = \mu_1 g \\\label{Fsida2}
@@ -144,7 +144,9 @@ REFERENS: http://www.sciencedirect.com/science/article/pii/S0043164813000732
 \label{overflow}
 \end{figure}
 
-Den vattenhinna som skapas vid sopning för med sig att de spår som den främre delen av stenen åstadkommer minskar och därmed  även dess effekt på den bakre delen av stenen. Därmed gör sopning att stenen curlar mindre. Friktionen i punkterna längs bandet påverkas av av stenens rörelse framåt \eqref{mu}. HÄR BEHÖVS VERKLIGEN REFERENS!
+Den vattenhinna som skapas vid sopning för med sig att de spår som den främre delen av stenen åstadkommer minskar och därmed  även dess effekt på den bakre delen av stenen. Därmed gör sopning att stenen curlar mindre. Friktionen i punkterna längs bandet påverkas av av stenens rörelse framåt \eqref{mu}
+\footnote{A. Raymond Penner, \emph{The physics of sliding cylinders and curling rocks} (2001), American Journal of Physics \textbf{69}, American Association of Physics Teachers}.
+
 
 \begin{equation}\label{mu} 
 \mu = \frac{c}{\sqrt{v}} \Rightarrow a = \frac{cg}{\sqrt{v}} 
@@ -213,7 +215,7 @@ Hastigheten av curlingstenarna efter en kollision beräknas med hjälp av de tv�
 Beräkningarna utgår ifrån en rak central stöt i krockens normalriktning, där det finns två givna ekvationer \eqref{e1} och \eqref{elastisk} för att ta fram hastigheten efter krock. 
 Med hjälp av stötkoefficienten e \eqref{e1} kan stöten regleras mellan en helt elastikt krock (e=1) och en helt inelastiskt krock (e=0). 
 I curling är det rimligt med en energiförlust och en inelastisk stöt bör därmed tas i beräkning. 
-Stötkoefficienten är kvoten av den relativa hastigheten efter kollision och den relativa hastigheten före kollision enligt \eqref{e1}.
+Stötkoefficienten är kvoten av den relativa hastigheten efter kollision och den relativa hastigheten före kollision enligt \eqref{e1}\footnote{R. Grahn, P-Å. Jansson \emph{Dynamik}, Studentlitteratur (1995), s. 334-345}.
 
 Eftersom det ej finns en specificerad stötkoefficient för curlingstenarnas material (granit) har en stötkoefficient uppskattats till 0.3 genom simuleringar.  
 
@@ -223,8 +225,6 @@ Eftersom det ej finns en specificerad stötkoefficient för curlingstenarnas mat
 0& \le e \le 1
  \end{align}
  \end{subequations}
-
-REFERENS: R Grahn,P-Å jansson: Dynamik (Studentlitteratur 1995), sid 334-345
 \\\\Oavsett om krocken är inelastisk eller elastisk, gäller lagen om rörelsemängdens bevarande.
 
  \begin{subequations}\label{elastisk}
@@ -343,5 +343,23 @@ Rada upp alla konstanter som används i simuleringen.
 \appendix
 \section{\\Title of Appendix A} \label{App:AppendixA}
 Kanske lägga in alla benämningar av konstanter osv.
+
+\cite{Grahn}
+
+\begin{thebibliography}{99}
+\addcontentsline{toc}{chapter}{Bibliography}
+
+\bibitem{Grahn} R. Grahn, P-Å. Jansson \emph{Dynamik}, Studentlitteratur (1995), 334-345 
+
+
+
+genom roten ur v
+
+
+
+Runge Kutta
+
+\end{thebibliography}
+
 
 \end{document}
