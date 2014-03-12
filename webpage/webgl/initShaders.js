@@ -80,7 +80,9 @@
         gl.uniformMatrix4fv(shaderProgram.mMatrixUniform, false, mMatrix);
 
         var normalMatrix = mat3.create();
-        mat4.toInverseMat3( mat4.multiply(mMatrix,vMatrix), normalMatrix); // KOLLA HÄR
+       // mat4.toInverseMat3( mat4.multiply(mMatrix,vMatrix), normalMatrix); // KOLLA HÄR
+        mat4.toInverseMat3(mMatrix, normalMatrix);
         mat3.transpose(normalMatrix);
         gl.uniformMatrix3fv(shaderProgram.nMatrixUniform, false, normalMatrix);
+ 
     }

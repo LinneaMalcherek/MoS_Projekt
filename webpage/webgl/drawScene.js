@@ -8,11 +8,11 @@ function drawScene(players) {
         mat4.perspective(45, gl.viewportWidth / gl.viewportHeight, 0.1, 100.0, pMatrix);
 
 
-        gl.uniform3f(shaderProgram.ambientColorUniform,0.4,0.4,0.4);
+        gl.uniform3f(shaderProgram.ambientColorUniform,0.5,0.5,0.5);
 
-        gl.uniform3f(shaderProgram.pointLightingLocationUniform,0.0,10.0,20.0);
+        gl.uniform3f(shaderProgram.pointLightingLocationUniform,0.0,-2.0,10.0);
 
-        gl.uniform3f(shaderProgram.pointLightingColorUniform,0.6,0.6,0.6);
+        gl.uniform3f(shaderProgram.pointLightingColorUniform,0.5,0.5,0.5);
 
 
         mat4.identity(vMatrix);
