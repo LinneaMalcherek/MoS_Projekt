@@ -79,7 +79,7 @@ function handleLoadedObject3(objectData) {
 
 function loadObject() {
     var request = new XMLHttpRequest();
-    request.open("GET", "stone_2.json"); <!-- vilket objekt man vill läsa in -->
+    request.open("GET", "../objects/stone_2.json"); <!-- vilket objekt man vill läsa in -->
     request.onreadystatechange = function () {
         if (request.readyState == 4) {
             handleLoadedObject(JSON.parse(request.responseText));
@@ -98,7 +98,7 @@ function loadObject() {
 
 function loadObject2() {
     var request = new XMLHttpRequest();
-    request.open("GET", "bana.json"); <!-- vilket objekt man vill läsa in -->
+    request.open("GET", "../objects/bana.json"); <!-- vilket objekt man vill läsa in -->
     request.onreadystatechange = function () {
         if (request.readyState == 4) {
             handleLoadedObject2(JSON.parse(request.responseText));
@@ -109,7 +109,7 @@ function loadObject2() {
 
 function loadObject3() {
     var request = new XMLHttpRequest();
-    request.open("GET", "skybox.json"); <!-- vilket objekt man vill läsa in -->
+    request.open("GET", "../objects/skybox.json"); <!-- vilket objekt man vill läsa in -->
     request.onreadystatechange = function () {
         if (request.readyState == 4) {
             handleLoadedObject3(JSON.parse(request.responseText));
