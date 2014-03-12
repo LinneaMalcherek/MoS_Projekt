@@ -18,7 +18,7 @@ function dataConstants() {
 	FIELDLENGTH = 36.59 + 6.40;
 	FIELDWIDTH = 5;
 	HACK_HOG = 6.40;
-	TEE = $V([0,34.76]); <!-- the position of the middle-->
+	TEE = $V([0,34.76+6.40]); <!-- the position of the middle-->
 	NEST_RADIUS = 1.829;
 
 	// how many stones a player should be able to throw

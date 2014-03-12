@@ -1,5 +1,8 @@
 
 function theGame() {
+	thisturn=1;
+	turn=1;
+
 	this.players = [];
 	this.allStones = new Array(); 
 }
@@ -161,8 +164,10 @@ theGame.prototype = {
         // to check if the game has ended (aka all stone being throwed.) 
         // only calulate the score when the last stone has stoped. 
         if( this.allStones.length == NUMBEROFSTONES*2 ){
-        	if (this.players[1].stones[NUMBEROFSTONES-1].speed < 0.01)
-	        	this.countScore();
+        	if(thisturn==turn){
+        		if (this.players[1].stones[NUMBEROFSTONES-1].speed < 0.0001)
+	        		this.countScore();
+	    	}
         }        
 	},
 
@@ -205,7 +210,8 @@ theGame.prototype = {
 	// so you can't send a new stone while the last has stoped. change the buttons in the webpage. 
 	sendNewStone: function(){
 		if (this.allStones.length!=0) {
-			var id = 0;
+			if(this.allStones.length%2 != 0)
+				var id = 0;
 			if(this.allStones.length%2 == 0) {
 				id=1;
 			}
@@ -246,6 +252,7 @@ theGame.prototype = {
 	// go trought the players and reset the array of all the curling stones. 
 	// reset everything for a new round. 
 	resetRound: function(){
+		turn=turn+1; 
 		for(var i=0; i<this.players.length; i++){
 			delete this.players[i].stones;
 			this.players[i].stones = new Array();
@@ -263,6 +270,7 @@ theGame.prototype = {
 
 	// calculates the score of a round. 
 	countScore: function(){
+		thisturn = thisturn + 1; 
 		var score = new Array();
 		score[0]=this.players[0].score;
 		score[1]=this.players[1].score;
@@ -276,20 +284,22 @@ theGame.prototype = {
 
 		this.allStones.sort(function(a,b){return a.distanceFromMiddle-b.distanceFromMiddle}); // sort!!
 
-//		if (this.allStones[0].distanceFromMiddle + R < NEST_RADIUS){
+		if (this.allStones[0].distanceFromMiddle + R < NEST_RADIUS ){
 			var sum=1;
 			var leader = this.allStones[0].player;
 			var i=1;
 
-			while (this.allStones[i].player == this.allStones[i++].player){
-				sum = sum + 1;
-				if (i >= NUMBEROFSTONES - 1)
-					break;
+			while (this.allStones[i].render && this.allStones[i].player == leader && this.allStones[i].player == this.allStones[i++].player){
+				if (this.allStones[i].render){
+					sum = sum + 1;
+					if (i >= NUMBEROFSTONES - 1)
+						break;
+				}
 			}
 
 			score[leader] = score[leader] + sum; 
 
-//		}
+		}
 
 		this.players[0].score = score[0];
 		this.players[1].score = score[1];

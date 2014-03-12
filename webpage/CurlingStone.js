@@ -203,7 +203,7 @@ CurlingStone.prototype = {
 		this.setNewPos(velocity,dt);
 		this.setNewAngle(dt);
 
-		console.log("position: %s", this.getPosAsString());
+		//console.log("position: %s", this.getPosAsString());
 	},
 
 	// calculate the distance from the stone to the tee. 
