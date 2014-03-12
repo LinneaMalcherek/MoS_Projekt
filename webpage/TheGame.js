@@ -21,26 +21,19 @@ theGame.prototype = {
 	// add the stone to the players stone-array 
 	throwStone: function(angle, speed, playerid){
 		this.players[playerid].thrown = this.players[playerid].thrown + 1 ;
+		
 		var stone = new CurlingStone;
-		var stoneid = this.players[playerid].thrown; // which stone that is being throwed
-		stone.init(angle, speed, stoneid, playerid);
-		this.players[playerid].stones.push(stone);
-		this.concatArrays();
+
+		stone.init(angle, speed, playerid);
+		this.allStones.push(stone);
+		
 		this.updateInfo();
 	},
 
 	// check for collision between all the stones that are in the game. 
 	collision: function(){
 			for( var i=0; i < this.allStones.length; i++ ){
-
-				if(!this.allStones[i].render)
-					continue;
-
 				for ( var j=i+1; j < this.allStones.length; j++ ) {
-
-					if(!this.allStones[j].render)
-						continue;
-
 					if( checkCollision( this.allStones[i], this.allStones[j] ) ){
 							setAfterCollision(this.allStones[i], this.allStones[j]);
 					}
@@ -136,17 +129,11 @@ theGame.prototype = {
 
 			// check if out of the side, only check if the stone is moving
 			if (this.allStones[i].speed > 0.01 && ( Math.abs(this.allStones[i].getXPos()) > FIELDWIDTH/2 || this.allStones[i].getYPos() > FIELDLENGTH )){
-				var stoneId= this.allStones[i].stoneId;
-				var playerId=this.allStones[i].player;
-				this.players[playerId].stones[stoneId].render = false;
-				this.allStones[i].speed=0;
+				this.allStones.splice(i,1);
 			}
 			// delete stone if it has stoped before the hog-line
 			if (this.allStones[i].speed < 0.01 && this.allStones[i].getYPos() < FIELDLENGTH - HACK_HOG){
-				var stoneId= this.allStones[i].stoneId;
-				var playerId=this.allStones[i].player;
-				this.players[playerId].stones[stoneId].render = false;
-				this.allStones[i].speed=0;
+				this.allStones.splice(i,1);
 			}
 		}
 	},
@@ -158,14 +145,15 @@ theGame.prototype = {
 		this.collision();
         this.animate();
         this.outOfBounds(); 
-        drawScene(this.players);
+        drawScene(this.allStones);
         this.sendNewStone(); // so that you can't send a new stone when one is already moving. 
 
         // to check if the game has ended (aka all stone being throwed.) 
         // only calulate the score when the last stone has stoped. 
-        if( this.allStones.length == NUMBEROFSTONES*2 ){
+        //if( this.allStones.length == NUMBEROFSTONES*2 ){
+        if( this.players[0].thrown+this.players[1].thrown == NUMBEROFSTONES*2 ){
         	if(thisturn==turn){
-        		if (this.players[1].stones[NUMBEROFSTONES-1].speed < 0.0001)
+        		if (this.allStones[this.allStones.length-1].speed < 0.01)
 	        		this.countScore();
 	    	}
         }        
@@ -209,26 +197,19 @@ theGame.prototype = {
 
 	// so you can't send a new stone while the last has stoped. change the buttons in the webpage. 
 	sendNewStone: function(){
-		if (this.allStones.length!=0) {
-			if(this.allStones.length%2 != 0)
+		var thrownStones = this.players[0].thrown+this.players[1].thrown; 
+		if (thrownStones!=0) {
+			if(thrownStones%2 != 0)
 				var id = 0;
-			if(this.allStones.length%2 == 0) {
+			if(thrownStones%2 == 0) {
 				id=1;
 			}
 
-			if(this.players[id].stones[this.players[id].thrown-1].speed < 0.01 && this.allStones.length!=NUMBEROFSTONES*2  ){
+			// bugg här, blir knas om första stenen försvinner. kan inte byta knapp då..
+			if(this.allStones.length-1 >= 0  && this.allStones[this.allStones.length-1].speed < 0.01 && thrownStones!=NUMBEROFSTONES*2){
 				this.disableButton(id);
 			}
 		}
-	},
-
-	// add all the players arrays of stone in to one big so we can easily calculate collisions etc. 
-	concatArrays: function(){
-		var c = [];
-		for (var i =0; i<this.players.length; i++){
-			c = c.concat(this.players[i].stones);
-		}
-		this.allStones = c; 
 	},
 
 	// in the game-functionallity. to switch between which buttons that should be disabled.
@@ -254,8 +235,7 @@ theGame.prototype = {
 	resetRound: function(){
 		turn=turn+1; 
 		for(var i=0; i<this.players.length; i++){
-			delete this.players[i].stones;
-			this.players[i].stones = new Array();
+
 			this.players[i].thrown = 0;
 		}
 
@@ -270,6 +250,7 @@ theGame.prototype = {
 
 	// calculates the score of a round. 
 	countScore: function(){
+		console.log("räkna poäng");
 		thisturn = thisturn + 1; 
 		var score = new Array();
 		score[0]=this.players[0].score;
@@ -278,7 +259,7 @@ theGame.prototype = {
 		// räkna ut poängen genom att gå igenom alla stener som är i spel(render=true) och ta dess position
 		// till mittpunkten (den vektorn). räkna ut vektorns längd och sen spara alla längder för varje spelare och sten.
 		// se vilken spelare som har sten närmast och även om de har fler stenar innan motståndarens första sten.s
-		for (var i=0; i < NUMBEROFSTONES*2; i++){ // för varje sten
+		for (var i=0; i<this.allStones.length; i++){
 			this.allStones[i].calculateDistance(); // räknar ut avståndet för varje sten till mitten. 
 		}
 
@@ -289,12 +270,10 @@ theGame.prototype = {
 			var leader = this.allStones[0].player;
 			var i=1;
 
-			while (this.allStones[i].render && this.allStones[i].player == leader && this.allStones[i].player == this.allStones[i++].player){
-				if (this.allStones[i].render){
+			while (this.allStones[i].player == leader && this.allStones[i].player == this.allStones[i++].player){
 					sum = sum + 1;
 					if (i >= NUMBEROFSTONES - 1)
 						break;
-				}
 			}
 
 			score[leader] = score[leader] + sum; 
