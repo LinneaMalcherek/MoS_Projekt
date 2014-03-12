@@ -17,7 +17,7 @@ function initTextures() {
         handleLoadedTexture(neheTexture)
     }
 
-    neheTexture.image.src = "stone_texture.png";
+    neheTexture.image.src = "curlingstone_texture.png";
 }
 
 var gulTexture;
@@ -29,7 +29,7 @@ function initTextures4() {
         handleLoadedTexture(gulTexture)
     }
 
-    gulTexture.image.src = "stone_texture_gul.png";
+    gulTexture.image.src = "curlingstone_texture_2.png";
 }
 
 var banaTexture;

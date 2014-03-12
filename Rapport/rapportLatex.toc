@@ -7,7 +7,7 @@
 \contentsline {subsubsection}{\numberline {2.1.2}Resulterande translation}{4}
 \contentsline {subsection}{\numberline {2.2}Rotation}{4}
 \contentsline {subsection}{\numberline {2.3}Kollision}{5}
-\contentsline {section}{\numberline {3}Numerisk}{8}
+\contentsline {section}{\numberline {3}Numeriska metoder f\IeC {\"o}r simulering}{8}
 \contentsline {section}{\numberline {4}Grafisk implementering}{9}
 \contentsline {section}{\numberline {5}Resultat}{10}
 \contentsline {section}{\numberline {6}Diskussion}{11}

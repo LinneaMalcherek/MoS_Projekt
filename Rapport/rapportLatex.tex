@@ -100,7 +100,7 @@ I spelet använder man sig även av sopning för att påverka stenens bana över
 
 \subsection{Translation}
 
-I beräkningarna av stenens rörelse har hänsyn tagits till tre påverkande friktionskrafter (Figur~\ref{fig:Translation}): Kraft i riktning motsatt stenens rörelseriktning, samt två krafter i ortogonal riktning mot denna \eqref{Ftot}. Dessa två krafter utgörs av friktionskrafterna i främre delen av stenen samt i den bakre delen. Differensen mellan dessa två krafter är vad som påverkar stenens curl (svängning). 
+I beräkningarna av stenens rörelse har hänsyn tagits till tre påverkande friktionskrafter (Figur~\ref{fig:Translation}): Kraft i riktning motsatt stenens rörelseriktning $\bar{F_t}$, samt två krafter i ortogonal riktning mot denna \eqref{Ftot}. Dessa två krafter utgörs av friktionskrafterna i främre delen av stenen samt i den bakre delen. Differensen mellan dessa två krafter är vad som påverkar stenens curl (svängning). 
 
 \begin{subequations}\label{Ftot}
  \begin{align}
@@ -282,7 +282,7 @@ v_2''& = v_{2n}'' + v_{2t}'
 \end{figure}
 
 
-\section{Numerisk}
+\section{Numeriska metoder för simulering}
 Tre farter beräknas i varje steg av simuleringen: fart i rörelseriktningen, fart i ortogonal riktning som tillför curl samt vinkelhastighet. Dessa beräknas genom Runge-Kutta-metoden enligt \eqref{RungeKutta_transl}. 
 
  \begin{subequations}\label{RungeKutta_transl}
@@ -343,15 +343,30 @@ Rada upp alla konstanter som används i simuleringen.
 \appendix
 \section{\\Title of Appendix A} \label{App:AppendixA}
 Kanske lägga in alla benämningar av konstanter osv.
+\\\\Konstanter och värden\\\\
 
-\cite{Grahn}
+
+\begin{tabular}{l | c | r}
+benämning & förklaring & värde \\ \hline\hline
+\textbf{fysikaliska data} & & \\ \hline
+$g$ & gravitationskonstanten & 9.82 $m/s^2$\\
+$\mu$ & friktionskonstant & 0.0168\\
+$c_1$ & friktionskonstant fram & 0.00001\\
+$c_2$ & friktionskonstant bak & 0.0001\\
+\textbf{curlingstenen} & & \\ \hline
+$m$ & massa & 18 kg\\
+$r$ & radie sten & 0.1454676 m\\
+$r_{inner}$ & radie kontaktband & 0.06 m\\ \hline
+\end{tabular}
+
+
 
 \begin{thebibliography}{99}
 \addcontentsline{toc}{chapter}{Bibliography}
 
 \bibitem{Grahn} R. Grahn, P-Å. Jansson \emph{Dynamik}, Studentlitteratur (1995), 334-345 
 
-
+\cite{Grahn}
 
 genom roten ur v
 
