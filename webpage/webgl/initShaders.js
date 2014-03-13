@@ -57,9 +57,19 @@
         shaderProgram.textureCoordAttribute = gl.getAttribLocation(shaderProgram, "aTextureCoord");
         gl.enableVertexAttribArray(shaderProgram.textureCoordAttribute);
 
+        shaderProgram.vertexNormalAttribute = gl.getAttribLocation(shaderProgram, "aVertexNormal");
+        gl.enableVertexAttribArray(shaderProgram.vertexNormalAttribute);
+        shaderProgram.nMatrixUniform = gl.getUniformLocation(shaderProgram, "uNMatrix");
         shaderProgram.pMatrixUniform = gl.getUniformLocation(shaderProgram, "uPMatrix");
-        shaderProgram.vMatrixUniform = gl.getUniformLocation(shaderProgram, "uVMatrix");
-        shaderProgram.mMatrixUniform = gl.getUniformLocation(shaderProgram, "uMMatrix");
+        shaderProgram.mvMatrixUniform = gl.getUniformLocation(shaderProgram, "uMVMatrix");  
+        shaderProgram.samplerUniform = gl.getUniformLocation(shaderProgram, "uSampler");
+        shaderProgram.materialShininessUniform = gl.getUniformLocation(shaderProgram, "uMaterialShininess");
+        shaderProgram.ambientColorUniform = gl.getUniformLocation(shaderProgram, "uAmbientColor");
+        shaderProgram.pointLightingLocationUniform = gl.getUniformLocation(shaderProgram, "uPointLightingLocation");
+        shaderProgram.pointLightingSpecularColorUniform = gl.getUniformLocation(shaderProgram, "uPointLightingSpecularColor");
+        shaderProgram.pointLightingColorUniform = gl.getUniformLocation(shaderProgram, "uPointLightingDiffuseColor");
+
+        shaderProgram.cameraPositionUniform = gl.getUniformLocation(shaderProgram, "uCameraPosition");
     }
 
 
@@ -68,7 +78,16 @@
     var pMatrix = mat4.create();
 
     function setMatrixUniforms() {
+        var mvMatrix = mat4.create(); 
+        mat4.multiply(mvMatrix,vMatrix,mMatrix);
+
+        var normalMatrix = mat3.create();    
+        mat3.fromMat4(normalMatrix,mvMatrix); 
+        mat3.invert(normalMatrix,normalMatrix);
+        mat3.transpose(normalMatrix,normalMatrix);
+        
+        gl.uniformMatrix3fv(shaderProgram.nMatrixUniform, false, normalMatrix);
         gl.uniformMatrix4fv(shaderProgram.pMatrixUniform, false, pMatrix);
-        gl.uniformMatrix4fv(shaderProgram.vMatrixUniform, false, vMatrix);
-        gl.uniformMatrix4fv(shaderProgram.mMatrixUniform, false, mMatrix);
+        gl.uniformMatrix4fv(shaderProgram.mvMatrixUniform, false, mvMatrix);
+ 
     }

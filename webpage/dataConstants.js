@@ -10,8 +10,6 @@ function dataConstants() {
 
 	G = 9.82; // gravity
 
-	ZPOS = 0; // zpos is the same for all curling stones.
-
 	LASTTIME=0; // to be able to animate and take the right dt. 
 
 	// constanst for the field

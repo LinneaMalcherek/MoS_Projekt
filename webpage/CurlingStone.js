@@ -167,6 +167,7 @@ CurlingStone.prototype = {
 		var velocity = this.calcVelocityResultant();
 		this.setNewPos(velocity,dt);
 		this.setNewAngle(dt);
+
 	},
 
 	getXPos: function(){
