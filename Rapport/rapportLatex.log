@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2014.2.25)  13 MAR 2014 08:31
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2014.2.25)  13 MAR 2014 13:34
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -951,32 +951,37 @@ File: efter-krock.png Graphic file (type png)
 Package pdftex.def Info: efter-krock.png used on input line 277.
 (pdftex.def)             Requested size: 256.0748pt x 196.28679pt.
 
-[8 <./efter-krock.png>] [9]
-<hastigheter_tid_graf.png, id=64, 422.32782pt x 316.18124pt>
+[8 <./efter-krock.png>]
+Overfull \hbox (15.12599pt too wide) in paragraph at lines 318--319
+\OT1/cmr/m/n/10.95 Alla ob-jekt, s^^Wa som ste-nen och cur-ling-ba-nan, []ar mo
+-del-le-ra-de f[]or hand i 3D-grafikprogrammet
+ []
+
+[9] <hastigheter_tid_graf.png, id=64, 422.32782pt x 316.18124pt>
 File: hastigheter_tid_graf.png Graphic file (type png)
 
 <use hastigheter_tid_graf.png>
-Package pdftex.def Info: hastigheter_tid_graf.png used on input line 331.
+Package pdftex.def Info: hastigheter_tid_graf.png used on input line 332.
 (pdftex.def)             Requested size: 284.52756pt x 213.02234pt.
 
 <vinkelhastighet_tid_graf.png, id=65, 422.32782pt x 316.18124pt>
 File: vinkelhastighet_tid_graf.png Graphic file (type png)
 
 <use vinkelhastighet_tid_graf.png>
-Package pdftex.def Info: vinkelhastighet_tid_graf.png used on input line 339.
+Package pdftex.def Info: vinkelhastighet_tid_graf.png used on input line 340.
 (pdftex.def)             Requested size: 284.52756pt x 213.02234pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 351--353
+Underfull \hbox (badness 10000) in paragraph at lines 352--354
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 351--353
+Underfull \hbox (badness 10000) in paragraph at lines 352--354
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 351--353
+Underfull \hbox (badness 10000) in paragraph at lines 352--354
 
  []
 
@@ -1014,7 +1019,7 @@ exmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2013/tex
 mf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2013/texm
 f-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb></usr/local/texlive/2013/texmf-
 dist/fonts/type1/public/cm-super/sfrm1095.pfb>
-Output written on rapportLatex.pdf (12 pages, 376027 bytes).
+Output written on rapportLatex.pdf (12 pages, 377614 bytes).
 PDF statistics:
  135 PDF objects out of 1000 (max. 8388607)
  87 compressed objects within 1 object stream

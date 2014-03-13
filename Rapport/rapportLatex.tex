@@ -311,13 +311,14 @@ Samtliga tre parametrar (fart framåt, fart i sidled och vinkelhastighet) är sk
 
 \section{Grafisk implementering}
 
-\subsection{Modellering}
-Alla objekt, så som stenen och curlingbanan, är modellerade i 3D-grafikprogrammet Blender. På dessa objekt har vi sedan lagt en UV-mappning för att lägga på texturen. 
-
-Skybox....
-
 \subsection{WebGL}
-Sidans uppbyggnad
+Efter simuleringen i Matlab har koden skrivits över till WebGL för att avancera det grafiska samt skapa ett spelkoncept på webben. Två spelare kan spela mot varandra och en pöängberäkning har implementerats. 
+
+\subsection{Modellering}
+Alla objekt, så som stenen och curlingbanan, är modellerade för hand i 3D-grafikprogrammet Blender. På dessa objekt läggs en UV-mappning för att kunna lägga på texturen. Ett konverteringsskript används för att göra om objektet från .obj till .json där UV-koordinaterna blir sparade som strängar. Runt omkring curlingbanan finns en skybox för att skapa illusionen av en stjärnhimmel.
+
+\section{Att köra simuleringen}
+Öppna filen index.html i Firefox. Simuleringen fungerar bäst i denna webbläsare då sidan är utvecklad mot Firefox. När sidan är laddad har spelaren möjligheter att röra sig i världen med hjälp av piltangenterna samt tangenterna e och d för att röra sig upp och ned. Spelare kan själva skjuta iväg en sten genom att bestämma vinkel och hastighet. Det går även att sopa, och därmed minska friktionen, med hjälp av att hålla in tangenten s. Sopningen påverkar enabart den sten som man senast skickade ut för enkelhetens skull. 
 
 \pagebreak
 \section{Resultat}
