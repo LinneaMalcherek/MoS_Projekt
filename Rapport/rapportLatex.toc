@@ -12,8 +12,8 @@
 \contentsline {subsubsection}{\numberline {3.1.1}Runge-Kutta-metoden}{9}
 \contentsline {subsubsection}{\numberline {3.1.2}Eulermetoden}{9}
 \contentsline {subsection}{\numberline {3.2}Implementation}{10}
-\contentsline {section}{\numberline {4}Grafisk implementering}{10}
-\contentsline {subsection}{\numberline {4.1}WebGL}{10}
+\contentsline {section}{\numberline {4}Grafisk implementering}{11}
+\contentsline {subsection}{\numberline {4.1}WebGL}{11}
 \contentsline {subsection}{\numberline {4.2}Modellering}{11}
 \contentsline {section}{\numberline {5}Att k\IeC {\"o}ra simuleringen}{11}
 \contentsline {section}{\numberline {6}Resultat}{12}

@@ -172,7 +172,7 @@ Translationen av stenen är en resulterande hastighetsvektor $v$, som består av
 \subsection{Rotation}
 
 
-Stenen har även en roterande rörelse med en vinkelhastighet vars ursprungsvärde beräknas utifrån utslagshastigheten av stenen.
+Stenen har även en roterande rörelse med en vinkelhastighet vars ursprungsvärde beräknas utifrån utslagshastigheten av stenen \eqref{linnea}.
 Vid utslaget antas att spelaren håller stenen så att handtaget pekar i en riktning 90\textdegree  från riktning framåt antingen med inhand eller outhand och släpper stenen med handtaget pekande rakt fram vid hoglinjen. Detta innebär att stenen roterar 90\textdegree under den tid det tar för spelaren att ta sig mellan hack och hog, vilket är direkt kopplat till den angivna utslagshastigheten. 
 
 \begin{figure}[ht!]
@@ -184,12 +184,12 @@ Vid utslaget antas att spelaren håller stenen så att handtaget pekar i en rikt
 \end{figure}
 
 
-\begin{align}%\label{vtot}
+\begin{align}%\label{linnea}
  \omega_0 = \frac{\pi}{2 t_0} 
  \end{align}
 
 
-Friktionen som påverkar rotationshastigheten är summan av all friktion som påverkar bandet som stenen roterar på. Detta kan sammanfattas till friktionen i de två punkterna, p1 och p2 på stenen. Accelerationen på stenens rotation kan därmed beräknas som accelerationen i de två punkterna. 
+Friktionen som påverkar rotationshastigheten är summan av all friktion som påverkar bandet som stenen roterar på. Detta kan sammanfattas till friktionen i de två punkterna, $p_1$ och $p_2$ på stenen. Accelerationen på stenens rotation kan därmed beräknas som accelerationen i de två punkterna. 
 
  \begin{align}\label{a_rotation1}
  \alpha_{rot} =- \frac{( a_1 + a_2)}{r} = -\frac{(\mu_1 g + \mu_2 g)}{r} = - g\frac{c_1+c_2}{r \sqrt{v_f}}
@@ -216,7 +216,7 @@ Om avståndet mellan stenarnas mittpunkter är mindre än två radier \eqref{les
 \label{overflow}
 \end{figure}
 Hastigheten av curlingstenarna efter en kollision beräknas med hjälp av de två stenarnas position och hastighetsvektorer.
-Beräkningarna utgår ifrån en rak central stöt i krockens normalriktning, där det finns två givna ekvationer \eqref{e1} och \eqref{elastisk} för att ta fram hastigheten efter krock. 
+Beräkningarna utgår ifrån en rak central stöt i krockens normalriktning, där det finns två givna ekvationer \eqref{e1} och \eqref{elastisk} för att ta fram hastigheten efter krock.  Dessa ekvationer tar endast hänsyn till fallet då $v’1 > v’2$. För att ta det allmäna fallet så måste absolutbeloppet av nämnare och täljaren tas i ekvation \eqref{e1} (vilket kommer leda till två olika fall av ekvation 15 och 16.)
 Med hjälp av stötkoefficienten e \eqref{e1} kan stöten regleras mellan en helt elastikt krock (e=1) och en helt inelastiskt krock (e=0). 
 I curling är det rimligt med en energiförlust och en inelastisk stöt bör därmed tas i beräkning. 
 Stötkoefficienten är kvoten av den relativa hastigheten efter kollision och den relativa hastigheten före kollision enligt \eqref{e1}\footnote{R. Grahn, P-Å. Jansson \emph{Dynamik}, Studentlitteratur (1995), s. 334-345}.
@@ -225,7 +225,7 @@ Eftersom det ej finns en specificerad stötkoefficient för curlingstenarnas mat
 
  \begin{subequations}\label{e1}
  \begin{align}
- e& = \frac{v_2''-v_1''}{v_2'-v_1'}\\
+ e& = \frac{v_2''-v_1''}{v_1'-v_2'}\\
 0& \le e \le 1
  \end{align}
  \end{subequations}
@@ -337,7 +337,7 @@ derivatan i punkten multiplicerat med steglängden $h$ \eqref{euler}.
  
 
 \subsection{Implementation}
-För beräkningarna av curlingstenens bana över isen tas hastigheten $v$ fram för varje tid $t$. Hastigheten i den föregående punkten samt den påverkande accelerationen kan i beräkningen behandlas som en differentialekvation av första ordningen. Eftersom positionen för stenen beräknas utifrån hastigheten behöver endast accelerationen med avseende på en variabel (hastigheten i rörelseriktningen) beräknas, $a(v_f)$. Tre farter beräknas i varje steg av simuleringen: fart i rörelseriktningen, fart i ortogonal riktning som tillför curl samt vinkelhastighet. Dessa beräknas genom Runge-Kutta-metoden enligt \eqref{impl}. 
+För beräkningarna av curlingstenens bana över isen tas hastigheten $v$ fram för varje tid $t$. Hastigheten i den föregående punkten samt den påverkande accelerationen kan i beräkningen behandlas som en differentialekvation av första ordningen. Eftersom positionen för stenen beräknas utifrån hastigheten behöver endast accelerationen med avseende på en variabel (hastigheten i rörelseriktningen) beräknas, $a(v_f)$. Tre farter beräknas i varje steg av simuleringen: fart i rörelseriktningen, fart i ortogonal riktning som tillför curl samt vinkelhastighet. Dessa beräknas genom Runge-Kutta-metoden enligt \eqref{impl}\footnote{L.Ljung, T.Glad \emph{Modellbygge och simulering} (2004), s.380-382}. 
 
  \begin{subequations}\label{impl}
  \begin{align}
@@ -374,10 +374,10 @@ steglängd \eqref{pos}.
 Efter simuleringen i Matlab har koden skrivits över till WebGL för att avancera det grafiska samt skapa ett spelkoncept på webben. Två spelare kan spela mot varandra och en poängberäkning har implementerats. 
 
 \subsection{Modellering}
-Alla objekt, så som stenen och curlingbanan, är modellerade för hand i 3D-grafikprogrammet Blender. På dessa objekt läggs en UV-mappning för att kunna lägga på texturen. Ett konverteringsskript används för att göra om objektet från .obj till .json där UV-koordinaterna blir sparade som strängar. Runt omkring curlingbanan finns en skybox för att skapa illusionen av en stjärnhimmel.
+Alla objekt, så som stenen och curlingbanan, är modellerade för hand i 3D-grafikprogrammet Blender. På dessa objekt läggs en UV-mappning för att kunna lägga på texturen. Ett konverteringsskript används för att göra om objektet från .obj till .json där UV-koordinaterna blir sparade som strängar. Runtomkring curlingbanan finns en skybox för att skapa illusionen av en stjärnhimmel.
 
 \section{Att köra simuleringen}
-Öppna filen index.html i Firefox. Simuleringen fungerar bäst i denna webbläsare då sidan är utvecklad mot Firefox. När sidan är laddad har spelaren möjligheter att röra sig i världen med hjälp av piltangenterna samt tangenterna E och D för att röra sig upp och ned. Spelare kan själva skjuta iväg en sten genom att bestämma vinkel och hastighet. Det går även att sopa, och därmed minska friktionen, med hjälp av att hålla in tangenten s. Sopningen påverkar enabart den sten som man senast skickade ut för enkelhetens skull. 
+Öppna filen index.html i Firefox. Simuleringen fungerar bäst i denna webbläsare då sidan är utvecklad mot Firefox. När sidan är laddad har spelaren möjligheter att röra sig i världen med hjälp av piltangenterna samt tangenterna E och D för att titta upp och ned. Spelare kan själva skjuta iväg en sten genom att bestämma utslagsvinkel och utslagsfart. Det går även att sopa, och därmed minska friktionen, med hjälp av att hålla in tangenten s. Sopningen påverkar enbart den sten som man senast skickade ut för enkelhetens skull. 
 
 \pagebreak
 \section{Resultat}
