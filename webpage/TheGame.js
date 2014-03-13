@@ -133,7 +133,7 @@ theGame.prototype = {
 			var theStone = this.allStones[i].stone; 
 
 			// check if out of the side, only check if the stone is moving
-			if (theStone.speed > 0.01 && ( Math.abs(theStone.getXPos()) > FIELDWIDTH/2 || theStone.getYPos() > FIELDLENGTH )){
+			if (theStone.speed > 0.01 && ( Math.abs(theStone.getXPos()) > FIELDWIDTH/2 || theStone.getYPos() > HACK_BACK + R )){
 				var id = this.allStones[i].player;
 				this.allStones.splice(i,1);
 
@@ -141,7 +141,7 @@ theGame.prototype = {
 					this.disableButton(id);
 			}
 			// delete stone if it has stoped before the hog-line
-			if (theStone.speed < 0.01 && theStone.getYPos() < FIELDLENGTH - HACK_HOG){
+			if (theStone.speed < 0.01 && theStone.getYPos() < HACK_HOG_2){
 				var id = this.allStones[i].player;
 				this.allStones.splice(i,1);
 
@@ -228,7 +228,8 @@ theGame.prototype = {
 	},
 
 	// in the game-functionallity. to switch between which buttons that should be disabled.
-	disableButton: function(button){
+	disableButton: function(button){			
+		
 		if (button) {
 			document.getElementById("spelare1").disabled=false;
 			document.getElementById("spelare2").disabled=true;
