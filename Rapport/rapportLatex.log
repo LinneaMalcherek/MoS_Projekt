@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2014.2.17)  12 MAR 2014 17:11
-=======
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2014.2.25)  12 MAR 2014 17:10
->>>>>>> 49270f79aaf99ec8f3d2cd15a0fbefc5193713f1
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2014.2.17)  13 MAR 2014 08:24
 entering extended mode
 **rapportLatex.tex
 
@@ -766,7 +762,6 @@ Package tocloft Info: The document has section divisions on input line 44.
 \cftsubtabindent=\skip101
 \cftsubtabnumwidth=\skip102
 )
-<<<<<<< HEAD
 (C:\Users\Linnéa\Documents\Skola\MoS-projekt\MoS_Projekt\Rapport\rapportLatex.
 aux
 
@@ -791,11 +786,6 @@ LaTeX Warning: Label `overflow' multiply defined.
 LaTeX Warning: Label `overflow' multiply defined.
 
 )
-=======
-(./rapportLatex.aux)
-\openout1 = `rapportLatex.aux'.
-
->>>>>>> 49270f79aaf99ec8f3d2cd15a0fbefc5193713f1
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 79.
 LaTeX Font Info:    ... okay on input line 79.
 LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 79.
@@ -810,12 +800,7 @@ LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 79.
 LaTeX Font Info:    ... okay on input line 79.
 LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 79.
 LaTeX Font Info:    Try loading font information for TS1+cmr on input line 79.
-<<<<<<< HEAD
  ("C:\Program Files\MiKTeX 2.9\tex\latex\base\ts1cmr.fd"
-=======
-
-(/usr/local/texlive/2013/texmf-dist/tex/latex/base/ts1cmr.fd
->>>>>>> 49270f79aaf99ec8f3d2cd15a0fbefc5193713f1
 File: ts1cmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    ... okay on input line 79.
@@ -885,108 +870,42 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 (C:\Users\Linnéa\Documents\Skola\MoS-projekt\MoS_Projekt\Rapport\rapportLatex.
 toc)
 \tf@toc=\write3
-<<<<<<< HEAD
  [1] <Translation.png, id=12, 563.10374pt x 578.16pt>
-=======
-\openout3 = `rapportLatex.toc'.
-
-[1]
-
-LaTeX Warning: Reference `fig:Translation' on page 2 undefined on input line 10
-3.
-
-
-LaTeX Warning: Reference `Ftot' on page 2 undefined on input line 103.
-
-<Translation.png, id=13, 563.10374pt x 578.16pt>
->>>>>>> 49270f79aaf99ec8f3d2cd15a0fbefc5193713f1
 File: Translation.png Graphic file (type png)
 
 <use Translation.png>
 Package pdftex.def Info: Translation.png used on input line 116.
 (pdftex.def)             Requested size: 227.62204pt x 233.7036pt.
 
-<<<<<<< HEAD
 Underfull \hbox (badness 10000) in paragraph at lines 123--136
 
  []
 
 [2] [3 <C:/Users/Linnéa/Documents/Skola/MoS-projekt/MoS_Projekt/Rapport/Transl
 ation.png>] <Friktion_bakfram.png, id=30, 787.94376pt x 416.55624pt>
-=======
-
-LaTeX Warning: Reference `Fsida2' on page 2 undefined on input line 126.
-
-
-LaTeX Warning: Reference `Fsida1' on page 2 undefined on input line 126.
-
-
-LaTeX Warning: Reference `fig:Friktion' on page 2 undefined on input line 129.
-
-
-LaTeX Warning: Reference `biggerthan' on page 2 undefined on input line 130.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 121--132
-
- []
-
-[2] <Friktion_bakfram.png, id=22, 787.94376pt x 416.55624pt>
->>>>>>> 49270f79aaf99ec8f3d2cd15a0fbefc5193713f1
 File: Friktion_bakfram.png Graphic file (type png)
 
 <use Friktion_bakfram.png>
 Package pdftex.def Info: Friktion_bakfram.png used on input line 148.
 (pdftex.def)             Requested size: 312.9803pt x 165.45636pt.
 
-<<<<<<< HEAD
 Overfull \hbox (4.90358pt too wide) in paragraph at lines 170--172
-=======
-
-LaTeX Warning: Reference `mu' on page 3 undefined on input line 147.
-
-
-LaTeX Warning: Reference `fig:Translation' on page 3 undefined on input line 15
-9.
-
-
-LaTeX Warning: Reference `vtot' on page 3 undefined on input line 159.
-
-[3 <./Translation.png>]
-Overfull \hbox (4.90358pt too wide) in paragraph at lines 171--173
->>>>>>> 49270f79aaf99ec8f3d2cd15a0fbefc5193713f1
 \OT1/cmr/m/n/10.95 Stenen har []aven en ro-te-ran-de r[]orelse med en vin-kel-h
 as-tig-het vars ur-sprungsv[]arde ber[]aknas
  []
 
-<<<<<<< HEAD
 <bana.png, id=31, 963.6pt x 293.095pt>
-=======
-<bana.png, id=33, 963.6pt x 293.095pt>
->>>>>>> 49270f79aaf99ec8f3d2cd15a0fbefc5193713f1
 File: bana.png Graphic file (type png)
  <use bana.png>
 Package pdftex.def Info: bana.png used on input line 175.
 (pdftex.def)             Requested size: 312.9803pt x 95.1966pt.
-<<<<<<< HEAD
  [4 <C:/Users/Linnéa/Documents/Skola/MoS-projekt/MoS_Projekt/Rapport/Friktion_
 bakfram.png>]
 <krock.png, id=37, 963.6pt x 722.7pt>
-=======
- [4 <./Friktion_bakfram.png>]
-
-LaTeX Warning: Reference `d' on page 5 undefined on input line 197.
-
-
-LaTeX Warning: Reference `lessThan' on page 5 undefined on input line 198.
-
-<krock.png, id=39, 963.6pt x 722.7pt>
->>>>>>> 49270f79aaf99ec8f3d2cd15a0fbefc5193713f1
 File: krock.png Graphic file (type png)
  <use krock.png>
 Package pdftex.def Info: krock.png used on input line 208.
 (pdftex.def)             Requested size: 227.62204pt x 170.71672pt.
-<<<<<<< HEAD
  [5 <C:/Users/Linnéa/Documents/Skola/MoS-projekt/MoS_Projekt/Rapport/bana.png>
 ]
 Underfull \hbox (badness 10000) in paragraph at lines 225--228
@@ -995,97 +914,45 @@ Underfull \hbox (badness 10000) in paragraph at lines 225--228
 
 [6 <C:/Users/Linnéa/Documents/Skola/MoS-projekt/MoS_Projekt/Rapport/krock.png>
 ] <kollision-vektorer.png, id=50, 515.9275pt x 401.5pt>
-=======
-
-
-LaTeX Warning: Reference `e1' on page 5 undefined on input line 215.
-
-
-LaTeX Warning: Reference `elastisk' on page 5 undefined on input line 215.
-
-
-LaTeX Warning: Reference `e1' on page 5 undefined on input line 216.
-
-
-LaTeX Warning: Reference `e1' on page 5 undefined on input line 218.
-
-[5 <./bana.png> <./krock.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 226--229
-
- []
-
-[6]
-
-LaTeX Warning: Reference `e_normal' on page 7 undefined on input line 240.
-
-
-LaTeX Warning: Reference `fig:kollision-vektorer' on page 7 undefined on input 
-line 246.
-
-<kollision-vektorer.png, id=52, 515.9275pt x 401.5pt>
->>>>>>> 49270f79aaf99ec8f3d2cd15a0fbefc5193713f1
 File: kollision-vektorer.png Graphic file (type png)
 
 <use kollision-vektorer.png>
 Package pdftex.def Info: kollision-vektorer.png used on input line 254.
 (pdftex.def)             Requested size: 196.324pt x 152.77988pt.
-<<<<<<< HEAD
  [7 <C:/Users/Linnéa/Documents/Skola/MoS-projekt/MoS_Projekt/Rapport/kollision
 -vektorer.png>]
 <efter-krock.png, id=55, 485.815pt x 372.39125pt>
-=======
-
-
-LaTeX Warning: Reference `e1' on page 7 undefined on input line 261.
-
-
-LaTeX Warning: Reference `momentum' on page 7 undefined on input line 261.
-
-
-LaTeX Warning: Reference `vCollision2' on page 7 undefined on input line 261.
-
-
-LaTeX Warning: Reference `vCollision2n' on page 7 undefined on input line 261.
-
-[7 <./kollision-vektorer.png>]
-
-LaTeX Warning: Reference `fig:efter-krock' on page 8 undefined on input line 27
-0.
-
-<efter-krock.png, id=57, 485.815pt x 372.39125pt>
->>>>>>> 49270f79aaf99ec8f3d2cd15a0fbefc5193713f1
 File: efter-krock.png Graphic file (type png)
  <use efter-krock.png>
 Package pdftex.def Info: efter-krock.png used on input line 277.
 (pdftex.def)             Requested size: 256.0748pt x 196.28679pt.
 
-<<<<<<< HEAD
 [8 <C:/Users/Linnéa/Documents/Skola/MoS-projekt/MoS_Projekt/Rapport/efter-kroc
 k.png>] [9] <hastigheter_tid_graf.png, id=63, 422.32782pt x 316.18124pt>
 File: hastigheter_tid_graf.png Graphic file (type png)
 
 <use hastigheter_tid_graf.png>
-Package pdftex.def Info: hastigheter_tid_graf.png used on input line 324.
+Package pdftex.def Info: hastigheter_tid_graf.png used on input line 329.
 (pdftex.def)             Requested size: 284.52756pt x 213.02234pt.
 
 <vinkelhastighet_tid_graf.png, id=64, 422.32782pt x 316.18124pt>
 File: vinkelhastighet_tid_graf.png Graphic file (type png)
 
 <use vinkelhastighet_tid_graf.png>
-Package pdftex.def Info: vinkelhastighet_tid_graf.png used on input line 332.
+Package pdftex.def Info: vinkelhastighet_tid_graf.png used on input line 337.
 (pdftex.def)             Requested size: 284.52756pt x 213.02234pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 344--346
+Underfull \hbox (badness 10000) in paragraph at lines 349--351
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 344--346
+Underfull \hbox (badness 10000) in paragraph at lines 349--351
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 344--346
+Underfull \hbox (badness 10000) in paragraph at lines 349--351
 
  []
 
@@ -1094,53 +961,11 @@ er_tid_graf.png (PNG copy)> <C:/Users/Linnéa/Documents/Skola/MoS-projekt/MoS_P
 rojekt/Rapport/vinkelhastighet_tid_graf.png (PNG copy)>] [11]
 (C:\Users\Linnéa\Documents\Skola\MoS-projekt\MoS_Projekt\Rapport\rapportLatex.
 aux)
-=======
 
-LaTeX Warning: Reference `RungeKutta_transl' on page 8 undefined on input line 
-286.
-
-
-LaTeX Warning: Reference `a_front' on page 8 undefined on input line 298.
-
-
-LaTeX Warning: Reference `a_side' on page 8 undefined on input line 298.
-
-
-LaTeX Warning: Reference `a_rotation' on page 8 undefined on input line 298.
-
-[8 <./efter-krock.png>]
-
-LaTeX Warning: Reference `pos' on page 9 undefined on input line 306.
-
-[9] <hastigheter_tid_graf.png, id=65, 422.32782pt x 316.18124pt>
-File: hastigheter_tid_graf.png Graphic file (type png)
-
-<use hastigheter_tid_graf.png>
-Package pdftex.def Info: hastigheter_tid_graf.png used on input line 330.
-(pdftex.def)             Requested size: 284.52756pt x 213.02234pt.
-
-<vinkelhastighet_tid_graf.png, id=66, 422.32782pt x 316.18124pt>
-File: vinkelhastighet_tid_graf.png Graphic file (type png)
-
-<use vinkelhastighet_tid_graf.png>
-Package pdftex.def Info: vinkelhastighet_tid_graf.png used on input line 338.
-(pdftex.def)             Requested size: 284.52756pt x 213.02234pt.
- [10 <./hastigheter_tid_graf.png (PNG copy)> <./vinkelhastighet_tid_graf.png (P
-NG copy)>]
-
-LaTeX Warning: Citation `Grahn' on page 11 undefined on input line 352.
-
-[11] (./rapportLatex.aux)
-
-LaTeX Warning: There were undefined references.
-
->>>>>>> 49270f79aaf99ec8f3d2cd15a0fbefc5193713f1
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
-<<<<<<< HEAD
  6636 strings out of 493921
  92690 string characters out of 3147330
  174733 words of memory out of 3000000
@@ -1166,42 +991,9 @@ fonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm
 /cmsy8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti10.p
 fb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti9.pfb><C:/Pr
 ogram Files/MiKTeX 2.9/fonts/type1/public/cm-super/sfrm1095.pfb>
-Output written on rapportLatex.pdf (12 pages, 391790 bytes).
+Output written on rapportLatex.pdf (12 pages, 392596 bytes).
 PDF statistics:
  133 PDF objects out of 1000 (max. 8388607)
-=======
- 7080 strings out of 493315
- 100741 string characters out of 6137904
- 189605 words of memory out of 5000000
- 10362 multiletter control sequences out of 15000+600000
- 16683 words of font info for 62 fonts, out of 8000000 for 9000
- 957 hyphenation exceptions out of 8191
- 44i,20n,43p,1023b,282s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/local/texlive/2013/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc
-}</usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb>
-</usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></
-usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></u
-sr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></us
-r/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/
-local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/lo
-cal/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/loca
-l/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/
-texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/te
-xlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texli
-ve/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/
-2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/201
-3/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/local/texlive/2013
-/texmf-dist/fonts/type1/public/amsfonts/cm/cmss12.pfb></usr/local/texlive/2013/
-texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2013/t
-exmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2013/tex
-mf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2013/texm
-f-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb></usr/local/texlive/2013/texmf-
-dist/fonts/type1/public/cm-super/sfrm1095.pfb>
-Output written on rapportLatex.pdf (12 pages, 371235 bytes).
-PDF statistics:
- 135 PDF objects out of 1000 (max. 8388607)
- 87 compressed objects within 1 object stream
->>>>>>> 49270f79aaf99ec8f3d2cd15a0fbefc5193713f1
  0 named destinations out of 1000 (max. 500000)
  41 words of extra memory for PDF output out of 10000 (max. 10000000)
 
