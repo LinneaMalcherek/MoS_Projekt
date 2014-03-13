@@ -7,13 +7,14 @@ r = 0.1454676; %0.1454676 är korrekt, men inte så bra att testa med.
 r_inner = 0.1; %inte taget från verkliga data
 
 % Isen
-my = 0.0168; %0.0168;
+%my = 0.0168; %0.0168;
+my = 0.0073;
 F_friktion = my*m*g;
 a_friction= F_friktion/m;
 
 % Friktionscoefficienter för curlen, tecken beror på startvinkel 
 % och beräknas längre ner. (för nu är det enklare att testa olika värden)
-c1 = 0.00001;
+c1 = 0.000001;
 c2 = 0.0001;
 
 % Banan

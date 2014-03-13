@@ -21,7 +21,7 @@ VecAngSpeed = zeros(1,1);
 VecSpeedSide = zeros(1,1); 
 
 % Input / initial states
-speed1 = 2.25; % 1.44-1.58 rimligt enligt vissa artiklar
+speed1 = 2.0; % 1.44-1.58 rimligt enligt vissa artiklar
 speed2 = 0;
 
 
