@@ -15,5 +15,3 @@
 \contentsline {section}{\numberline {6}Resultat}{10}
 \contentsline {section}{\numberline {7}Diskussion}{11}
 \contentsline {section}{\numberline {A}\\Title of Appendix A}{11}
-\contentsline {section}{Referenser}{11}
-\contentsline {chapter}{Bibliography}{11}
