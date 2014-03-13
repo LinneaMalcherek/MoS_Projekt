@@ -7,13 +7,13 @@ function drawScene(players) {
 
         mat4.perspective(pMatrix,45, gl.viewportWidth / gl.viewportHeight, 0.1, 100.0);
 
-        gl.uniform3f(shaderProgram.ambientColorUniform,0.0,0.0,0.0); 
+        gl.uniform3f(shaderProgram.ambientColorUniform,0.2,0.2,0.2); 
 
-        gl.uniform3f(shaderProgram.pointLightingSpecularColorUniform,0.0,0.0,0.0);
+        gl.uniform3f(shaderProgram.pointLightingSpecularColorUniform,0.8,0.8,0.8);
 
-        gl.uniform3f(shaderProgram.pointLightingColorUniform,0.5,0.5,0.5);
+        gl.uniform3f(shaderProgram.pointLightingColorUniform,0.8,0.8,0.8);
 
-        gl.uniform1f(shaderProgram.materialShininessUniform, 8.0);
+        gl.uniform1f(shaderProgram.materialShininessUniform, 32.0);
 
         mat4.identity(vMatrix);
         mat4.rotate(vMatrix,vMatrix, -pitch*Math.PI / 180, [1, 0, 0]);
@@ -30,7 +30,7 @@ function drawScene(players) {
 
         var transLight = mat4.create();
         //mat4.translate(transLight,transLight,[0.0 , 12 ,-29.0]);
-        mat4.translate(transLight,transLight,[0.0 , 12 ,-5.0]);
+        mat4.translate(transLight,transLight,[0.0 , 12 ,-20.0]);
         vec3.transformMat4(lightPos, lightPos, transLight);
         vec3.transformMat4(lightPos, lightPos, vMatrix);
         gl.uniform3fv(shaderProgram.pointLightingLocationUniform,lightPos);

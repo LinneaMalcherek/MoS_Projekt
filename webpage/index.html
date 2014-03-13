@@ -42,7 +42,7 @@
 
                 float specularLightWeighting = pow(max(dot(reflectionDirection, eyeDirection), 0.0), uMaterialShininess);
                 float diffuseLightWeighting = max(dot(normal, lightDirection), 0.0);
-                lightWeighting = uAmbientColor
+                lightWeighting = uAmbientColor 
                 + uPointLightingSpecularColor * specularLightWeighting
                 + uPointLightingDiffuseColor * diffuseLightWeighting;
 
