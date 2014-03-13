@@ -7,8 +7,8 @@ function CurlingStone()
 	this.directionForward = $V([0,1]);
 	this.directionSide = $V([0,0]); 
 	this.angularSpeed = 0;
-	this.frictionCoeffC = new Array(0.000001,0.0001); // constans for the forward and backward friction
-	//this.frictionCoeffC = new Array(0.0001584, 0.01584);
+	//this.frictionCoeffC = new Array(0.000001,0.0001); // constans for the forward and backward friction
+	this.frictionCoeffC = new Array(0.00001584, 0.001584);
 	cb = this.frictionCoeffC[1];
 	cf = this.frictionCoeffC[0];
 	this.angle = 0; 
