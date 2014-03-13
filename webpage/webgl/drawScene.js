@@ -5,30 +5,37 @@ function drawScene(players) {
         gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
         gl.enable(gl.DEPTH_TEST);
 
-        mat4.perspective(45, gl.viewportWidth / gl.viewportHeight, 0.1, 100.0, pMatrix);
+        mat4.perspective(pMatrix,45, gl.viewportWidth / gl.viewportHeight, 0.1, 100.0);
 
-        gl.uniform3f(shaderProgram.ambientColorUniform,0.2,0.2,0.2);
+        gl.uniform3f(shaderProgram.ambientColorUniform,0.0,0.0,0.0); 
 
-        gl.uniform3f(shaderProgram.pointLightingLocationUniform,0.0,-5.0,20.0);
+        gl.uniform3f(shaderProgram.pointLightingSpecularColorUniform,0.0,0.0,0.0);
 
-        gl.uniform3f(shaderProgram.pointLightingSpecularColorUniform,0.8,0.8,0.8);
-
-        gl.uniform3f(shaderProgram.pointLightingColorUniform,0.2,0.2,0.2);
+        gl.uniform3f(shaderProgram.pointLightingColorUniform,0.5,0.5,0.5);
 
         gl.uniform1f(shaderProgram.materialShininessUniform, 8.0);
 
-        gl.uniform3f(shaderProgram.cameraPositionUniform,-xCam,-yCam,-zCam);
-
         mat4.identity(vMatrix);
-        mat4.rotate(vMatrix, -pitch*Math.PI / 180, [1, 0, 0]);
-        mat4.rotate(vMatrix, -yaw*Math.PI / 180, [0, 1, 0]);
-        mat4.translate(vMatrix, [-xCam, -yCam, -zCam]);
-
-        mat4.rotate(vMatrix,-Math.PI / 2, [1, 0, 0]);
-
-        mat4.translate(vMatrix, [0 , 10 ,0]);
+        mat4.rotate(vMatrix,vMatrix, -pitch*Math.PI / 180, [1, 0, 0]);
+        mat4.rotate(vMatrix,vMatrix, -yaw*Math.PI / 180, [0, 1, 0]);
+        mat4.translate(vMatrix,vMatrix, [-xCam, -yCam, -zCam]);
+        mat4.translate(vMatrix,vMatrix, [0.15 , -0.9 ,-23.1]);
 
         
+        var cameraPos = vec4.create();
+        vec4.transformMat4(cameraPos, cameraPos, vMatrix); 
+        gl.uniform4fv(shaderProgram.cameraPositionUniform,cameraPos);
+
+        var lightPos = vec3.create();
+
+        var transLight = mat4.create();
+        //mat4.translate(transLight,transLight,[0.0 , 12 ,-29.0]);
+        mat4.translate(transLight,transLight,[0.0 , 12 ,-5.0]);
+        vec3.transformMat4(lightPos, lightPos, transLight);
+        vec3.transformMat4(lightPos, lightPos, vMatrix);
+        gl.uniform3fv(shaderProgram.pointLightingLocationUniform,lightPos);
+
+
         // draw all the curling stones. goes trough all players, so we get different colors och the different players.
         for (var j=0; j<players.length; j++) {
 
@@ -37,16 +44,13 @@ function drawScene(players) {
             
                 if (allStones[i].render){ // if it is in game (should be rendered)
 
-                    //console.log("Rotationalspeed: %s, Speed Side %s", allStones[i].angularSpeed , allStones[i].speedSide)
-
                     mat4.identity(mMatrix);
-                    mat4.translate(mMatrix, [-0.15,-11,-0.2]);
-                    mat4.translate(mMatrix, [allStones[i].getXPos(), allStones[i].getYPos(), ZPOS]);
-                    mat4.rotateZ(mMatrix, allStones[i].getAngle());
-
-                    mat4.rotateX(mMatrix, Math.PI/2);
                     
-                    mat4.scale(mMatrix, [0.1, 0.1, 0.1]);
+                    mat4.translate(mMatrix,mMatrix, [allStones[i].getXPos(),0 ,-allStones[i].getYPos()]);
+                    mat4.translate(mMatrix,mMatrix, [-0.15,0.35,23.1]);
+                    mat4.rotateY(mMatrix,mMatrix, allStones[i].getAngle());
+                    
+                    mat4.scale(mMatrix,mMatrix, [0.1, 0.1, 0.1]);
                     gl.bindBuffer(gl.ARRAY_BUFFER, VertexPositionBuffer);
                     gl.vertexAttribPointer(shaderProgram.vertexPositionAttribute, VertexPositionBuffer.itemSize, gl.FLOAT, false, 0, 0);
 
@@ -77,8 +81,6 @@ function drawScene(players) {
 
         // draw the curling field
         mat4.identity(mMatrix);
-        mat4.translate(mMatrix, [0,12,-0.5]);
-        mat4.rotateX(mMatrix, Math.PI/2);
 
         gl.bindBuffer(gl.ARRAY_BUFFER, VertexPositionBuffer2);
         gl.vertexAttribPointer(shaderProgram.vertexPositionAttribute, VertexPositionBuffer2.itemSize, gl.FLOAT, false, 0, 0);
@@ -99,10 +101,9 @@ function drawScene(players) {
 
         // draw the sky box 
         mat4.identity(mMatrix);
-        mat4.scale(mMatrix, [2, 2, 2]);
-
-        mat4.rotate(vMatrix,Math.PI / 2, [1, 0, 0]);
-        mat4.translate(vMatrix, [xCam, yCam, zCam]);
+        mat4.scale(mMatrix,mMatrix, [2, 2, 2]);
+        mat4.translate(mMatrix,mMatrix, [0, 0, 6]);
+        mat4.translate(vMatrix,vMatrix, [xCam, yCam, zCam]);
 
 
         gl.bindBuffer(gl.ARRAY_BUFFER, VertexPositionBuffer3);

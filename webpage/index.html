@@ -10,7 +10,7 @@
             
             <link rel="stylesheet" type="text/css" href="style.css">
 
-            <script type="text/javascript" src="external/glMatrix-0.9.5.min.js"></script>
+            <script type="text/javascript" src="external/gl-matrix.js"></script>
             
             <script id="shader-fs" type="x-shader/x-fragment">
               precision mediump float;
@@ -23,7 +23,7 @@
 
               uniform vec3 uAmbientColor;
 
-              uniform vec3 uCameraPosition;
+              uniform vec4 uCameraPosition;
 
               uniform vec3 uPointLightingLocation;
               uniform vec3 uPointLightingSpecularColor;
@@ -37,8 +37,7 @@
                 vec3 lightDirection = normalize(uPointLightingLocation - vPosition.xyz);
                 vec3 normal = normalize(vTransformedNormal);
                 //vec3 eyeDirection = normalize(-vPosition.xyz);
-                vec3 eyeDirection = normalize(uCameraPosition-vPosition.xyz);
-                //vec3 eyeDirection = normalize(uCameraPosition);
+                vec3 eyeDirection = normalize(uCameraPosition.xyz-vPosition.xyz);
                 vec3 reflectionDirection = reflect(-lightDirection, normal);
 
                 float specularLightWeighting = pow(max(dot(reflectionDirection, eyeDirection), 0.0), uMaterialShininess);
@@ -51,6 +50,7 @@
                 fragmentColor = texture2D(uSampler, vec2(vTextureCoord.s, vTextureCoord.t));
                 gl_FragColor = vec4(fragmentColor.rgb * lightWeighting, fragmentColor.a);
               }
+
             </script>
 
             <script id="shader-vs" type="x-shader/x-vertex">
@@ -58,8 +58,7 @@
               attribute vec3 aVertexNormal;
               attribute vec2 aTextureCoord;
 
-              uniform mat4 uMMatrix;
-              uniform mat4 uVMatrix;
+              uniform mat4 uMVMatrix;
               uniform mat4 uPMatrix;
               uniform mat3 uNMatrix;
 
@@ -67,9 +66,10 @@
               varying vec3 vTransformedNormal;
               varying vec4 vPosition;
 
+
               void main(void) {
-                  vPosition = uMMatrix * vec4(aVertexPosition, 1.0);
-                  gl_Position = uPMatrix * uVMatrix * vPosition;
+                  vPosition = uMVMatrix * vec4(aVertexPosition, 1.0);
+                  gl_Position = uPMatrix * vPosition;
                   vTextureCoord = aTextureCoord;
                   vTransformedNormal = uNMatrix * aVertexNormal;
               }
