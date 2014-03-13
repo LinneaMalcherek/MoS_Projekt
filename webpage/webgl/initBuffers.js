@@ -1,6 +1,5 @@
 var VertexPositionBuffer;
 var VertexTextureCoordBuffer;
-//var VertexIndexBuffer;
 var VertexNormalBuffer;
 
 var VertexPositionBuffer2;
@@ -32,12 +31,6 @@ function handleLoadedObject(objectData) {
     gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(objectData.mVertexPoints), gl.STATIC_DRAW);
     VertexPositionBuffer.itemSize = 3;
     VertexPositionBuffer.numItems = objectData.mVertexPoints.length / 3;
-
-    /*VertexIndexBuffer = gl.createBuffer();
-    gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, VertexIndexBuffer);
-    gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, new Uint16Array(objectData.indices), gl.STATIC_DRAW);
-    VertexIndexBuffer.itemSize = 1;
-    VertexIndexBuffer.numItems = objectData.indices.length;*/
 
 }
 
@@ -106,14 +99,6 @@ function loadObject() {
             handleLoadedObject(JSON.parse(request.responseText));
         }
     }
-/*
-    request.open("GET", "banan.json"); <!-- vilket objekt man vill läsa in -->
-    request.onreadystatechange = function () {
-        if (request.readyState == 4) {
-            handleLoadedObject2(JSON.parse(request.responseText));
-        }
-    }
-*/
     request.send();
 }
 

@@ -9,11 +9,11 @@ function drawScene(players) {
 
         gl.uniform3f(shaderProgram.ambientColorUniform,0.2,0.2,0.2); 
 
-        gl.uniform3f(shaderProgram.pointLightingSpecularColorUniform,0.8,0.8,0.8);
+        gl.uniform3f(shaderProgram.pointLightingSpecularColorUniform,0.5,0.5,0.5);
 
         gl.uniform3f(shaderProgram.pointLightingColorUniform,0.8,0.8,0.8);
 
-        gl.uniform1f(shaderProgram.materialShininessUniform, 32.0);
+        gl.uniform1f(shaderProgram.materialShininessUniform, 64.0);
 
         mat4.identity(vMatrix);
         mat4.rotate(vMatrix,vMatrix, -pitch*Math.PI / 180, [1, 0, 0]);
@@ -29,7 +29,7 @@ function drawScene(players) {
 
         var transLight = mat4.create();
 
-        mat4.translate(transLight,transLight,[0.0 , 12 ,-20.0]);
+        mat4.translate(transLight,transLight,[5.0 , 14 ,-17.0]);
         vec3.transformMat4(lightPos, lightPos, transLight);
         vec3.transformMat4(lightPos, lightPos, vMatrix);
         gl.uniform3fv(shaderProgram.pointLightingLocationUniform,lightPos);
@@ -60,9 +60,9 @@ function drawScene(players) {
             var j = players[i].player; // to get the right texture on the stone.
 
             if(j==0)
-                gl.bindTexture(gl.TEXTURE_2D, neheTexture);
+                gl.bindTexture(gl.TEXTURE_2D, stoneTextureP1);
             else
-                gl.bindTexture(gl.TEXTURE_2D, gulTexture);
+                gl.bindTexture(gl.TEXTURE_2D, stoneTextureP2);
             
             gl.uniform1i(shaderProgram.samplerUniform, 0);       
 

@@ -8,28 +8,28 @@ function handleLoadedTexture(texture) {
 }
 
 
-var neheTexture;
+var stoneTextureP1;
 
 function initTextures() {
-    neheTexture = gl.createTexture();
-    neheTexture.image = new Image();
-    neheTexture.image.onload = function () {
-        handleLoadedTexture(neheTexture)
+    stoneTextureP1 = gl.createTexture();
+    stoneTextureP1.image = new Image();
+    stoneTextureP1.image.onload = function () {
+        handleLoadedTexture(stoneTextureP1)
     }
 
-    neheTexture.image.src = "objects/textures/curlingstone_texture.png";
+    stoneTextureP1.image.src = "objects/textures/curlingstone_texture.png";
 }
 
-var gulTexture;
+var stoneTextureP2;
 
 function initTextures4() {
-    gulTexture = gl.createTexture();
-    gulTexture.image = new Image();
-    gulTexture.image.onload = function () {
-        handleLoadedTexture(gulTexture)
+    stoneTextureP2 = gl.createTexture();
+    stoneTextureP2.image = new Image();
+    stoneTextureP2.image.onload = function () {
+        handleLoadedTexture(stoneTextureP2)
     }
 
-    gulTexture.image.src = "objects/textures/curlingstone_texture_2.png";
+    stoneTextureP2.image.src = "objects/textures/curlingstone_texture_2.png";
 }
 
 var banaTexture;
