@@ -14,7 +14,6 @@ theGame.prototype = {
 	addPlayer: function(p){
 		this.players.push(p);
 		p.id=this.players.length; 
-		//console.log("created player: %s", p.id);
 		return this;
 	},
 
@@ -26,7 +25,6 @@ theGame.prototype = {
 		var stone = new CurlingStone;
 
 		stone.init(angle, speed, playerid);
-		//this.allStones.push(stone);
 
 		this.allStones.push(new Struct(stone,playerid));
 		
@@ -125,6 +123,8 @@ theGame.prototype = {
    		LASTTIME = timeNow;
 	},
 
+
+// BUGGAR NÄR DEN TAR BORT VID 3:E KASTET. BYTER EJ TILL RÄTT SPELARE DÅ!!!
 	// check if the stone is out of the bounds, out of the field or being throwed to short. 
 	outOfBounds: function() {
 		var thrownStones = this.players[0].thrown+this.players[1].thrown;  // how many stones been thrown
@@ -166,10 +166,15 @@ theGame.prototype = {
         //if( this.allStones.length == NUMBEROFSTONES*2 ){
         if( this.players[0].thrown+this.players[1].thrown == NUMBEROFSTONES*2 ){
         	if(thisturn==turn){
-        		if (this.allStones[this.allStones.length-1].stone.speed < 0.01)
-	        		this.countScore();
+        		if(this.allStones.length==0)
+	        		document.getElementById("newRound").style.visibility = "visible";
+        		else if (this.allStones[this.allStones.length-1].stone.speed < 0.01) // HÄR LÄR DET BLI FEL OCKSÅ!
+	        		this.countScore();						// EFTERSOM KAN BLI BORTTAGEN
+	        	
 	    	}
-        }        
+        }  
+
+
 	},
 
 	// to get the input from the user from the webpage, to send a stone. 
@@ -260,7 +265,6 @@ theGame.prototype = {
 
 	// calculates the score of a round. 
 	countScore: function(){
-		console.log("räkna poäng");
 		thisturn = thisturn + 1; 
 		var score = new Array();
 		score[0]=this.players[0].score;
@@ -270,7 +274,6 @@ theGame.prototype = {
 		// till mittpunkten (den vektorn). räkna ut vektorns längd och sen spara alla längder för varje spelare och sten.
 		// se vilken spelare som har sten närmast och även om de har fler stenar innan motståndarens första sten.s
 		for (var i=0; i<this.allStones.length; i++){
-			//this.allStones[i].calculateDistance(); // räknar ut avståndet för varje sten till mitten.
 			this.allStones[i].distanceFromMiddle =  this.allStones[i].stone.pos.distanceFrom(TEE);//this.pos.distanceFrom(TEE)
 		}
 
@@ -280,14 +283,21 @@ theGame.prototype = {
 		if (this.allStones.length > 0 && this.allStones[0].distanceFromMiddle + R < NEST_RADIUS){
 			var sum=1;
 			var leader = this.allStones[0].player;
-
-			for (var i=0; i < this.allStones.length; i++) 
-				console.log("stone %s: %s, %s", i,this.allStones[i].player, this.allStones[i].distanceFromMiddle);
 			
+			for (var i=0; i < this.allStones.length - 1; i++){
+				if (this.allStones[i].player == this.allStones[i+1].player && i <= NUMBEROFSTONES - 1) {
+					sum = sum + 1;
+				}
+				else{
+					break;
+				}
+			}
+
+			/*
 			var i=0;
 			while ( i < this.allStones.length-1 && this.allStones[i].player == leader && this.allStones[i].player == this.allStones[i++].player){
 					sum = sum + 1;
-			}
+			}*/
 
 			score[leader] = score[leader] + sum; 
 

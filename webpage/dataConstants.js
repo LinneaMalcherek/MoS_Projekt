@@ -2,6 +2,7 @@
 function dataConstants() { 
 	// friction constants
 	MY = 0.0168;
+	//MY = 0.0073;
 	
 	// the curling stone 
 	M = 18; // mass

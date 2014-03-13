@@ -8,10 +8,10 @@ function CurlingStone()
 	this.directionSide = $V([0,0]); 
 	this.angularSpeed = 0;
 	this.frictionCoeffC = new Array(0.000001,0.0001); // constans for the forward and backward friction
-	cb = 0.0001;
-	cf = 0.000001;
+	//this.frictionCoeffC = new Array(0.0001584, 0.01584);
+	cb = this.frictionCoeffC[1];
+	cf = this.frictionCoeffC[0];
 	this.angle = 0; 
-
 }
 
 // CurlingStones functions
@@ -41,36 +41,34 @@ CurlingStone.prototype = {
 		t = HACK_HOG / speed; // time from hack to hog
 		this.angularSpeed = Math.PI / (2*t); 
 
-		this.speedSide = this.angularSpeed * R_INNER;
+		//this.speedSide = this.angularSpeed * R_INNER;
+		this.speedSide = 0;
 
 		// set the initial direction vector based on input angle, side is the orthogonal
 		dirFor = this.setDirectionForward(angle);
 		this.setDirectionSide(dirFor, angle); 
-
-		//this.player=player;
 	},
 
 	// returns acceleration for speed forward at vel v
-	a_speed: function(v){
-		return -MY*G; 
+	a_speed: function(v,friction){
+		return -friction*G;
 	},
 	// returns acceleration for speedSide at vel v
-	a_speedSide: function(v){
+	a_speedSide: function(v,friction){
 		return (cb - cf)*G/Math.sqrt(v);
-		//return (this.frictionCoeffC[0] - this.frictionCoeffC[1])*G/Math.sqrt(v);
 	},
 	// returns acceleration for angularSpeed at vel v
-	a_angSpeed: function(v){
+	a_angSpeed: function(v,friction){
 		return -((cb + cf)*G)/(Math.sqrt(v)*R_INNER);//(this.frictionCoeffC[0] + this.frictionCoeffC[1])*G/(Math.sqrt(v)*R_INNER);
 		//return  G*(this.frictionCoeffC[0] + this.frictionCoeffC[1])/(Math.sqrt(v)*R_INNER);
 	},
 	// returns next step according to the runge-kutta method
-	rungekutta: function(v_n,v,h,a){
+	rungekutta: function(v_n,v,h,a,friction){
 		
-		var k_1 = a(v);
-		var k_2 = a(v+0.5*h*k_1);
-		var k_3 = a(v+0.5*h*k_2);
-		var k_4 = a(v+h*k_3);
+		var k_1 = a(v,friction);
+		var k_2 = a(v+0.5*h*k_1,friction);
+		var k_3 = a(v+0.5*h*k_2,friction);
+		var k_4 = a(v+h*k_3,friction);
 		var v2  = v_n + (1/6)*((k_1+2*k_2+2*k_3+k_4)*h);
 
 		if (0 < v2)
@@ -79,17 +77,16 @@ CurlingStone.prototype = {
     		return 0;
 	},
 
-
 	// returns a scalar by runge kutta
-	newSpeed: function(speed,acceleration,dt){
+	newSpeed: function(speed,friction,dt){
 		//return speed + acceleration * dt;
-		return this.rungekutta(speed,speed,dt,this.a_speed);
+		return this.rungekutta(speed,speed,dt,this.a_speed,friction);
 	},
 
-	//returns a scalar, -my*g 
+	/*//returns a scalar, -my*g 
 	calcAcceleration: function(gravity, my_constant){
 		return -1 * my_constant * gravity; 
-	},
+	},*/
 
 	// Returns total acceleration sideways (difference between front and back)
 	calcAngularAcceleration: function(gravity, my_f, my_b, r){ //my_f and my_b frictioncoeff for front and back of the stone
@@ -110,7 +107,7 @@ CurlingStone.prototype = {
 		if (this.speedSide < 0) //If stone is not moving
 			this.speedSide = 0; 
 		else
-			this.speedSide = this.rungekutta(this.speedSide,this.speed,dt,this.a_speedSide);
+			this.speedSide = this.rungekutta(this.speedSide,this.speed,dt,this.a_speedSide,1);
 		
 	},
 
@@ -127,7 +124,7 @@ CurlingStone.prototype = {
 			this.angularSpeed =  0;
 		else
 			//this.angularSpeed = new_speed_side / R_INNER;
-			this.angularSpeed = this.rungekutta(this.angularSpeed,this.speed,dt,this.a_angSpeed);
+			this.angularSpeed = this.rungekutta(this.angularSpeed,this.speed,dt,this.a_angSpeed,1);
 	},
 
 	// Calculates resultant of the speeds forward and sideways 
@@ -139,7 +136,7 @@ CurlingStone.prototype = {
 
 	},
 
-	updateSpeeds: function(acceleration){
+	updateSpeeds: function(friction){
 
 		// add the vector forward (direction, utslagsvinkel) and sidevector
 		v = this.calcVelocityResultant();
@@ -149,7 +146,7 @@ CurlingStone.prototype = {
 		vDir = v.toUnitVector();
 
 		//Lägg friktion på speed(riktig)
-		vSpeed = this.newSpeed(vSpeed,acceleration,dt);	// Accelerationen i färdriktningen (friktionen)
+		vSpeed = this.newSpeed(vSpeed,friction,dt);	// Accelerationen i färdriktningen (friktionen)
 
 		// Återskapa den nya hastighetsvektorn (riktiga)
 		v = vDir.multiply(vSpeed);
@@ -185,12 +182,10 @@ CurlingStone.prototype = {
 			friction = MY * 0.8; 
 		}
 
-		a = this.calcAcceleration(G, friction);
-
 		// update speedSide, angularSpeed, etc. 
 		this.newSpeedSide(G,this.frictionCoeffC[0],this.frictionCoeffC[1],R_INNER); 
 		this.newAngularSpeed(this.speedSide);	
-		this.updateSpeeds(a);				
+		this.updateSpeeds(friction);				
 
 		var velocity = this.calcVelocityResultant();
 		this.setNewPos(velocity,dt);
