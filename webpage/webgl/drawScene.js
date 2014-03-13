@@ -7,13 +7,17 @@ function drawScene(players) {
 
         mat4.perspective(45, gl.viewportWidth / gl.viewportHeight, 0.1, 100.0, pMatrix);
 
+        gl.uniform3f(shaderProgram.ambientColorUniform,0.2,0.2,0.2);
 
-        gl.uniform3f(shaderProgram.ambientColorUniform,0.5,0.5,0.5);
+        gl.uniform3f(shaderProgram.pointLightingLocationUniform,0.0,-5.0,20.0);
 
-        gl.uniform3f(shaderProgram.pointLightingLocationUniform,0.0,-2.0,10.0);
+        gl.uniform3f(shaderProgram.pointLightingSpecularColorUniform,0.8,0.8,0.8);
 
-        gl.uniform3f(shaderProgram.pointLightingColorUniform,0.5,0.5,0.5);
+        gl.uniform3f(shaderProgram.pointLightingColorUniform,0.2,0.2,0.2);
 
+        gl.uniform1f(shaderProgram.materialShininessUniform, 8.0);
+
+        gl.uniform3f(shaderProgram.cameraPositionUniform,-xCam,-yCam,-zCam);
 
         mat4.identity(vMatrix);
         mat4.rotate(vMatrix, -pitch*Math.PI / 180, [1, 0, 0]);
@@ -60,7 +64,7 @@ function drawScene(players) {
                         gl.bindTexture(gl.TEXTURE_2D, gulTexture);
                     
                     gl.uniform1i(shaderProgram.samplerUniform, 0);
-
+                    
                    // gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, VertexIndexBuffer);
                     gl.bindBuffer(gl.ARRAY_BUFFER, VertexPositionBuffer);
                     setMatrixUniforms();
