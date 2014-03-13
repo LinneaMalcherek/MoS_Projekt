@@ -89,7 +89,7 @@ TNM085 Modelleringsprojekt}
 Curling är ett intressant system att modellera eftersom det innefattar många vedertagna fysikaliska egenskaper men även delar som inte är särskilt triviala. 
 De senaste åren har ett flertal vetenskapliga artiklar publicerats som ger sin förklaring till svängningsfenomenet, den så kallade "curlen", hos curlingstenen.
 Gemensamt för artiklarna är hypotesen om att svängningen på curlingstenen beror på en högre friktion på bakre delen av stenen än den främre. 
-Förklaringen till varför detta är så, har uppdagats det senaste året.. bla bla bla referens?
+Anledningen till varför det är så kommer att förklaras i denna rapport.
 
 \subsection{Begränsningar och förenklingar} 
  Denna rapport behandlar modellbygge och simulering av en curlingstens translation och rotation, friktionens påverkan samt kollision mellan curlingstenar. 
@@ -98,7 +98,7 @@ I spelet använder man sig även av sopning för att påverka stenens bana över
 
 \section{Fysikalisk beskrivning} 
 
-NÅNTING OM ATT DET FINNS EN TABELL I SLUTET?
+Alla variabler går att finna i en tabell i Apendix A.
 
 \subsection{Translation}
 
@@ -282,7 +282,7 @@ v_2''& = v_{2n}'' + v_{2t}'
 
 
 \section{Numeriska metoder för simulering}
-Tre farter beräknas i varje steg av simuleringen: fart i rörelseriktningen, fart i ortogonal riktning som tillför curl samt vinkelhastighet. Dessa beräknas genom Runge-Kutta-metoden enligt \eqref{RungeKutta_transl}. 
+Tre farter beräknas i varje steg av simuleringen: fart i rörelseriktningen, fart i ortogonal riktning som tillför curl samt vinkelhastighet. Dessa beräknas genom Runge-Kutta-metoden enligt \eqref{RungeKutta_transl}\footnote{L.Ljung, T.Glad \emph{Modellbygge och simulering}, Studentlitteratur (2004), s. 380-382}. 
 
  \begin{subequations}\label{RungeKutta_transl}
  \begin{align}
@@ -294,7 +294,7 @@ Tre farter beräknas i varje steg av simuleringen: fart i rörelseriktningen, fa
  \end{align}
 \end{subequations}
 
-Funktionen a för accelerationen för de olika farterna olika beroende på de olika friktionstillstånden enligt \eqref{a_front},  \eqref{a_side}, \eqref{a_rotation}.
+Funktionen a för accelerationen för de olika farterna olika beroende på de olika friktionstillstånden enligt \eqref{a_front},  \eqref{a_side}, \eqref{a_rotation}\footnote{A. Raymond Penner, \emph{The physics of sliding cylinders and curling rocks} (2001), American Journal of Physics \textbf{69}, American Association of Physics Teachers.}
  
  \begin{align}\label{a_front}
  a_{fram}& = - \mu g\\\label{a_side}
@@ -368,20 +368,7 @@ $r_{inner}$ & radie kontaktband & 0.06 m\\ \hline
 
 
 
-\begin{thebibliography}{99}
-\addcontentsline{toc}{chapter}{Bibliography}
 
-\bibitem{Grahn} R. Grahn, P-Å. Jansson \emph{Dynamik}, Studentlitteratur (1995), 334-345 
-
-\cite{Grahn}
-
-genom roten ur v
-
-
-
-Runge Kutta
-
-\end{thebibliography}
 
 
 \end{document}

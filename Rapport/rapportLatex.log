@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2014.2.25)  13 MAR 2014 13:34
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2014.2.25)  13 MAR 2014 15:01
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -910,14 +910,13 @@ Underfull \hbox (badness 10000) in paragraph at lines 123--136
 
  []
 
-[2] [3 <./Translation.png>]
-<Friktion_bakfram.png, id=31, 787.94376pt x 416.55624pt>
+[2] <Friktion_bakfram.png, id=22, 787.94376pt x 416.55624pt>
 File: Friktion_bakfram.png Graphic file (type png)
 
 <use Friktion_bakfram.png>
 Package pdftex.def Info: Friktion_bakfram.png used on input line 148.
 (pdftex.def)             Requested size: 312.9803pt x 165.45636pt.
-
+ [3 <./Translation.png>]
 Overfull \hbox (4.90358pt too wide) in paragraph at lines 170--172
 \OT1/cmr/m/n/10.95 Stenen har []aven en ro-te-ran-de r[]orelse med en vin-kel-h
 as-tig-het vars ur-sprungsv[]arde ber[]aknas
@@ -933,12 +932,13 @@ File: krock.png Graphic file (type png)
  <use krock.png>
 Package pdftex.def Info: krock.png used on input line 208.
 (pdftex.def)             Requested size: 227.62204pt x 170.71672pt.
- [5 <./bana.png>]
+
 Underfull \hbox (badness 10000) in paragraph at lines 225--228
 
  []
 
-[6 <./krock.png>] <kollision-vektorer.png, id=51, 515.9275pt x 401.5pt>
+[5 <./bana.png>] [6 <./krock.png>]
+<kollision-vektorer.png, id=51, 515.9275pt x 401.5pt>
 File: kollision-vektorer.png Graphic file (type png)
 
 <use kollision-vektorer.png>
@@ -992,11 +992,11 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 7080 strings out of 493315
+ 7081 strings out of 493315
  100741 string characters out of 6137904
- 190923 words of memory out of 5000000
- 10362 multiletter control sequences out of 15000+600000
- 16683 words of font info for 62 fonts, out of 8000000 for 9000
+ 190935 words of memory out of 5000000
+ 10364 multiletter control sequences out of 15000+600000
+ 16337 words of font info for 61 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
  44i,20n,43p,1023b,282s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2013/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc
@@ -1016,13 +1016,12 @@ ve/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/
 /texmf-dist/fonts/type1/public/amsfonts/cm/cmss12.pfb></usr/local/texlive/2013/
 texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2013/t
 exmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2013/tex
-mf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2013/texm
-f-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb></usr/local/texlive/2013/texmf-
-dist/fonts/type1/public/cm-super/sfrm1095.pfb>
-Output written on rapportLatex.pdf (12 pages, 377614 bytes).
+mf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb></usr/local/texlive/2013/texmf
+-dist/fonts/type1/public/cm-super/sfrm1095.pfb>
+Output written on rapportLatex.pdf (12 pages, 369352 bytes).
 PDF statistics:
- 135 PDF objects out of 1000 (max. 8388607)
- 87 compressed objects within 1 object stream
+ 131 PDF objects out of 1000 (max. 8388607)
+ 84 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  41 words of extra memory for PDF output out of 10000 (max. 10000000)
 
