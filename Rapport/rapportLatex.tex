@@ -92,9 +92,14 @@ Gemensamt för artiklarna är hypotesen om att svängningen på curlingstenen be
 Anledningen till varför det är så kommer att förklaras i denna rapport.
 
 \subsection{Begränsningar och förenklingar} 
- Denna rapport behandlar modellbygge och simulering av en curlingstens translation och rotation, friktionens påverkan samt kollision mellan curlingstenar. 
-Curlingstenarna i beräkningarna har samma massa och därmed kan beräkningar förenklas genom att förkorta bort massan. 
-I spelet använder man sig även av sopning för att påverka stenens bana över isen, detta behandlas endast ytligt i denna rapport. 
+Denna rapport behandlar modellbygge och simulering av en curlingstens translation
+och rotation, friktionens påverkan samt kollision mellan curlingstenar. 
+Curlingstenarnai beräkningarna har samma massa och därmed kan beräkningar förenklas genom att
+förkorta bort massan. I spelet använder man sig även av sopning för att påverka stenens
+bana över isen. Det fungerar dock endast på den sten som senast skutits ut. Hänsyn har
+inte heller tagits till den rotation som skapas för stenarna efter en sned krock (krock som
+inte är riktad mot masscentrum). Stenarna har istället samma rotationshastighet efter
+krock som de hade innan.
 
 \section{Fysikalisk beskrivning} 
 
@@ -167,7 +172,7 @@ Translationen av stenen är en resulterande hastighetsvektor $v$, som består av
 \subsection{Rotation}
 
 
-Stenen har även en roterande rörelse med en vinkelhastighet vars ursprungsvärde beräknas utifrån utslagshastigheten av stenen.
+Stenen har även en roterande rörelse med en vinkelhastighet vars ursprungsvärde beräknas utifrån utslagshastigheten av stenen \eqref{linnea}.
 Vid utslaget antas att spelaren håller stenen så att handtaget pekar i en riktning 90\textdegree  från riktning framåt antingen med inhand eller outhand och släpper stenen med handtaget pekande rakt fram vid hoglinjen. Detta innebär att stenen roterar 90\textdegree under den tid det tar för spelaren att ta sig mellan hack och hog, vilket är direkt kopplat till den angivna utslagshastigheten. 
 
 \begin{figure}[ht!]
@@ -179,12 +184,12 @@ Vid utslaget antas att spelaren håller stenen så att handtaget pekar i en rikt
 \end{figure}
 
 
-\begin{align}%\label{vtot}
+\begin{align}%\label{linnea}
  \omega_0 = \frac{\pi}{2 t_0} 
  \end{align}
 
 
-Friktionen som påverkar rotationshastigheten är summan av all friktion som påverkar bandet som stenen roterar på. Detta kan sammanfattas till friktionen i de två punkterna, p1 och p2 på stenen. Accelerationen på stenens rotation kan därmed beräknas som accelerationen i de två punkterna. 
+Friktionen som påverkar rotationshastigheten är summan av all friktion som påverkar bandet som stenen roterar på. Detta kan sammanfattas till friktionen i de två punkterna, $p_1$ och $p_2$ på stenen. Accelerationen på stenens rotation kan därmed beräknas som accelerationen i de två punkterna. 
 
  \begin{align}\label{a_rotation1}
  \alpha_{rot} =- \frac{( a_1 + a_2)}{r} = -\frac{(\mu_1 g + \mu_2 g)}{r} = - g\frac{c_1+c_2}{r \sqrt{v_f}}
@@ -211,7 +216,7 @@ Om avståndet mellan stenarnas mittpunkter är mindre än två radier \eqref{les
 \label{overflow}
 \end{figure}
 Hastigheten av curlingstenarna efter en kollision beräknas med hjälp av de två stenarnas position och hastighetsvektorer.
-Beräkningarna utgår ifrån en rak central stöt i krockens normalriktning, där det finns två givna ekvationer \eqref{e1} och \eqref{elastisk} för att ta fram hastigheten efter krock. 
+Beräkningarna utgår ifrån en rak central stöt i krockens normalriktning, där det finns två givna ekvationer \eqref{e1} och \eqref{elastisk} för att ta fram hastigheten efter krock.  Dessa ekvationer tar endast hänsyn till fallet då $v’1 > v’2$. För att ta det allmäna fallet så måste absolutbeloppet av nämnare och täljaren tas i ekvation \eqref{e1} (vilket kommer leda till två olika fall av ekvation 15 och 16.)
 Med hjälp av stötkoefficienten e \eqref{e1} kan stöten regleras mellan en helt elastikt krock (e=1) och en helt inelastiskt krock (e=0). 
 I curling är det rimligt med en energiförlust och en inelastisk stöt bör därmed tas i beräkning. 
 Stötkoefficienten är kvoten av den relativa hastigheten efter kollision och den relativa hastigheten före kollision enligt \eqref{e1}\footnote{R. Grahn, P-Å. Jansson \emph{Dynamik}, Studentlitteratur (1995), s. 334-345}.
@@ -220,7 +225,7 @@ Eftersom det ej finns en specificerad stötkoefficient för curlingstenarnas mat
 
  \begin{subequations}\label{e1}
  \begin{align}
- e& = \frac{v_2''-v_1''}{v_2'-v_1'}\\
+ e& = \frac{v_2''-v_1''}{v_1'-v_2'}\\
 0& \le e \le 1
  \end{align}
  \end{subequations}
@@ -280,17 +285,67 @@ v_2''& = v_{2n}'' + v_{2t}'
 \label{overflow}
 \end{figure}
 
-
+\pagebreak
 \section{Numeriska metoder för simulering}
-Tre farter beräknas i varje steg av simuleringen: fart i rörelseriktningen, fart i ortogonal riktning som tillför curl samt vinkelhastighet. Dessa beräknas genom Runge-Kutta-metoden enligt \eqref{RungeKutta_transl}\footnote{L.Ljung, T.Glad \emph{Modellbygge och simulering}, Studentlitteratur (2004), s. 380-382}. 
 
- \begin{subequations}\label{RungeKutta_transl}
+\subsection{Numeriska metoder}
+Numerisk analys utgår från analytiska uppställningar som kan delas in i stegintervall för
+att lösas. Det finns ett flertal algoritmer som använder en numerisk approximation för
+att ge en uppskattad men noggrann lösning till svåra problem. Algoritmerna begränsas
+av de fel som diskretisering medför och därför får nogrannhet vägas mot beräkningstyngd
+när metod väljs. Numeriska algoritmer används ofta inom datorgrafik och simuleringar
+för att beräkna till exempel positionen på objekt i rörelse.
+
+\subsubsection{Runge-Kutta-metoden}
+Vid lösning av differentialekvationer kan den så kallade Runge-Kutta-metoden användas.
+I fallet då differentialekvationen är av första ordningen benämns derivatan av $x$ som en
+funktion $f(t, x)$ \eqref{xdot}. Derivatan i den aktuella punkten $x_n$ och efterliggande punkter
+beräknas i funktionen $f(t, x)$ med parametrar enligt \eqref{koeff}. Dessa läggs samman för att
+beräkna den approximerade funktionsvärdesskillnaden mellan punkterna $x_n$ och $x_{n+1}$.
+Den slutliga funktionen \eqref{RungeKutta_transl} beräknar kurvans approximerade värde i nästa steg $x_{n+1}$,
+då steglängden har värdet $h$.
+
+ \begin{subequations}
+ \begin{align} 
+ x_0& = x(t_0)\\ \label{xdot}
+ \dot{x}& = f(t,x)
+ \end{align}
+\end{subequations}
+
+ \begin{subequations}\label{koeff}
+ \begin{align}
+ k_1& = f(t_0,x_n)\\
+ k_2& = f(t_n + frac{1}{2} h, x_n + \frac{h}{2} k_1)\\
+ k_3& = f(t_n + frac{1}{2} h, x_n + \frac{h}{2} k_2)\\
+ k_4& = f(t_n + h, x_n + h k_3)
+ \end{align}
+\end{subequations}
+
+ \begin{align}\label{RungeKutta_transl}
+ x_{n+1}& =x_n + \frac{h}{6} (k_1+2 k_2 + 2 k_3 + k_4)
+ \end{align}
+
+\subsubsection{Eulermetoden}
+Eulermetoden är en annan metod för att uppskatta nästa funktionsvärde för en kurva.
+Värdet vid efterföljande punkt $x_{n+1}$ är då tidigare punkts funktionsvärde $x_n$ adderat
+derivatan i punkten multiplicerat med steglängden $h$ \eqref{euler}.
+
+ \begin{align}\label{euler}
+ x_{n+1}& =x_n + \dot{x_n} h
+ \end{align}
+
+ 
+
+\subsection{Implementation}
+För beräkningarna av curlingstenens bana över isen tas hastigheten $v$ fram för varje tid $t$. Hastigheten i den föregående punkten samt den påverkande accelerationen kan i beräkningen behandlas som en differentialekvation av första ordningen. Eftersom positionen för stenen beräknas utifrån hastigheten behöver endast accelerationen med avseende på en variabel (hastigheten i rörelseriktningen) beräknas, $a(v_f)$. Tre farter beräknas i varje steg av simuleringen: fart i rörelseriktningen, fart i ortogonal riktning som tillför curl samt vinkelhastighet. Dessa beräknas genom Runge-Kutta-metoden enligt \eqref{impl}\footnote{L.Ljung, T.Glad \emph{Modellbygge och simulering} (2004), s.380-382}. 
+
+ \begin{subequations}\label{impl}
  \begin{align}
  v_{n+1}& =v_n + \frac{h}{6} (k_1+2 k_2 + 2 k_3 + k_4)\\
- k_1& = a(v_n)\\
- k_2& = a(v_n + \frac{h}{2} k_1)\\
- k_3& = a(v_n + \frac{h}{2} k_2)\\
- k_4& = a(v_n + h k_3)
+ k_1& = a(v_f)\\
+ k_2& = a(v_f + \frac{h}{2} k_1)\\
+ k_3& = a(v_f + \frac{h}{2} k_2)\\
+ k_4& = a(v_f + h k_3)
  \end{align}
 \end{subequations}
 
@@ -302,7 +357,11 @@ Funktionen a för accelerationen för de olika farterna olika beroende på de ol
  a_{rot}& = \alpha_{rot} = - g\frac{c_1+c_2}{r \sqrt{v_f}}
  \end{align}
 
-Samtliga tre parametrar (fart framåt, fart i sidled och vinkelhastighet) är skalärer. Efter att nästa värde erhållits genom Runge-Kutta-metoden tas hastigheten i riktning framåt och i sidled fram och de två adderas genom vektoraddition. Ny position av stenen beräknas i sista steget genom Euler-metoden, där hastighetsvektorn anger riktning och steglängd \eqref{pos}. 
+Samtliga tre parametrar (fart framåt, fart i sidled och vinkelhastighet) är skalärer.
+Efter att nästa värde erhållits genom Runge-Kutta-metoden tas hastigheten i riktning
+framåt och i sidled fram och de två adderas genom vektoraddition. Ny position av stenen
+beräknas i sista steget genom Euler-metoden, där hastighetsvektorn anger riktning och
+steglängd \eqref{pos}. 
 
  \begin{align}\label{pos}
  pos_{n+1}& = pos_{n} + \bar{v} \Delta t
@@ -312,13 +371,13 @@ Samtliga tre parametrar (fart framåt, fart i sidled och vinkelhastighet) är sk
 \section{Grafisk implementering}
 
 \subsection{WebGL}
-Efter simuleringen i Matlab har koden skrivits över till WebGL för att avancera det grafiska samt skapa ett spelkoncept på webben. Två spelare kan spela mot varandra och en pöängberäkning har implementerats. 
+Efter simuleringen i Matlab har koden skrivits över till WebGL för att avancera det grafiska samt skapa ett spelkoncept på webben. Två spelare kan spela mot varandra och en poängberäkning har implementerats. 
 
 \subsection{Modellering}
-Alla objekt, så som stenen och curlingbanan, är modellerade för hand i 3D-grafikprogrammet Blender. På dessa objekt läggs en UV-mappning för att kunna lägga på texturen. Ett konverteringsskript används för att göra om objektet från .obj till .json där UV-koordinaterna blir sparade som strängar. Runt omkring curlingbanan finns en skybox för att skapa illusionen av en stjärnhimmel.
+Alla objekt, så som stenen och curlingbanan, är modellerade för hand i 3D-grafikprogrammet Blender. På dessa objekt läggs en UV-mappning för att kunna lägga på texturen. Ett konverteringsskript används för att göra om objektet från .obj till .json där UV-koordinaterna blir sparade som strängar. Runtomkring curlingbanan finns en skybox för att skapa illusionen av en stjärnhimmel.
 
 \section{Att köra simuleringen}
-Öppna filen index.html i Firefox. Simuleringen fungerar bäst i denna webbläsare då sidan är utvecklad mot Firefox. När sidan är laddad har spelaren möjligheter att röra sig i världen med hjälp av piltangenterna samt tangenterna e och d för att röra sig upp och ned. Spelare kan själva skjuta iväg en sten genom att bestämma vinkel och hastighet. Det går även att sopa, och därmed minska friktionen, med hjälp av att hålla in tangenten s. Sopningen påverkar enabart den sten som man senast skickade ut för enkelhetens skull. 
+Öppna filen index.html i Firefox. Simuleringen fungerar bäst i denna webbläsare då sidan är utvecklad mot Firefox. När sidan är laddad har spelaren möjligheter att röra sig i världen med hjälp av piltangenterna samt tangenterna E och D för att titta upp och ned. Spelare kan själva skjuta iväg en sten genom att bestämma utslagsvinkel och utslagsfart. Det går även att sopa, och därmed minska friktionen, med hjälp av att hålla in tangenten s. Sopningen påverkar enbart den sten som man senast skickade ut för enkelhetens skull. 
 
 \pagebreak
 \section{Resultat}
@@ -346,6 +405,17 @@ Rada upp alla konstanter som används i simuleringen.
 
 \section{Diskussion}
 
+\subsection{Numeriska metoder}
+Vid beräkningarna har två typer av numeriska metoder använts: Eulermetoden och
+Runge-Kutta-metoden. Runga-Kutta-metoden används vid beräkningen av de nya skalärerna,
+fart framåt, fart sidled och vinkelhastighet.
+Vid implementationen testades både Eulermetoden och Runge-Kutta-metoden. 
+För Euler genomfördes beräkningarna med en steglängd på ca. 0.04 sekunder. 
+Slutligen valdes Runge-Kutta-metoden då detta gör att beräkningarna blir med noggranna och stabila. 
+Däremot har i den visuella simuleringen ingen större skillnad märkts av. Sannolikt beror detta på att Eulermetoden var relativt exakt på grund av den korta steglängden. 
+\\\\Vid uträkning av stenens nya position användes Eulermetoden. 
+Detta gjordes av två orsaker: positionen beräknas enligt en steglängd längs en vektor i två dimensioner och det är därför implementeringsmässigt enklare och mindre beräkningstungt att använda Euler. 
+I annat fall hade vektorn delats upp i flera komponenter och vinningen i det hade varit mindre än problemen som kommer med de tyngre beräkningarna. 
 
 \appendix
 \section{\\Title of Appendix A} \label{App:AppendixA}

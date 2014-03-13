@@ -13,53 +13,39 @@ function drawScene(players) {
         mat4.translate(vMatrix, [-xCam, -yCam, -zCam]);
 
         mat4.rotate(vMatrix,-Math.PI / 2, [1, 0, 0]);
-
         mat4.translate(vMatrix, [0 , 10 ,0]);
-
         
         // draw all the curling stones. goes trough all players, so we get different colors och the different players.
         for (var i=0; i<players.length; i++) {
 
-            //allStones = players[j].stones;
-            //for (var i=0; i<allStones.length; i++) { // for every stone in the players array
+            mat4.identity(mMatrix);
+            mat4.translate(mMatrix, [-0.15,-11,-0.2]);
+            mat4.translate(mMatrix, [players[i].stone.getXPos(), players[i].stone.getYPos(), ZPOS]);
+            mat4.rotateZ(mMatrix, players[i].stone.getAngle());
+
+            mat4.rotateX(mMatrix, Math.PI/2);
             
-                //if (players[i].render){ // if it is in game (should be rendered)
+            mat4.scale(mMatrix, [0.1, 0.1, 0.1]);
+            gl.bindBuffer(gl.ARRAY_BUFFER, VertexPositionBuffer);
+            gl.vertexAttribPointer(shaderProgram.vertexPositionAttribute, VertexPositionBuffer.itemSize, gl.FLOAT, false, 0, 0);
 
-                    //console.log("Rotationalspeed: %s, Speed Side %s", allStones[i].angularSpeed , allStones[i].speedSide)
+            gl.bindBuffer(gl.ARRAY_BUFFER, VertexTextureCoordBuffer);
+            gl.vertexAttribPointer(shaderProgram.textureCoordAttribute, VertexTextureCoordBuffer.itemSize, gl.FLOAT, false, 0, 0);
 
-                    mat4.identity(mMatrix);
-                    mat4.translate(mMatrix, [-0.15,-11,-0.2]);
-                    mat4.translate(mMatrix, [players[i].stone.getXPos(), players[i].stone.getYPos(), ZPOS]);
-                    mat4.rotateZ(mMatrix, players[i].stone.getAngle());
+            gl.activeTexture(gl.TEXTURE0);
 
-                    mat4.rotateX(mMatrix, Math.PI/2);
-                    
-                    mat4.scale(mMatrix, [0.1, 0.1, 0.1]);
-                    gl.bindBuffer(gl.ARRAY_BUFFER, VertexPositionBuffer);
-                    gl.vertexAttribPointer(shaderProgram.vertexPositionAttribute, VertexPositionBuffer.itemSize, gl.FLOAT, false, 0, 0);
+            var j = players[i].player; // to get the right texture on the stone.
 
-                    gl.bindBuffer(gl.ARRAY_BUFFER, VertexTextureCoordBuffer);
-                    gl.vertexAttribPointer(shaderProgram.textureCoordAttribute, VertexTextureCoordBuffer.itemSize, gl.FLOAT, false, 0, 0);
+            if(j==0)
+                gl.bindTexture(gl.TEXTURE_2D, neheTexture);
+            else
+                gl.bindTexture(gl.TEXTURE_2D, gulTexture);
+            
+            gl.uniform1i(shaderProgram.samplerUniform, 0);
+            gl.bindBuffer(gl.ARRAY_BUFFER, VertexPositionBuffer);
+            setMatrixUniforms();
+            gl.drawArrays(gl.TRIANGLES,0, VertexPositionBuffer.numItems);
 
-                    gl.activeTexture(gl.TEXTURE0);
-
-                    var j = players[i].player; 
-
-                    if(j==0)
-                        gl.bindTexture(gl.TEXTURE_2D, neheTexture);
-                    else
-                        gl.bindTexture(gl.TEXTURE_2D, gulTexture);
-                    
-                    gl.uniform1i(shaderProgram.samplerUniform, 0);
-
-                   // gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, VertexIndexBuffer);
-                    gl.bindBuffer(gl.ARRAY_BUFFER, VertexPositionBuffer);
-                    setMatrixUniforms();
-                    gl.drawArrays(gl.TRIANGLES,0, VertexPositionBuffer.numItems);
-                    //gl.drawElements(gl.TRIANGLES, VertexIndexBuffer.numItems, gl.UNSIGNED_SHORT, 0);
-               // }
-
-            //}
         }
 
         // draw the curling field

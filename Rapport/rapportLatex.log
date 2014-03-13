@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2014.2.25)  13 MAR 2014 15:01
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2014.2.25)  13 MAR 2014 17:05
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -903,99 +903,125 @@ ortLatex.toc)
 [1] <Translation.png, id=13, 563.10374pt x 578.16pt>
 File: Translation.png Graphic file (type png)
  <use Translation.png>
-Package pdftex.def Info: Translation.png used on input line 116.
+Package pdftex.def Info: Translation.png used on input line 121.
 (pdftex.def)             Requested size: 227.62204pt x 233.7036pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 123--136
+Underfull \hbox (badness 10000) in paragraph at lines 128--141
 
  []
 
-[2] <Friktion_bakfram.png, id=22, 787.94376pt x 416.55624pt>
+[2] [3 <./Translation.png>]
+<Friktion_bakfram.png, id=30, 787.94376pt x 416.55624pt>
 File: Friktion_bakfram.png Graphic file (type png)
 
 <use Friktion_bakfram.png>
-Package pdftex.def Info: Friktion_bakfram.png used on input line 148.
+Package pdftex.def Info: Friktion_bakfram.png used on input line 153.
 (pdftex.def)             Requested size: 312.9803pt x 165.45636pt.
- [3 <./Translation.png>]
-Overfull \hbox (4.90358pt too wide) in paragraph at lines 170--172
+
+
+LaTeX Warning: Reference `linnea' on page 4 undefined on input line 175.
+
+
+Overfull \hbox (4.90358pt too wide) in paragraph at lines 175--177
 \OT1/cmr/m/n/10.95 Stenen har []aven en ro-te-ran-de r[]orelse med en vin-kel-h
 as-tig-het vars ur-sprungsv[]arde ber[]aknas
  []
 
-<bana.png, id=32, 963.6pt x 293.095pt>
+[4 <./Friktion_bakfram.png>] <bana.png, id=37, 963.6pt x 293.095pt>
 File: bana.png Graphic file (type png)
- <use bana.png>
-Package pdftex.def Info: bana.png used on input line 175.
+
+<use bana.png>
+Package pdftex.def Info: bana.png used on input line 180.
 (pdftex.def)             Requested size: 312.9803pt x 95.1966pt.
- [4 <./Friktion_bakfram.png>] <krock.png, id=38, 963.6pt x 722.7pt>
+ <krock.png, id=38, 963.6pt x 722.7pt>
 File: krock.png Graphic file (type png)
  <use krock.png>
-Package pdftex.def Info: krock.png used on input line 208.
+Package pdftex.def Info: krock.png used on input line 213.
 (pdftex.def)             Requested size: 227.62204pt x 170.71672pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 225--228
+
+LaTeX Warning: Command \textquoteright invalid in math mode on input line 219.
+
+
+LaTeX Warning: Command \textquoteright invalid in math mode on input line 219.
+
+[5 <./bana.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 230--233
 
  []
 
-[5 <./bana.png>] [6 <./krock.png>]
-<kollision-vektorer.png, id=51, 515.9275pt x 401.5pt>
+[6 <./krock.png>] <kollision-vektorer.png, id=52, 515.9275pt x 401.5pt>
 File: kollision-vektorer.png Graphic file (type png)
 
 <use kollision-vektorer.png>
-Package pdftex.def Info: kollision-vektorer.png used on input line 254.
+Package pdftex.def Info: kollision-vektorer.png used on input line 259.
 (pdftex.def)             Requested size: 196.324pt x 152.77988pt.
  [7 <./kollision-vektorer.png>]
-<efter-krock.png, id=56, 485.815pt x 372.39125pt>
+<efter-krock.png, id=57, 485.815pt x 372.39125pt>
 File: efter-krock.png Graphic file (type png)
  <use efter-krock.png>
-Package pdftex.def Info: efter-krock.png used on input line 277.
+Package pdftex.def Info: efter-krock.png used on input line 282.
 (pdftex.def)             Requested size: 256.0748pt x 196.28679pt.
 
-[8 <./efter-krock.png>]
-Overfull \hbox (15.12599pt too wide) in paragraph at lines 318--319
+[8 <./efter-krock.png>] [9] [10]
+Overfull \hbox (15.12599pt too wide) in paragraph at lines 377--378
 \OT1/cmr/m/n/10.95 Alla ob-jekt, s^^Wa som ste-nen och cur-ling-ba-nan, []ar mo
 -del-le-ra-de f[]or hand i 3D-grafikprogrammet
  []
 
-[9] <hastigheter_tid_graf.png, id=64, 422.32782pt x 316.18124pt>
+[11] <hastigheter_tid_graf.png, id=71, 422.32782pt x 316.18124pt>
 File: hastigheter_tid_graf.png Graphic file (type png)
 
 <use hastigheter_tid_graf.png>
-Package pdftex.def Info: hastigheter_tid_graf.png used on input line 332.
+Package pdftex.def Info: hastigheter_tid_graf.png used on input line 391.
 (pdftex.def)             Requested size: 284.52756pt x 213.02234pt.
 
-<vinkelhastighet_tid_graf.png, id=65, 422.32782pt x 316.18124pt>
+<vinkelhastighet_tid_graf.png, id=72, 422.32782pt x 316.18124pt>
 File: vinkelhastighet_tid_graf.png Graphic file (type png)
 
 <use vinkelhastighet_tid_graf.png>
-Package pdftex.def Info: vinkelhastighet_tid_graf.png used on input line 340.
+Package pdftex.def Info: vinkelhastighet_tid_graf.png used on input line 399.
 (pdftex.def)             Requested size: 284.52756pt x 213.02234pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 352--354
+Overfull \hbox (22.40045pt too wide) in paragraph at lines 409--419
+\OT1/cmr/m/n/10.95 Runge-Kutta-metoden. Runga-Kutta-metoden anv[]ands vid ber[]
+akningen av de nya skal[]arerna,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 409--419
+
+ []
+
+[12 <./hastigheter_tid_graf.png (PNG copy)> <./vinkelhastighet_tid_graf.png (PN
+G copy)>]
+Underfull \hbox (badness 10000) in paragraph at lines 422--424
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 352--354
+Underfull \hbox (badness 10000) in paragraph at lines 422--424
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 352--354
+Underfull \hbox (badness 10000) in paragraph at lines 422--424
 
  []
 
-[10 <./hastigheter_tid_graf.png (PNG copy)> <./vinkelhastighet_tid_graf.png (PN
-G copy)>] [11] (./rapportLatex.aux)
+[13] (./rapportLatex.aux)
+
+LaTeX Warning: There were undefined references.
+
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 7081 strings out of 493315
- 100741 string characters out of 6137904
- 190935 words of memory out of 5000000
- 10364 multiletter control sequences out of 15000+600000
+ 7082 strings out of 493315
+ 100744 string characters out of 6137904
+ 190961 words of memory out of 5000000
+ 10365 multiletter control sequences out of 15000+600000
  16337 words of font info for 61 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
  44i,20n,43p,1023b,282s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1018,10 +1044,10 @@ texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2013/t
 exmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2013/tex
 mf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb></usr/local/texlive/2013/texmf
 -dist/fonts/type1/public/cm-super/sfrm1095.pfb>
-Output written on rapportLatex.pdf (12 pages, 369352 bytes).
+Output written on rapportLatex.pdf (14 pages, 376079 bytes).
 PDF statistics:
- 131 PDF objects out of 1000 (max. 8388607)
- 84 compressed objects within 1 object stream
+ 138 PDF objects out of 1000 (max. 8388607)
+ 89 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  41 words of extra memory for PDF output out of 10000 (max. 10000000)
 
