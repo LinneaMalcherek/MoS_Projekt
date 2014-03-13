@@ -11,9 +11,6 @@ function CurlingStone()
 	cb = 0.0001;
 	cf = 0.000001;
 	this.angle = 0; 
-	this.player; // which player the stone belongs to
-
-	this.distanceFromMiddle=1000; // set a high value of the distance to the middle. 
 
 }
 
@@ -38,7 +35,7 @@ CurlingStone.prototype = {
 	}, 
 
 	// initiate everything. set inital speed, render, angularSpeed, speedSide, frictionCoeffC, directionForward, directionSide
-	init: function(angle,speed, player){
+	init: function(angle,speed){
 		this.speed = speed;
 		
 		t = HACK_HOG / speed; // time from hack to hog
@@ -50,7 +47,7 @@ CurlingStone.prototype = {
 		dirFor = this.setDirectionForward(angle);
 		this.setDirectionSide(dirFor, angle); 
 
-		this.player=player;
+		//this.player=player;
 	},
 
 	// returns acceleration for speed forward at vel v
@@ -198,15 +195,6 @@ CurlingStone.prototype = {
 		var velocity = this.calcVelocityResultant();
 		this.setNewPos(velocity,dt);
 		this.setNewAngle(dt);
-
-		//console.log("position: %s", this.getPosAsString());
-	},
-
-	// calculate the distance from the stone to the tee. 
-	calculateDistance: function(){
-		this.distanceFromMiddle = this.pos.distanceFrom(TEE);
-
-		console.log("spelare: %s, dist: %s", this.player, this.distanceFromMiddle);
 	},
 
 	getXPos: function(){

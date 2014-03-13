@@ -29,8 +29,8 @@ function drawScene(players) {
 
                     mat4.identity(mMatrix);
                     mat4.translate(mMatrix, [-0.15,-11,-0.2]);
-                    mat4.translate(mMatrix, [players[i].getXPos(), players[i].getYPos(), ZPOS]);
-                    mat4.rotateZ(mMatrix, players[i].getAngle());
+                    mat4.translate(mMatrix, [players[i].stone.getXPos(), players[i].stone.getYPos(), ZPOS]);
+                    mat4.rotateZ(mMatrix, players[i].stone.getAngle());
 
                     mat4.rotateX(mMatrix, Math.PI/2);
                     

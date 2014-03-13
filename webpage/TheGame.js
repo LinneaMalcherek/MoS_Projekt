@@ -5,6 +5,7 @@ function theGame() {
 
 	this.players = [];
 	this.allStones = new Array(); 
+
 }
 
 <!-- theGames all functions -->
@@ -13,7 +14,7 @@ theGame.prototype = {
 	addPlayer: function(p){
 		this.players.push(p);
 		p.id=this.players.length; 
-		console.log("created player: %s", p.id);
+		//console.log("created player: %s", p.id);
 		return this;
 	},
 
@@ -25,7 +26,9 @@ theGame.prototype = {
 		var stone = new CurlingStone;
 
 		stone.init(angle, speed, playerid);
-		this.allStones.push(stone);
+		//this.allStones.push(stone);
+
+		this.allStones.push(new Struct(stone,playerid));
 		
 		this.updateInfo();
 	},
@@ -34,8 +37,8 @@ theGame.prototype = {
 	collision: function(){
 			for( var i=0; i < this.allStones.length; i++ ){
 				for ( var j=i+1; j < this.allStones.length; j++ ) {
-					if( checkCollision( this.allStones[i], this.allStones[j] ) ){
-							setAfterCollision(this.allStones[i], this.allStones[j]);
+					if( checkCollision( this.allStones[i].stone, this.allStones[j].stone ) ){
+							setAfterCollision(this.allStones[i].stone, this.allStones[j].stone);
 					}
 
 				}
@@ -96,12 +99,12 @@ theGame.prototype = {
 	    	dt = (timeNow - LASTTIME)/1000; // dt in seconds.
 
 	   		for (var i=0; i<this.allStones.length; i++){
-	        	if (this.allStones[i].speed > 0.01) {
+	        	if (this.allStones[i].stone.speed > 0.01) {
 	        		if (i == this.allStones.length-1 ){ // onle be able to sweep on the stone that is being throwed
-	        			this.allStones[i].move(this.handleKeys(), dt);
+	        			this.allStones[i].stone.move(this.handleKeys(), dt);
 	        		}
 	        		else {
-	        			this.allStones[i].move(false, dt);
+	        			this.allStones[i].stone.move(false, dt);
 	        		}
 	        	}
 	        	
@@ -124,16 +127,26 @@ theGame.prototype = {
 
 	// check if the stone is out of the bounds, out of the field or being throwed to short. 
 	outOfBounds: function() {
+		var thrownStones = this.players[0].thrown+this.players[1].thrown;  // how many stones been thrown
+
 		for (var i =0; i<this.allStones.length; i++) {
-			var theStone = this.allStones[i]; 
+			var theStone = this.allStones[i].stone; 
 
 			// check if out of the side, only check if the stone is moving
-			if (this.allStones[i].speed > 0.01 && ( Math.abs(this.allStones[i].getXPos()) > FIELDWIDTH/2 || this.allStones[i].getYPos() > FIELDLENGTH )){
+			if (theStone.speed > 0.01 && ( Math.abs(theStone.getXPos()) > FIELDWIDTH/2 || theStone.getYPos() > FIELDLENGTH )){
+				var id = this.allStones[i].player;
 				this.allStones.splice(i,1);
+
+				if (thrownStones != NUMBEROFSTONES*2) // only change buttons if not end of game
+					this.disableButton(id);
 			}
 			// delete stone if it has stoped before the hog-line
-			if (this.allStones[i].speed < 0.01 && this.allStones[i].getYPos() < FIELDLENGTH - HACK_HOG){
+			if (theStone.speed < 0.01 && theStone.getYPos() < FIELDLENGTH - HACK_HOG){
+				var id = this.allStones[i].player;
 				this.allStones.splice(i,1);
+
+				if (thrownStones != NUMBEROFSTONES*2)  // only change buttons if not end of game
+					this.disableButton(id);
 			}
 		}
 	},
@@ -153,7 +166,7 @@ theGame.prototype = {
         //if( this.allStones.length == NUMBEROFSTONES*2 ){
         if( this.players[0].thrown+this.players[1].thrown == NUMBEROFSTONES*2 ){
         	if(thisturn==turn){
-        		if (this.allStones[this.allStones.length-1].speed < 0.01)
+        		if (this.allStones[this.allStones.length-1].stone.speed < 0.01)
 	        		this.countScore();
 	    	}
         }        
@@ -198,15 +211,12 @@ theGame.prototype = {
 	// so you can't send a new stone while the last has stoped. change the buttons in the webpage. 
 	sendNewStone: function(){
 		var thrownStones = this.players[0].thrown+this.players[1].thrown; 
-		if (thrownStones!=0) {
-			if(thrownStones%2 != 0)
-				var id = 0;
-			if(thrownStones%2 == 0) {
-				id=1;
-			}
+
+		if (thrownStones!=0 && this.allStones.length>0) {
+			var id = this.allStones[this.allStones.length-1].player;
 
 			// bugg här, blir knas om första stenen försvinner. kan inte byta knapp då..
-			if(this.allStones.length-1 >= 0  && this.allStones[this.allStones.length-1].speed < 0.01 && thrownStones!=NUMBEROFSTONES*2){
+			if(this.allStones[this.allStones.length-1].stone.speed < 0.01 && thrownStones!=NUMBEROFSTONES*2){
 				this.disableButton(id);
 			}
 		}
@@ -260,20 +270,23 @@ theGame.prototype = {
 		// till mittpunkten (den vektorn). räkna ut vektorns längd och sen spara alla längder för varje spelare och sten.
 		// se vilken spelare som har sten närmast och även om de har fler stenar innan motståndarens första sten.s
 		for (var i=0; i<this.allStones.length; i++){
-			this.allStones[i].calculateDistance(); // räknar ut avståndet för varje sten till mitten. 
+			//this.allStones[i].calculateDistance(); // räknar ut avståndet för varje sten till mitten.
+			this.allStones[i].distanceFromMiddle =  this.allStones[i].stone.pos.distanceFrom(TEE);//this.pos.distanceFrom(TEE)
 		}
 
 		this.allStones.sort(function(a,b){return a.distanceFromMiddle-b.distanceFromMiddle}); // sort!!
 
-		if (this.allStones[0].distanceFromMiddle + R < NEST_RADIUS ){
+
+		if (this.allStones.length > 0 && this.allStones[0].distanceFromMiddle + R < NEST_RADIUS){
 			var sum=1;
 			var leader = this.allStones[0].player;
-			var i=1;
 
-			while (this.allStones[i].player == leader && this.allStones[i].player == this.allStones[i++].player){
+			for (var i=0; i < this.allStones.length; i++) 
+				console.log("stone %s: %s, %s", i,this.allStones[i].player, this.allStones[i].distanceFromMiddle);
+			
+			var i=0;
+			while ( i < this.allStones.length-1 && this.allStones[i].player == leader && this.allStones[i].player == this.allStones[i++].player){
 					sum = sum + 1;
-					if (i >= NUMBEROFSTONES - 1)
-						break;
 			}
 
 			score[leader] = score[leader] + sum; 
@@ -310,6 +323,12 @@ theGame.prototype = {
 var onePlayer = function(){
 	this.score = 0;
 	this.id=null;
-	this.stones = new Array();
 	this.thrown = 0;
+}
+
+var Struct = function (stone, id){
+	this.stone = stone;
+	this.player = id;
+	this.distanceFromMiddle = -1; // bara för att den ska sättas senare
+
 }
