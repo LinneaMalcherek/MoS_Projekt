@@ -4,7 +4,7 @@ function theGame() {
 	turn=1;
 	this.players = []; // holds all the players
 	this.allStones = new Array();
-	this.thrownStone = 0;  
+	this.thrownStone = 0;  // how many stones have been thrown in total by all playerss
 }
 
 // theGames all functions
@@ -126,8 +126,6 @@ theGame.prototype = {
 // BUGGAR NÄR DEN TAR BORT VID 3:E KASTET ibland... BYTER EJ TILL RÄTT SPELARE DÅ!!!
 	// check if the stone is out of the bounds, out of the field or being throwed to short. 
 	outOfBounds: function() {
-		//var thrownStones = this.players[0].thrown+this.players[1].thrown;  // how many stones been thrown
-
 		for (var i =0; i<this.allStones.length; i++) {
 			var theStone = this.allStones[i].stone; 
 
@@ -215,8 +213,6 @@ theGame.prototype = {
 
 	// so you can't send a new stone while the last has stoped. change the buttons in the webpage. 
 	sendNewStone: function(){
-		//var thrownStones = this.players[0].thrown+this.players[1].thrown; 
-
 		if (this.thrownStone!=0 && this.allStones.length>0) {
 			var id = this.allStones[this.allStones.length-1].player;
 

@@ -8,6 +8,8 @@ h1 {
 	font-size: 24px;
 	color: black;
 	text-align:center;
+	margin: 2px;
+	padding: 2px;
 }
 
 p {
