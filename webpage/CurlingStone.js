@@ -80,15 +80,6 @@ CurlingStone.prototype = {
 		return this.rungekutta(speed,speed,dt,this.a_speed,friction);
 	},
 
-	// Returns total acceleration sideways (difference between front and back)
-	calcAngularAcceleration: function(gravity, my_f, my_b, r){ //my_f and my_b frictioncoeff for front and back of the stone
-		if(this.speed <0.01){// Look out for division with zero
-			return gravity*(my_b-my_f);							
-		} else{
-			return gravity*(my_b-my_f) / Math.sqrt(this.speed);// Total acceleration from difference between acc front and back, dependant on speed 
-		}
-	},
-
 	// Calculates new speedSide from calcAngularAcceleration
 	newSpeedSide: function(gravity, my_f, my_b, dt){
 		if (this.speedSide < 0) //If stone is not moving

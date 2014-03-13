@@ -78,7 +78,7 @@
           <p>
             Vinkel : <input type="text" id="vinkel"> Hastighet: <input type="text" id="hastighet"> <button id="spelare1" onclick="game.throwStoneFromUser(0)">Spelare 1</button> <button id="spelare2" disabled="disabled" onclick="game.throwStoneFromUser(1)">Spelare 2</button><br />
           </p>
-                    <p>Spelare 1. Antal stenar: <span id="stone1">0</span>. Antal poäng: <span id="score1">0</span> | Spelare 2. Antal stenar: <span id="stone2">0</span>. Antal poäng: <span id="score2">0</span></p>
+                    <p><span id="player1">Spelare 1</span>. Antal stenar: <span id="stone1">0</span>. Antal poäng: <span id="score1">0</span> | <span id="player2">Spelare 2</span>. Antal stenar: <span id="stone2">0</span>. Antal poäng: <span id="score2">0</span></p>
           <button id="newRound" onclick="game.resetRound()">Ny omgång</button><br />
           <canvas id="curlingbana" style="border:none" width="800" height="450"></canvas>
 
