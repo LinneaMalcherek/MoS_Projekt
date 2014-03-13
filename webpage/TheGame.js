@@ -3,12 +3,12 @@ function theGame() {
 	thisturn=1;
 	turn=1;
 
-	this.players = [];
+	this.players = []; // holds all the players
 	this.allStones = new Array(); 
 
 }
 
-<!-- theGames all functions -->
+// theGames all functions
 theGame.prototype = {
 
 	addPlayer: function(p){
@@ -124,7 +124,7 @@ theGame.prototype = {
 	},
 
 
-// BUGGAR NÄR DEN TAR BORT VID 3:E KASTET. BYTER EJ TILL RÄTT SPELARE DÅ!!!
+// BUGGAR NÄR DEN TAR BORT VID 3:E KASTET ibland... BYTER EJ TILL RÄTT SPELARE DÅ!!!
 	// check if the stone is out of the bounds, out of the field or being throwed to short. 
 	outOfBounds: function() {
 		var thrownStones = this.players[0].thrown+this.players[1].thrown;  // how many stones been thrown
@@ -163,7 +163,6 @@ theGame.prototype = {
 
         // to check if the game has ended (aka all stone being throwed.) 
         // only calulate the score when the last stone has stoped. 
-        //if( this.allStones.length == NUMBEROFSTONES*2 ){
         if( this.players[0].thrown+this.players[1].thrown == NUMBEROFSTONES*2 ){
         	if(thisturn==turn){
         		if(this.allStones.length==0)
@@ -220,7 +219,7 @@ theGame.prototype = {
 		if (thrownStones!=0 && this.allStones.length>0) {
 			var id = this.allStones[this.allStones.length-1].player;
 
-			// bugg här, blir knas om första stenen försvinner. kan inte byta knapp då..
+			// change button
 			if(this.allStones[this.allStones.length-1].stone.speed < 0.01 && thrownStones!=NUMBEROFSTONES*2){
 				this.disableButton(id);
 			}
@@ -245,8 +244,7 @@ theGame.prototype = {
 		document.getElementById("spelare2").disabled=true;
 	},
 
-	// is being calle when you press the button "ny omgång"
-	// go trought the players and reset the array of all the curling stones. 
+	// is being called when you press the button "ny omgång"
 	// reset everything for a new round. 
 	resetRound: function(){
 		turn=turn+1; 
@@ -275,7 +273,7 @@ theGame.prototype = {
 		// till mittpunkten (den vektorn). räkna ut vektorns längd och sen spara alla längder för varje spelare och sten.
 		// se vilken spelare som har sten närmast och även om de har fler stenar innan motståndarens första sten.s
 		for (var i=0; i<this.allStones.length; i++){
-			this.allStones[i].distanceFromMiddle =  this.allStones[i].stone.pos.distanceFrom(TEE);//this.pos.distanceFrom(TEE)
+			this.allStones[i].distanceFromMiddle =  this.allStones[i].stone.pos.distanceFrom(TEE);
 		}
 
 		this.allStones.sort(function(a,b){return a.distanceFromMiddle-b.distanceFromMiddle}); // sort!!
@@ -293,12 +291,6 @@ theGame.prototype = {
 					break;
 				}
 			}
-
-			/*
-			var i=0;
-			while ( i < this.allStones.length-1 && this.allStones[i].player == leader && this.allStones[i].player == this.allStones[i++].player){
-					sum = sum + 1;
-			}*/
 
 			score[leader] = score[leader] + sum; 
 
@@ -337,6 +329,7 @@ var onePlayer = function(){
 	this.thrown = 0;
 }
 
+// a struct to hold a stone, player and distance to the tee. 
 var Struct = function (stone, id){
 	this.stone = stone;
 	this.player = id;

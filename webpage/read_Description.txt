@@ -33,3 +33,12 @@ om man i en klass skriver
 this.test = 3;
 så betyder det att klassen har en variabel test som är satt till 3.
 
+
+Riktiga värden för konstanterna 
+	FIELDWIDTH = 5;
+	HACK_HOG = 10.059;
+	HACK_HOG_2 = 32.004;
+	TEE = $V([0,38.404]);
+	NEST_RADIUS = 1.829;
+	HACK_BACK = 40.233;
+

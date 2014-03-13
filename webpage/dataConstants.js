@@ -1,8 +1,6 @@
 // everything had big letters just to seperate that this is global and accesable. 
 function dataConstants() { 
 	// friction constants
-	//MY = 0.0168;
-
 	MY= 0.0073;
 	
 	// the curling stone 
@@ -17,21 +15,12 @@ function dataConstants() {
 	LASTTIME=0; // to be able to animate and take the right dt. 
 
 	// constanst for the field
-	//FIELDLENGTH = 36.59 + 6.40; //38.405
 	FIELDWIDTH = 5; 
 	HACK_HOG = 6.40;
-	TEE = $V([0,34.76+6.40]); <!-- the position of the middle-->
+	TEE = $V([0,34.76+6.40]);
 	NEST_RADIUS = 1.829;
 	HACK_HOG_2 = 36;
 	HACK_BACK = 43.5; 
-
-/*
-	FIELDWIDTH = 5;
-	HACK_HOG = 10.059;
-	HACK_HOG_2 = 32.004;
-	TEE = $V([0,38.404]);
-	NEST_RADIUS = 1.829;
-	HACK_BACK = 40.233; */
 
 	// how many stones a player should be able to throw
 	NUMBEROFSTONES = 2;
