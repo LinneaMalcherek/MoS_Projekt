@@ -18,19 +18,19 @@ function drawScene(players) {
 
         
         // draw all the curling stones. goes trough all players, so we get different colors och the different players.
-        for (var j=0; j<players.length; j++) {
+        for (var i=0; i<players.length; i++) {
 
-            allStones = players[j].stones;
-            for (var i=0; i<allStones.length; i++) { // for every stone in the players array
+            //allStones = players[j].stones;
+            //for (var i=0; i<allStones.length; i++) { // for every stone in the players array
             
-                if (allStones[i].render){ // if it is in game (should be rendered)
+                //if (players[i].render){ // if it is in game (should be rendered)
 
                     //console.log("Rotationalspeed: %s, Speed Side %s", allStones[i].angularSpeed , allStones[i].speedSide)
 
                     mat4.identity(mMatrix);
                     mat4.translate(mMatrix, [-0.15,-11,-0.2]);
-                    mat4.translate(mMatrix, [allStones[i].getXPos(), allStones[i].getYPos(), ZPOS]);
-                    mat4.rotateZ(mMatrix, allStones[i].getAngle());
+                    mat4.translate(mMatrix, [players[i].stone.getXPos(), players[i].stone.getYPos(), ZPOS]);
+                    mat4.rotateZ(mMatrix, players[i].stone.getAngle());
 
                     mat4.rotateX(mMatrix, Math.PI/2);
                     
@@ -42,6 +42,8 @@ function drawScene(players) {
                     gl.vertexAttribPointer(shaderProgram.textureCoordAttribute, VertexTextureCoordBuffer.itemSize, gl.FLOAT, false, 0, 0);
 
                     gl.activeTexture(gl.TEXTURE0);
+
+                    var j = players[i].player; 
 
                     if(j==0)
                         gl.bindTexture(gl.TEXTURE_2D, neheTexture);
@@ -55,9 +57,9 @@ function drawScene(players) {
                     setMatrixUniforms();
                     gl.drawArrays(gl.TRIANGLES,0, VertexPositionBuffer.numItems);
                     //gl.drawElements(gl.TRIANGLES, VertexIndexBuffer.numItems, gl.UNSIGNED_SHORT, 0);
-                }
+               // }
 
-            }
+            //}
         }
 
         // draw the curling field

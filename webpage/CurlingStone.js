@@ -7,16 +7,11 @@ function CurlingStone()
 	this.directionForward = $V([0,1]);
 	this.directionSide = $V([0,0]); 
 	this.angularSpeed = 0;
-	this.frictionCoeffC = new Array(0.000001,0.0001); // constans for the forward and backward friction
-	cb = 0.0001;
-	cf = 0.000001;
+	//this.frictionCoeffC = new Array(0.000001,0.0001); // constans for the forward and backward friction
+	this.frictionCoeffC = new Array(0.00001584, 0.001584);
+	cb = this.frictionCoeffC[1];
+	cf = this.frictionCoeffC[0];
 	this.angle = 0; 
-	this.stoneId; // which stone is being throwed. 1 - NUMBEROFSTONES
-	this.player; // which player the stone belongs to
-
-	this.distanceFromMiddle=1000; // set a high value of the distance to the middle. 
-
-	this.render = false; // if the stone is in game or not.
 }
 
 // CurlingStones functions
@@ -40,32 +35,27 @@ CurlingStone.prototype = {
 	}, 
 
 	// initiate everything. set inital speed, render, angularSpeed, speedSide, frictionCoeffC, directionForward, directionSide
-	init: function(angle,speed,id, player){
+	init: function(angle,speed){
 		this.speed = speed;
-		this.render = true;
 		
 		t = HACK_HOG / speed; // time from hack to hog
 		this.angularSpeed = Math.PI / (2*t); 
 
-		this.speedSide = this.angularSpeed * R_INNER;
+		//this.speedSide = this.angularSpeed * R_INNER;
+		this.speedSide = 0;
 
 		// set the initial direction vector based on input angle, side is the orthogonal
 		dirFor = this.setDirectionForward(angle);
 		this.setDirectionSide(dirFor, angle); 
-
-		this.stoneId=id-1; // so that stoneId is between 0 and NUMBEROFSTONES - 1 to make things easier
-		this.player=player;
 	},
 
 	// returns acceleration for speed forward at vel v
 	a_speed: function(v,friction){
-		//return -MY*G; 
 		return -friction*G;
 	},
 	// returns acceleration for speedSide at vel v
 	a_speedSide: function(v,friction){
 		return (cb - cf)*G/Math.sqrt(v);
-		//return (this.frictionCoeffC[0] - this.frictionCoeffC[1])*G/Math.sqrt(v);
 	},
 	// returns acceleration for angularSpeed at vel v
 	a_angSpeed: function(v,friction){
@@ -87,17 +77,16 @@ CurlingStone.prototype = {
     		return 0;
 	},
 
-
 	// returns a scalar by runge kutta
-	newSpeed: function(speed,acceleration,friction,dt){
+	newSpeed: function(speed,friction,dt){
 		//return speed + acceleration * dt;
 		return this.rungekutta(speed,speed,dt,this.a_speed,friction);
 	},
 
-	//returns a scalar, -my*g 
+	/*//returns a scalar, -my*g 
 	calcAcceleration: function(gravity, my_constant){
 		return -1 * my_constant * gravity; 
-	},
+	},*/
 
 	// Returns total acceleration sideways (difference between front and back)
 	calcAngularAcceleration: function(gravity, my_f, my_b, r){ //my_f and my_b frictioncoeff for front and back of the stone
@@ -147,7 +136,7 @@ CurlingStone.prototype = {
 
 	},
 
-	updateSpeeds: function(acceleration,friction){
+	updateSpeeds: function(friction){
 
 		// add the vector forward (direction, utslagsvinkel) and sidevector
 		v = this.calcVelocityResultant();
@@ -157,7 +146,7 @@ CurlingStone.prototype = {
 		vDir = v.toUnitVector();
 
 		//Lägg friktion på speed(riktig)
-		vSpeed = this.newSpeed(vSpeed,acceleration,friction,dt);	// Accelerationen i färdriktningen (friktionen)
+		vSpeed = this.newSpeed(vSpeed,friction,dt);	// Accelerationen i färdriktningen (friktionen)
 
 		// Återskapa den nya hastighetsvektorn (riktiga)
 		v = vDir.multiply(vSpeed);
@@ -193,26 +182,14 @@ CurlingStone.prototype = {
 			friction = MY * 0.8; 
 		}
 
-		a = this.calcAcceleration(G, friction);
-
 		// update speedSide, angularSpeed, etc. 
 		this.newSpeedSide(G,this.frictionCoeffC[0],this.frictionCoeffC[1],R_INNER); 
 		this.newAngularSpeed(this.speedSide);	
-		this.updateSpeeds(a,friction);				
+		this.updateSpeeds(friction);				
 
 		var velocity = this.calcVelocityResultant();
 		this.setNewPos(velocity,dt);
 		this.setNewAngle(dt);
-
-		//console.log("position: %s", this.getPosAsString());
-	},
-
-	// calculate the distance from the stone to the tee. 
-	calculateDistance: function(){
-		if(this.render)
-			this.distanceFromMiddle = this.pos.distanceFrom(TEE);
-		else
-			this.distanceFromMiddle = 9999;
 	},
 
 	getXPos: function(){
