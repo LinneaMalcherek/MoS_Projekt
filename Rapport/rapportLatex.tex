@@ -88,7 +88,8 @@ TNM085 Modelleringsprojekt}
 \pagebreak
 
 \section{Introduktion}
-Curling är ett intressant system att modellera eftersom det innefattar många vedertagna fysikaliska egenskaper men även delar som inte är särskilt triviala. 
+Curling är en lagsport som går ut på att genom att släppa stenar över en isbana in i ett poängområde få fler poäng än motståndaren. 
+Detta är ett intressant system att modellera eftersom det innefattar många vedertagna fysikaliska egenskaper men även delar som inte är särskilt triviala. 
 De senaste åren har ett flertal vetenskapliga artiklar publicerats som ger sin förklaring till svängningsfenomenet, den så kallade "curlen", hos curlingstenen.
 Gemensamt för artiklarna är hypotesen om att svängningen på curlingstenen beror på en högre friktion på bakre delen av stenen än den främre. 
 Anledningen till varför det är så kommer att förklaras i denna rapport.
@@ -104,10 +105,12 @@ Anledningen till varför det är så kommer att förklaras i denna rapport.
 \subsection{Begränsningar och förenklingar} 
 Denna rapport behandlar modellbygge och simulering av en curlingstens translation
 och rotation, friktionens påverkan samt kollision mellan curlingstenar. 
-Curlingstenarnai beräkningarna har samma massa och därmed kan beräkningar förenklas genom att
-förkorta bort massan. I spelet använder man sig även av sopning för att påverka stenens
-bana över isen. Det fungerar dock endast på den sten som senast skjutits ut. Hänsyn har
-inte heller tagits till den rotation som skapas för stenarna efter en sned krock (krock som
+Curlingstenarna i beräkningarna har samma massa och därmed kan beräkningar förenklas genom att
+förkorta bort massan. 
+I spelet använder man sig även av sopning för att påverka stenens
+bana över isen. 
+Det fungerar dock i implentationen endast på den sten som senast skjutits ut. 
+Hänsyn har inte heller tagits till den rotation som skapas för stenarna efter en sned krock (krock som
 inte är riktad mot masscentrum). Stenarna har istället samma rotationshastighet efter
 krock som de hade innan.
 
@@ -115,7 +118,7 @@ krock som de hade innan.
 
 \section{Fysikalisk beskrivning} 
 
-Alla variabler går att finna i en tabell i Apendix A.
+Alla variabler går att finna i en tabell i bilaga A.
 
 \subsection{Translation}
 
@@ -151,7 +154,7 @@ Då den bakre delen av bandet passerar samma yta ska bandets scratchade yta pass
 Det innebär att den bakre delen av stenen får ett högre motstånd, en högre friktionskraft, än den främre \eqref{biggerthan}
 \footnote{H. Nyberg, S. Alfredson, S. Hogmark, S. Jacobson, \emph{The asymmetrical friction mechanism that puts the curl in the curling stone} (2013), Tribomaterials Group, Department of Engineering Sciences, Uppsala University, SE-751 21 Uppsala, Sweden}.
 Därmed gör sopning att stenen curlar mindre. Friktionen i punkterna längs bandet påverkas av av stenens rörelse framåt\footnote{A. Raymond Penner, \emph{The physics of sliding cylinders and curling rocks} (2001), American Journal of Physics \textbf{69}, American Association of Physics Teachers},
-vilket innebär att friktionskoefficienten $\mu$ påverkas av hastigheten $v$ framåt. Variabeln $c$ är en konstant beroende av friktionspåverkan i punkten. Accelerationen $a$ i en punkt längs stenens band kan därmed beräknas \eqref{mu}.
+vilket innebär att friktionskoefficienten $\mu$ påverkas av hastigheten $v$ framåt. Variabeln $c$ är en konstant som avgör storleken på friktionen i punkten. Accelerationen $a$ i en punkt längs stenens band kan därmed beräknas \eqref{mu}.
 
  \begin{align}\label{Fsida1}
  F_1& = ma_1 = \mu_1 mg \Rightarrow a_1 = \mu_1 g \\\label{Fsida2}
@@ -165,7 +168,7 @@ vilket innebär att friktionskoefficienten $\mu$ påverkas av hastigheten $v$ fr
 \begin{figure}[ht!]
 \centering
 \includegraphics[width=100mm]{Friktion_bakfram.png}
-\caption{Friktion i punkt bak respektive fram på stenen. Den bakre delen måste passera de spår framsidan av stenen skapat, vilket leder till högre friktion.}
+\caption{Friktion i punkt bak ($p_2$) respektive fram på stenen ($p_1$). Den bakre delen måste passera de spår framsidan av stenen skapat, vilket leder till högre friktion.}
 \label{fig:Friktion}
 \label{overflow}
 \end{figure}
@@ -207,8 +210,8 @@ Friktionen som påverkar rotationshastigheten är summan av all friktion som på
 För att kontrollera att en kollision sker beräknas avståndet mellan stenarnas position \eqref{d}.
 Om avståndet mellan stenarnas mittpunkter är mindre än två radier \eqref{lessThan} har stenarna krockat  (eftersom krocken bara sker i 2 dimensioner). 
 
- \begin{subequations}\label{d}
- \begin{align}
+ \begin{subequations}
+ \begin{align}\label{d}
  d& = \sqrt{(sten_{1_{xpos}} - sten_{2_{xpos}})^2   +   (sten_{1_{ypos}}-sten_{2_{ypos}})^2}\\\label{lessThan}
  d& \le 2 r
  \end{align}
@@ -223,8 +226,9 @@ Om avståndet mellan stenarnas mittpunkter är mindre än två radier \eqref{les
 \end{figure}
 
 
-Hastigheten av curlingstenarna efter en kollision beräknas med hjälp av de två stenarnas position och hastighetsvektorer.
-Beräkningarna utgår ifrån en rak central stöt i krockens normalriktning, där det finns två givna ekvationer \eqref{e1} och \eqref{elastisk} för att ta fram hastigheten efter krock.  Dessa ekvationer tar endast hänsyn till fallet då $v’_1 > v’_2$. För att ta det allmäna fallet så måste absolutbeloppet av nämnare och täljaren tas i ekvation \eqref{e1} (vilket kommer leda till två olika fall av ekvation \eqref{vCollision2}  och \eqref{vCollision2n}). 
+Hastigheten av curlingstenarna efter en kollision ($v''$) beräknas med hjälp av de två stenarnas position och hastighetsvektorer före krock ($v'$).
+Beräkningarna utgår ifrån en rak central stöt i krockens normalriktning, där det finns två givna ekvationer \eqref{e1} och \eqref{elastisk} för att ta fram hastigheten efter krock.  Dessa ekvationer tar endast hänsyn till fallet då $v’_1 > v’_2$. 
+För det allmäna fallet tas absolutbeloppet av nämnare och täljare, \eqref{e1}, vilket kommer leda till två olika fall av ekvation \eqref{vCollision2}  och \eqref{vCollision2n}. 
 Med hjälp av stötkoefficienten $e$ \eqref{e1} kan stöten regleras mellan en helt elastikt krock ($e=1$) och en helt inelastiskt krock ($e=0$). 
 I curling är det rimligt med en energiförlust och en inelastisk stöt bör därmed tas i beräkning. 
 Stötkoefficienten är kvoten av den relativa hastigheten efter kollision och den relativa hastigheten före kollision enligt \eqref{e1}\footnote{R. Grahn, P-Å. Jansson \emph{Dynamik}, Studentlitteratur (1995), s. 334-345}.
@@ -248,13 +252,15 @@ v_1' + v_2'& = v_1'' + v_2'' \label{momentum}
  \end{subequations}
 
 
-Hastigheterna delas upp i en normal- och tangentkomponent genom att projicera hastighetsvektorn på krocknormalen \eqref{e_normal} och tangentnormalen. Hastighetsvektorn delas upp i dessa komponenter eftersom energiförlusten enbart sker i normalkomponentens riktning. Genom att addera tangentkomponenten med normalkomponenten efter energiförlust, kan sneda krockar hanteras.
+Hastigheterna delas upp i en normal- och tangentkomponent genom att projicera hastighetsvektorn på krocknormalen $e_n$ \eqref{e_normal} och krocktangent $e_t$,  Figur~\ref{fig:kollision-vektorer}. . 
+Hastighetsvektorn delas upp i dessa komponenter eftersom energiförlusten enbart sker i normalkomponentens riktning. 
+Genom att addera tangentkomponenten med normalkomponenten efter energiförlust, kan sneda krockar hanteras.
 
  \begin{align}\label{e_normal}
 e_n& = \overrightarrow{OP_2} -  \overrightarrow{OP_1}  
  \end{align}
 
-Där $P_1$ och $P_2$ är stenarnas position. Tangentnormalen är ortogonal mot krocknormalen. $e_n$ ses i Figur~\ref{fig:kollision-vektorer}. 
+Där $P_1$ och $P_2$ är stenarnas position. Krocktangent är ortogonal mot krocknormalen. $e_n$ ses i Figur~\ref{fig:kollision-vektorer}. 
 
  \begin{align}\label{vCollision}
 v_1'& = v_{1n}' + v_{1t}'\\
@@ -264,7 +270,7 @@ v_2'& = v_{2n}' + v_{2t}'
 \begin{figure}[ht!]
 \centering
 \includegraphics[width=70mm]{kollision-vektorer.png}
-\caption{Kollision med riktningar för hastigheter innan krock där $v_{1}$ har högre fart än $v_{2}$}.
+\caption{Kollision med riktningar för hastigheter innan krock där $v_{1}$ har högre fart än $v_{2}$.}
 \label{fig:kollision-vektorer}
 \label{overflow}
 \end{figure}
@@ -288,7 +294,7 @@ v_2''& = v_{2n}'' + v_{2t}'
 \begin{figure}[ht!]
 \centering
 \includegraphics[width=70mm]{efter-krock.png}
-\caption{Efter en kollision med normalkomponenterna för hastigheten innan och efter och även den slutgiltiga hastigheten.  }.
+\caption{Hastighet före och efter kollision}
 \label{fig:efter-krock}
 \label{overflow}
 \end{figure}
@@ -307,14 +313,16 @@ för att beräkna till exempel positionen på objekt i rörelse.
 \subsubsection{Runge-Kutta-metoden}
 Vid lösning av differentialekvationer kan den så kallade Runge-Kutta-metoden användas.
 I fallet då differentialekvationen är av första ordningen benämns derivatan av $x$ som en
-funktion $f(t, x)$ \eqref{xdot}. Derivatan i den aktuella punkten $x_n$ och efterliggande punkter
+funktion $f(t, x)$ \eqref{xdot}. 
+Begynnelsevärdet för $x$ är $x(t_0)$ \eqref{x0}
+Derivatan i den aktuella punkten $x_n$ och efterliggande punkter
 beräknas i funktionen $f(t, x)$ med parametrar enligt \eqref{koeff}. Dessa läggs samman för att
 beräkna den approximerade funktionsvärdesskillnaden mellan punkterna $x_n$ och $x_{n+1}$.
 Den slutliga funktionen \eqref{RungeKutta_transl} beräknar kurvans approximerade värde i nästa steg $x_{n+1}$,
 då steglängden har värdet $h$.
 
  \begin{subequations}
- \begin{align} 
+ \begin{align} \label{x0}
  x_0& = x(t_0)\\ \label{xdot}
  \dot{x}& = f(t,x)
  \end{align}
@@ -323,8 +331,8 @@ då steglängden har värdet $h$.
  \begin{subequations}\label{koeff}
  \begin{align}
  k_1& = f(t_0,x_n)\\
- k_2& = f(t_n + frac{1}{2} h, x_n + \frac{h}{2} k_1)\\
- k_3& = f(t_n + frac{1}{2} h, x_n + \frac{h}{2} k_2)\\
+ k_2& = f(t_n + \frac{1}{2} h, x_n + \frac{h}{2} k_1)\\
+ k_3& = f(t_n + \frac{1}{2} h, x_n + \frac{h}{2} k_2)\\
  k_4& = f(t_n + h, x_n + h k_3)
  \end{align}
 \end{subequations}
@@ -357,7 +365,7 @@ För beräkningarna av curlingstenens bana över isen tas hastigheten $v$ fram f
  \end{align}
 \end{subequations}
 
-Funktionen a för accelerationen för de olika farterna olika beroende på de olika friktionstillstånden enligt \eqref{a_front},  \eqref{a_side}, \eqref{a_rotation}\footnote{A. Raymond Penner, \emph{The physics of sliding cylinders and curling rocks} (2001), American Journal of Physics \textbf{69}, American Association of Physics Teachers.}
+Funktionen $a$ för accelerationen för farterna är olika beroende på friktionstillstånden enligt \eqref{a_front},  \eqref{a_side}, \eqref{a_rotation}\footnote{A. Raymond Penner, \emph{The physics of sliding cylinders and curling rocks} (2001), American Journal of Physics \textbf{69}, American Association of Physics Teachers.}
  
  \begin{align}\label{a_front}
  a_{fram}& = - \mu g\\\label{a_side}
@@ -366,8 +374,8 @@ Funktionen a för accelerationen för de olika farterna olika beroende på de ol
  \end{align}
 
 Samtliga tre parametrar (fart framåt, fart i sidled och vinkelhastighet) är skalärer.
-Efter att nästa värde erhållits genom Runge-Kutta-metoden tas hastigheten i riktning
-framåt och i sidled fram och de två adderas genom vektoraddition. Ny position av stenen
+Efter att nästa värde erhållits genom Runge-Kutta-metoden tas hastigheten fram i riktning
+framåt och i sidled och de två adderas genom vektoraddition. Ny position av stenen
 beräknas i sista steget genom Euler-metoden, där hastighetsvektorn anger riktning och
 steglängd \eqref{pos}. 
 
@@ -375,20 +383,21 @@ steglängd \eqref{pos}.
  pos_{n+1}& = pos_{n} + \bar{v} \Delta t
  \end{align}
 
+\pagebreak
 
 \section{Grafisk implementering}
 
 \subsection{WebGL}
-Efter simuleringen i Matlab har koden skrivits över till WebGL för att avancera det grafiska samt skapa ett spelkoncept på webben. Två spelare kan spela mot varandra och en poängberäkning har implementerats. 
+Efter simuleringen i Matlab har koden skrivits över till WebGL för att utveckla det grafiska samt skapa ett spelkoncept på webben. Två spelare kan spela mot varandra och en poängberäkning har implementerats. 
 
 \subsection{Modellering}
-Alla objekt, så som stenen och curlingbanan, är modellerade för hand i 3D-grafikprogrammet Blender. På dessa objekt läggs en UV-mappning för att kunna lägga på texturen. Ett konverteringsskript används för att göra om objektet från .obj till .json där UV-koordinaterna blir sparade som strängar. Runtomkring curlingbanan finns en skybox för att skapa illusionen av en stjärnhimmel.
+Alla objekt, så som stenen och curlingbanan, är modellerade i 3D-grafikprogrammet Blender. På dessa objekt läggs en UV-mappning för att kunna lägga på texturen. Ett konverteringsskript används för att göra om objektet från .obj till .json där UV-koordinaterna blir sparade som strängar. Runtomkring curlingbanan finns en skybox för att skapa illusionen av en stjärnhimmel.
 
 \pagebreak
 
 \section{Resultat}
 \subsection{Matlabsimulering}
-Valda konstanter för samtliga beräkningar finns i bilaga A, Konstanter och värden. Mått på banan finns i bilaga B. Friktionskonstanter har tagits fram utifrån riktlinjer tagna från referenser där ungefärliga värden beräknats fram genom experiment. De slutgiltiga värdena har tagits fram genom egna undersökningar utifrån de matematiska modellerna för att få fram ett rimligt förhållande mellan utslagshastighet, utslagsvinkel och kurva.   
+Valda konstanter för samtliga beräkningar finns i bilaga A, \emph{Konstanter och värden}. Mått på banan finns i bilaga B, \emph{Mått och bild på curlingstenens bana}. Friktionskonstanter har tagits fram utifrån riktlinjer tagna från angivna referenser där ungefärliga värden beräknats fram genom experiment. De slutgiltiga värdena har tagits fram genom egna undersökningar utifrån de matematiska modellerna för att få fram ett rimligt förhållande mellan utslagshastighet, utslagsvinkel och kurva.   
 
 
 \begin{figure}[ht!]
@@ -403,8 +412,8 @@ Valda konstanter för samtliga beräkningar finns i bilaga A, Konstanter och vä
 
 \begin{figure}[ht!]
 \centering
-\includegraphics[width=23mm]{curvMatlab.png}
-\caption{Hur en curlingstens svängning kan se ut med utslagsvinkeln $3$\textdegree och utslagshastighet $2.3$}
+\includegraphics[width=20mm]{curvMatlab.png}
+\caption{Hur en curlingstens svängning kan se ut med utslagsvinkeln $3$\textdegree och utslagsfart $2.3$}
 \label{fig:kurvaMatlab}
 \label{overflow}
 \end{figure}
@@ -418,11 +427,12 @@ Resultatet av projektet blev en curlingsimulering, i form av ett spel, i webblä
 \centering
 \includegraphics[width=110mm]{game4.png}
 \includegraphics[width=110mm]{game2.png}
-\caption{Bilder från spelet}.
+\caption{Bilder från spelet.}
 \label{fig:spell}
 \label{overflow}
 \end{figure}
 
+\pagebreak
 
 \section{Diskussion}
 
@@ -431,13 +441,14 @@ Vid beräkningarna har två typer av numeriska metoder använts: Eulermetoden oc
 Vid implementationen testades både Eulermetoden och Runge-Kutta-metoden. 
 För Euler genomfördes beräkningarna med en steglängd på ca. 0.04 sekunder. 
 Slutligen valdes Runge-Kutta-metoden då detta gör att beräkningarna blir med noggranna och stabila. 
-Däremot har i den visuella simuleringen ingen större skillnad märkts av. Sannolikt beror detta på att Eulermetoden var relativt exakt på grund av den korta steglängden. 
+Däremot har ingen större skillnad märkts av i den visuella simuleringen. 
+Sannolikt beror detta på att Eulermetoden var relativt exakt på grund av den korta steglängden. 
 \\\\Vid uträkning av stenens nya position användes Eulermetoden. 
 Detta gjordes av två orsaker: positionen beräknas enligt en steglängd längs en vektor i två dimensioner och det är därför implementeringsmässigt enklare och mindre beräkningstungt att använda Euler. 
 I annat fall hade vektorn delats upp i flera komponenter och vinningen i det hade varit mindre än problemen som kommer med de tyngre beräkningarna. 
 
 \subsection{Fysik}
-Curlingens fysik har varit fokus för ett antal vetenskapliga undersökningar på grund av den speciella sväng (curl) som curlingstenen gör. Det som har förundrat fysikerna är att curlingstenen svänger åt motsatt håll från vad som är standard för andra objekt som kan ses i Figur~\ref{fig:curl}. Teorierna är inte helt överrens varför den svänger som den gör, men en gemensam nämnare är att stenen har en högre friktion bak än fram. Därför har det inte varit helt trivialt hur curlingstenens fysikalsika egenskaper skulle implementeras. Konstanter för exempelvis friktionen fram och bak har inte varit givna i de artiklar som lästs, utan bara relation mellan varandra vilket har givit att vi har testat simuleringen med ett antal olika värden för att komma fram till en så efterliknande sväng som möjligt.
+Curlingens fysik har varit fokus för ett antal vetenskapliga undersökningar på grund av den speciella sväng (curl) som curlingstenen gör. Det som har förundrat fysikerna är att curlingstenen svänger åt motsatt håll från vad som är standard för andra objekt på andra underlag som kan ses i Figur~\ref{fig:curl}. Teorierna är inte helt överens om varför den svänger som den gör, men en gemensam nämnare är att stenen har en högre friktion bak än fram. På grund av detta har det inte varit helt trivialt hur curlingstenens fysikalsika egenskaper ska implementeras, exempelvis gällande konstanter.
 
 \begin{figure}[ht!]
 \centering
@@ -448,7 +459,7 @@ Curlingens fysik har varit fokus för ett antal vetenskapliga undersökningar p�
 \end{figure}
 
 \section{Att köra simuleringen}
-Öppna filen index.html i Firefox. Simuleringen fungerar bäst i denna webbläsare då sidan är utvecklad mot Firefox. När sidan är laddad har spelaren möjligheter att röra sig i världen med hjälp av piltangenterna samt tangenterna E och D för att titta upp och ned. Spelare kan själva skjuta iväg en sten genom att bestämma utslagsvinkel och utslagsfart. Det går även att sopa, och därmed minska friktionen, med hjälp av att hålla in tangenten s. Sopningen påverkar enbart den sten som man senast skickade ut för enkelhetens skull. 
+Öppna filen \emph{index.html} i Firefox. Simuleringen fungerar bäst i denna webbläsare då sidan är utvecklad mot Firefox. När sidan är laddad har spelaren möjligheter att röra sig i världen med hjälp av piltangenterna samt tangenterna $E$ och $D$ för att titta upp och ned. Spelare kan själva skjuta iväg en sten genom att bestämma utslagsvinkel och utslagsfart. Det går även att sopa, och därmed minska friktionen, med hjälp av att hålla in tangenten $S$. Sopningen påverkar enbart den sten som man senast skickade ut för enkelhetens skull. 
 
 
 \pagebreak

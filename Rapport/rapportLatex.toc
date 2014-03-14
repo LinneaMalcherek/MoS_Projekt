@@ -9,7 +9,7 @@
 \contentsline {subsection}{\numberline {2.3}Kollision}{6}
 \contentsline {section}{\numberline {3}Numeriska metoder f\IeC {\"o}r simulering}{8}
 \contentsline {subsection}{\numberline {3.1}Numeriska metoder}{8}
-\contentsline {subsubsection}{\numberline {3.1.1}Runge-Kutta-metoden}{9}
+\contentsline {subsubsection}{\numberline {3.1.1}Runge-Kutta-metoden}{8}
 \contentsline {subsubsection}{\numberline {3.1.2}Eulermetoden}{9}
 \contentsline {subsection}{\numberline {3.2}Implementation}{10}
 \contentsline {section}{\numberline {4}Grafisk implementering}{11}
