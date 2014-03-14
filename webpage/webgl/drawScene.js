@@ -1,3 +1,14 @@
+
+var stoneBuffers = new BufferObject;
+stoneBuffers.loadObject("objects/stone_2.json");
+
+var skyboxBuffers = new BufferObject;
+skyboxBuffers.loadObject("objects/skybox.json");
+
+var fieldBuffers = new BufferObject;
+fieldBuffers.loadObject("objects/bana.json");
+
+
 // draw everything in the scene. takes in the players to be able to draw all the different curling stones. 
 function drawScene(players) {
         // set up the view and the scale of the whole world
@@ -49,14 +60,14 @@ function drawScene(players) {
             mat4.scale(mMatrix,mMatrix, [0.1, 0.1, 0.1]);
 
             /** binding buffers and point them to our shader program */
-            gl.bindBuffer(gl.ARRAY_BUFFER, VertexPositionBuffer);
-            gl.vertexAttribPointer(shaderProgram.vertexPositionAttribute, VertexPositionBuffer.itemSize, gl.FLOAT, false, 0, 0);
+            gl.bindBuffer(gl.ARRAY_BUFFER, stoneBuffers.VertexPositionBuffer);
+            gl.vertexAttribPointer(shaderProgram.vertexPositionAttribute, stoneBuffers.VertexPositionBuffer.itemSize, gl.FLOAT, false, 0, 0);
 
-            gl.bindBuffer(gl.ARRAY_BUFFER, VertexNormalBuffer);
-            gl.vertexAttribPointer(shaderProgram.vertexNormalAttribute, VertexNormalBuffer.itemSize, gl.FLOAT, false, 0, 0);
+            gl.bindBuffer(gl.ARRAY_BUFFER, stoneBuffers.VertexNormalBuffer);
+            gl.vertexAttribPointer(shaderProgram.vertexNormalAttribute, stoneBuffers.VertexNormalBuffer.itemSize, gl.FLOAT, false, 0, 0);
 
-            gl.bindBuffer(gl.ARRAY_BUFFER, VertexTextureCoordBuffer);
-            gl.vertexAttribPointer(shaderProgram.textureCoordAttribute, VertexTextureCoordBuffer.itemSize, gl.FLOAT, false, 0, 0);
+            gl.bindBuffer(gl.ARRAY_BUFFER, stoneBuffers.VertexTextureCoordBuffer);
+            gl.vertexAttribPointer(shaderProgram.textureCoordAttribute, stoneBuffers.VertexTextureCoordBuffer.itemSize, gl.FLOAT, false, 0, 0);
 
             gl.activeTexture(gl.TEXTURE0);
 
@@ -70,9 +81,9 @@ function drawScene(players) {
             gl.uniform1i(shaderProgram.samplerUniform, 0);       
 
             /** Draw the curling stone. Will not use Indices. Might want to change in future */
-            gl.bindBuffer(gl.ARRAY_BUFFER, VertexPositionBuffer);
+            gl.bindBuffer(gl.ARRAY_BUFFER, stoneBuffers.VertexPositionBuffer);
             setMatrixUniforms();
-            gl.drawArrays(gl.TRIANGLES,0, VertexPositionBuffer.numItems);
+            gl.drawArrays(gl.TRIANGLES,0, stoneBuffers.VertexPositionBuffer.numItems);
 
         }
 
@@ -80,14 +91,14 @@ function drawScene(players) {
         /** Draw the Field */
         mat4.identity(mMatrix);
 
-        gl.bindBuffer(gl.ARRAY_BUFFER, VertexPositionBuffer2);
-        gl.vertexAttribPointer(shaderProgram.vertexPositionAttribute, VertexPositionBuffer2.itemSize, gl.FLOAT, false, 0, 0);
+        gl.bindBuffer(gl.ARRAY_BUFFER, fieldBuffers.VertexPositionBuffer);
+        gl.vertexAttribPointer(shaderProgram.vertexPositionAttribute, fieldBuffers.VertexPositionBuffer.itemSize, gl.FLOAT, false, 0, 0);
 
-        gl.bindBuffer(gl.ARRAY_BUFFER, VertexNormalBuffer2);
-        gl.vertexAttribPointer(shaderProgram.vertexNormalAttribute, VertexNormalBuffer2.itemSize, gl.FLOAT, false, 0, 0);
+        gl.bindBuffer(gl.ARRAY_BUFFER, fieldBuffers.VertexNormalBuffer);
+        gl.vertexAttribPointer(shaderProgram.vertexNormalAttribute, fieldBuffers.VertexNormalBuffer.itemSize, gl.FLOAT, false, 0, 0);
 
-        gl.bindBuffer(gl.ARRAY_BUFFER, VertexTextureCoordBuffer2);
-        gl.vertexAttribPointer(shaderProgram.textureCoordAttribute, VertexTextureCoordBuffer2.itemSize, gl.FLOAT, false, 0, 0);
+        gl.bindBuffer(gl.ARRAY_BUFFER, fieldBuffers.VertexTextureCoordBuffer);
+        gl.vertexAttribPointer(shaderProgram.textureCoordAttribute, fieldBuffers.VertexTextureCoordBuffer.itemSize, gl.FLOAT, false, 0, 0);
 
         gl.activeTexture(gl.TEXTURE0);
         gl.bindTexture(gl.TEXTURE_2D, banaTexture);
@@ -96,9 +107,9 @@ function drawScene(players) {
         // uncomment to remove specular light to field
         //gl.uniform3f(shaderProgram.pointLightingSpecularColorUniform,0,0,0);
 
-        gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, VertexIndexBuffer2);
+        gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, fieldBuffers.VertexIndexBuffer);
         setMatrixUniforms();
-        gl.drawElements(gl.TRIANGLES, VertexIndexBuffer2.numItems, gl.UNSIGNED_SHORT, 0);
+        gl.drawElements(gl.TRIANGLES, fieldBuffers.VertexIndexBuffer.numItems, gl.UNSIGNED_SHORT, 0);
 
         /** Draw the sky box */ 
         mat4.identity(mMatrix);
@@ -107,21 +118,21 @@ function drawScene(players) {
         mat4.translate(vMatrix,vMatrix, [xCam, yCam, zCam]);
 
 
-        gl.bindBuffer(gl.ARRAY_BUFFER, VertexPositionBuffer3);
-        gl.vertexAttribPointer(shaderProgram.vertexPositionAttribute, VertexPositionBuffer3.itemSize, gl.FLOAT, false, 0, 0);
+        gl.bindBuffer(gl.ARRAY_BUFFER, skyboxBuffers.VertexPositionBuffer);
+        gl.vertexAttribPointer(shaderProgram.vertexPositionAttribute, skyboxBuffers.VertexPositionBuffer.itemSize, gl.FLOAT, false, 0, 0);
 
-        gl.bindBuffer(gl.ARRAY_BUFFER, VertexNormalBuffer3);
-        gl.vertexAttribPointer(shaderProgram.vertexNormalAttribute, VertexNormalBuffer3.itemSize, gl.FLOAT, false, 0, 0);
+        gl.bindBuffer(gl.ARRAY_BUFFER, skyboxBuffers.VertexNormalBuffer);
+        gl.vertexAttribPointer(shaderProgram.vertexNormalAttribute, skyboxBuffers.VertexNormalBuffer.itemSize, gl.FLOAT, false, 0, 0);
 
-        gl.bindBuffer(gl.ARRAY_BUFFER, VertexTextureCoordBuffer3);
-        gl.vertexAttribPointer(shaderProgram.textureCoordAttribute, VertexTextureCoordBuffer3.itemSize, gl.FLOAT, false, 0, 0);
+        gl.bindBuffer(gl.ARRAY_BUFFER, skyboxBuffers.VertexTextureCoordBuffer);
+        gl.vertexAttribPointer(shaderProgram.textureCoordAttribute, skyboxBuffers.VertexTextureCoordBuffer.itemSize, gl.FLOAT, false, 0, 0);
 
         gl.activeTexture(gl.TEXTURE0);
         gl.bindTexture(gl.TEXTURE_2D, sphereTexture);
         gl.uniform1i(shaderProgram.samplerUniform, 0);
 
-        gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, VertexIndexBuffer3);
+        gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, skyboxBuffers.VertexIndexBuffer);
         setMatrixUniforms();
-        gl.drawElements(gl.TRIANGLES, VertexIndexBuffer3.numItems, gl.UNSIGNED_SHORT, 0);
+        gl.drawElements(gl.TRIANGLES, skyboxBuffers.VertexIndexBuffer.numItems, gl.UNSIGNED_SHORT, 0);
 
     }

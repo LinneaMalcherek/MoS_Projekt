@@ -198,9 +198,10 @@ theGame.prototype = {
 	    initTextures2();
         initTextures3();
         initTextures4();
-	    loadObject();
+	    /*loadObject();
 	    loadObject2();
-        loadObject3();
+        loadObject3();*/
+        
 
 	    currentlyPressedKeys = {};   
 
