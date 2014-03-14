@@ -40,8 +40,7 @@ CurlingStone.prototype = {
 		t = HACK_HOG / speed; // time from hack to hog
 		this.angularSpeed = Math.PI / (2*t); 
 
-		//this.speedSide = this.angularSpeed * R_INNER;
-		this.speedSide = 0;
+		this.speedSide = 0; //this.speedSide = this.angularSpeed * R_INNER;
 
 		// set the initial direction vector based on input angle, side is the orthogonal
 		dirFor = this.setDirectionForward(angle);
