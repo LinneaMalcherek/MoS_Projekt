@@ -5,7 +5,7 @@ function dataConstants() {
 	
 	// the curling stone 
 	M = 18; // mass
-	R = 0.1454676; // radius
+	R = 0.095;  //0.1454676; // radius
 	R_INNER = 0.06;
 
 	G = 9.82; // gravity
