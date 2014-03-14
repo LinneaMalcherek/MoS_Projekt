@@ -12,9 +12,10 @@
 
 %Version med spår
 
-plot(stone_pos1(1,1),stone_pos1(2,1),'bo');
+plot(stone_pos1(1,1),stone_pos1(2,1),'b');
 hold on 
-plot(stone_pos2(1,1),stone_pos2(2,1),'ro');
+%plot(stone_pos2(1,1),stone_pos2(2,1),'ro');
 %hold off;
-axis([-20 20 0 40])
+axis([-2.5 2.5 0 45])
+%axis equal;
 drawnow;

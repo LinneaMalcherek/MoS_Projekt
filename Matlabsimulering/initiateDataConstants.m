@@ -15,10 +15,10 @@ a_friction= F_friktion/m;
 % Friktionscoefficienter för curlen, tecken beror på startvinkel 
 % och beräknas längre ner. (för nu är det enklare att testa olika värden)
 c1 = 0.000001;
-c2 = 0.0001;
+c2 = 0.00001;
 
 % Banan
-field_length = 36.59;                 % Från hack till banans slut
+field_length = 45.59;                 % Från hack till banans slut
 field_width = 20;                     % Banans bredd
 hackhog = 6.40;                       % Från hack till hog
 tee = [0;34.76];                      % Koordinater för mitten av bot
@@ -47,8 +47,8 @@ speed_side2 = r_inner*angular_speed2;
 % Vi har kommit överens om att endast ortogonala riktningsvektorn byter
 % Inte helt säker på om detta fungerar som det ska nu. 
 if  (-pi/2)<=angle1<=0 % Curlar åt vänster (sikte höger)
-    ortDir = -1;
+    ortDir = 1;
 elseif 0<angle1<=(pi/2) % Curlar åt höger (sikte vänster)
-    ortDir = 1; % Anger om ortogonala riktningen (curl-riktn) ska vara pos/neg. 
+    ortDir = -1; % Anger om ortogonala riktningen (curl-riktn) ska vara pos/neg. 
 end
 
