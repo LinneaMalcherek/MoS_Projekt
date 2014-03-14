@@ -21,18 +21,18 @@ VecAngSpeed = zeros(1,1);
 VecSpeedSide = zeros(1,1); 
 
 % Input / initial states
-speed1 = 2.0; % 1.44-1.58 rimligt enligt vissa artiklar
+speed1 = 2.3; % 1.44-1.58 rimligt enligt vissa artiklar
 speed2 = 0;
 
 
 speed_side1=0;
 speed_side2=0;
 
-angle1 = 2*pi/180;
+angle1 = (3)*pi/180;
 angle2 = 2.6;
 
 stone_pos1 = [0; 0];
-stone_pos2 = [-1; 25];
+stone_pos2 = [-5; 25];
 stone_angle1 = -pi/2;   %Måste ändras beroende på inhand/outhand
 stone_angle2 = 0;
 
@@ -92,18 +92,18 @@ while checkSpeed(speed1, speed2) && checkBoundaries(stone_pos1,stone_pos2, field
 
 end
 
-figure; 
-plot(VecTime,VecAngSpeed,'-');
-legend('Vinkelhastighet');
-title('Vinkelhastighet');
-xlabel('tid (s)');
-ylabel('hastighet (rad/s)');
-
-figure;
-plot(VecTime,VecSpeed,'-');
-title('Hastigheter');
-xlabel('tid (s)');
-ylabel('hastighet (m/s)');
-hold on;
-plot(VecTime,VecSpeedSide,'--');
-legend('Hastighet, rörelseriktning','Hastighet, sidled');
+% figure; 
+% plot(VecTime,VecAngSpeed,'-');
+% legend('Vinkelhastighet');
+% title('Vinkelhastighet');
+% xlabel('tid (s)');
+% ylabel('hastighet (rad/s)');
+% 
+% figure;
+% plot(VecTime,VecSpeed,'-');
+% title('Hastigheter');
+% xlabel('tid (s)');
+% ylabel('hastighet (m/s)');
+% hold on;
+% plot(VecTime,VecSpeedSide,'--');
+% legend('Hastighet, rörelseriktning','Hastighet, sidled');
