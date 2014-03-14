@@ -70,7 +70,7 @@
 
 \pagenumbering{gobble}
 \title{Projektrapport Grupp 3 \\* 
-Curling\\*
+Space Curling\\*
 TNM085 Modelleringsprojekt}
 \author{Linnéa Mellblom\\*Linnea Malcherek\\* Julia Nilsson\\*Michael Nilsson\\*Linnéa Nåbo}
 %\date{} % Activate to display a given date or no date (if empty),
@@ -384,12 +384,12 @@ Efter simuleringen i Matlab har koden skrivits över till WebGL för att avancer
 \subsection{Modellering}
 Alla objekt, så som stenen och curlingbanan, är modellerade för hand i 3D-grafikprogrammet Blender. På dessa objekt läggs en UV-mappning för att kunna lägga på texturen. Ett konverteringsskript används för att göra om objektet från .obj till .json där UV-koordinaterna blir sparade som strängar. Runtomkring curlingbanan finns en skybox för att skapa illusionen av en stjärnhimmel.
 
+\pagebreak
+
 \section{Resultat}
 \subsection{Matlabsimulering}
+Valda konstanter för samtliga beräkningar finns i bilaga A, Konstanter och värden. Mått på banan finns i bilaga B. Friktionskonstanter har tagits fram utifrån riktlinjer tagna från referenser där ungefärliga värden beräknats fram genom experiment. De slutgiltiga värdena har tagits fram genom egna undersökningar utifrån de matematiska modellerna för att få fram ett rimligt förhållande mellan utslagshastighet, utslagsvinkel och kurva.   
 
-Lite grejer från matlab osv. 
-Lagt in lite diverse grafer.
-Rada upp alla konstanter som används i simuleringen. 
 
 \begin{figure}[ht!]
 \centering
@@ -397,6 +397,15 @@ Rada upp alla konstanter som används i simuleringen.
 \includegraphics[width=72mm]{vinkelhastighet_tid_graf.png}
 \caption{\textbf{t.v} Hastigheter i färdriktning och i sidled som funktion av tid. \textbf{t.h} Vinkelhastighet som funktion av tid}
 \label{fig:hast_and_vinkel_graf}
+\label{overflow}
+\end{figure}
+
+
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=23mm]{curvMatlab.png}
+\caption{Hur en curlingstens svängning kan se ut med utslagsvinkeln $3$\textdegree och utslagshastighet $2.3$}
+\label{fig:kurvaMatlab}
 \label{overflow}
 \end{figure}
 
@@ -442,6 +451,7 @@ Curlingens fysik har varit fokus för ett antal vetenskapliga undersökningar p�
 Öppna filen index.html i Firefox. Simuleringen fungerar bäst i denna webbläsare då sidan är utvecklad mot Firefox. När sidan är laddad har spelaren möjligheter att röra sig i världen med hjälp av piltangenterna samt tangenterna E och D för att titta upp och ned. Spelare kan själva skjuta iväg en sten genom att bestämma utslagsvinkel och utslagsfart. Det går även att sopa, och därmed minska friktionen, med hjälp av att hålla in tangenten s. Sopningen påverkar enbart den sten som man senast skickade ut för enkelhetens skull. 
 
 
+\pagebreak
 \appendix
 \section{\\Konstanter och värden} \label{App:AppendixA}
 
@@ -461,6 +471,13 @@ $r_{inner}$ & radie kontaktband & 0.06 m\\ \hline
 
 \section{\\Mått och bild på curlingstenens bana} \label{App:AppendixB}
 
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=160mm]{curlingbana.jpg}
+\caption{Mått på en curlingbana}
+\label{fig:curlbana_riktigt}
+\label{overflow}
+\end{figure}
 
 
 

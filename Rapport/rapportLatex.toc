@@ -15,12 +15,12 @@
 \contentsline {section}{\numberline {4}Grafisk implementering}{11}
 \contentsline {subsection}{\numberline {4.1}WebGL}{11}
 \contentsline {subsection}{\numberline {4.2}Modellering}{11}
-\contentsline {section}{\numberline {5}Resultat}{11}
-\contentsline {subsection}{\numberline {5.1}Matlabsimulering}{11}
-\contentsline {subsection}{\numberline {5.2}Grafisk simulering}{12}
-\contentsline {section}{\numberline {6}Diskussion}{13}
-\contentsline {subsection}{\numberline {6.1}Numeriska metoder}{13}
-\contentsline {subsection}{\numberline {6.2}Fysik}{13}
-\contentsline {section}{\numberline {7}Att k\IeC {\"o}ra simuleringen}{14}
-\contentsline {section}{\numberline {A}\\Konstanter och v\IeC {\"a}rden}{14}
-\contentsline {section}{\numberline {B}\\M\IeC {\r a}tt och bild p\IeC {\r a} curlingstenens bana}{14}
+\contentsline {section}{\numberline {5}Resultat}{12}
+\contentsline {subsection}{\numberline {5.1}Matlabsimulering}{12}
+\contentsline {subsection}{\numberline {5.2}Grafisk simulering}{13}
+\contentsline {section}{\numberline {6}Diskussion}{14}
+\contentsline {subsection}{\numberline {6.1}Numeriska metoder}{14}
+\contentsline {subsection}{\numberline {6.2}Fysik}{14}
+\contentsline {section}{\numberline {7}Att k\IeC {\"o}ra simuleringen}{15}
+\contentsline {section}{\numberline {A}\\Konstanter och v\IeC {\"a}rden}{16}
+\contentsline {section}{\numberline {B}\\M\IeC {\r a}tt och bild p\IeC {\r a} curlingstenens bana}{16}
