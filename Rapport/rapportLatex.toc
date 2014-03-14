@@ -17,10 +17,10 @@
 \contentsline {subsection}{\numberline {4.2}Modellering}{11}
 \contentsline {section}{\numberline {5}Resultat}{11}
 \contentsline {subsection}{\numberline {5.1}Matlabsimulering}{11}
-\contentsline {subsection}{\numberline {5.2}Grafisk simulering}{11}
-\contentsline {section}{\numberline {6}Diskussion}{12}
-\contentsline {subsection}{\numberline {6.1}Numeriska metoder}{12}
-\contentsline {subsection}{\numberline {6.2}Fysik}{12}
-\contentsline {section}{\numberline {7}Att k\IeC {\"o}ra simuleringen}{13}
-\contentsline {section}{\numberline {A}\\Konstanter och v\IeC {\"a}rden}{13}
-\contentsline {section}{\numberline {B}\\M\IeC {\r a}tt och bild p\IeC {\r a} curlingstenens bana}{13}
+\contentsline {subsection}{\numberline {5.2}Grafisk simulering}{12}
+\contentsline {section}{\numberline {6}Diskussion}{13}
+\contentsline {subsection}{\numberline {6.1}Numeriska metoder}{13}
+\contentsline {subsection}{\numberline {6.2}Fysik}{13}
+\contentsline {section}{\numberline {7}Att k\IeC {\"o}ra simuleringen}{14}
+\contentsline {section}{\numberline {A}\\Konstanter och v\IeC {\"a}rden}{14}
+\contentsline {section}{\numberline {B}\\M\IeC {\r a}tt och bild p\IeC {\r a} curlingstenens bana}{14}

@@ -400,16 +400,25 @@ Rada upp alla konstanter som används i simuleringen.
 \label{overflow}
 \end{figure}
 
+\pagebreak
+
 \subsection{Grafisk simulering}
-Resultatet av projektet blev en curlingsimulering, i form av ett spel, i webbläsaren. Det grafiska gränssnittet ser ut som BILD.
+Resultatet av projektet blev en curlingsimulering, i form av ett spel, i webbläsaren. Det grafiska gränssnittet ser ut enligt följande: 
+
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=110mm]{game4.png}
+\includegraphics[width=110mm]{game2.png}
+\caption{Bilder från spelet}.
+\label{fig:spell}
+\label{overflow}
+\end{figure}
 
 
 \section{Diskussion}
 
 \subsection{Numeriska metoder}
-Vid beräkningarna har två typer av numeriska metoder använts: Eulermetoden och
-Runge-Kutta-metoden. Runga-Kutta-metoden används vid beräkningen av de nya skalärerna,
-fart framåt, fart sidled och vinkelhastighet.
+Vid beräkningarna har två typer av numeriska metoder använts: Eulermetoden och Runge-Kutta-metoden. Runga-Kutta-metoden används vid beräkningen av de nya skalärerna, fart framåt, fart sidled och vinkelhastighet.
 Vid implementationen testades både Eulermetoden och Runge-Kutta-metoden. 
 För Euler genomfördes beräkningarna med en steglängd på ca. 0.04 sekunder. 
 Slutligen valdes Runge-Kutta-metoden då detta gör att beräkningarna blir med noggranna och stabila. 
@@ -424,7 +433,7 @@ Curlingens fysik har varit fokus för ett antal vetenskapliga undersökningar p�
 \begin{figure}[ht!]
 \centering
 \includegraphics[width=70mm]{curl.png}
-\caption{Visar svägningen för en cylinder och en curlingsten. }.
+\caption{Visar svägningen för en cylinder och en curlingsten. }
 \label{fig:curl}
 \label{overflow}
 \end{figure}
@@ -442,7 +451,7 @@ benämning & förklaring & värde \\ \hline\hline
 \textbf{fysikaliska data} & & \\ \hline
 $g$ & gravitationskonstanten & 9.82 $m/s^2$\\
 $\mu$ & friktionskonstant & 0.0073\\
-$c_1$ & friktionskonstant fram & 0.00001\\
+$c_1$ & friktionskonstant fram & 0.000001\\
 $c_2$ & friktionskonstant bak & 0.0001\\
 \textbf{curlingstenen} & & \\ \hline
 $m$ & massa & 18 kg\\

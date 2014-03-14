@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=pdflatex 2013.5.3)  14 MAR 2014 10:00
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=pdflatex 2013.5.3)  14 MAR 2014 10:10
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -783,6 +783,9 @@ LaTeX Warning: Label `overflow' multiply defined.
 
 LaTeX Warning: Label `overflow' multiply defined.
 
+
+LaTeX Warning: Label `overflow' multiply defined.
+
 )
 \openout1 = `rapportLatex.aux'.
 
@@ -993,33 +996,46 @@ File: vinkelhastighet_tid_graf.png Graphic file (type png)
 <use vinkelhastighet_tid_graf.png>
 Package pdftex.def Info: vinkelhastighet_tid_graf.png used on input line 397.
 (pdftex.def)             Requested size: 204.85983pt x 153.37184pt.
+ [11 <./hastigheter_tid_graf.png (PNG copy)> <./vinkelhastighet_tid_graf.png (P
+NG copy)>]
+<game4.png, id=75, 823.075pt x 619.31375pt>
+File: game4.png Graphic file (type png)
+ <use game4.png>
+Package pdftex.def Info: game4.png used on input line 410.
+(pdftex.def)             Requested size: 312.9803pt x 235.49287pt.
 
-Overfull \hbox (22.40045pt too wide) in paragraph at lines 410--420
+<game2.png, id=76, 804.00375pt x 606.265pt>
+File: game2.png Graphic file (type png)
+ <use game2.png>
+Package pdftex.def Info: game2.png used on input line 411.
+(pdftex.def)             Requested size: 312.9803pt x 235.99835pt.
+
+Overfull \hbox (22.40045pt too wide) in paragraph at lines 421--429
 \OT1/cmr/m/n/10.95 Runge-Kutta-metoden. Runga-Kutta-metoden anv[]ands vid ber[]
 akningen av de nya skal[]arerna,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 410--420
+Underfull \hbox (badness 10000) in paragraph at lines 421--429
 
  []
 
-[11 <./hastigheter_tid_graf.png (PNG copy)> <./vinkelhastighet_tid_graf.png (PN
-G copy)>] <curl.png, id=75, 695.59875pt x 501.875pt>
+[12 <./game4.png> <./game2.png>] <curl.png, id=82, 695.59875pt x 501.875pt>
 File: curl.png Graphic file (type png)
- <use curl.png>
-Package pdftex.def Info: curl.png used on input line 426.
+
+<use curl.png>
+Package pdftex.def Info: curl.png used on input line 435.
 (pdftex.def)             Requested size: 199.16928pt x 143.69444pt.
- [12 <./curl.png>] [13] (./rapportLatex.aux)
+ [13 <./curl.png>] [14] (./rapportLatex.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 6867 strings out of 493488
- 101265 string characters out of 3141327
- 199269 words of memory out of 3000000
- 9995 multiletter control sequences out of 15000+200000
+ 6878 strings out of 493488
+ 101404 string characters out of 3141327
+ 199278 words of memory out of 3000000
+ 10004 multiletter control sequences out of 15000+200000
  18096 words of font info for 68 fonts, out of 3000000 for 9000
  957 hyphenation exceptions out of 8191
  44i,20n,43p,1023b,361s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -1045,10 +1061,10 @@ mf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2012/texmf
 -dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2012/texmf-
 dist/fonts/type1/public/amsfonts/cm/cmti9.pfb></usr/local/texlive/2012/texmf-di
 st/fonts/type1/public/cm-super/sfrm1095.pfb>
-Output written on rapportLatex.pdf (14 pages, 440611 bytes).
+Output written on rapportLatex.pdf (15 pages, 543921 bytes).
 PDF statistics:
- 152 PDF objects out of 1000 (max. 8388607)
- 98 compressed objects within 1 object stream
+ 158 PDF objects out of 1000 (max. 8388607)
+ 100 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 46 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 56 words of extra memory for PDF output out of 10000 (max. 10000000)
 
