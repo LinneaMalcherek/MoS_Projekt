@@ -1,13 +1,4 @@
 
-var stoneBuffers = new BufferObject;
-stoneBuffers.loadObject("objects/stone_2.json");
-
-var skyboxBuffers = new BufferObject;
-skyboxBuffers.loadObject("objects/skybox.json");
-
-var fieldBuffers = new BufferObject;
-fieldBuffers.loadObject("objects/bana.json");
-
 
 // draw everything in the scene. takes in the players to be able to draw all the different curling stones. 
 function drawScene(players) {
@@ -47,7 +38,6 @@ function drawScene(players) {
         vec3.transformMat4(lightPos, lightPos, transLight);
         vec3.transformMat4(lightPos, lightPos, vMatrix);
         gl.uniform3fv(shaderProgram.pointLightingLocationUniform,lightPos);
-
 
         // draw all the curling stones. goes trough all players, so we get different colors for the different players.
         for (var i=0; i<players.length; i++) {

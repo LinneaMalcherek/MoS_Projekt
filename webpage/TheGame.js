@@ -198,9 +198,12 @@ theGame.prototype = {
 	    initTextures2();
         initTextures3();
         initTextures4();
-	    /*loadObject();
-	    loadObject2();
-        loadObject3();*/
+        stoneBuffers = new bufferObject();
+		skyboxBuffers = new bufferObject();
+		fieldBuffers = new bufferObject(); 
+	    stoneBuffers.loadObject("objects/stone_2.json");
+	    skyboxBuffers.loadObject("objects/skybox.json");
+        fieldBuffers.loadObject("objects/bana.json");
         
 
 	    currentlyPressedKeys = {};   
