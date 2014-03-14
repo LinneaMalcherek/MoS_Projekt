@@ -8,6 +8,8 @@ h1 {
 	font-size: 24px;
 	color: black;
 	text-align:center;
+	margin: 2px;
+	padding: 2px;
 }
 
 p {
@@ -26,4 +28,13 @@ p {
 	margin: auto;
 	width: 800px;
 	text-align: center;
+}
+
+#player2 {
+	color: #FF4747; 
+
+}
+
+#player1 {
+	color: #0099FF; 
 }

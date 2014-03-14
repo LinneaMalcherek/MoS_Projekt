@@ -29,7 +29,7 @@ function drawScene(players) {
 
         var transLight = mat4.create();
 
-        mat4.translate(transLight,transLight,[5.0 , 14 ,-17.0]);
+        mat4.translate(transLight,transLight,[5.0 , 45 ,-17.0]);
         vec3.transformMat4(lightPos, lightPos, transLight);
         vec3.transformMat4(lightPos, lightPos, vMatrix);
         gl.uniform3fv(shaderProgram.pointLightingLocationUniform,lightPos);
@@ -37,8 +37,6 @@ function drawScene(players) {
 
         // draw all the curling stones. goes trough all players, so we get different colors och the different players.
         for (var i=0; i<players.length; i++) {
-
-
             mat4.identity(mMatrix);
             
             mat4.translate(mMatrix,mMatrix, [players[i].stone.getXPos(),0 ,-players[i].stone.getYPos()]);
@@ -88,6 +86,8 @@ function drawScene(players) {
         gl.activeTexture(gl.TEXTURE0);
         gl.bindTexture(gl.TEXTURE_2D, banaTexture);
         gl.uniform1i(shaderProgram.samplerUniform, 0);
+
+        gl.uniform3f(shaderProgram.pointLightingSpecularColorUniform,0,0,0);
 
         gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, VertexIndexBuffer2);
         setMatrixUniforms();

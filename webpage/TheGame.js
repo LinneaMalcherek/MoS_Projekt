@@ -2,10 +2,9 @@
 function theGame() {
 	thisturn=1;
 	turn=1;
-
 	this.players = []; // holds all the players
-	this.allStones = new Array(); 
-
+	this.allStones = new Array();
+	this.thrownStone = 0;  // how many stones have been thrown in total by all playerss
 }
 
 // theGames all functions
@@ -18,9 +17,9 @@ theGame.prototype = {
 	},
 
 	// Function that creates a new stone and throws it. 
-	// add the stone to the players stone-array 
 	throwStone: function(angle, speed, playerid){
 		this.players[playerid].thrown = this.players[playerid].thrown + 1 ;
+		this.thrownStone = this.thrownStone + 1 ;
 		
 		var stone = new CurlingStone;
 
@@ -33,14 +32,14 @@ theGame.prototype = {
 
 	// check for collision between all the stones that are in the game. 
 	collision: function(){
-			for( var i=0; i < this.allStones.length; i++ ){
-				for ( var j=i+1; j < this.allStones.length; j++ ) {
-					if( checkCollision( this.allStones[i].stone, this.allStones[j].stone ) ){
-							setAfterCollision(this.allStones[i].stone, this.allStones[j].stone);
-					}
-
+		for( var i=0; i < this.allStones.length; i++ ){
+			for ( var j=i+1; j < this.allStones.length; j++ ) {
+				if( checkCollision( this.allStones[i].stone, this.allStones[j].stone ) ){
+						setAfterCollision(this.allStones[i].stone, this.allStones[j].stone);
 				}
+
 			}
+		}
 	},
 
 
@@ -110,13 +109,13 @@ theGame.prototype = {
 
 	   		// update the "camera-view"
 	   		if (speed != 0) {
-	                xCam -= Math.sin(yaw*Math.PI/180) * speed * dt;
-	                zCam -= Math.cos(yaw*Math.PI/180) * speed * dt;
-	                yCam = Math.sin(Math.PI/180) / 20 + 0.4;
-	            }
+                xCam -= Math.sin(yaw*Math.PI/180) * speed * dt;
+                zCam -= Math.cos(yaw*Math.PI/180) * speed * dt;
+                yCam = Math.sin(Math.PI/180) / 20 + 0.4;
+	        }
 
-	   		    yaw += yawRate * dt;
-	            pitch += pitchRate * dt;
+   		    yaw += yawRate * dt;
+            pitch += pitchRate * dt;
 
    		}
 
@@ -127,8 +126,6 @@ theGame.prototype = {
 // BUGGAR NÄR DEN TAR BORT VID 3:E KASTET ibland... BYTER EJ TILL RÄTT SPELARE DÅ!!!
 	// check if the stone is out of the bounds, out of the field or being throwed to short. 
 	outOfBounds: function() {
-		var thrownStones = this.players[0].thrown+this.players[1].thrown;  // how many stones been thrown
-
 		for (var i =0; i<this.allStones.length; i++) {
 			var theStone = this.allStones[i].stone; 
 
@@ -137,17 +134,19 @@ theGame.prototype = {
 				var id = this.allStones[i].player;
 				this.allStones.splice(i,1);
 
-				if (thrownStones != NUMBEROFSTONES*2) // only change buttons if not end of game
+				if (this.thrownStone != NUMBEROFSTONES*2) // only change buttons if not end of game
 					this.disableButton(id);
+
 			}
 			// delete stone if it has stoped before the hog-line
 			if (theStone.speed < 0.01 && theStone.getYPos() < HACK_HOG_2){
 				var id = this.allStones[i].player;
 				this.allStones.splice(i,1);
 
-				if (thrownStones != NUMBEROFSTONES*2)  // only change buttons if not end of game
+				if (this.thrownStone != NUMBEROFSTONES*2)  // only change buttons if not end of game
 					this.disableButton(id);
 			}
+
 		}
 	},
 
@@ -163,7 +162,7 @@ theGame.prototype = {
 
         // to check if the game has ended (aka all stone being throwed.) 
         // only calulate the score when the last stone has stoped. 
-        if( this.players[0].thrown+this.players[1].thrown == NUMBEROFSTONES*2 ){
+        if( this.thrownStone == NUMBEROFSTONES*2 ){
         	if(thisturn==turn){
         		if(this.allStones.length==0)
 	        		document.getElementById("newRound").style.visibility = "visible";
@@ -214,13 +213,11 @@ theGame.prototype = {
 
 	// so you can't send a new stone while the last has stoped. change the buttons in the webpage. 
 	sendNewStone: function(){
-		var thrownStones = this.players[0].thrown+this.players[1].thrown; 
-
-		if (thrownStones!=0 && this.allStones.length>0) {
+		if (this.thrownStone!=0 && this.allStones.length>0) {
 			var id = this.allStones[this.allStones.length-1].player;
 
 			// change button
-			if(this.allStones[this.allStones.length-1].stone.speed < 0.01 && thrownStones!=NUMBEROFSTONES*2){
+			if(this.allStones[this.allStones.length-1].stone.speed < 0.01 && this.thrownStone!=NUMBEROFSTONES*2){
 				this.disableButton(id);
 			}
 		}
@@ -278,7 +275,7 @@ theGame.prototype = {
 
 		this.allStones.sort(function(a,b){return a.distanceFromMiddle-b.distanceFromMiddle}); // sort!!
 
-
+		// see how many point the leader gets
 		if (this.allStones.length > 0 && this.allStones[0].distanceFromMiddle + R < NEST_RADIUS){
 			var sum=1;
 			var leader = this.allStones[0].player;

@@ -40,8 +40,7 @@ CurlingStone.prototype = {
 		t = HACK_HOG / speed; // time from hack to hog
 		this.angularSpeed = Math.PI / (2*t); 
 
-		//this.speedSide = this.angularSpeed * R_INNER;
-		this.speedSide = 0;
+		this.speedSide = 0; //this.speedSide = this.angularSpeed * R_INNER;
 
 		// set the initial direction vector based on input angle, side is the orthogonal
 		dirFor = this.setDirectionForward(angle);
@@ -78,15 +77,6 @@ CurlingStone.prototype = {
 	// returns a scalar by runge kutta
 	newSpeed: function(speed,friction,dt){
 		return this.rungekutta(speed,speed,dt,this.a_speed,friction);
-	},
-
-	// Returns total acceleration sideways (difference between front and back)
-	calcAngularAcceleration: function(gravity, my_f, my_b, r){ //my_f and my_b frictioncoeff for front and back of the stone
-		if(this.speed <0.01){// Look out for division with zero
-			return gravity*(my_b-my_f);							
-		} else{
-			return gravity*(my_b-my_f) / Math.sqrt(this.speed);// Total acceleration from difference between acc front and back, dependant on speed 
-		}
 	},
 
 	// Calculates new speedSide from calcAngularAcceleration
