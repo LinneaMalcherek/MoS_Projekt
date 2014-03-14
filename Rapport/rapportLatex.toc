@@ -1,22 +1,26 @@
 \select@language {swedish}
 \contentsline {section}{\numberline {1}Introduktion}{2}
 \contentsline {subsection}{\numberline {1.1}Begr\IeC {\"a}nsningar och f\IeC {\"o}renklingar}{2}
-\contentsline {section}{\numberline {2}Fysikalisk beskrivning}{2}
-\contentsline {subsection}{\numberline {2.1}Translation}{2}
-\contentsline {subsubsection}{\numberline {2.1.1}Friktionens p\IeC {\r a}verkan}{2}
-\contentsline {subsubsection}{\numberline {2.1.2}Resulterande translation}{4}
-\contentsline {subsection}{\numberline {2.2}Rotation}{4}
-\contentsline {subsection}{\numberline {2.3}Kollision}{5}
-\contentsline {section}{\numberline {3}Numeriska metoder f\IeC {\"o}r simulering}{9}
-\contentsline {subsection}{\numberline {3.1}Numeriska metoder}{9}
+\contentsline {section}{\numberline {2}Fysikalisk beskrivning}{3}
+\contentsline {subsection}{\numberline {2.1}Translation}{3}
+\contentsline {subsubsection}{\numberline {2.1.1}Friktionens p\IeC {\r a}verkan}{3}
+\contentsline {subsubsection}{\numberline {2.1.2}Resulterande translation}{5}
+\contentsline {subsection}{\numberline {2.2}Rotation}{5}
+\contentsline {subsection}{\numberline {2.3}Kollision}{6}
+\contentsline {section}{\numberline {3}Numeriska metoder f\IeC {\"o}r simulering}{8}
+\contentsline {subsection}{\numberline {3.1}Numeriska metoder}{8}
 \contentsline {subsubsection}{\numberline {3.1.1}Runge-Kutta-metoden}{9}
 \contentsline {subsubsection}{\numberline {3.1.2}Eulermetoden}{9}
 \contentsline {subsection}{\numberline {3.2}Implementation}{10}
 \contentsline {section}{\numberline {4}Grafisk implementering}{11}
 \contentsline {subsection}{\numberline {4.1}WebGL}{11}
 \contentsline {subsection}{\numberline {4.2}Modellering}{11}
-\contentsline {section}{\numberline {5}Att k\IeC {\"o}ra simuleringen}{11}
-\contentsline {section}{\numberline {6}Resultat}{12}
-\contentsline {section}{\numberline {7}Diskussion}{13}
-\contentsline {subsection}{\numberline {7.1}Numeriska metoder}{13}
-\contentsline {section}{\numberline {A}\\Title of Appendix A}{13}
+\contentsline {section}{\numberline {5}Resultat}{11}
+\contentsline {subsection}{\numberline {5.1}Matlabsimulering}{11}
+\contentsline {subsection}{\numberline {5.2}Grafisk simulering}{11}
+\contentsline {section}{\numberline {6}Diskussion}{12}
+\contentsline {subsection}{\numberline {6.1}Numeriska metoder}{12}
+\contentsline {subsection}{\numberline {6.2}Fysik}{12}
+\contentsline {section}{\numberline {7}Att k\IeC {\"o}ra simuleringen}{13}
+\contentsline {section}{\numberline {A}\\Konstanter och v\IeC {\"a}rden}{13}
+\contentsline {section}{\numberline {B}\\M\IeC {\r a}tt och bild p\IeC {\r a} curlingstenens bana}{13}
