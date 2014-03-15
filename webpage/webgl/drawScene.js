@@ -45,7 +45,7 @@ function drawScene(players) {
             
             /** Sets the position and scaling*/
             mat4.translate(mMatrix,mMatrix, [players[i].stone.getXPos(),0 ,-players[i].stone.getYPos()]);
-            mat4.translate(mMatrix,mMatrix, [-0.15,0.35,23.1]);
+            mat4.translate(mMatrix,mMatrix, [-0.15,0.30,23.1]);
             mat4.rotateY(mMatrix,mMatrix, players[i].stone.getAngle());
             mat4.scale(mMatrix,mMatrix, [0.1, 0.1, 0.1]);
 

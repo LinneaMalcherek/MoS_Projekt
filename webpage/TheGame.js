@@ -198,13 +198,14 @@ theGame.prototype = {
 	    initTextures2();
         initTextures3();
         initTextures4();
-        stoneBuffers = new bufferObject();
-		skyboxBuffers = new bufferObject();
-		fieldBuffers = new bufferObject(); 
-	    stoneBuffers.loadObject("objects/stone_2.json");
-	    skyboxBuffers.loadObject("objects/skybox.json");
+		stoneBuffers = new BufferObject();
+		console.log("uppe: %s",stoneBuffers.i);
+		stoneBuffers.i = "då";
+		stoneBuffers.loadObject("objects/stone_2.json");
+        skyboxBuffers = new BufferObject();
+        skyboxBuffers.loadObject("objects/skybox.json");
+        fieldBuffers = new BufferObject(); 
         fieldBuffers.loadObject("objects/bana.json");
-        
 
 	    currentlyPressedKeys = {};   
 

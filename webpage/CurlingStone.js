@@ -11,7 +11,7 @@ function CurlingStone()
 	cb = this.frictionCoeffC[1];
 	cf = this.frictionCoeffC[0];
 	this.angle = 0; 
-}
+};
 
 // CurlingStones functions
 CurlingStone.prototype = {
@@ -162,7 +162,6 @@ CurlingStone.prototype = {
 
 	getXPos: function(){
 		return this.pos.e(1);
-
 	},
 	getYPos: function(){
 		return this.pos.e(2);
@@ -183,4 +182,4 @@ CurlingStone.prototype = {
 		return this.pos.inspect();
 	},
 
-}
+};

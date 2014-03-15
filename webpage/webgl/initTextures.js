@@ -1,3 +1,8 @@
+var stoneTextureP1;
+var stoneTextureP2;
+var banaTexture;
+var sphereTexture;
+
 function handleLoadedTexture(texture) {
     gl.bindTexture(gl.TEXTURE_2D, texture);
     gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, true);
@@ -6,9 +11,6 @@ function handleLoadedTexture(texture) {
     gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.NEAREST);
     gl.bindTexture(gl.TEXTURE_2D, null);
 }
-
-
-var stoneTextureP1;
 
 function initTextures() {
     stoneTextureP1 = gl.createTexture();
@@ -20,8 +22,6 @@ function initTextures() {
     stoneTextureP1.image.src = "objects/textures/curlingstone_texture.png";
 }
 
-var stoneTextureP2;
-
 function initTextures4() {
     stoneTextureP2 = gl.createTexture();
     stoneTextureP2.image = new Image();
@@ -32,8 +32,6 @@ function initTextures4() {
     stoneTextureP2.image.src = "objects/textures/curlingstone_texture_2.png";
 }
 
-var banaTexture;
-
 function initTextures2() {
     banaTexture = gl.createTexture();
     banaTexture.image = new Image();
@@ -43,8 +41,6 @@ function initTextures2() {
 
     banaTexture.image.src = "objects/textures/curlingbanan12.png";
 }
-
-var sphereTexture;
 
 function initTextures3() {
     sphereTexture = gl.createTexture();
