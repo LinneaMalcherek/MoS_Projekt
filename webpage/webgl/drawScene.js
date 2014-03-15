@@ -64,9 +64,9 @@ function drawScene(players) {
             var id = players[i].player; // to get the right texture on the stone.
 
             if(id==0)
-                gl.bindTexture(gl.TEXTURE_2D, stoneTextureP1);
+                gl.bindTexture(gl.TEXTURE_2D, stoneTextureP1.objectTexture);
             else
-                gl.bindTexture(gl.TEXTURE_2D, stoneTextureP2);
+                gl.bindTexture(gl.TEXTURE_2D, stoneTextureP2.objectTexture);
             
             gl.uniform1i(shaderProgram.samplerUniform, 0);       
 
@@ -91,7 +91,7 @@ function drawScene(players) {
         gl.vertexAttribPointer(shaderProgram.textureCoordAttribute, fieldBuffers.VertexTextureCoordBuffer.itemSize, gl.FLOAT, false, 0, 0);
 
         gl.activeTexture(gl.TEXTURE0);
-        gl.bindTexture(gl.TEXTURE_2D, banaTexture);
+        gl.bindTexture(gl.TEXTURE_2D, banaTexture.objectTexture);
         gl.uniform1i(shaderProgram.samplerUniform, 0);
 
         // uncomment to remove specular light to field
@@ -118,7 +118,7 @@ function drawScene(players) {
         gl.vertexAttribPointer(shaderProgram.textureCoordAttribute, skyboxBuffers.VertexTextureCoordBuffer.itemSize, gl.FLOAT, false, 0, 0);
 
         gl.activeTexture(gl.TEXTURE0);
-        gl.bindTexture(gl.TEXTURE_2D, sphereTexture);
+        gl.bindTexture(gl.TEXTURE_2D, sphereTexture.objectTexture);
         gl.uniform1i(shaderProgram.samplerUniform, 0);
 
         gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, skyboxBuffers.VertexIndexBuffer);

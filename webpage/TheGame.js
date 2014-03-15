@@ -194,13 +194,19 @@ theGame.prototype = {
 		var canvas = document.getElementById("curlingbana");
 	    initGL(canvas);
 	    initShaders();
-	    initTextures();
-	    initTextures2();
-        initTextures3();
-        initTextures4();
+
+	    stoneTextureP1 = new Texture();
+	    stoneTextureP2 = new Texture();
+		banaTexture = new Texture();
+		sphereTexture = new Texture();
+		console.log("up: %s",stoneTextureP1.i);
+		stoneTextureP1.i = "changedup";
+	    stoneTextureP1.initTextures("objects/textures/curlingstone_texture.png");
+	    stoneTextureP2.initTextures("objects/textures/curlingstone_texture_2.png");
+	    banaTexture.initTextures("objects/textures/curlingbanan12.png");
+	    sphereTexture.initTextures("objects/textures/skydome_nebulosa.jpg");
+
 		stoneBuffers = new BufferObject();
-		console.log("uppe: %s",stoneBuffers.i);
-		stoneBuffers.i = "då";
 		stoneBuffers.loadObject("objects/stone_2.json");
         skyboxBuffers = new BufferObject();
         skyboxBuffers.loadObject("objects/skybox.json");
