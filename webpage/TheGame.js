@@ -197,14 +197,14 @@ theGame.prototype = {
 
 	    stoneTextureP1 = new Texture();
 	    stoneTextureP2 = new Texture();
-		banaTexture = new Texture();
-		sphereTexture = new Texture();
+		fieldTexture = new Texture();
+		skyboxTexture = new Texture();
 		console.log("up: %s",stoneTextureP1.i);
 		stoneTextureP1.i = "changedup";
 	    stoneTextureP1.initTextures("objects/textures/curlingstone_texture.png");
 	    stoneTextureP2.initTextures("objects/textures/curlingstone_texture_2.png");
-	    banaTexture.initTextures("objects/textures/curlingbanan12.png");
-	    sphereTexture.initTextures("objects/textures/skydome_nebulosa.jpg");
+	    fieldTexture.initTextures("objects/textures/curlingbanan12.png");
+	    skyboxTexture.initTextures("objects/textures/skydome_nebulosa.jpg");
 
 		stoneBuffers = new BufferObject();
 		stoneBuffers.loadObject("objects/stone_2.json");

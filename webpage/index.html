@@ -36,7 +36,6 @@
                 vec3 lightWeighting;
                 vec3 lightDirection = normalize(uPointLightingLocation - vPosition.xyz);
                 vec3 normal = normalize(vTransformedNormal);
-                //vec3 eyeDirection = normalize(-vPosition.xyz);
                 vec3 eyeDirection = normalize(uCameraPosition.xyz-vPosition.xyz);
                 vec3 reflectionDirection = reflect(-lightDirection, normal);
 

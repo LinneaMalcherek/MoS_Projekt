@@ -1,7 +1,7 @@
 var stoneTextureP1;
 var stoneTextureP2;
-var banaTexture;
-var sphereTexture;
+var fieldTexture;
+var skyboxTexture;
 
 function Texture()
 {
