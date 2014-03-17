@@ -201,13 +201,24 @@ theGame.prototype = {
 		var canvas = document.getElementById("curlingbana");
 	    initGL(canvas);
 	    initShaders();
-	    initTextures();
-	    initTextures2();
-        initTextures3();
-        initTextures4();
-	    loadObject();
-	    loadObject2();
-        loadObject3();
+
+	    stoneTextureP1 = new Texture();
+	    stoneTextureP2 = new Texture();
+		fieldTexture = new Texture();
+		skyboxTexture = new Texture();
+		console.log("up: %s",stoneTextureP1.i);
+		stoneTextureP1.i = "changedup";
+	    stoneTextureP1.initTextures("objects/textures/curlingstone_texture.png");
+	    stoneTextureP2.initTextures("objects/textures/curlingstone_texture_2.png");
+	    fieldTexture.initTextures("objects/textures/curlingbanan12.png");
+	    skyboxTexture.initTextures("objects/textures/skydome_nebulosa.jpg");
+
+		stoneBuffers = new BufferObject();
+		stoneBuffers.loadObject("objects/stone_2.json");
+        skyboxBuffers = new BufferObject();
+        skyboxBuffers.loadObject("objects/skybox.json");
+        fieldBuffers = new BufferObject(); 
+        fieldBuffers.loadObject("objects/bana.json");
 
 	    currentlyPressedKeys = {};   
 
