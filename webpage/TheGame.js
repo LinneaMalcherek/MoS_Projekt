@@ -17,7 +17,14 @@ theGame.prototype = {
 	},
 
 	// Function that creates a new stone and throws it. 
-	throwStone: function(angle, speed, playerid){
+	throwStone: function(angle, speed){
+		if (this.thrownStone % 2 == 0)
+			var playerid = 0;
+		else
+			var playerid = 1; 
+
+		//console.log("id: %s, stones: %s (+ 1)", playerid, this.thrownStone);
+
 		this.players[playerid].thrown = this.players[playerid].thrown + 1 ;
 		this.thrownStone = this.thrownStone + 1 ;
 		
@@ -176,14 +183,14 @@ theGame.prototype = {
 	},
 
 	// to get the input from the user from the webpage, to send a stone. 
-	throwStoneFromUser: function(id){
+	throwStoneFromUser: function(){
 		<!-- hämtar värdet ur två stycken fält, skrivit in vinkel och hastighet där -->
 		var angle = parseFloat(document.getElementById('vinkel').value);
 		var speed = parseFloat(document.getElementById('hastighet').value);
 
 		var radians = angle * (Math.PI/180);
 
-		this.throwStone(radians,speed,id);
+		this.throwStone(radians,speed);
 		this.disableAll();
 
 
@@ -224,21 +231,21 @@ theGame.prototype = {
 	},
 
 	// in the game-functionallity. to switch between which buttons that should be disabled.
-	disableButton: function(button){			
+	disableButton: function(button){	
+	//console.log(button);		
 		
 		if (button) {
-			document.getElementById("spelare1").disabled=false;
-			document.getElementById("spelare2").disabled=true;
+			document.getElementById("spelare").disabled=false;
+			document.getElementById("spelare").innerHTML = "Spelare 1";
 		}
 		else {
-			document.getElementById("spelare1").disabled=true;
-			document.getElementById("spelare2").disabled=false;
+			document.getElementById("spelare").disabled=false;
+			document.getElementById("spelare").innerHTML = "Spelare 2";
 		}
 
 	},
 	disableAll: function(){
-		document.getElementById("spelare1").disabled=true;
-		document.getElementById("spelare2").disabled=true;
+		document.getElementById("spelare").disabled=true;
 	},
 
 	// is being called when you press the button "ny omgång"
@@ -253,6 +260,7 @@ theGame.prototype = {
 		delete this.allStones; 
 		this.allStones = new Array();
 
+		this.thrownStone = 0;
 		this.disableButton(1); 
 		this.updateInfo();
 
