@@ -19,6 +19,10 @@ p {
 	padding: 1px;
 }
 
+#info p {
+	margin-top: 20px;
+}
+
 #curlingbana {
 	border: none;
 	margin: 10px;
