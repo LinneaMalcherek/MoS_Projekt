@@ -220,7 +220,7 @@ theGame.prototype = {
 	    skyboxTexture.initTextures("objects/textures/skydome_nebulosa.jpg");
 
 		stoneBuffers = new BufferObject();
-		stoneBuffers.loadObject("objects/stone_2.json");
+		stoneBuffers.loadObject("objects/stone.json");
         skyboxBuffers = new BufferObject();
         skyboxBuffers.loadObject("objects/skybox.json");
         fieldBuffers = new BufferObject(); 
@@ -248,8 +248,7 @@ theGame.prototype = {
 	},
 
 	// in the game-functionallity. to switch between which buttons that should be disabled.
-	disableButton: function(button){	
-		
+	disableButton: function(button){
 		if (button == 1) {
 			document.getElementById("spelare").disabled=false;
 			document.getElementById("spelare").innerHTML = "Spelare 1";
@@ -307,7 +306,7 @@ theGame.prototype = {
 			var leader = this.allStones[0].player;
 			
 			for (var i=0; i < this.allStones.length - 1; i++){
-				if (this.allStones[i].player == this.allStones[i+1].player && i <= NUMBEROFSTONES - 1) {
+				if (this.allStones[i].player == this.allStones[i+1].player && i <= NUMBEROFSTONES - 1 && this.allStones[i+1].distanceFromMiddle + R < NEST_RADIUS) {
 					sum = sum + 1;
 				}
 				else{

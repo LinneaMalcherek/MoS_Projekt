@@ -19,6 +19,10 @@ p {
 	padding: 1px;
 }
 
+#info p {
+	margin-top: 20px;
+}
+
 #curlingbana {
 	border: none;
 	margin: 10px;
@@ -26,7 +30,7 @@ p {
 
 #wrapper {
 	margin: auto;
-	width: 800px;
+	width: 1000px;
 	text-align: center;
 }
 
@@ -37,4 +41,18 @@ p {
 
 #player1 {
 	color: #0099FF; 
+}
+
+#game {
+	width: 810px;
+	float: left;
+
+}
+
+#info{
+	width: 170px;
+	margin-top: 10px;
+	padding: 10px;
+	text-align: left;
+	float: right;
 }

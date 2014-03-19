@@ -15,13 +15,13 @@ function dataConstants() {
 	// constanst for the field
 	FIELDWIDTH = 5; 
 	HACK_HOG = 6.40;
-	TEE = $V([0,34.76+6.40]);
+	TEE = $V([0,42.0]); // 34.76+6.40 = 42.989
 	NEST_RADIUS = 1.829;
-	HACK_HOG_2 = 36;
-	HACK_BACK = 43.5; 
+	HACK_HOG_2 = 35;
+	HACK_BACK = 43.829;//43.5; 
 
 	// how many stones a player should be able to throw
-	NUMBEROFSTONES = 2;
+	NUMBEROFSTONES = 8;
 
 	// these variables has to do with the camera-view. 
 	pitch = 0;
