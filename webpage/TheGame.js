@@ -248,8 +248,7 @@ theGame.prototype = {
 	},
 
 	// in the game-functionallity. to switch between which buttons that should be disabled.
-	disableButton: function(button){	
-		
+	disableButton: function(button){
 		if (button == 1) {
 			document.getElementById("spelare").disabled=false;
 			document.getElementById("spelare").innerHTML = "Spelare 1";
