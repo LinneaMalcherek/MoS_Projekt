@@ -306,7 +306,7 @@ theGame.prototype = {
 			var leader = this.allStones[0].player;
 			
 			for (var i=0; i < this.allStones.length - 1; i++){
-				if (this.allStones[i].player == this.allStones[i+1].player && i <= NUMBEROFSTONES - 1) {
+				if (this.allStones[i].player == this.allStones[i+1].player && i <= NUMBEROFSTONES - 1 && this.allStones[i+1].distanceFromMiddle + R < NEST_RADIUS) {
 					sum = sum + 1;
 				}
 				else{
