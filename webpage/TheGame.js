@@ -5,6 +5,8 @@ function theGame() {
 	this.players = []; // holds all the players
 	this.allStones = new Array();
 	this.thrownStone = 0;  // how many stones have been thrown in total by all playerss
+
+	this.outofbounds = false; // ugly. but cant come up with something better.. to know if out of bounds or not. 
 }
 
 // theGames all functions
@@ -23,12 +25,12 @@ theGame.prototype = {
 		else
 			var playerid = 1; 
 
-		//console.log("id: %s, stones: %s (+ 1)", playerid, this.thrownStone);
+		this.outofbounds = false; 
 
 		this.players[playerid].thrown = this.players[playerid].thrown + 1 ;
 		this.thrownStone = this.thrownStone + 1 ;
 		
-		var stone = new CurlingStone;
+		var stone = new CurlingStone();
 
 		stone.init(angle, speed, playerid);
 
@@ -141,8 +143,10 @@ theGame.prototype = {
 				var id = this.allStones[i].player;
 				this.allStones.splice(i,1);
 
-				if (this.thrownStone != NUMBEROFSTONES*2) // only change buttons if not end of game
+				if (this.thrownStone != NUMBEROFSTONES*2) { // only change buttons if not end of game
 					this.disableButton(id);
+					this.outofbounds = true; 
+				}
 
 			}
 			// delete stone if it has stoped before the hog-line
@@ -150,8 +154,10 @@ theGame.prototype = {
 				var id = this.allStones[i].player;
 				this.allStones.splice(i,1);
 
-				if (this.thrownStone != NUMBEROFSTONES*2)  // only change buttons if not end of game
+				if (this.thrownStone != NUMBEROFSTONES*2) { // only change buttons if not end of game 
 					this.disableButton(id);
+					this.outofbounds = true;
+				}
 			}
 
 		}
@@ -173,8 +179,8 @@ theGame.prototype = {
         	if(thisturn==turn){
         		if(this.allStones.length==0)
 	        		document.getElementById("newRound").style.visibility = "visible";
-        		else if (this.allStones[this.allStones.length-1].stone.speed < 0.01) // HÄR LÄR DET BLI FEL OCKSÅ!
-	        		this.countScore();						// EFTERSOM KAN BLI BORTTAGEN
+        		else if (this.allStones[this.allStones.length-1].stone.speed < 0.01) 
+	        		this.countScore();						
 	        	
 	    	}
         }  
@@ -184,7 +190,7 @@ theGame.prototype = {
 
 	// to get the input from the user from the webpage, to send a stone. 
 	throwStoneFromUser: function(){
-		<!-- hämtar värdet ur två stycken fält, skrivit in vinkel och hastighet där -->
+		// hämtar värdet ur två stycken fält, skrivit in vinkel och hastighet där
 		var angle = parseFloat(document.getElementById('vinkel').value);
 		var speed = parseFloat(document.getElementById('hastighet').value);
 
@@ -231,10 +237,10 @@ theGame.prototype = {
 
 	// so you can't send a new stone while the last has stoped. change the buttons in the webpage. 
 	sendNewStone: function(){
-		if (this.thrownStone!=0 && this.allStones.length>0) {
+		if (this.thrownStone!=0 && this.allStones.length>0 && !this.outofbounds ) {
 			var id = this.allStones[this.allStones.length-1].player;
 
-			// change button
+			// change button. FEL! går in här även ifall vi ändrat redan.. hmmm
 			if(this.allStones[this.allStones.length-1].stone.speed < 0.01 && this.thrownStone!=NUMBEROFSTONES*2){
 				this.disableButton(id);
 			}
@@ -243,13 +249,12 @@ theGame.prototype = {
 
 	// in the game-functionallity. to switch between which buttons that should be disabled.
 	disableButton: function(button){	
-	//console.log(button);		
 		
-		if (button) {
+		if (button == 1) {
 			document.getElementById("spelare").disabled=false;
 			document.getElementById("spelare").innerHTML = "Spelare 1";
 		}
-		else {
+		else if (button == 0){ // betyder att spelare 0 har spelat och ska därför byta till spelare 2
 			document.getElementById("spelare").disabled=false;
 			document.getElementById("spelare").innerHTML = "Spelare 2";
 		}
@@ -274,6 +279,8 @@ theGame.prototype = {
 		this.thrownStone = 0;
 		this.disableButton(1); 
 		this.updateInfo();
+
+		this.outofbounds = false;
 
 		document.getElementById("newRound").style.visibility = "hidden";
 	},
