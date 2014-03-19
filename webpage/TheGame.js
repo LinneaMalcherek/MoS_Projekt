@@ -220,7 +220,7 @@ theGame.prototype = {
 	    skyboxTexture.initTextures("objects/textures/skydome_nebulosa.jpg");
 
 		stoneBuffers = new BufferObject();
-		stoneBuffers.loadObject("objects/stone_2.json");
+		stoneBuffers.loadObject("objects/stone.json");
         skyboxBuffers = new BufferObject();
         skyboxBuffers.loadObject("objects/skybox.json");
         fieldBuffers = new BufferObject(); 
