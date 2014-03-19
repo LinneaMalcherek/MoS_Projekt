@@ -104,7 +104,7 @@ function drawScene(players) {
         /** Draw the sky box */ 
         mat4.identity(mMatrix);
         mat4.scale(mMatrix,mMatrix, [2, 2, 2]);
-        mat4.translate(mMatrix,mMatrix, [0, 0, 6]);
+        mat4.translate(mMatrix,mMatrix, [0, 0, 4]);
         mat4.translate(vMatrix,vMatrix, [xCam, yCam, zCam]);
 
 
