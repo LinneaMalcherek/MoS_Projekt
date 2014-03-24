@@ -107,6 +107,13 @@ function drawScene(players) {
         mat4.translate(mMatrix,mMatrix, [0, 0, 4]);
         mat4.translate(vMatrix,vMatrix, [xCam, yCam, zCam]);
 
+        gl.uniform3f(shaderProgram.ambientColorUniform, 1.0, 1.0, 1.0); 
+
+        gl.uniform3f(shaderProgram.pointLightingSpecularColorUniform, 0.0, 0.0, 0.0);
+
+        gl.uniform3f(shaderProgram.pointLightingColorUniform, 0.0, 0.0, 0.0);
+
+        gl.uniform1f(shaderProgram.materialShininessUniform, 0.0);
 
         gl.bindBuffer(gl.ARRAY_BUFFER, skyboxBuffers.VertexPositionBuffer);
         gl.vertexAttribPointer(shaderProgram.vertexPositionAttribute, skyboxBuffers.VertexPositionBuffer.itemSize, gl.FLOAT, false, 0, 0);
