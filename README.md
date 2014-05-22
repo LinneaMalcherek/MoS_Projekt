@@ -8,9 +8,9 @@ TNM085 Modelling and simulation at Linköping University, Sweden.
 The game is based on the physical modell of a curlingstones way over the ice track, with respect to friction on both translation and rotation, inital velocity and angular velocity.  
 
 *Created 2014 by
-Linnea Malcherek
-Michael Nilsson
-Linnéa Nåbo
-Julia Nilsson
+Linnea Malcherek,
+Michael Nilsson,
+Linnéa Nåbo,
+Julia Nilsson,
 Linnéa Mellblom*
 
